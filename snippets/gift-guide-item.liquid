@@ -1,0 +1,50 @@
+<div class="gift-guide-item {% if col_width == 'wide' %} wide {% endif %}">
+  {% if block.settings.image != blank %}
+  <div class="gift-guide-item-image gift-guide-item-data">
+    <a class="" href="{{ block.settings.url }}" {% if block.settings.target_blank %}target="_blank"{% endif %}><img src="{{ block.settings.image | img_url: '960x' }}" alt="{{ block.settings.product_title }}" /></a>
+  </div>
+  {% endif %}
+
+  {% if block.settings.title != blank %}
+  <div class="gift-guide-item-title gift-guide-item-data">
+    <h5>{{ block.settings.title }}</h5>
+  </div>
+  {% endif %}
+
+  {% if block.settings.copy != blank %}
+  <div class="gift-guide-item-copy gift-guide-item-data">
+    {{ block.settings.copy }}
+  </div>
+  {% endif %}
+  
+  {% if block.settings.offer != blank %}
+  <div class="gift-guide-item-offer gift-guide-item-data">
+    <strong>{{ block.settings.offer }}</strong>
+  </div>
+  {% endif %}
+  
+  {% if block.settings.code != blank %}
+  <div class="gift-guide-item-code gift-guide-item-data">
+    <strong>{{ block.settings.code }}</strong>
+  </div>
+  {% endif %}
+  
+  {% if block.settings.disclaimer != blank %}
+  <div class="gift-guide-item-disclaimer gift-guide-item-data">
+    {{ block.settings.disclaimer }}
+  </div>
+  {% endif %}
+  
+  {% if block.settings.expiration != blank %}
+  <div class="gift-guide-item-expiration gift-guide-item-data">
+    {{ block.settings.expiration }}
+  </div>
+  {% endif %}
+
+  {% if block.settings.url != blank %}
+  <div class="gift-guide-item-url gift-guide-item-data">
+    <strong><a class="" href="{{ block.settings.url }}" {% if block.settings.target_blank %}target="_blank"{% endif %}>{{ block.settings.button_text }}</a></strong>
+  </div>
+  {% endif %}
+  
+</div>

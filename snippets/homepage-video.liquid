@@ -1,0 +1,89 @@
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<div id="homepage-video" class="homepage-video">
+  <div class="homepage-video--media"
+    data-video-src="{{ settings.banner_video_id }}"
+    data-aspect-ratio="{{ settings.aspect_ratio }}"
+    data-provider="{{ settings.banner_video_source }}"
+    data-video-mp4="{{ settings.banner_video_mp4 }}"
+    data-video-ogv="{{ settings.banner_video_ogv }}">
+    <img  src="{{ 'video_poster.jpg' | asset_img_url: '100x', format: 'pjpg' }}"
+          alt="{{ settings.video_headline | escape }}"
+          class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+          data-play-video
+          sizes="100vw"
+          data-src="{{ 'video_poster.jpg' | asset_img_url: default, format: 'pjpg' }}"
+          srcset="
+          {{ 'video_poster.jpg' | asset_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+          {{ 'video_poster.jpg' | asset_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+           />
+    <div class="position-{{ settings.video_text_position }} caption js-caption text-on-video">
+      <div class="caption-content
+                  caption-background-{{settings.video_text_background}}
+                  align-{{ settings.video_text_align }}">
+        <p class="pretext">
+          {{ settings.video_pretext }}
+        </p>
+        <p class="headline">
+          {{ settings.video_headline }}
+        </p>
+        <p class="subtitle">
+          {{ settings.video_subtitle }}
+        </p>
+        {% if settings.video_button1_text != blank %}
+          <a {% if settings.video_button1_link != blank %}href="{{ settings.video_button1_link }}"{% else %}data-play-video{% endif %} class="action_button first_button highlight-{{settings.video_button1_highlight}}">
+            {{ settings.video_button1_text }}
+          </a>
+        {% endif %}
+        {% if settings.video_button2_text != blank %}
+          <a {% if settings.video_button2_link != blank %}href="{{ settings.video_button2_link }}"{% else %}data-play-video{% endif %} class="action_button second_button highlight-{{settings.video_button2_highlight}}">
+            {{ settings.video_button2_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="position-{{ settings.video_text_position }} caption js-caption text-on-video outside-homepage-video">
+  <div class="caption-content align-{{ settings.video_text_align }}">
+    <p class="pretext">
+      {{ settings.video_pretext }}
+    </p>
+    <p class="headline">
+      {{ settings.video_headline }}
+    </p>
+    <p class="subtitle">
+      {{ settings.video_subtitle }}
+    </p>
+    {% if settings.video_button1_text != blank %}
+      <a {% if settings.video_button1_link != blank %}href="{{ settings.video_button1_link }}"{% else %}data-play-video{% endif %} class="action_button first_button highlight-{{settings.video_button1_highlight}}">
+        {{ settings.video_button1_text }}
+      </a>
+    {% endif %}
+    {% if settings.video_button2_text != blank %}
+      <a {% if settings.video_button2_link != blank %}href="{{ settings.video_button2_link }}"{% else %}data-play-video{% endif %} class="action_button second_button highlight-{{settings.video_button2_highlight}}">
+        {{ settings.video_button2_text }}
+      </a>
+    {% endif %}
+  </div>
+</div>

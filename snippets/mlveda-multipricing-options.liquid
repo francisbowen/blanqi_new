@@ -1,0 +1,18 @@
+{% comment %}
+{% if template != 'cart' %}
+		<script>
+		  $m("<style type=\"text/css\">span.money{ display: none; }</style>").appendTo("head");
+          
+          {% if template contains 'product' %}
+            $m("<style type=\"text/css\">form[action*='/cart/add'] [type='submit']{visibility : hidden;}</style>").appendTo("head");
+          {% endif %}
+          
+		</script>
+	{% endif %}
+
+<script>
+window.mlvedaShopCurrency = "{{ shop.currency }}";
+window.shopCurrency = "{{ shop.currency }}";
+window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+</script>
+{% endcomment %}

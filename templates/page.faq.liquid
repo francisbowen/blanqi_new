@@ -1,0 +1,313 @@
+<div class="row faq-template custom-faq-template">
+  <div class="col-12 col-md-3 order-2 order-md-1" id="custom-sidebar">
+    {% include 'sidebar' %}
+  </div>
+  <div id="accordion" class="col-12 col-md-9 order-1 order-md-2">
+    <div class="breadcrumbs text-center text-md-left" style="margin-left: 0">
+      <a href="{{ shop.secure_url }}">
+        Home
+      </a>
+      <span>/</span>
+      <a href="{{ page.url }}">
+        {{ page.title }}
+      </a>
+    </div>
+    <div class="custom-page-heading">
+    <h1>{{ page.title }}</h1>
+    </div>
+      {% section 'faq' %}
+    </div>
+  </div>
+</div>
+
+{% comment %}
+
+<div class="row faq-template">
+  <div class="col-12 col-sm-2 order-2 order-sm-1">
+    {% include 'sidebar' %}
+  </div>
+  <div id="accordion" class="col-12 col-sm-10 order-1 order-sm-2">
+    <div class="breadcrumbs mb-2 mb-sm-2rem text-center text-sm-left" style="margin-left: 0">
+      <a href="{{ shop.secure_url }}">
+        HOME
+      </a>
+      <span>/</span>
+      <a href>
+        {{ page.title }}
+      </a>
+    </div>
+
+    <h1>{{ page.title }}</h1>
+    <ul class="sections d-none d-sm-block">
+      <li class="js-faq" data-target="#h2shipping" class="active">FIT</li>
+      <li class="js-faq" data-target="#h2returns">PRODUCT</li>
+      <!--<li class="js-faq" data-target="#h2support">SUPPORT</li>-->
+      <!--<li class="js-faq" data-target="#h2shop">SHOP</li>-->
+      <!--<li class="js-faq" data-target="#h2care">CARE</li>-->
+    </ul>
+
+    <div>
+      {% assign num = 1 %}
+
+      {% assign name = "[FIT] QUESTIONS & ANSWERS:" %}
+      <div class="unit navbar navbar-expand-sm">
+        <h2 id="h2{{name}}" class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">{{name}}</h2>
+        <div id="Target-{{name}}" class="collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" >
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+               What sizes do you carry?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>We currently carry sizes Small, Medium, Large & Extra Large in the majority of our seamless products. Some of our less compressive garments come in blended sizes (i.e. S/M and L/XL), as seamless garments can grow and contract with you!</p>
+                <table width="487">
+                  <tbody>
+                    <tr>
+                      <td><strong>Service</strong></td>
+                      <td><strong>Cost</strong></td>
+                      <td><strong>Delivery Time</strong></td>
+                    </tr>
+                    <tr>
+                      <td>Standard Ground</td>
+                      <td>FREE</td>
+                      <td>3-10 Business Days</td>
+                    </tr>
+                    <tr>
+                      <td>2 Day Shipping</td>
+                      <td>$21.95</td>
+                      <td>2 Business Days</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <p>&nbsp;</p>
+                <p>EXPEDITED SHIPPING METHODS &amp; ARRIVALS</p>
+                <table width="556">
+                  <tbody>
+                    <tr>
+                      <td><strong>ORDER BEFORE 11AM EST</strong></td>
+                      <td><strong>TWO BUSINESS DAYS</strong></td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>MONDAY</td>
+                      <td>WEDNESDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>TUESDAY</td>
+                      <td>THURSDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>WEDNESDAY</td>
+                      <td>FRIDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>THURSDAY</td>
+                      <td>MONDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>FRIDAY</td>
+                      <td>TUESDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>SATURDAY</td>
+                      <td>WEDNESDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                      <td>SUNDAY</td>
+                      <td>WEDNESDAY</td>
+                      <td>&nbsp;</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                When do orders ship and how do I check shipping status?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p><strong>Shipping orders</strong></p>
+                <p>Your delivery time is estimated from the "Ship Date", not the "Order Date". After your order is received, and payment is authorized, it may take up to two business days to process your order. These are all estimates, as weather and holidays may impact deliveries. When you receive your shipping notification email, it will notify you of the carrier’s estimated delivery date.</p>
+                <p>Please see our FAQ article on <strong><span class="wysiwyg-underline"><a href="/hc/en-us/articles/201580066-WHAT-ARE-YOUR-SHIPPING-RATES-DELIVERY-">Shipping Rates and Delivery</a></span></strong></p>
+                <p><strong>Checking your shipping status</strong></p>
+                <p>Once you have placed an order, you can check the status anytime. When your order has shipped, you will receive an email with the tracking number and a link to where you can track it through the carrier.&nbsp;Tracking can take up to 24 hours to be available on the carriers website.</p>
+                <p>If you have any specific questions or concerns regarding shipping or the order status of your BLANQI order, please email <a href="mailto:customercare@blanqi.com">customercare@blanqi.com</a></p>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                Do you ship internationally?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>Yes! We ship&nbsp;internationally to the following countries:</p>
+                <ul>
+                  <li>Australia</li>
+                  <li>Canada</li>
+                  <li>Great Britain</li>
+                  <li>European Union</li>
+                </ul>
+                <p>DUTIES &amp; TAXES</p>
+                <ul>
+                  <li>Duties and taxes are not included in the shipping-cost quote you receive during checkout and will be charged upon delivery. No&nbsp;duties and taxes, and brokerage fees will be paid at the time you place your order.&nbsp;</li>
+                  <li>If your order is undeliverable, or if you refuse delivery of an order you have placed, you will be responsible for payment of all duties and taxes. Shipping charges as well as duties and taxes are nonrefundable for undeliverable or refused shipments. Upon receipt of the refused delivery, a refund will be issued for the item(s) only.</li>
+                </ul>
+                <p><a href="/hc/en-us/articles/201751667-WHAT-IS-YOUR-RETURN-POLICY-">Read More About International Returns Here</a>.</p>
+                <p>*Please note that BLANQI is unable&nbsp;to force any order through Customs. If you have specific questions regarding your order being held in Customs and the timeframe for delivery, please contact your Customs office.&nbsp;</p>
+                <p>You can also&nbsp;visit our <a href="http://www.blanqi.com/apps/store-locator" target="_blank">store locations</a>&nbsp;page for a list of all our International in-store and online retailers.</p>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+        </div>
+      </div>
+
+      {% assign name = "returns" %}
+      <div class="unit navbar navbar-expand-sm">
+        <h2 id="h2{{name}}" class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">{{name}}</h2>
+        <div id="Target-{{name}}" class="collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" >
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                What is your return policy?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>If for any reason you are not entirely happy with your purchase, you may return an item purchased on BLANQI.com as long as it meets the following criteria:</p>
+                <ul>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;Returns will not be accepted after 30 days.</li>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;Merchandise must be unwashed and unworn.</li>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;Merchandise must be in original packaging and/or hangtags attached.</li>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;Shipping and handling charges and sales tax are not refundable.</li>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;We cannot accept returns on opened/worn hosiery items.</li>
+                  <li>&nbsp; &nbsp; &nbsp; &nbsp;A return shipping fee of $5.00 is non-refundable.</li>
+                </ul>
+                <p>&nbsp;</p>
+                <p>DOMESTIC RETURNS:</p>
+                <p>We have an easy online return process that you can initiate through this link -&nbsp;<span class="wysiwyg-underline"><a href="https://blanqi.returnly.com/" target="_blank" rel="noopener noreferrer" style="color:red;">BLANQI Returns</a></span>&nbsp;</p>
+                <p><em>(for international orders please see below)</em></p>
+                <p>Unfortunately, we cannot accept returns for items purchased from other retailers or websites. Please reach out to place of purchase for their return policy. &nbsp;Please note, we cannot accept returns on items, specifically hosiery, that appear to be worn, stretched out or tried on. &nbsp;If your return does not meet the conditions listed, we will not be able to issue a refund and the package will be sent back.</p>
+                <p>&nbsp;</p>
+                <p>INTERNATIONAL RETURNS:</p>
+                <p>If for any reason you are not entirely happy with your purchase, you may return an item purchased on BLANQI.com as long as it meets the following criteria:</p>
+                <ul>
+                  <li>Returns will not be accepted after 30 days.</li>
+                  <li>Merchandise must be unwashed and unworn.</li>
+                  <li>Merchandise must be in original packaging and/or hangtags attached.</li>
+                </ul>
+                <p>You must email our team at customercare@blanqi.com for a return authorization and ship the items back at your expense.</p>
+                <ul>
+                  <li>SHIPPING FEES, DUTIES and TAXES, WILL NOT BE REFUNDED&nbsp;</li>
+                  <li>Contact your local customs office for information on refund of returned merchandise.</li>
+                  <li>Exchanges are not offered with international shipments.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                Can I exchange my merchandise?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>Unfortunately we are unable to process exchanges at this time. Thank you for understanding.&nbsp;</p>
+                <p>We have an easy online return process that you can initiate through this link&nbsp;<a href="https://blanqi.returnly.com/"><span class="wysiwyg-underline">BLANQI Returns</span></a></p>
+                <ul>
+                  <li>You will input the email address that you placed your order with and follow the instructions from there. You will be provided with a prepaid return label to print and then you can ship the item back to us. Upon receipt of your items, we will issue your refund so long as your items meet the requirements for return.&nbsp;</li>
+                </ul>
+                <p>If you have any specific questions regarding our return or exchange policies please feel free to reach out to us at&nbsp;<a href="mailto:customercare@blanqi.com">customercare@blanqi.com</a></p>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                What if i received a damaged item?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>We pride ourselves on the highest quality goods and want you to be entirely pleased with your purchase. If we sent something that appears damaged, please contact our customer care team at customercare@blanqi.com for assistance.</p>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+
+          <div class="faq-card">
+            <div class="faq-header">
+              <a class="card-link collapsed" data-toggle="collapse" href="#collapse-{{num}}">
+                When will the refund show up on my credit card?
+              </a>
+            </div>
+            <div id="collapse-{{num}}" class="collapse">
+              <div class="faq-body">
+                <p>Once your return has been received, your refund will be processed within 5-10 business days. If there is a refund due, a credit will be issued to the original form of payment.</p>
+                <p>We will refund the full purchase price, excluding all applicable shipping charges. Refunds will be issued for properly returned items. If your return does not meet the conditions listed, we will not be able to issue the refund and the package will be sent back to you.</p>
+              </div>
+            </div>
+          </div>
+          {% assign num = num | plus: 1 %}
+        </div>
+      </div>
+
+      {% assign show_faq = false %}
+      {% if show_faq %}
+        {% assign name = "support" %}
+        <div class="unit navbar navbar-expand-sm">
+          <h2 id="h2{{name}}" class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">{{name}}</h2>
+          <div id="Target-{{name}}" class="collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" >
+          <!-- -->
+
+          </div>
+        </div>
+        {% assign num = num | plus: 1 %}
+
+        {% assign name = "shop" %}
+        <div class="unit navbar navbar-expand-sm">
+          <h2 id="h2{{name}}" class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">{{name}}</h2>
+          <div id="Target-{{name}}" class="collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" >
+          <!-- -->
+          </div>
+        </div>
+
+        {% assign name = "care" %}
+        <div class="unit navbar navbar-expand-sm">
+          <h2 id="h2{{name}}" class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">{{name}}</h2>
+          <div id="Target-{{name}}" class="collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" >
+          <!-- -->
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+  </div>
+</div>
+{% endcomment %}

@@ -1,0 +1,341 @@
+@font-face {
+  font-family: 'turbo';
+  src: url('turbo.eot');
+  src: url('turbo.eot') format('embedded-opentype'),
+       url('turbo.woff') format('woff'),
+       url('turbo.ttf') format('truetype'),
+       url('turbo.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Custom Fonts */
+@font-face {
+  font-family: 'Euclid Flex';
+  src: url('EuclidFlex-Medium.eot');
+  src: url('EuclidFlex-Medium.eot?#iefix') format('embedded-opentype'),
+       url('EuclidFlex-Medium.woff2') format('woff2'),
+       url('EuclidFlex-Medium.woff') format('woff'),
+       url('EuclidFlex-Medium.ttf') format('truetype'),
+       url('EuclidFlex-Medium.svg#EuclidFlex-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Canela';
+  src: url('Canela-Light.eot');
+  src: url('Canela-Light.eot?#iefix') format('embedded-opentype'),
+       url('Canela-Light.woff2') format('woff2'),
+       url('Canela-Light.woff') format('woff'),
+       url('Canela-Light.ttf') format('truetype'),
+       url('Canela-Light.svg#Canela-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('ProximaNova-Medium.eot');
+  src: url('ProximaNova-Medium.eot?#iefixt') format('embedded-opentype'),
+       url('ProximaNova-Medium.woff2') format('woff2'),
+       url('ProximaNova-Medium.woff') format('woff'),
+       url('ProximaNova-Medium.ttf') format('truetype'),
+       url('ProximaNova-Medium.svg#ProximaNova-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('proximanova-bold.woff2') format('woff2'),
+       url('proximanova-bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('ProximaNova-Light.woff2') format('woff2'),
+      url('ProximaNova-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('ProximaNova-Regular.eot');
+  src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+       url('ProximaNova-Regular.woff2') format('woff2'),
+       url('ProximaNova-Regular.woff') format('woff'),
+       url('ProximaNova-Regular.ttf') format('truetype'),
+       url('ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('EuclidCircularA-Regular.eot');
+  src: url('EuclidCircularA-Regular.eot?#iefix') format('embedded-opentype'),
+       url('EuclidCircularA-Regular.woff2') format('woff2'),
+       url('EuclidCircularA-Regular.woff') format('woff'),
+       url('EuclidCircularA-Regular.ttf') format('truetype'),
+       url('EuclidCircularA-Regular.svg#EuclidCircularA-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('EuclidCircularA-Light.eot');
+  src: url('EuclidCircularA-Light.eot?#iefix') format('embedded-opentype'),
+       url('EuclidCircularA-Light.woff2') format('woff2'),
+       url('EuclidCircularA-Light.woff') format('woff'),
+       url('EuclidCircularA-Light.ttf') format('truetype'),
+       url('EuclidCircularA-Light.svg#EuclidCircularA-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('EuclidCircularA-Medium.eot');
+  src: url('EuclidCircularA-Medium.eot?#iefix') format('embedded-opentype'),
+       url('EuclidCircularA-Medium.woff2') format('woff2'),
+       url('EuclidCircularA-Medium.woff') format('woff'),
+       url('EuclidCircularA-Medium.ttf') format('truetype'),
+       url('EuclidCircularA-Medium.svg#EuclidCircularA-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('EuclidCircularA-Semibold.eot');
+  src: url('EuclidCircularA-Semibold.eot?#iefix') format('embedded-opentype'),
+       url('EuclidCircularA-Semibold.woff2') format('woff2'),
+       url('EuclidCircularA-Semibold.woff') format('woff'),
+       url('EuclidCircularA-Semibold.ttf') format('truetype'),
+       url('EuclidCircularA-Semibold.svg#EuclidCircularA-Semibold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('EuclidCircularATrial-Bold.eot');
+  src: url('EuclidCircularATrial-Bold.eot?#iefix') format('embedded-opentype'),
+       url('EuclidCircularATrial-Bold.woff2') format('woff2'),
+       url('EuclidCircularATrial-Bold.woff') format('woff'),
+       url('EuclidCircularATrial-Bold.ttf') format('truetype'),
+       url('EuclidCircularATrial-Bold.svg#EuclidCircularATrial-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+ /* Custom Fonts Ends */
+
+  body > .content {
+    padding: 0 15px;
+  }
+  .form-container.start-form-container h1.rc-title {
+    font-family: 'Euclid Circular A';
+    font-weight: normal;
+    color: #414141;
+    text-transform: uppercase;
+    font-size: 27px;
+    line-height: normal;
+    letter-spacing: 8px;
+  }
+  .form-container.start-form-container .rc-title+p {
+    font-size: 16.25px;
+    color: #6e6e6e;
+    line-height: 22.92px;
+    text-align: center;
+    font-family: 'Proxima Nova';
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin: 14px auto 0 auto;
+    max-width: 400px;
+    width: 100%;
+  }
+  .form-container.start-form-container .start-return-form {
+    position: relative;
+    padding: 0;
+    margin: 30px auto 0 auto;
+    max-width: 400px;
+  }
+  .form-container.start-form-container .start-return-form input[type="email"] {
+    font-family: 'Proxima Nova' !important;
+    font-weight: normal !important;
+    color: #6e6e6e !important;
+    font-size: 14.58px;
+    border: 0 !important;
+    border-bottom: 1px solid #bfbfbf !important;
+    margin-top: 0 !important;
+    padding:0 30px 0 0;
+  }
+  .form-container.start-form-container .start-return-form input[type="email"]::placeholder {
+    color: #6e6e6e !important; 
+  }
+  .form-container.start-form-container .start-return-form input[type="submit"].start-return-btn {
+    background: #414141;
+    font-family: 'Euclid Circular A';
+    transition: 0.5s all ease;
+    margin-top: 42px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 11px;
+    height: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    padding: 1px 0 0 0;
+    margin-bottom: 0;
+  }
+  .form-container.start-form-container .start-return-form input[type="submit"].start-return-btn:hover {
+    background: #000;
+  }
+  .form-container.start-form-container .buttons {
+    max-width: 400px;    
+  }
+  .form-container.start-form-container .buttons .form-view-link {
+    font-size: 13.75px;
+    color: #6e6e6e;
+    font-family: 'Proxima Nova';
+    font-weight: normal;
+    letter-spacing: 0.5px;
+  }
+  .form-container.start-form-container .buttons .form-view-link:hover {
+    color:#000;    
+  }
+
+  /* How Works */
+  #how-works.how-works {
+    padding: 80px 0;
+  }
+  #how-works h1.rc-title {
+    color: #414141;
+    font-weight: 500;
+    font-family: 'Euclid Circular A';
+    font-size: 20.83px;
+    letter-spacing: 6px;
+  }
+  #how-works .content {
+    margin: 60px auto 20px;
+    max-width: 860px;
+  }
+
+  #how-works .rounded {
+    color: #545c5e;
+    border: 2px solid #545c5e;
+  }
+  #how-works .rounded .fa {
+    height: 92px;
+    width: 100%;    
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #how-works .rounded .fa:before {
+    display: none;
+  }
+  #how-works .rounded .fa-hand-o-up {
+    background-image:url('hands-up.png');
+  }
+  #how-works .rounded .fa-usd {
+    background-image:url('dollar.png');
+  }
+  #how-works .rounded .fa-truck {
+    background-image:url('truck.png');
+  }
+
+  #how-works.how-works p {
+    padding: 0 10%;
+    font-family: 'Proxima Nova';
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 16.67px;
+    color: #6e6e6e;
+  }
+  #how-works .content .three-steps:nth-child(2) p:before {
+    content: "1.";
+    display: block;
+  }  
+  #how-works .content .three-steps:nth-child(3) p:before {
+    content: "2.";
+    display: block;
+  }  
+  #how-works .content .three-steps:nth-child(4) p:before {
+    content: "3.";
+    display: block;
+  }
+  #how-works .line-mask ,#how-works .rounded .arrow {
+    display: none;
+  }
+
+  /* Returns Questions */
+
+  #crq {
+    padding: 80px 0;
+  }
+  #crq h1.rc-title {
+    color: #414141;
+    font-weight: 500;
+    font-family: 'Euclid Circular A';
+    font-size: 20.83px;
+    letter-spacing: 6px;
+  }
+  #crq.returns-questions .content{
+    margin:50px auto 0px;
+    max-width: 860px;
+  }
+  #crq.returns-questions {
+    font-family: 'Proxima Nova';
+    font-size: 13px; 
+    font-weight: normal;
+    color: #6e6e6e;
+    letter-spacing: 1px;
+    line-height: 20px;    
+  }
+  #crq.returns-questions p{
+    font-family: 'Proxima Nova';
+    font-size: 13px; 
+    font-weight: normal;
+    letter-spacing: 1px;
+    color: #6e6e6e;
+    line-height: 18px;    
+    padding-bottom: 15px;
+    clear: both;
+  }
+  #crq.returns-questions .f-half p:nth-child(2n+2) {
+    padding-bottom: 30px;
+  }
+  #crq.returns-questions p strong {
+    font-weight: 700;
+    font-family: 'Proxima Nova';
+  }
+
+  @media screen and (max-width: 767px){
+  .form-container, .form-container.start-form-container ,#how-works.how-works,#crq.returns-questions{
+    padding: 30px 0px;
+  }
+  .form-actions-container:nth-child(1) {
+    margin-bottom: 0;
+  }
+  #how-works.how-works .three-steps {
+    margin-bottom: 30px;
+  }
+  #crq.returns-questions .content ,#how-works .content{
+    margin-top: 30px;
+  }
+  #crq.returns-questions p {
+    max-width: 100%;
+    margin-bottom: 0px;
+  }
+  #crq.returns-questions p:last-child {
+    padding-bottom: 15px !important;
+  }
+  .form-container.start-form-container .start-return-form input[type="submit"].start-return-btn {
+    margin-top: 20px;
+  }
+  .form-container.start-form-container h1.rc-title {
+    font-size: 18px;
+    letter-spacing: 5px;
+  }
+  #crq h1.rc-title , #how-works h1.rc-title{
+    line-height: normal;
+    letter-spacing: 4px;
+  }
+}

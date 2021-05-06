@@ -1,0 +1,416 @@
+<div class="mlvedaform">
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<div class="custom-pdp-container">
+<div class="row mb-3 d-none d-md-flex">
+  <script type="application/ld+json" class="google-breadcrumbs">
+  [{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ shop.secure_url }}"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "{{ shop.secure_url }}/collections/all/"
+    }
+    {% if collection %}
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ collection.title | escape }}",
+      "item": "{{ shop.secure_url }}{{ collection.url }}"
+    }
+    {% endif %}
+  ]}]
+  </script>
+  <div class="col-12 mb-1">
+    <div class="breadcrumbs">
+      <a href="{{ shop.secure_url }}">
+        Home
+      </a>
+      <span>/</span>
+      <a href="/collections/all/">
+        Shop
+      </a>
+      {% if collection %}
+      <span>/</span>
+      <a href="{{ collection.url }}">
+        {{ collection.title }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div> 
+{%- assign orange_tags = 'sale,new to sale,final sale,launch offer,special offer' | split: ',' -%}
+<div class="row product-{{ product.id }} product-row">
+  
+  {% include 'product-images' %}
+  {% include 'product-images-mobile' %}
+
+  
+  <div class="title-for-mobile col d-block d-md-none">
+    {%- comment -%}
+  <span class="product-category">
+    {{ product.metafields.custom_fields["category"] }}
+  </span>
+  {%- endcomment -%}
+  {%- for tag in product.tags -%}
+    {%- if tag contains 'tag--' -%}
+    {%- assign tag_name = tag | remove: 'tag--' -%}
+    {%- if tag_name contains '//' -%}
+    {%- assign tag_split = tag_name | split: '//' -%}
+    <div class="pre-tag {% if orange_tags contains tag_split[0] %}offer-tag{% endif %}">{{ tag_split[0] }}</div>
+    {%- else -%}
+    <div class="pre-tag {% if orange_tags contains tag_name %}offer-tag{% endif %}">{{ tag_name }}</div>
+    {%- endif -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- for tag in product.tags -%}
+  {%- if tag contains 'new-banner-tag' -%}
+    {%- assign tag_name = tag | remove: '-banner-tag' -%}
+      <div class="pre-tag">{{ tag_name }}</div>
+    {%- endif -%}
+  {%- endfor -%}
+
+  <h1 class="product-name" itemprop="name">
+    {{ product.title }}
+  </h1>
+    {% if product.metafields.custom_fields["subtitle_callout"] != blank %}
+    <div class="custom-field custom-field__subtitle-callout custom-field__type--text">
+      <div class="custom-field--value">
+        {{ product.metafields.custom_fields["subtitle_callout"] }}
+      </div>
+    </div>
+    {% endif %}
+    
+  {% comment %} mobile tag banner here {% endcomment %}
+  
+    {% if product.tags contains "buy-one-get-half" %}
+    <p style="
+      background: #feab8d;
+      padding: 10px;
+      text-align: center;
+      color: white;
+       letter-spacing:1px;
+       font-weight:600;
+       font-size:13px;
+       text-transform:uppercase;
+      font-family:"Gotham A","Gotham B",sans-serif                                               
+      ">Buy One, Get One Half Off. Automatically Applied at Checkout.</p>
+    {% endif %}
+ {%- comment -%}
+  {% include 'tag-banners' with scope: 'product-mobile' %}
+                {%- endcomment -%}      
+</div> 
+  
+  <div class="col-12 col-md-5 col-product-form custom-pdp-form text-left">
+    <div class="product_section clearfix js-product_section {% if settings.product_images_position == 'right' %}align_right--images{% endif %}" itemscope itemtype="http://schema.org/Product">
+      {% assign variant = product.selected_or_first_available_variant %}
+      {%- comment -%}
+      <span class="product-category d-none d-md-inline">
+        {{ product.metafields.custom_fields["category"] }}
+      </span>
+      {%- endcomment -%}
+
+      <div class="d-none d-md-block">
+      {%- for tag in product.tags -%}
+      {%- if tag contains 'tag--' -%}
+      {%- assign tag_name = tag | remove: 'tag--' -%}
+      {%- if tag_name contains '//' -%}
+      {%- assign tag_split = tag_name | split: '//' -%}
+      <div class="pre-tag {% if orange_tags contains tag_split[0] %}offer-tag{% endif %}">{{ tag_split[0] }}</div>
+      {%- else -%}
+      <div class="pre-tag {% if orange_tags contains tag_name %}offer-tag{% endif %}">{{ tag_name }}</div>
+      {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- for tag in product.tags -%}
+    {%- if tag contains 'new-banner-tag' -%}
+      {%- assign tag_name = tag | remove: '-banner-tag' -%}
+        <div class="pre-tag">{{ tag_name }}</div>
+      {%- endif -%}
+    {%- endfor -%}
+      <h1 class="product-name mb-075rem " itemprop="name">
+        {{ product.title }}
+      </h1>
+      <h2></h2>
+    {% if product.metafields.custom_fields["subtitle_callout"] != blank %}
+    <div class="custom-field custom-field__subtitle-callout custom-field__type--text">
+      <div class="custom-field--value">
+        {{ product.metafields.custom_fields["subtitle_callout"] }}
+      </div>
+    </div>
+    {% endif %}
+
+      {% comment %}product tag banner for desktop {% endcomment %}
+      {% comment %}
+      <div class="d-none d-md-block">
+        <p style="
+          background: #feab8d;
+          padding: 10px;
+          text-align: center;
+          color: white;
+           letter-spacing:1px;
+           font-weight:600;
+           font-size:13px;
+           text-transform:uppercase;
+          font-family:"Gotham A","Gotham B",sans-serif                                               
+          ">A GIFT FOR YOU: $20 OFF with code BLANQI20</p>
+        </div>
+      {% endcomment %}
+      
+    </div>
+      <div class="price-display" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+        <meta itemprop="seller" content="{{ shop.name | escape }}" />
+        <link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
+        <meta itemprop="itemCondition" content="New" />
+        <span class="sold_out">
+          {% if variant.available == false %}
+          {{ 'products.product.sold_out' | t }}
+          {% endif %}
+        </span>
+        
+        <span class="was_price">
+          {% if variant.price < variant.compare_at_price and variant.available %}
+          {{ variant.compare_at_price | money }}
+          {% endif %}
+        </span>
+        <span itemprop="price" content="{{ variant.price | money_without_currency }}" class="{% if variant.compare_at_price > variant.price %}sale{% endif %}">
+          <span id="CurrentPrice" class="current_price {% if product.available == false %}hidden{% endif %}">
+            {{ variant.price | money_with_currency }}
+          </span>
+        </span>
+        {% include 'tag-banners' with scope: 'product-desktop' %}
+        <div id="WasPrice"></div>
+      </div>
+      
+      {%- comment -%}
+      {% include 'tag-sale-banners' with scope: 'product-desktop' %}
+    {%- endcomment -%}
+
+
+      <!--% include 'product-notify-me' %-->
+
+      {% include 'product-form' with 'product' %}
+
+      {% if settings.display_collections or settings.display_tags or settings.display_type %}
+      <div class="product_links">
+        {% if settings.display_collections %}
+        <p>
+          <span class="label">{{ 'products.product.collections' | t }}:</span>
+          <span>
+            {% for col in product.collections %}
+            <a href="{{ col.url }}" title="{{ col.title }}">{{ col.title }}</a>{% unless forloop.last %},{% endunless %}
+            {% endfor %}
+          </span>
+        </p>
+        {% endif %}
+
+        {% if settings.display_type %}
+        <p>
+          <span class="label">{{ 'products.product.product_types' | t }}:</span>
+          <span>{{ product.type | link_to_type }}</span>
+        </p>
+        {% endif %}
+
+        {% if settings.display_tags %}
+        <p>
+          {% for tag in product.tags %}
+          {% if forloop.first %}
+          <span class="label">{{ 'products.product.tags' | t }}:</span>
+          {% endif %}
+
+          {% unless tag contains 'meta-' %}
+          <span>
+            <a href="/collections/{% if collection %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handle }}" title="{{ 'products.product.products_tagged' | t: tag: tag }}">{{ tag }}</a>{% unless forloop.last %},{% endunless %}
+          </span>
+          {% endunless %}
+          {% endfor %}
+        </p>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if product.description contains "<!-- split -->"  %}
+  <br class="clear" />
+  <div class="section clearfix">
+    <div class="description">
+      {{ product.description | split: '<!-- split -->' | last }}
+    </div>
+  </div>
+  {% endif %}
+</div>
+</div>
+
+{% include 'related-products' %}
+
+{% include 'how-others-wear-it' %}
+
+<div class="row product-section">
+  <div class=" col-12 col-md-10 offset-md-1">
+    {% comment %}
+      {% include "storybox-widget-product-detail-page-storyreel" %}
+    {% endcomment %}
+  </div>
+</div>
+
+<div class="section-ordering break-out-section">
+  <div class="pdp-insta-container order-2 order-md-1 breakout">
+    
+      <div class="pdp-insta-heading">Share your photos with us!</div>
+      <div id="pixlee_container"></div>
+      <script type="text/javascript">window.PixleeAsyncInit = function(){Pixlee.init({apiKey:'2UUXiETG2BAujkeVebVO'});Pixlee.addProductWidget({accountId:1478, widgetId:1489902, ecomm_platform:"shopify"});};</script><script src="//assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
+  {% comment %}
+  <div id="pixlee_container"></div><script type="text/javascript">window.PixleeAsyncInit = function() {Pixlee.init({apiKey:'2UUXiETG2BAujkeVebVO'});Pixlee.addProductWidget({accountId:1478, widgetId:1489902, skuId:'{{ product.first_available_variant.sku }}'});};</script><script src="//assets.pixlee.com/assets/pixlee_widget_1_0_0.js"></script>
+  {% endcomment %}
+  </div>
+</div>
+{% comment 'hidden by wick 10.17.19 at blanqis request' %}
+<div class="row">
+  <div class="col-12">
+    <div class="shopify-reviews">
+      <div id="shopify-product-reviews" data-id="{{product.id}}">
+        {{ product.metafields.spr.reviews }}
+      </div>
+    </div>
+  </div>
+</div>
+{% endcomment %}
+<div class="d-block d-md-none pdp-reviews-container">
+    <div class="shopify-reviews">
+      <div id="shopify-product-reviews" data-id="{{product.id}}">
+        {{ product.metafields.spr.reviews }}
+    </div>
+  </div>
+</div>
+
+
+
+
+</div>
+
+{% comment ' pixlee is broken ' %}
+<script>
+  $( ".add_to_cart" ).click(function() {
+  pixlee_analytics.events.trigger('add:to:cart', {
+    'product_sku': '{{product.sku}}',
+    'price': '{{product.price | money_without_currency }}',
+    'quantity': 1,
+    'currency': 'USD'
+    });
+    console.log("pixlee sent");
+});
+</script>
+{% endcomment %}
+
+<style>
+  label {
+    display:block;
+  }
+</style>
+{% if product.handle contains 'blanqi-everyday-highwaist-postpartum-nursing-support-leggings'
+ or  product.handle contains 'maternity-underbust-high-performance-belly-support-tank'
+   or  product.handle contains 'blanqi-maternity-support-bellyband' 
+   or  product.handle contains 'blanqi-everyday-maternity-belly-support-girlshort'  
+   or  product.handle contains 'sportsupport-hipster-contour-legging'
+   or  product.handle contains 'maternity-overbust-high-performance-belly-support-tank-top'
+   or  product.handle contains 'pull-down-postpartum-nursing-support-tanktop'
+   or  product.handle contains 'lift-up-access-postpartum-nursing-support-tank'  %}
+<style>
+    .related-product-title{
+        display:none
+    }
+</style>
+{% endif %}
+{% if product.handle == "sportsupport-hipster-cuffed-leggings" %}
+<script>
+$(document).ready(function(){
+  $('#product-select-{{ product.id }}product-option-0').change(function(){
+    var color = $(this).val();
+    if(color=="BLACK") {
+      $('.discount-75').fadeOut();
+    } else {
+      $('.discount-75').fadeIn();
+    }
+  })
+})
+</script>
+{% endif %}
+{% comment %}
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  $(document).ready(function() {
+    $('.add_to_cart').on('click',function() {
+        console.log('klaviyo add to cart');                  
+ 		_learnq.push(['track', 'Added to Cart', item]);
+    });
+  });
+
+</script>
+{% endcomment %}
+
+</div>
+
+{% if product.handle contains "blanqi-denim-postpartum-skinny-jeans" or product.handle contains "roll-sleeve-tunic-tee" or product.handle contains "blanqi-everyday-racerback-tank-dress"  or product.handle contains "blanqi-everyday-cap-sleeve-crew-neck-dress" %}
+  <style>
+    #DisplayImage-123{display:none;}
+  </style>
+{% endif %}
+
+
+
+<script>
+setTimeout(function(){ $('.swatch-element-1').click()}, 100);
+    $('.swatch-element').click(function(){
+      console.log($(this).attr('data-class'));
+      var currentVarient = $(this).attr('data-class');
+      if($(".dots-wrap").hasClass(currentVarient)){
+        $(".dots-wrap").hide();
+        
+        $('.'+ currentVarient).css('display', 'block');
+        $('.'+ currentVarient).get(0).slick.setPosition();
+      }
+    });
+
+</script>
+<h4 class="immersive-reqs-blanqi-title">You May Also Like</h4>
+{% comment %}Installed automatically by Cross Sell Magic{% endcomment %}
+{% include 'embedded-product-recommendations' %}
+
+{% render 'voyager-product-metafields' %}
+</div>

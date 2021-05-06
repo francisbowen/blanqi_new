@@ -1,0 +1,353 @@
+{% if product.type != 'Gift Card' %}
+<script src="https://a.klaviyo.com/media/js/onsite/onsite.js"></script>
+    <script>
+        var klaviyo = klaviyo || [];
+        klaviyo.init({
+          account: "P735TC",
+          list: 'Mckty4',
+          platform: "shopify"
+        });
+        klaviyo.enable("backinstock",{ 
+        trigger: {
+          product_page_text: "Notify Me When Available",
+          product_page_class: "btn",
+          product_page_text_align: "center",
+          product_page_margin: "0px",
+          replace_anchor: true
+        },
+        modal: {
+         //headline: "{product_name}",
+         headline: "EMAIL ME WHEN AVAILABLE",
+         //body_content: "Register to receive a notification when this item comes back in stock.",
+         body_content: "<div class=\"bis-content-blocks\"><div class=\"bis-top-block\" style=\"color:#414141;\">Register your email address below to receive an email as soon as this becomes available again.</div><hr style=\"margin:16px 0;background-color:#ccc;\"/><div class=\"bis-bottom-block\" style=\"color:#414141;font-size:20px;\">{product_name}</div></div>",
+         email_field_label: "Email",
+         button_label: "Notify me when available",
+         subscription_success_label: "You're in! We'll let you know when it's back.",
+          footer_content: '<div class=\"bis-footer\" style="opacity:0.6;">We\'ll notify you when this product is in stock. We don\'t share your address with anybody else.</div>',
+         //additional_styles: "@import url('https://fonts.googleapis.com/css?family=Helvetica+Neue');",
+          additional_styles: "select{background-color:#fff;border:thin solid #00f;border-radius:4px;display:inline-block;font:inherit;line-height:1.5em;padding:.5em 3.5em .5em 1em;margin:0;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none}select.form-control{background-image:linear-gradient(45deg,transparent 50%,gray 50%),linear-gradient(135deg,gray 50%,transparent 50%),linear-gradient(to right,#ccc,#ccc);background-position:calc(100% - 20px) calc(1em + 2px),calc(100% - 15px) calc(1em + 2px),calc(100% - 2.5em) .5em;background-size:5px 5px,5px 5px,1px 1.5em;background-repeat:no-repeat}select.form-control:focus{background-image:linear-gradient(45deg,green 50%,transparent 50%),linear-gradient(135deg,transparent 50%,green 50%),linear-gradient(to right,#ccc,#ccc);background-position:calc(100% - 15px) 1em,calc(100% - 20px) 1em,calc(100% - 2.5em) .5em;background-size:5px 5px,5px 5px,1px 1.5em;background-repeat:no-repeat;outline:0}select:-moz-focusring{color:transparent;text-shadow:0 0 0 #000}",
+         drop_background_color: "red",
+         background_color: "#fff",
+         text_color: "#222",
+         button_text_color: "#fff",
+         button_background_color: "#feab8d",
+         close_button_color: "#414241",
+         error_background_color: "#fcd6d7",
+         error_text_color: "#C72E2F",
+         success_background_color: "#d3efcd",
+         success_text_color: "#1B9500"
+        }
+      });
+    </script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var klBisTriggerSelector = '.klaviyo-bis-trigger',
+        klAddToCartSelector = 'button[name=add]';
+    var variantData = {{ product.variants | json }};
+
+    // get the selected variant from the URL
+    function klGetVariantFromUrl() {
+        var klProductUrl = window.location.search.substring(1);
+        var klUrlParams = klProductUrl.split('&');
+        for (var i = 0; i < klUrlParams.length; i++) {
+            var klParamName = klUrlParams[i].split('=');
+            if (klParamName[0] == 'variant') {
+                return klParamName[1];
+            }
+        }
+    }
+
+    function klUpdateBisModalVariant(klVariantId) {
+        // listen to the klaviyo BIS button
+        $(klBisTriggerSelector).click(function () {
+            // wait until the iframe loads
+            setTimeout(function () {
+                // grab the iframe
+                var klBody = window.frames['klaviyo-bis-iframe'].contentDocument.body;
+                // change the dropdown to the selected variant
+                $(klBody).find('#variants option[value="' + klVariantId + '"]').attr("selected", true);
+            }, 250);
+        });
+    }
+
+    // display buttons based on variant availability
+    function klToggleButtonVisibility(variantId) {
+        var klBisTrigger = $(klBisTriggerSelector),
+            klAddToCart = $(klAddToCartSelector);
+
+        // get all variant data
+      var variantsJson = variantData;
+        // get selected variant data
+        var klVariantData = variantsJson.filter(
+            function (obj) {
+                return obj.id === parseInt(variantId)
+            }
+        );
+
+        if (!klVariantData) {
+            return
+        }
+		
+        var klVariantIsAvailable = klVariantData[0].available;
+
+        // toggle visibility for Notify Me and Add to Cart/Sold Out buttons
+        if (!klVariantIsAvailable) {
+            klBisTrigger.css('display', '');
+            klAddToCart.css('display', 'none');
+            klUpdateBisModalVariant(variantId);
+        } else {
+            klBisTrigger.css('display', 'none');
+            klAddToCart.css('display', '');
+        }
+    }
+
+    $('.swatch-element').click(function () {
+        setTimeout(function () {
+            klVariantId = klGetVariantFromUrl();
+            klToggleButtonVisibility(klVariantId);
+            $('span#kl-variant-id').attr('variant-id', klVariantId);
+        }, 200);
+    });
+
+    setTimeout(function () {
+      var initialVariantId = variantData[0].id;
+      for(let i = 1; i < variantData.length; i++) {
+        let v = variantData[i];
+        if (v.available) {
+          initialVariantId = v.id;
+          break;
+        }
+      }
+      klToggleButtonVisibility(initialVariantId);
+    }, 200);
+});
+</script>
+{% endif %}
+<form action="/cart/add"
+      method="post"
+      class="clearfix product_form {% if product.variants.size > 1 or product.options.size > 1 %}product_form_options{% endif %} {% if product.available %}product-available{% else %}product-unavailable{% endif %}"
+      data-money-format="{{ shop.money_format }}"
+      data-shop-currency="{{ shop.currency }}"
+      data-select-id="product-select-{{ product.id }}{{ product-form }}"
+      data-enable-state="{% if template contains 'product' %}true{% else %}false{% endif %}"
+      data-product="{{ product | json | escape }}"
+      data-product-id="{{ product.id }}">
+  {% if product.options.size > 1 %}
+  <div class="select variant-option float-left">
+     <label><span class="sr-only">variants</span>
+    <select id="product-select-{{ product.id }}{{ product-form }}" name="id" class="multi_select">
+      {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
+      {% endfor %}
+    </select>
+    </label>
+  </div>
+  {% elsif product.options.size == 1 and (product.variants.size > 1 or product.options[0] != "Title") %}
+  <div class="select variant-option float-left">
+    <label style="display:none;">{{ product.options[0] }}</label>
+    <select id="product-select-{{ product.id }}{{ product-form }}" name="id">
+      {% for variant in product.variants %}
+      <option {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %} value="{{ variant.id }}" data-sku="{{ variant.sku }}">{{ variant.title }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  {% else %}
+  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+  {% endif %}
+  {% if settings.product_form_style == "swatches" and (product.variants.size > 1 or product.options[0] != "Title") %}
+  <div class="swatch_options">
+    {% for option in product.options %}
+    {% include 'product-swatch' with option %}
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if settings.display_inventory_left %}
+  <div class="items_left">
+    {% if product.variants.first.inventory_management != blank and product.variants.first.inventory_quantity > 0 %}
+    {% capture items_left_text %}
+    {% if product.variants.first.inventory_quantity == 1 %}
+    {{ 'products.product.items_left_count.one' | t }}
+    {% else %}
+    {{ 'products.product.items_left_count.other' | t }}
+    {% endif %}
+    {% endcapture %}
+
+    <p><em>{{ product.variants.first.inventory_quantity }} {{ items_left_text }}</em></p>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  {% if settings.display_product_quantity %}
+  <div class="variant-option float-right">
+    <label><span class="sr-only">option</span>
+    <select id="quantity-options">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    </label>
+  </div>
+  <div class="product-quantity-box" style="display:none !important;">
+    <label for="quantity" style="display:none;">{{ 'products.product.quantity' | t }}</label>
+    <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+    <input type="number" min="1" size="2" class="quantity" name="quantity" id="quantity" value="1" />
+    <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+  </div>
+  {% endif %}
+  
+
+  <div style="clear:both;margin-bottom:12px;"></div>
+  {% if product.handle != "gift-card" %}
+  <div id="MetaSelectedVariant" data-variantcolor="{{ product.selected_or_first_available_variant.option1 | handleize }}"></div>
+  {% endif %}
+
+  {% if product.available %}
+  <div class="purchase clearfix">
+    {% if settings.cart_action == 'reload_page' %}
+    <input type="hidden" name="return_to" value="back" />
+    {% elsif settings.cart_action == 'redirect_checkout' %}
+    <input type="hidden" name="return_to" value="/checkout" />
+    {% endif %}
+
+    {% capture add_to_cart_label %}{% if collection_handles contains 'pre-order' %}{{ 'collections.general.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}{% endcapture %}
+    {% if settings.pause_blanqi %}
+    <div class="pause-blanqi-message">
+      {{ settings.pause_blanqi_message }}
+    </div>
+    {% else %}
+    <button type="submit" name="add" {% if content_for_header contains '.mageworx.com\/groupedproducts\/source.js?' and product.tags contains 'mw_grouped_product' %}disabled="disabled"{% endif %} class="action_button add_to_cart" data-label="ADD TO BAG">
+      <span class="text">ADD TO BAG</span>
+      <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32" class="checkmark">
+        <path fill="none" stroke="{{ settings.btn_text_color }}" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+      </svg>
+    </button>
+    {% endif %}
+    {% if product.tags contains "mothermuse" %}
+    <p style="text-align:center;"><strong style="    font-family: Gotham A, Gotham B, Montserrat, Helvetica Neue, Helvetica, Calibri, Verdana, Arial, sans-serif !important;
+    font-size: 11.5px !important;
+    letter-spacing: 3px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase;">50% Off Use Code: <span style='    font-family: "FreightBigProBook-Regular",serif !important;    font-weight: 600;
+    font-size: 16px;'>MOTHERMUSE</span></strong></p>
+    {% endif %}
+    {% comment 'removed 10.23.20' %}
+    <p style="font-size:12px;line-height: 1.1; margin:10px 0 0 0; font-style: italic; font-weight:bold; color:#f26c4f;">*Due to high demand, item may be unavailable or delayed.</p>
+    {% endcomment %}
+  </div>
+  {% else %}
+
+  {% endif %}
+
+  
+  {% if product.metafields.custom_fields["product_description"] != blank %}
+  <div class="description">
+    {{ product.metafields.custom_fields["product_description"] }}
+  </div>
+  {% endif %}
+
+  <div class="product-details" id="Product-Accordion">
+
+    {% if product.metafields.custom_fields["how_it_works"] != blank %}
+    <div class="details-header" id="Collapse-Works">
+      <div class="collapsed" data-toggle="collapse" data-target="#Target-Works" aria-expanded="true" aria-controls="Target-Works">
+        HOW IT WORKS
+      </div>
+    </div>
+    <div id="Target-Works" class="collapse" aria-labelledby="Collapse-Works" data-parent="#Product-Accordion">
+      <div class="details-body">
+        <p class="serif mb-3">
+          {{ product.metafields.custom_fields["how_it_works"] }}
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if product.metafields.custom_fields["how_to_wear"] != blank %}
+    <div class="details-header" id="Collapse-Wear">
+      <div class="collapsed" data-toggle="collapse" data-target="#Target-Wear" aria-expanded="false" aria-controls="Target-Wear">
+        HOW TO WEAR
+      </div>
+    </div>
+    <div id="Target-Wear" class="collapse" aria-labelledby="Collapse-Wear" data-parent="#Product-Accordion">
+      <div class="details-body">
+        <p class="serif mb-3">
+          {{ product.metafields.custom_fields["how_to_wear"] }}
+        </p>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if product.metafields.custom_fields["product_details"] != blank %}
+    <div class="details-header" id="Collapse-Details">
+      <div class="collapsed" data-toggle="collapse" data-target="#Target-Details" aria-expanded="false" aria-controls="Target-Details">
+        PRODUCT DETAILS
+      </div>
+    </div>
+    <div id="Target-Details" class="collapse" aria-labelledby="Collapse-Details" data-parent="#Product-Accordion">
+      <div class="details-body">
+        <p class="serif mb-3">
+          {{ product.metafields.custom_fields["product_details"] }}
+        </p>
+      </div>
+    </div>    
+    {% endif %}
+
+    {% if product.metafields.custom_fields["product_description_html"] != blank %}
+    <div class="details-header" id="Collapse-Details">
+      <div class="" data-toggle="collapse" data-target="#Target-Description" aria-expanded="true" aria-controls="Target-Description">
+        PRODUCT DETAILS
+      </div>
+    </div>
+    <div id="Target-Description" class="collapse show" aria-labelledby="Collapse-Details" data-parent="#Product-Accordion">
+      <div class="details-body">
+        <div class="serif mb-3">
+          {{ product.metafields.custom_fields["product_description_html"] }}
+        </div>
+      </div>
+    </div>    
+    {% endif %}
+    
+    <div class="details-header" id="Collapse-Shipping">
+      <div class="collapsed" data-toggle="collapse" data-target="#Target-Shipping" aria-expanded="false" aria-controls="Target-Shipping">
+        SHIPPING &amp; RETURNS
+      </div>
+    </div>
+    <div id="Target-Shipping" class="collapse" aria-labelledby="Collapse-Shipping" data-parent="#Product-Accordion">
+      <div class="details-body">
+        <h3>Shipping</h3>
+        <p class="serif mb-3">
+        {{ pages.shipping.content }} 
+        </p>
+        <h3>Returns</h3>
+        <p class="serif mb-3">
+        {{ pages.returns.content }} 
+        </p>
+      </div>
+    </div>
+
+  </div>
+  
+  {% if product.handle != "gift-card" %}
+  {% else %}
+  {{ pages.2017-gift-card.content }}
+  <div id="MetaSelectedVariant" data-variantcolor="giftcard"></div>
+  <div id="is_giftcard"></div>
+  {% endif %}
+
+</form>
+
+{% comment %}
+{{ product.tags }}
+{% endcomment %}
+
+{% assign wrapperclass = 'remodal rmsc'%}
+{% include '_blanqi-size-chart' with wrapperclass %}
+{% include 'black-friday-terms-popup' with wrapperclass %}

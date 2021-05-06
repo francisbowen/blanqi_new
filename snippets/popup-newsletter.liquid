@@ -1,0 +1,14 @@
+<span class="popup-newsletter-liquid remodal newsletter-popup newsletter-image-{{settings.use_newsletter_image}} align-{{settings.newsletter_popup_image_align}}" data-remodal-id="newsletter" data-remodal-options="hashTracking: false">
+	<a data-remodal-action="close" class="remodal-close"></a>
+	<div class="newsletter-img">
+		<img src="{{ 'newsletter_bg.png' | asset_img_url: '480x' }}" alt="{{ settings.newsletter_img_alt_text | escape }}" class="lazyload {{ settings.image_loading_style }}" />
+	</div>	
+	<div class="newsletter-info">
+		<div class="newsletter-description">
+			<h2>{{ settings.newsletter_popup_title }}</h2>
+			<h3></h3>
+			<p>{{ settings.newsletter_popup_text }}</p>
+			{% include 'newsletter' %}
+		</div>
+	</div>
+</span>

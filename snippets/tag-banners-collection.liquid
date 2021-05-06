@@ -1,0 +1,56 @@
+{% for num in (1..8) %}
+  {% capture tag_key %}tag_banner_tag_{{ num }}{% endcapture %}
+  {% capture text_key %}tag_plp_text_{{ num }}{% endcapture %}
+  {% capture text_color %}tag_banner_color_{{ num }}{% endcapture %}
+  {% capture text_background %}tag_banner_background_{{ num }}{% endcapture %}
+  {% capture text_badge %}tag_banner_badge_{{ num }}{% endcapture %}
+
+  {% if settings[tag_key] != blank %}
+    {% for tag in product.tags %}
+      {% if tag == settings[tag_key] %}
+      {% unless settings[tag_key] contains 'sale' %}
+      <div class="plp-product-tags {{ settings[tag_key] }}">
+        {{ settings[text_key] }}
+        </div>
+      {% endunless %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% comment %}
+{% if tag_banner_text != blank %}
+  {% if scope == 'product-loop' %}
+    <div class="tags mb-1">
+      <div class="tag-new" style="">
+        {{ tag_banner_text }}
+      </div>
+    </div>
+  {% elsif scope == 'product-desktop' %}
+     <div class="d-none d-md-block">
+        <p style="
+          background: #feab8d;
+          padding: 10px;
+          text-align: center;
+          color: white;
+           letter-spacing:1px;
+           font-weight:600;
+           font-size:13px;
+           text-transform:uppercase;
+          font-family:"Gotham A","Gotham B",sans-serif                                               
+          ">{{ tag_banner_text }}</p>
+        </div>
+  {% elsif scope == 'product-mobile' %}
+    <p style="
+      background: #feab8d;
+      padding: 10px;
+      text-align: center;
+      color: white;
+       letter-spacing:1px;
+       font-weight:600;
+       font-size:13px;
+       text-transform:uppercase;
+      font-family:"Gotham A","Gotham B",sans-serif                                               
+      ">{{ tag_banner_text }}</p>
+  {% endif %}
+{% endif %}
+{% endcomment %}

@@ -1,0 +1,94 @@
+{% if section.blocks.size %}
+<div id="blog-slideshow-container">
+  <div id="blog-slideshow-track">
+    
+    {% for block in section.blocks %}
+      {% if block.type == 'slide' and block.settings.article != blank %}
+      
+        <!-- Added by Plus - September 16 2020 -->
+        {%- if settings.plus_enable_blog_landing_images -%}
+          {% comment %}
+          The name of the secondary image file must be the article's handle without the blog name - 
+          e.g. for the article "Breastfeeding | Mamas Tell All" in the "Musings" blog, 
+          the file name should be "breastfeeding-mamas-tell-all.jpg"
+          
+          This supports JPG image format.
+          {% endcomment %}
+
+          {%- assign article_image_file_name = articles[block.settings.article].handle | remove: blog.handle | remove: '/' | append: '.jpg' -%}
+            <div class="blog-slide-bg plus-blog-slider-article-image" style="background-image:url({{ article_image_file_name | file_img_url: '2000x800' }}); opacity: 0;" 
+              data-fallback-image="{{ articles[block.settings.article].image.src | img_url: '2000x800' }}" data-secondary-image="{{ article_image_file_name | file_img_url }}"></div>
+          {%- else -%}
+            <div class="blog-slide-bg" style="background-image:url({{ articles[block.settings.article].image.src | img_url: '2000x800' }});"></div>
+          {%- endif -%}
+      
+      {% endif %}
+    {% endfor %}
+  </div>
+  <div id="blog-slideshow-data">
+   <div id="blog-slideshow-content">
+    {% for block in section.blocks %}
+      {% if block.type == 'slide' and block.settings.article != blank %}
+      <div class="blog-slide-item item-{{forloop.index}}">
+        <h5>{{ articles[block.settings.article].tags | join: ',' }}</h5>
+        <h4>{{ articles[block.settings.article].title }}</h4>
+        {{ articles[block.settings.article].published_at | time_tag: format: 'date' }}
+        <p>{{ articles[block.settings.article].content | strip_html | truncate: 140 }}</p>
+        <a href="{{ articles[block.settings.article].url }}">more <span class="icon-right-arrow"></span></a>
+     </div>
+      {% endif %}
+    {% endfor %}
+   </div>
+   <ul id="blog-slideshow-nav">
+    {% for block in section.blocks %}
+      {% if block.type == 'slide' and block.settings.article != blank %}
+     <li class="blog-slide-nav-item {% if forloop.index == 1 %}active{% endif %}"><span>{{ forloop.index }}</span></li>
+      {% endif %}
+    {% endfor %}
+   </ul>
+  </div>  
+</div>
+{% endif %}
+
+<script>
+  $(document).ready(function() {
+    $('.blog-slide-nav-item').on('click',function() {
+      if($(this).hasClass('active')) {
+        return;
+      }
+	  $('.blog-slide-nav-item').removeClass('active');
+      $(this).addClass('active');
+      var offset = '-' + ($(this).index() * 100) + '%';
+      $('#blog-slideshow-track').animate({left:offset},"slow");
+      item = $(this).find('span').text();
+      $('.blog-slide-item').hide();
+      $('.blog-slide-item.item-' + item).show();
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Blog Slideshow",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "article",
+            "id": "article",
+            "label": "Article"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

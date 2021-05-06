@@ -1,0 +1,95 @@
+{% if template contains 'product' %}
+  {% assign products_length = products.length | minus: 1 %}
+{% else %}
+  {% assign products_length = products.length %}
+{% endif %}
+
+{% if products_per_slide == '3' %}
+  {% assign default = '400x' %}
+  {% assign size1 = '100x' %}
+  {% assign size2 = '200x' %}
+  {% assign size3 = '300x' %}
+  {% assign size4 = '400x' %}
+  {% assign size5 = '500x' %}
+  {% assign size6 = '600x' %}
+  {% assign size7 = '700x' %}
+  {% assign size8 = '800x' %}
+  {% assign size9 = '900x' %}
+  {% assign size10 = '1000x' %}
+{% else products_per_slide == '5' %}
+  {% assign default = '300x' %}
+  {% assign size1 = '200x' %}
+  {% assign size2 = '300x' %}
+  {% assign size3 = '400x' %}
+  {% assign size4 = '500x' %}
+  {% assign size5 = '600x' %}
+  {% assign size6 = '700x' %}
+  {% assign size7 = '800x' %}
+  {% assign size8 = '890x' %}
+  {% assign size9 = '1000x' %}
+  {% assign size10 = '1100x' %}
+{% endif %}
+
+<div class="related-gallery {{ slider_type }} products-length-{{ products_length }}">
+  {% for product in products limit: limit %}
+    {% if product.id != skip_product.id %}
+      {% assign feature_image = product.featured_image %}
+      <div class="gallery-cell thumbnail visible-{{products_per_slide}}" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+        <div class="product-wrap">
+          <div class="relative product_image swap-{{ settings.collection_secondary_image }}">
+            <a href="{{ product.url | within: collection }}" itemprop="url">
+              <img  src="{{ feature_image | product_img_url: '50x' }}"
+                    alt="{{ product.title | escape }}"
+                    class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                    data-sizes="auto"
+                    data-src="{{ feature_image | product_img_url: default }}"
+                    data-srcset="
+                    {{ feature_image | product_img_url: default }} {{default | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+                    {{ feature_image | product_img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+                     />
+                {% if settings.collection_secondary_image != blank %}
+                  {% if product.images[1] != blank %}
+                    {% assign secondary_image = product.images[1] %}
+                  {% else %}
+                    {% assign secondary_image = product.featured_image %}
+                  {% endif %}
+                  <img  src="{{ secondary_image | product_img_url: '50x' }}"
+                        alt="{{ product.title | escape }}"
+                        class="secondary lazyload"
+                        sizes="(min-width: 36em) 33.3vw, 100vw"
+                        data-src="{{ secondary_image | product_img_url: default }}"
+                        srcset="
+                        {{ secondary_image | product_img_url: default }} {{default | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+                        {{ secondary_image | product_img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+                         />
+                {% endif %}
+              </a>
+            {% include "product-details" %}
+          </div>
+          <a class="product-info__caption {% if settings.thumbnail_hover_enabled %}hidden{% endif %}" href="{{ product.url | within: collection }}" itemprop="url">
+            {% include "product-info" %}
+          </a>
+        </div>
+        {% include 'collection-swatch' %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

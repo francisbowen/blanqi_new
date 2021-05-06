@@ -1,0 +1,20 @@
+<ul class="sidebar d-none d-sm-block">
+  <li><a {% unless template == "page.contact-us" %}href="/pages/contact-us/"{% endunless %}>CONTACT US</a></li>
+  <li><a {% unless template == "page.shipping" %}href="/pages/shipping/"{% endunless %}>SHIPPING</a></li>
+  <li><a {% unless template == "page.returns" %}href="/pages/returns/"{% endunless %}>EXCHANGES & RETURNS</a></li>
+  <li><a {% unless template == "page.ordering" %}href="/pages/orders/"{% endunless %}>ORDERS</a></li>  
+  <li><a {% unless page.handle == "afterpay" %}href="/pages/afterpay/"{% endunless %}>AFTERPAY</a></li>
+  <li><a {% unless page.handle == "size-guide" %}href="/pages/size-guide/"{% endunless %}>SIZE GUIDE</a></li>
+  <li><a {% unless page.handle == "gift-card" %}href="/pages/gift-card/"{% endunless %}>GIFT CARD</a></li>  
+  <li><a {% unless template == "page.faq" %}href="/pages/faqs/"{% endunless %}>FAQS</a></li>
+</ul>
+
+<div class="contact-us">
+  <p class="serif mb-2 mb-sm-3">Can we help you<br>with your order?</p>
+  <div class="support">
+    <span>Please click here</span><br>
+    <a href="/pages/contact-us/" target="_blank">
+      BLANQI SUPPORT
+    </a>
+  </div>
+</div>

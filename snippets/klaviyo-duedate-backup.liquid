@@ -1,0 +1,348 @@
+<style>
+  #k_id_modal {
+  	display:none;
+  }  
+  .klaviyo_modal .klaviyo_fieldset .klaviyo_field_group input[type=email] {font-color:blue; letter-spacing:0.01em;  }
+  
+  
+  .due-date {font-size:16px; margin-left:5px; letter-spacing:0.05em;}
+  .klaviyo_modal .success_message {padding:0px;}
+span.klaviyo-close-character-mobile { width:100%; float:left; text-align:center; font-size:16px; font-family:"Euclid Circular A";
+font-weight:300; padding-top:10px;}
+  @media (max-width:460px) {
+    span.klaviyo-close-character-mobile  {font-size:12px; margin-top:-10px;}   
+  }
+span.klaviyo-close-character {font-size: 1.25rem; font-family: "Raleway"; font-size:35px; font-weight: 100;}
+@media (max-width:767px) {span.klaviyo-close-character {position:absolute; top: 6px;left: 8px;font-size: 18px;}} 
+.klaviyo_modal.custom form { overflow:inherit; max-height:fit-content; }
+a#klaviyo-close-x {
+position: relative;
+right: 35px;
+top: 15px;}
+@media (max-width:767px) {
+a#klaviyo-close-x {
+right: 20px;
+top: 25px;
+background: #414141;
+width: 25px;
+height: 25px;
+color: #fff;
+position: absolute;
+border-radius: 50px;
+padding-left: 1px;}}
+  
+  @media (max-width:460px) {
+a#klaviyo-close-x { top:10px; right:10px; }}
+  
+button#klaviyo-blanqi {background:#414141; width:100%;height:40px; padding-top:2px; letter-spacing:0.3em; font-weight:300; font-size:12px; font-family:"Euclid Circular A";}
+button#klaviyo-blanqi:hover {background:#000;} 
+  
+  
+.klaviyo-button-control {margin-top:-15px;}
+.klaviyo_styling .klaviyo_field_group {margin-top:-15px;}
+.klaviyo_styling label {text-transform:inherit; font-size:16px; font-family:"Proxima Nova"; color:#444;}
+#div1-container {
+float: left;
+width: 100%;
+height: 70px;
+margin-bottom: 15px;
+margin-top:15px;
+}
+  @media (max-width:460px) {
+    .klaviyo_styling label  { margin-bottom:0px; } 
+  }
+
+input#klaviyo_form_due_date {padding-left:15px; font-family:"Proxima Nova"; border-color:#e7e7e7; box-shadow:none; border-radius: 0px; font-size: 11.31px; font-weight: 500;}  
+.klaviyo_field_group input[type=email] {padding-left:15px; font-family:"Proxima Nova"; border-color:#e7e7e7; box-shadow:none; border-radius: 0px;}
+.klaviyo_modal .klaviyo_fieldset {margin-top:50px;}
+  
+
+
+  .klaviyo_modal.klaviyo_form_actions {border-top:none; padding-top:0px; margin-top:15px;}
+  .klaviyo_modal.klaviyo_header_close {position:relative; right:-338px; top:-40px;}
+  .klaviyo_modal.klaviyo_submit_button span {    background-color: #414141;
+    background-image: none;
+    border-radius: 0px;
+    box-shadow: none;
+    font-family: "Euclid Circular A";
+    letter-spacing: 0.25em;
+    font-weight: 600;
+    font-size: 14px;}
+    .klaviyo_modal .klaviyo_submit_button:hover span {background:#000; border:none; border-radius:0px;}
+  .klaviyo_modal .klaviyo_submit_button:hover {background:#000; }
+  .klaviyo-text {    text-align: center;
+    font-family: "Proxima Nova";
+    margin-bottom: 15%;
+    letter-spacing: 0.01em;}
+  
+  @media (max-width:460px) {
+    .klaviyo-text {font-size:12px;} 
+  }
+  
+  label.due-date {display:inline-block; margin-left:10px;  font-size:16px; text-transform:inherit;}
+ #klaviyo-form {background:#fff; overflow-y:hidden;}
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID label,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID label {display:inline-block;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_helptext,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_helptext {padding-top: 10px; padding-bottom: 10px;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_gdpr_text,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_gdpr_text {
+font-size: 14px;
+line-height: 1.3;
+}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID label,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID label {color: #222;}
+
+.klaviyo_styling .klaviyo_field_group .klaviyo_form_actions {
+text-align: left;
+}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID input[type=checkbox]+label,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID input[type=checkbox]+label {
+display: inline;
+font-weight: normal;
+padding-left: 5px;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID input[type=text],
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID input[type=email],
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID input[type=text],
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID input[type=email] {border-radius: 2px;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button {background-color: #0064cd;border-radius: 2px;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button:hover,
+.klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button:hover {background-color: #0064cd;}
+  
+h6.klaviyo-header {text-align: center;font-size: x-large; padding-bottom:0px;font-family: "Euclid Circular A";letter-spacing: 0.25em;font-weight: 500;}
+ 
+
+@media (max-width:460px) {h6.klaviyo-header { font-size:large;   }}  
+
+  
+  /* Container Styling */
+.klaviyo-wrapper {width:100%; height:900px; padding-top:9%;}
+@media (max-width:767px) {.klaviyo-wrapper {padding-top:5%;}}  
+
+.klaviyo-container {margin-left:auto; margin-right:auto; width:800px;}
+@media (max-width:1700px) {.klaviyo-container {width:75%;}}
+  @media (min-width:1001px) {.klaviyo-container {max-width:800px;} }
+@media (max-width:1000px) {.klaviyo-container {width:90%;}} 
+.klaviyo-left {width:auto; float:left; width:50%; max-width:400px;  height:530px; background:#fff; background:url({{ 'klaviyo-due-date-life-style.png' | asset_url }});
+background-repeat: no-repeat; background-size: cover; }
+@media (max-width:767px) {.klaviyo-left {width:100%; height:200px;  background:url({{ 'blanqi-landscape-mobile-inverted.png' | asset_url }});}}
+@media (max-width:460px) {.klaviyo-left {height: 200px; background-position-x: center;background-attachment: fixed; }}
+ @media (max-width:350px) {.klaviyo-left {height: 0px; display:none; background-position-x: center;background-attachment: fixed; }}
+   
+  
+.klaviyo-right { padding:6%; width:47%; max-width:400px; height:530px; float:left; background:#fff;}
+@media (max-width:767px) {.klaviyo-right {width:100%; height:580px; padding-top:3%;}}
+@media (max-width:460px) {.klaviyo-right {width:100%; height:auto; padding-top:0%;}}
+.klaviyo_styling.klaviyo_gdpr_embed_Mckty4 {max-width:100%;}
+
+.klaviyo_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button, .klaviyo_condensed_styling.klaviyo_gdpr_embed_LIST_ID .klaviyo_submit_button {
+width:100%; background:#000;}
+
+.e-line {float: left;
+height: 1px;
+margin-top: 10px;
+margin-bottom: 20px;
+border-bottom: 1px solid #e7e7e7;
+width: 100%;}  
+</style>
+
+
+<!-- Klaviyo Popup/Modal --> 
+<div class="klaviyo_modal custom" id="k_id_modal">
+<div class="klaviyo-wrapper">
+<div class="klaviyo-container">
+<a href="#" id="klaviyo-close-x" class="klaviyo_close_modal klaviyo_header_close">
+<span class="klaviyo-close-character">x</span>
+</a>
+<div class="klaviyo-left">
+</div>
+  
+<!-- Klaviyo Right Side -->
+<div class="klaviyo-right">
+  
+    
+<!-- Begin Klaviyo Form List ID Mckty4 --> 
+<form id="email_signup" class="klaviyo_styling klaviyo_gdpr_embed_Mckty4"
+action="//manage.kmail-lists.com/subscriptions/subscribe"
+data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+<input type="hidden" name="g" style="color:#fff;" value="Mckty4">
+<input type="hidden" name="$fields" value="expecting,mama,gifts-browsing,due_date"/> 
+  
+  
+ 
+<div class="klaviyo_field_group custom">
+<div class="klaviyo_field_group klaviyo_form_actions custom" style="border:none;">
+<div class="klaviyo-text">
+<h6 class="klaviyo-header">WELCOME</h6>
+<p>Stay updated on the latest collections, </p>
+<p>flash sales & giveaways. Tell us a bit </p>
+<p>about yourself and subscribe. </p>
+</div>      
+<!-- Radio Buttons -->
+<div class="mine">  
+<!-- Expecting -->   
+
+
+<style type="text/css"> 
+.selectt { 
+color: #fff; 
+display: none; 
+margin-top: 30px; } 
+          
+label { margin-right: 20px; } 
+  input[type='radio'] {width:12px; width:12px;}
+  input[type='radio']:before {border:2px solid #000;}
+
+
+ input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 50px;
+        top: -2px;
+        left: -1px;
+        position: relative;
+        background-color: #fff;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 1px solid #000;
+    }
+
+    input[type='radio']:checked:after {
+    width: 15px;
+    height: 15px;
+    border-radius: 50px;
+    top: -2px;
+    left: -1px;
+    position: relative;
+    /* background-color: #000; */
+    background-image: url(https://cdn.shopify.com/s/files/1/0169/0840/files/Ski_trail_rating_symbol_black_circle.png?v=1597726278);
+    /* content: ''; */
+    background-position: center;
+    background-size: contain;
+    /* background-attachment: fixed; */
+    display: inline-block;
+    visibility: visible;
+    border: 1px solid 000;
+    }
+  .ghost-container {height:70px;}
+  input#klaviyo_form_due_date {color:#999; font-weight:100; letter-spacing:0.01em;}
+</style> 
+
+
+
+
+  
+  <div class="radio">
+<label for="klaviyo_form_expecting"  class="due-date"> 
+<input  id="klaviyo_form_expecting" style="float:left; margin-right:15px; margin-top:2px; margin-left:-5px;"  type="radio" name="colorRadio" value="Impregnant"><div class="due-date">I'm pregnant.</div></label>
+<div class="e-line"></div> 
+<label for="klaviyo_form_mama"  class="due-date"> 
+<input id="klaviyo_form_mama" type="radio" name="colorRadio"   style="float:left; margin-right:10px; margin-left:-5px; margin-right:15px; margin-top:2px;"
+value="Mama"><div class="due-date">I'm a Mama.</div></label> 
+<div class="e-line"></div> 
+<label for="klaviyo_form_gifts-browsing"  class="due-date"> 
+<input id="klaviyo_form_gifts-browsing" type="radio" name="colorRadio"  style="float:left; margin-right:10px; margin-left:-5px; margin-right:15px; margin-top:2px;"
+value="Gifts"><div class="due-date">I'm shopping for a gift.</div></label> 
+       
+<div class="ghost-container">    
+<div class="Impregnant selectt"> 
+<!-- Due Date Form -->
+<label for="klaviyo_form_due_date"  style=" letter-spacing:0.01em; font-size:16px;">Due Date</label>
+<input id="klaviyo_form_due_date" style="color:#999; font-weight:200; letter-spacing:0.01em; font-size:13px;" type="date" name="due_date" value="" />  
+</div>
+</div>
+</div> 
+</div>
+
+   
+<div class="klaviyo_fieldset" style="border:none;">
+<div class="klaviyo_field_group">
+<input type="email"
+placeholder="Your email address"
+id="klaviyo_form_due_date"  style="color:#999; font-weight:200; letter-spacing:0.01em; font-size:13px;" name="email"></div>
+</div>    
+<div class="klaviyo_fine_print"></div>
+  <div class="klaviyo-button-control">
+<div class="klaviyo_form_actions"  style="border:none;">
+<button type="submit" id="klaviyo-blanqi">
+<span>Subscribe</span>
+</button>
+
+<!-- Mobile Close Text 
+<a href="#" id="klaviyo-close-text" class="klaviyo_close_modal klaviyo_header_close-mobile">
+<span class="klaviyo-close-character-mobile">No thanks. Click/tap to close.</span>
+</a> -->
+
+</div>
+</div>
+<div class="klaviyo_below_submit" ></div> 
+<div class="error_message" ></div>
+
+  </div>
+<div class="success_message" >
+ 
+</div>  
+</div>
+</form>
+</div>
+</div>
+</div>
+</div>
+  
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+<script type="text/javascript">
+KlaviyoSubscribe.attachToForms('#email_signup', {
+styles: '.klaviyo_modal form {  }',
+hide_form_on_success: true,
+extra_properties: {
+$source: '$embed',
+$method_type: "Klaviyo Form",
+$method_id: 'embed',
+$consent_version: 'Embed default text'
+}
+});
+  
+  
+$(document).ready(function() { 
+$('input[type="radio"]').click(function() { 
+var inputValue = $(this).attr("value"); 
+var targetBox = $("." + inputValue); 
+$(".selectt").not(targetBox).hide(); 
+$(targetBox).show(); 
+; 
+}); 
+$('#klaviyo-close-x').click(function(){
+  $('#k_id_modal').hide();
+})
+  $('.klaviyo-wrapper').click(function(e){
+    if(e.target.className == 'klaviyo-wrapper') {
+      $('#k_id_modal').hide();
+    }
+  })
+}); 
+  
+
+
+   $(document).ready(function(){
+        if(!sessionStorage.getItem("show_popup") && sessionStorage.getItem("show_popup") != "false"){
+            $('#k_id_modal').show();
+          	sessionStorage.setItem("show_popup", "false");
+        }
+    });
+  
+  
+  
+  
+</script>
+
+

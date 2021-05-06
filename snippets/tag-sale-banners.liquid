@@ -1,0 +1,17 @@
+{% for num in (1..8) %}
+  {% capture tag_key %}tag_banner_tag_{{ num }}{% endcapture %}
+  {% capture text_key %}tag_banner_text_{{ num }}{% endcapture %}
+  {% capture text_color %}tag_banner_color_{{ num }}{% endcapture %}
+  {% capture text_background %}tag_banner_background_{{ num }}{% endcapture %}
+  {% capture text_badge %}tag_banner_badge_{{ num }}{% endcapture %}
+
+  {% if settings[tag_key] != blank %}
+    {% for tag in product.tags %}
+      {% if tag == settings[tag_key] %}
+        <div class="tags-new-new-new {{ scope }} {% if settings[text_badge] == true %} badge-tag {% endif %} {% if settings[text_background] == '#fffff' or settings[text_background] == 'transparent' %} no-pad {% endif %}" style="background:{{ settings[text_background] }};color:{{ settings[text_color] }};">
+          {{ settings[text_key] }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}

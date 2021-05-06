@@ -1,0 +1,47 @@
+{% comment %}
+Added by Plus - September 16 2020
+
+The below code allows the use of secondary images for articles on the blog landing page. 
+Each image attempts to use the secondary image first; if the image is not found, it will be replaced
+with the article's default image.
+{% endcomment %}
+<script>
+  $(document).ready(function() {
+    /*
+     *  CHECK IF IMAGE LOADS
+     *  Checks if an image loads or not
+    */     
+    function checkIfImageLoads(src, success, error) {
+        var img = new Image();
+        img.onload = success; 
+        img.onerror = error;
+        img.src = src;
+    }
+    
+    // checks slider article images
+    $('.plus-blog-slider-article-image').each(function() {
+      checkIfImageLoads(
+        $(this).attr('data-secondary-image'),
+        function() {
+          $(this).animate({opacity: 1}, 1000);
+        }.bind(this),
+        function() {
+          $(this).css('background-image', 'url(' + $(this).attr('data-fallback-image') + ')');
+          $(this).animate({opacity: 1}, 1000);
+        }.bind(this));
+    });
+    
+    // checks grid article images
+    $('.plus-blog-landing-article-image').each(function() {
+      checkIfImageLoads(
+        $(this).attr('src'),
+        function() {
+          $(this).animate({opacity: 1}, 1000);
+        }.bind(this),
+        function() {
+          $(this).attr('src', $(this).attr('data-fallback-image'));
+          $(this).animate({opacity: 1}, 1000);
+        }.bind(this));
+    });
+  });
+</script>

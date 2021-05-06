@@ -1,0 +1,132 @@
+<div id="HomepageSlideshow" class="mb-3 mb-md-2rem">
+  <div class="video-container--{{ section.id }} slideshow slideshow--{{ section.settings.video_height }}">
+    <div id="player--{{ section.id }}" class="autoplay vimeo-autoplay video-is-loading">
+      <iframe class="video__vimeo-adjust" id="video--{{ section.id }}" src="//player.vimeo.com/video/{{ section.settings.video_url.id }}?title=0&byline=0&api=1" width="" height="" frameborder="0" allowfullscreen mozallowfullscreen allowfullscreen allow="autoplay">></iframe>
+    </div>
+  </div>
+</div>
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    isPlaying = false;
+    var currslide = $('#player--{{ section.id }}'),
+        iframe = $('#video--{{ section.id }}'),
+        classes = {
+          pausebuton: '.video-close',
+          playing: 'video-is-playing',
+          playbutton: 'slideshow__video-control--play',
+          paused: 'video-is-paused',
+          loading: 'video-is-loading',
+          loaded: 'video-is-loaded',
+          videoBackground: 'slideshow__video--background',
+          videoChrome: 'slideshow__video--chrome'
+        };
+
+    currslide.addClass(classes.loading);
+
+    var player = new Vimeo.Player(iframe);
+
+    function startVideo(){
+      setTimeout(function(){
+        if(currslide.children('div').hasClass('mediaWrapper')) {
+          currslide.removeClass(classes.loading).addClass(classes.loaded);
+          setTimeout(function(){
+            player.setVolume(0).then(function(volume) {
+              player.play().then(function(){
+                currslide.closest('.slideshow').addClass('is_playing');
+              });
+              player.setLoop(true);
+            });
+          },500);
+          
+        } else {
+          startVideo();
+        }
+      },100);
+    }
+
+    player.ready().then(function() {
+      startVideo();
+    });
+  </script>
+
+  <style>
+    .video-container--{{ section.id }} {
+      background: #000;
+    }
+    .vimeo-autoplay {
+      position: relative;
+      height: 100%;
+      transition:all 0.2s ease-in;
+    }
+    .vimeo-autoplay.video-is-loading {
+      display: none;
+      visibility: hidden;
+      opacity: 0;
+      transition:all 0.2s ease-in;
+    }
+    .video__vimeo-adjust {
+      height: 100% !important;
+      display: block;
+      visibility: visible;
+      opacity: 1;
+      position: relative;
+      transition: all 0.2s ease-in;
+      pointer-events: none;
+    }
+    .slideshow{overflow:hidden;height:325px;margin-bottom:0}.slideshow.slideshow--medium{height:500px}.slideshow.slideshow--large{height:575px}@media screen and (min-width: 768px){.slideshow{height:475px}.slideshow.slideshow--medium{height:650px}.slideshow.slideshow--large{height:775px}}
+    .slideshow.is_playing { height: auto; }
+  </style>
+
+{% schema %}
+  {
+    "name": "Vimeo Background Video",
+    "class": "index-section",
+    "settings": [
+      {
+        "type": "select",
+        "id": "video_height",
+        "label": "Video height",
+        "default": "small",
+        "options": [
+          {
+            "label": "Small",
+            "value": "small"
+          },
+          {
+            "label": "Medium",
+            "value": "medium"
+          },
+          {
+            "label": "Large",
+            "value": "large"
+          },
+          {
+            "label": "Maintain Ratio based on First Slide",
+            "value": "maintain_ratio"
+          }
+        ]
+      },
+      {
+        "id": "video_url",
+        "type": "video_url",
+        "label": "Video URL",
+        "accept": ["vimeo"],
+        "default": "https://vimeo.com/274491741"
+      },
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image",
+        "info": "Fallback when video is not supported on mobile devices"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Autoplay Background Video",
+        "category": "Video",
+        "settings": {
+        }
+      }
+    ]
+  }
+{% endschema %}

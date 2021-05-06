@@ -1,0 +1,122 @@
+<style>
+  .video-carousel-container {
+    height:100%;
+    width:100%;
+    padding-bottom:142.8%;
+    background-size:cover;
+  }
+  .video-carousel-inner {
+    width:100%;
+    position: absolute;
+	top:15%;
+  }
+  .video-carousel-inner *{
+    outline: none !important;
+  }
+</style>
+<script id="blanqi-videos">
+  $(document).ready(function() {
+    if(blanqiVideos.length) {
+      console.log('bvids length');
+      var color = $('.product_form input[name="option-0"]:checked').first().val();
+      setBlanqiVideo(color);
+    } else {
+      $('#video-thumb').removeClass('d-block').addClass('d-none').hide();
+    }
+    $('.swatch-element.color').on('click',function() {
+	  setBlanqiVideo($(this).data('value'));
+    });
+    $('#video-thumb').on('click',function() {
+      $(".video-carousel-inner video")[0].play();
+    });
+    
+  });
+  function setBlanqiVideo(color) {
+    console.log('bvids setBlanqiVideo: '+color);
+    var i = 0;
+    var found = false;
+    for (i = 0; i < blanqiVideos.length; i++) { 
+      console.log(' bvids search color: '+color+' ?= '+blanqiVideos[i].color);
+      if(blanqiVideos[i].color.toLowerCase() == color.toLowerCase()) {
+        found = true;
+        console.log('bvids search color found: '+blanqiVideos[i].color);
+        $('.video-carousel-inner video source').attr('src',blanqiVideos[i].video);
+        //$('.video-carousel-inner video').attr('poster',blanqiVideos[i].poster);
+        $(".video-carousel-inner video")[0].load();
+        setTimeout(function() {
+          console.log('bvids show it');
+          $('#video-thumb').removeClass('d-none').addClass('d-block').show();
+        },500);
+        //$('.video-carousel-container').css('background-color',blanqiVideos[i].background).css('background-image','url('+blanqiVideos[i].poster+')');
+      }
+    }
+    if(!found) {
+      $('#video-thumb').removeClass('d-block').addClass('d-none').hide();
+    }
+  }
+  blanqiVideos = [];
+  {%- assign i = 0 -%}
+  {%- for block in section.blocks -%}
+    {%- if product.handle == block.settings.product -%}
+  blanqiVideos[{{ i }}] = { color: '{{ block.settings.color }}', handle: '{{ block.settings.color | handle }}', background: '{{ block.settings.background }}', video:'{{ block.settings.video_url }}', poster: '{{ block.settings.poster | img_url: '800x' }}' };
+    {%- assign i = i | plus: 1 -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+</script>
+{% schema %}
+  {
+    "name": "Product Videos",
+    "settings": [
+	],
+    "blocks": [
+      {
+        "type": "video",
+        "name": "Video",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info":"For admin display only"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product for video"
+          },
+          {
+            "type": "text",
+            "id": "color",
+            "label": "Color Name",
+            "info":"Must match product's colorway"
+          },
+          {
+            "type": "color",
+            "id": "background",
+            "label": "Slide background color",
+            "info":"Shown behind the video in the carousel"
+          },
+          {
+            "type": "image_picker",
+            "id": "poster",
+            "label": "Video poster image",
+            "info":"Shown when the video is not playing"
+          },
+          {
+            "type": "text",
+            "id": "video_url",
+            "label": "Video URL",
+            "info": "Upload and/or find in Settings >> Files"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

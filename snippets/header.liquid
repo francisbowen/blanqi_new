@@ -1,0 +1,302 @@
+<header id="Header">
+
+  <!--  Top Message Bar   -->
+  {% include 'newsbar' %}
+
+  <div class="container nav-main">
+
+    {% comment %} <div class="limit-width"> {% endcomment %}
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 col-md-5 text-left nav-static">
+          <div class="currency-dropdown d-none d-md-block"></div>
+          <div class="m-burger d-block d-md-none">
+            <span class="m-line"></span>
+            <span class="m-line"></span>
+            <span class="m-line"></span>
+          </div>
+        <!--  <div class="d-none d-sm-block">
+            <div class="js-header-currency">
+              <span id="CountryFlag" class="country-flag">
+                {% include "flags" %}
+              </span>
+               <label><span class="sr-only">USD</span>
+              <select id="HeaderCurrency" class="js-select-curr">
+                <option value="USD">USD</option>
+                <option value="CAD">CAD</option>
+                <option value="AUD">AUD</option>
+                <option value="GBP">GBP</option>
+                <option value="EUR">EUR</option>              
+              </select>
+              </label>
+            </div>
+          </div>-->
+
+          <div class="menu d-none d-md-block navbar navbar-expand-md" id="Header-Accordion">
+            {% comment %} <ul class="d-flex justify-content-center"> {% endcomment %}
+            <ul class="d-md-flex">
+              <li>
+                <a href="/collections/sale"><h1>SALE</h1><h2></h2><h3></h3></a>
+              </li>
+              <li>
+                <a href="/collections/new"><h1>NEW</h1><h2></h2><h3></h3></a>
+              </li>
+              <li>
+                {% assign name = "header-shop" %}
+                <h1 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">SHOP</h1>
+                <h2></h2>                
+                {% comment %} Mega Menu {% endcomment %}
+                <div id="Target-{{name}}" class="sub-menu collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion">
+
+                  <div class="row" id="Header-Accordion-Shop">
+                    <div class="col-12 col-sm-3 text-left">
+                      {% assign name = "header-shop-stage" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY STAGE</h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
+                        <li><a href="/collections/maternity">Maternity</a></li>
+                        <li><a href="/collections/postpartum">Postpartum</a></li>
+                        <li><a href="/collections/nursing">Nursing</a></li>
+                        <li><a href="/collections/motherhood">Motherhood</a></li>
+                      </ul>
+                      <h2 class="d-none d-sm-block">SOCIAL</h2>
+                      <ul class="d-none d-sm-block">
+                        <li><a href="/pages/shop-our-instagram" target="_blank">SHOP OUR INSTAGRAM</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-3 text-left">
+                      {% assign name = "header-shop-category" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY CATEGORY</h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
+                        <li><a href="/collections/intimates">Intimates</a></li>  
+                        <li><a href="/collections/tops">Tops</a></li>
+                        <li><a href="/collections/leggings">Leggings</a></li>
+                        <li><a href="/collections/bands">Bands</a></li>
+                        <li><a href="/collections/dresses">Dresses</a></li>
+                        <li><a href="/collections/shorts">Shorts</a></li>
+                        <li><a href="/collections/jeans">Jeans</a></li>
+                        <li><a href="/collections/tees">Tees</a></li>
+                        <li><a href="/products/gift-card">Gift Card</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-3 text-left">
+                      {% assign name = "header-shop-collection" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY COLLECTION</h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
+                        <li><a href="/collections/everyday">BLANQI Everyday</a></li>
+                        <li><a href="/collections/sportsupport">Sportsupport</a></li>
+                        <li><a href="/collections/blanqi-body">BLANQI Body</a></li>
+                        <li><a href="/collections/denim">BLANQI Denim</a></li>
+                        <li><a href="/collections/house">BLANQI House</a></li>
+                      </ul>
+                    </div>
+                    
+                    <div class="col-12 col-sm-3 text-left" style="padding-right:0;">
+                        <img src="{{ "megamenu-img.jpg" | asset_url }}" alt="woman in blanqi tanktop">
+                    </div>
+
+                  </div>
+
+                </div>
+                {% comment %} Mega Menu Ends{% endcomment %}
+
+              </li>
+              <li>
+                {% assign name = "header-discover" %}
+                <h1 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">DISCOVER</h1>
+              <h2></h2>
+                <div id="Target-{{name}}" class="sub-menu collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion">
+
+                  <div class="row" id="Header-Accordion-Discover">
+                    <h2 class="how-it-works-menu d-none d-sm-block" style="padding-left: 15px">HOW IT WORKS</h2>
+                    <div class="col-12 col-sm-4 text-left">
+                      {% assign name = "header-discover-maternity" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
+                        MATERNITY
+                      </h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
+                        <li><a href="/pages/maternity-supportband-learn-more">BellyBand</a></li>
+                        <li><a href="/pages/maternity-leggings-learn-more">Leggings</a></li>
+                        <li><a href="/pages/maternity-overbust-tanktop-learn-more">Overbust Tanktop</a></li>
+                        <li><a href="/pages/maternity-underbust-tanktop-learn-more">Underbust Tanktop</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-4 text-left">
+                      {% assign name = "header-discover-nursing" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
+                        POSTPARTUM
+                      </h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
+                        <li><a href="/pages/nursing-leggings-learn-more">Leggings</a></li> 
+                        <li><a href="/pages/nursing-overbust-tanktop-learn-more">Overbust Tank Top</a></li>
+                        <li><a href="/pages/nursing-underbust-tanktop-learn-more">Underbust Tank Top</a></li>
+                      </ul>
+                    </div>
+
+                    <div class="col-12 col-sm-4 text-left">
+                      {% assign name = "header-discover-about" %}
+                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
+                        ABOUT
+                      </h2>
+                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
+                        <li><a href="/pages/videos">Video</a></li>
+                      </ul>
+                    </div>
+                  </div>
+
+                </div>
+              </li>
+              
+              <li>
+                <a href="/pages/giveaways"><h1>OFFERS</h1><h2></h2><h3></h3></a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/blogs/musings"><h1>BLOG</h1><h2></h2><h3></h3></a>
+              </li> 
+            </ul>
+          </div>
+        </div>
+        {% comment %} <div class="col-2 d-block d-md-none text-left pl-0">
+          <div class="icon icon-mag mobile">
+            {% include 'searchbar' %}
+          </div>
+        </div> {% endcomment %}
+
+        <div class="col-4 col-md-2 text-center">
+          <a href="{{ shop.secure_url }}">
+          {% if template contains "index" %}
+            {% comment %} <img src="{{ 'logo-2020.png' | file_url }}" class="logo logo-white" alt="logo"> {% endcomment %}
+            <img src="{{ 'logo-2018.svg' | file_url }}" class="logo logo-black" alt="logo">
+            {% else %}
+            <img src="{{ 'logo-2018.svg' | file_url }}" class="logo" alt="logo">
+            {% endif %}
+          </a>
+        </div>
+        <div class="col-4 col-md-5 text-right header-wrap-icons">
+          <div class="icon icon-mag">
+            {% include 'searchbar' %}
+          </div>
+          <div class="icon icon-login">
+            {% if customer %}
+            <a href="/account/">
+              {% comment %} <img src="{{ 'icon-login-v2.png' | file_url }}" class="icon-img" alt="logout"> {% endcomment %}
+              {% comment %}{% include 'icon-user' %}{% endcomment %}
+              <img src="{{ 'logged-in-icon.png' | asset_img_url }}" class="new-nav-icon" alt="Account" />
+            </a>
+            {% else %}
+            <a href="/account/login">
+              {% comment %} <img src="{{ 'icon-login-v2.png' | file_url }}" class="icon-img" alt="login"> {% endcomment %}
+              {% comment %}{% include 'icon-user' %}{% endcomment %}
+              <img src="{{ 'logged-out-icon.png' | asset_img_url }}" class="new-nav-icon" alt="Login" />
+            </a>
+            {% endif %}
+          </div>
+          <div class="icon icon-cart">
+            <div class="cart_container">
+              <a href="/cart" class="mini_cart dropdown_link" data-no-instant>
+                {% comment %} <img src="{{ 'icon-cart-v2.png' | file_url }}" class="icon-img" style="height:22px;" alt="cart"> {% endcomment %}
+                {% comment %}{% include 'icon-cart' %}{% endcomment %}
+                <img src="{{ 'empty-bag-icon.png' | asset_img_url }}" class="new-nav-icon" alt="Cart" />
+                <span class="cart_count items-cart">{{ cart.item_count }}</span>
+              </a>
+              <div class="cart_content animated fadeIn">
+                <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+                  <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+                </div>
+                {% assign apply_discount = "" %}
+                {% for item in cart.items %}
+                {% if item.sku == "812083020949" %}
+                {% assign apply_discount = "?discount=GC_PROMO_75_81YNMZ6" %}
+                {% endif %}
+                {% if item.sku == "GIFTCARD_125" %}
+                {% assign apply_discount = "?discount=GC_PROMO_125_81YNMZ6" %}
+                {% endif %}
+                {% if item.sku == "GIFTCARD_200" %}
+                {% assign apply_discount = "?discount=GC_PROMO_200_81YNMZ6" %}
+                {% endif %}
+                {% endfor %}
+                <form action="/checkout{{apply_discount}}" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}hidden{% endif %} CheckOutCartForm">
+                  <a class="cart_content__continue-shopping secondary_button">
+                    {{ 'cart.general.continue_shopping_link_html' | t }}
+                  </a>
+                  <ul class="cart_items js-cart_items clearfix">
+                    {% for item in cart.items %}
+                    <li class="cart_item clearfix">
+                      <a href="{{ item.url }}" class="Cart-SKU-{{item.sku}}">
+                        {% if item.image %}
+                        <div class="cart_image">
+                          <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" />
+                        </div>
+                        {% endif %}
+                        <strong class="right price">{{ item.price | money }}</strong>
+                        <div class="item_title">{{ item.title }}</div>
+                      </a>
+                      <div class="left product-quantity-box">
+                        <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                        <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                        <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <hr />
+                  <ul>
+                    <li class="cart_subtotal js-cart_subtotal">
+                      <span class="right">{{ cart.total_price | money }}</span>
+                      <span>{{ 'layout.general.subtotal' | t }}</span>
+
+                    </li>
+                    <li><p style="color:#fcab90; font-weight:300; font-size:.65em; text-align:left;">We are unable to accept returns or exchanges on international orders. Please contact customercare@blanqi.com should you have any questions regarding this policy.</p>
+                    </li
+
+                    <li>
+                      {% if settings.display_special_instructions and settings.go_to_checkout %}
+                      <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+                      {% endif %}
+
+                      {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                      <p class="tos">
+                        <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+                        <label class="tos_label">
+                          {{ 'cart.general.agree_to_terms_html' | t }}
+                        </label>
+                        {% if settings.tos_page != blank %}
+                        <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                        {% endif %}
+                      </p>
+                      {% endif %}
+
+                      {% if settings.cart_message != blank %}
+                      <p class="cart_text">
+                        {{ settings.cart_message }}
+                      </p>
+                      {% endif %}
+                      {% if settings.pause_blanqi %}
+                      <div class="pause-blanqi-message">
+                        {{ settings.pause_blanqi_message }}
+                      </div>
+                      {% else %}
+                      <input type="submit" class="action_button CheckOutCartButton" value="{% if settings.go_to_checkout %}{{ 'layout.general.checkout' | t }}{% else %}{{ 'layout.general.go_to_cart' | t }}{% endif %}" />
+                      {% endif %}
+                    </li>
+                  </ul>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% comment %} <hr class="line-break"> {% endcomment %}
+
+
+
+  </div>
+</header>
+<script>
+  // this is just to set it ASAP, the actual function is in main.js
+  document.getElementById("Body").style.marginTop = (document.getElementById("Header").offsetHeight - 1) + "px";
+</script>

@@ -1,0 +1,59 @@
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<div class="homepage-slideshow js-homepage-slideshow">
+  {% assign class = "mam-1" %}
+  {% assign href = "/collections/maternity-supportwear/" %}
+  {% assign caption_position = "left" %}
+  {% assign caption_top = "" %}
+  {% assign text_color = "black" %}
+  {% assign text_align = "center" %}
+  {% assign slide_image = "mam-slide-2.jpg" %}
+  <div class="gallery-cell slide-{{class}}">
+    <img src="{{ slide_image | file_img_url: '100x', format: 'pjpg' }}"
+         alt="slideimage"
+         class="lazyload js-image-loaded blur-up"
+         sizes="100vw"
+         data-src="{{ slide_image | file_img_url: default, format: 'pjpg' }}"
+         srcset="{{ slide_image | file_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+         />
+    {% if href != blank %}<a href="{{href}}" class="banner-full-link"></a> {% endif %}
+    <div class="caption position-{{caption_position}} js-caption" style="top:{{caption_top}};">
+      <div class="caption-content caption-background-false align-{{text_align}} blanqi-slide-{{text_color}}">
+        <p class="pretext">
+          EFFORTLESS EVERY DAY
+        </p>
+        <h1 class="headline">
+          MATERNITY MAGIC
+        </h1>
+        <p class="subtitle">
+          Change the way you experience pregnancy. Built-in targeted support
+          to secure and relieve aches and pains without sacrificing comfort.
+        </p>
+        <a href="{{href}}" class="action_button first_button highlight-false">
+          Shop maternity
+        </a>
+      </div>
+    </div>
+  </div>
+  
+</div>

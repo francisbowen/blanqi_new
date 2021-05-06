@@ -1,0 +1,35 @@
+<style>
+  #cart_form {
+    position:relative;
+    padding-top:260px;
+  }
+  .tbtDiscountCombine {
+    position:absolute;
+    top:-30px;
+    z-index:10;
+    left:50%;
+    margin-left:-250px !important;
+  }
+  @media(max-width: 768px) {
+    .tbtDiscountCombine {
+      position:absolute;
+      top:-30px;
+      z-index:10;
+      left:0;
+      margin-left:0 !important;
+      max-width:100%;
+    }
+  }
+</style>
+<script>
+  var dcCart = {{cart | json}};
+  {% if customer %}
+  var dcCustomerId = {{customer.id}};
+  var dcCustomerEmail = '{{customer.email}}';
+  var dcCustomerTags = '{% for tag in customer.tags %}{{tag}}{% unless forloop.last %},{% endunless %}{% endfor %}';
+  {% else %}
+  var dcCustomerId = false;
+  var dcCustomerEmail = false;
+  var dcCustomerTags = false;
+  {% endif %}
+</script>

@@ -1,0 +1,17 @@
+{% comment %}
+  DO NOT MODIFY THIS FILE DIRECTLY. THIS FILE WILL BE OVERWRITTEN.
+  YOU CAN MODIFY THE LIQUID CODE FOR THIS CUSTOM FIELD HERE:
+  https://customfields.bonify.io/dashboard/blanqi.myshopify.com/products/edit-field/39427
+{% endcomment %}
+{% if product.metafields.custom_fields["back_in_stock"] != blank %}
+  <div class="custom-field custom-field__back-in-stock custom-field__type--checkbox">
+    <h3 class="custom-field--title">Back in Stock Tag</h3>
+    <div class="custom-field--value">
+      {% if product.metafields.custom_fields["back_in_stock"] == 1 %}
+        TRUE
+      {% else %}
+        FALSE
+      {% endif %}
+    </div>
+  </div>
+{% endif %}

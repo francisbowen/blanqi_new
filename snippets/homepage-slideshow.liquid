@@ -1,0 +1,118 @@
+<div class="homepage-slideshow js-homepage-slideshow">
+  {% for i in (0..6) %}
+    {% capture slide_enabled %}slide{{ i }}_enabled{% endcapture %}
+    {% capture slide_alt_text %}slide{{ i }}_alt_text{% endcapture %}
+    {% capture slide_image %}slide{{ i }}.jpg{% endcapture %}
+    {% capture slide_pretext %}slide{{ i }}_pretext{% endcapture %}
+    {% capture slide_headline %}slide{{ i }}_headline{% endcapture %}
+    {% capture slide_subtitle %}slide{{ i }}_subtitle{% endcapture %}
+    {% capture slide_button1 %}slide{{ i }}_button1_text{% endcapture %}
+    {% capture slide_button1_link %}slide{{ i }}_button1_link{% endcapture %}
+    {% capture slide_button1_highlight %}slide{{ i }}_button1_highlight{% endcapture %}
+    {% capture slide_button2 %}slide{{ i }}_button2_text{% endcapture %}
+    {% capture slide_button2_link %}slide{{ i }}_button2_link{% endcapture %}
+    {% capture slide_button2_highlight %}slide{{ i }}_button2_highlight{% endcapture %}
+    {% capture slide_text_align %}slide{{ i }}_text_align{% endcapture %}
+    {% capture slide_text_position %}slide{{ i }}_text_position{% endcapture %}
+    {% capture slide_colorclass %}slide{{ i }}_colorclass{% endcapture %}
+    {% capture slide_top_style %}slide{{ i }}_top{% endcapture %}
+
+    {% assign slide_id = i %}
+
+    {% assign default = '1400x' %}
+    {% assign size1 = '480x' %}
+    {% assign size2 = '765x' %}
+    {% assign size3 = '900x' %}
+    {% assign size4 = '1000x' %}
+    {% assign size5 = '1100x' %}
+    {% assign size6 = '1300x' %}
+    {% assign size7 = '1500x' %}
+    {% assign size8 = '1700x' %}
+    {% assign size9 = '1900x' %}
+    {% assign size10 = '2000x' %}
+
+    {% if settings[slide_enabled] != blank %}
+      <div class="gallery-cell slide-{{ slide_id }}">
+        <img  src="{{ slide_image | asset_img_url: '100x', format: 'pjpg' }}"
+              alt="{{ settings[slide_alt_text] | escape }}"
+              class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+              sizes="100vw"
+              data-src="{{ slide_image | asset_img_url: default, format: 'pjpg' }}"
+              srcset="
+              {{ slide_image | asset_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+              {{ slide_image | asset_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+               />
+        {% unless settings[slide_button1_link] != blank and settings[slide_button2_link] != blank %}
+          {% if settings[slide_button1_link] != blank %}
+            <a href="{{ settings[slide_button1_link] }}" class="banner-full-link">
+              {{ settings[slide_button1_text] }}
+            </a>
+          {% elsif settings[slide_button2_link] != blank %}
+            <a href="{{ settings[slide_button2_link] }}" class="banner-full-link">
+              {{ settings[slide_button2_text] }}
+            </a>
+          {% endif %}
+        {% endunless %}
+        {% if settings[slide_pretext] != blank or settings[slide_headline] != blank or settings[slide_subtitle] != blank or settings[slide_button1] != blank or settings[slide_button2] != blank %}
+          <div class="caption position-{{settings[slide_text_position]}} js-caption" {% if settings[slide_top_style] %} style="top: {{ settings[slide_top_style] }}" {% endif %}>
+              <div class="caption-content caption-background-{{settings.slideshow_text_background}}
+              align-{{settings[slide_text_align]}} {{ settings[slide_colorclass] }}">
+                  <p class="pretext">
+                    {{ settings[slide_pretext] }}
+                  </p>
+                  {% if forloop.first == true %}
+                    <h1 class="headline">
+                      {{ settings[slide_headline] }}
+                    </h1>
+                  {% else %}
+                    <p class="headline">
+                      {{ settings[slide_headline] }}
+                    </p>
+                  {% endif %}
+                  <p class="subtitle">
+                    {{ settings[slide_subtitle] }}
+                  </p>
+                {% if settings[slide_button1] != blank %}
+                  <a {% if settings[slide_button1_link] != blank %}href="{{ settings[slide_button1_link] }}"{% endif %} class="action_button first_button highlight-{{settings[slide_button1_highlight]}}">
+                    {{ settings[slide_button1] }}
+                  </a>
+                {% endif %}
+                {% if settings[slide_button2] != blank %}
+                  <a {% if settings[slide_button2_link] != blank %}href="{{ settings[slide_button2_link] }}"{% endif %} 
+                     class="learn-more">
+                    {{ settings[slide_button2] }}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+        {% endif %}
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<div class="mobile-slideshow" style="display:none;">
+  <div class="gallery-cell">
+    <div class="caption position-left js-caption" style="top: ">
+      <div class="caption-content caption-background-false align-center">
+        <p class="pretext">
+          THE BLANQI BELLYBAND
+        </p>
+        <h1 class="headline">
+          EFFORTLESS<br>SUPPORT
+        </h1>
+        <a href="https://www.blanqi.com/products/blanqi-maternity-support-bellyband" class="action_button first_button highlight-false" style="width: 66px;">
+          SHOP BELLYBAND
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

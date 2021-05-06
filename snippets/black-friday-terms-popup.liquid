@@ -1,0 +1,59 @@
+
+
+
+<div class="{{ wrapperclass }}" {% if wrapperclass == 'remodal rmsc' %}data-remodal-id="modal-black-friday-terms"{% endif %}>
+  <div class="modal-black-friday-terms show-in">
+    <button data-remodal-action="close"  {% if wrapperclass != 'remodal rmsc' %}style="display: none;"{% endif %}class="close"></button>
+    <h1>50% OFF OUR MOST POPULAR STYLES!</h1>
+   <h2></h2>
+      
+
+          <h3>HOW TO REDEEM</h3>
+          <ul>
+            <li>Choose from our Everyday leggings, either maternity or postpartum, our SportSupport leggings, and our Maternity Overbust Support Tanktop</li>
+            <li>Enter <strong>BLACKFRIDAY</strong> in the promo code box at checkout</li>
+            <li>Valid Novemer 3 - November 22, 11:59 pm est.</li>
+          </ul>
+
+          <h3>SALE EXCLUDES</h3>
+          <ul>
+            <li>All other Blanqi styles</li>
+            <li>Previously purchased items</li>
+            <li>Cannot be combined with any other promo code</li>
+          </ul>
+
+          <h3>ADDITIONAL SALE INFORMATION</h3>
+          <ul>
+            <li>Offer can be discontinued at any time</li>
+            <li>We cannot substitute any items</li>
+          </ul>    
+    <p><strong>50% off on sale items 11/3/18-11/22/18</strong></p>
+
+ <p>50% off our Everyday leggings, SportSupport leggings, and Maternity Overbust Support Tanktop</p>
+
+<p>Valid on these items only<br />
+Originally $64-$72<br />
+Excludes all other styles<br />
+  Code: <strong>BLACKFRIDAY</strong> Shop sale items </p>
+
+  </div>
+
+
+<script>
+  $(".modal-black-friday-terms").on("click", ".tab", function(e){
+    $(".tab").removeClass("active");
+    $(this).addClass("active");
+    var selector = $(this).data("target");
+    $(".tab-window").removeClass("active");
+    $("."+selector).addClass("active");
+  });
+
+  $(".modal-black-friday-terms").on("click", ".switch", function(e){
+    var selector = $(this).data("type");
+    $(".switch").removeClass("active");
+    $(".switch-"+selector).addClass("active");
+    $(".modal-black-friday-terms").removeClass("show-cm");
+    $(".modal-black-friday-terms").removeClass("show-in");
+    $(".modal-black-friday-terms").addClass("show-"+selector);
+  });
+</script>

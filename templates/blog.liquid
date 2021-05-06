@@ -1,0 +1,93 @@
+
+<div id="blog-logo">
+  <h1>{{ blog.title }}</h1>
+  {% if settings.blog_heading_text != blank %}
+    {{ settings.blog_heading_text }}
+  {% endif %}
+  {% if settings.blog_tags %}
+  <div class="tags">
+   <label><span class="sr-only">filter</span>
+      <select name="tag_filter" id="blog_filter" class="blog_filter">
+        <option {% unless current_tags %}selected="selected"{% endunless %} value="{{ blog.url }}">{{ 'blogs.general.view_all' | t }}</option>
+        {% for tag in blog.all_tags %}
+          <option {% if current_tags contains tag %}selected="selected"{% endif %} value="/blogs/{{ blog.handle }}/tagged/{{ tag | handleize }}">{{ tag }}</option>
+        {% endfor %}
+      </select>
+    </label>
+  </div>
+  {% endif %}
+</div>
+
+{% paginate blog.articles by settings.blog_posts_per_page %}
+
+{% if paginate.current_page == 1 and  current_tags == blank %}
+  {% section 'blog-slider' %}
+{% endif %}
+
+{% if current_tags.size > 0 %}
+  <div class="tagged-heading">
+     Tagged:<span>{{ current_tags | join:', ' }}</span>
+  </div>
+{% endif %}
+
+{% if paginate.current_page != 1 %}
+  <div class="pagination-heading">
+     Page:<span>{{ paginate.current_page }}</span>
+  </div>
+{% endif %}
+
+<div class="twelve columns articles">
+    {% for article in blog.articles %}
+    <div class="article">
+        {% if article.image %}
+          <div class="article_image">
+            <a href="{{ article.url }}" title="{{ article.title | escape }}">
+              
+              <!-- Added by Plus - September 16 2020 -->
+              {%- if settings.plus_enable_blog_landing_images -%}
+                {% comment %}
+                The name of the secondary image file must be the article's handle without the blog name - 
+                e.g. for the article "Breastfeeding | Mamas Tell All" in the "Musings" blog, 
+                the file name should be "breastfeeding-mamas-tell-all.jpg"
+                
+                This supports JPG image format.
+                {% endcomment %}
+
+                {%- assign article_image_file_name = article.handle | remove: blog.handle | remove: '/' | append: '.jpg' -%}
+                <img  src="{{ article_image_file_name | file_img_url: '1000x400', crop: 'center' }}"
+                      class="lazyload js-image-loaded {{ settings.image_loading_style }} plus-blog-landing-article-image"
+                      alt="{{ article.title | escape }}" data-fallback-image="{{ article.image | img_url: '1000x400', crop: 'center' }}"
+                      data-target-image="{{ article_image_file_name | file_url }}"
+                      style="opacity: 0;"
+                      />
+              {%- else -%}
+                <img  src="{{ article.image | img_url: '1000x400', crop: 'center' }}"
+                      class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                      alt="{{ article.title | escape }}"
+                      />
+              {%- endif -%}
+              
+            </a>
+          </div>
+        {% endif %}
+        <div class="article-content">
+          <h5>{{ article.tags | join: ',' }}</h5>
+          <h4>{{ article.title }}</h4>
+          {{ article.published_at | time_tag: format: 'date' }}
+          <p>{{ article.content | strip_html | truncatewords: 60 }}</p>
+          <a class="read-more" href="{{ article.url }}">more <span class="icon-right-arrow"></span></a>
+          <div class="comments-count">
+            <a href="{{ article.url }}#comments">{{ 'blogs.counts.comments_with_count' | t: count: article.comments_count }}</a>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+  {% include "blog-sidebar" with blog.handle %}
+
+  <br class="clear" />
+  <div class="sixteen columns blog-pagination">
+    {% include 'pagination' %}
+  </div>
+{% endpaginate %}

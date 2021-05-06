@@ -1,0 +1,53 @@
+{% comment %}
+	These are the srcset sizes for the slide image:
+{% endcomment %}
+{% assign default = '1400x' %}
+{% assign size2 = '768x' %}
+{% assign size4 = '1000x' %}
+{% assign size6 = '1300x' %}
+{% assign size8 = '1700x' %}
+{% assign size10 = '2000x' %}
+
+<div id="HomepageSlideshow" class="homepage-slideshow rsp-slideshow">
+
+  {% assign slide_active = true %}
+  {% assign class = "shopsupport" %}
+  {% assign caption_position = "center" %}
+  {% assign caption_top = "62%" %}
+  {% assign text_color = "black" %}
+  {% assign text_align = "center" %}
+  {% assign alt_text = page.title %}
+  {% assign slide_image = "hero_desktop.png" %} 
+  {% assign slide_image_mobile = "mobile_hero.png" %}
+  {% if slide_active == true %}
+  
+  <div class="gallery-cell slide-{{class}}"> 
+    <img src="{{ slide_image | asset_img_url: '100x', format: 'pjpg' }}"
+         alt="{{ alt_text }}"
+         class="lazyload js-image-loaded blur-up desktoponly"
+         sizes="100vw"
+         data-src="{{ slide_image | asset_img_url: default, format: 'pjpg' }}"
+         srcset="{{ slide_image | asset_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+                 {{ slide_image | asset_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+                 {{ slide_image | asset_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+                 {{ slide_image | asset_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+                 {{ slide_image | asset_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+                 {{ slide_image | asset_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+        />
+    <img src="{{ slide_image_mobile | asset_img_url: '100x', format: 'pjpg' }}"
+         alt="{{ alt_text }}"
+         class="lazyload js-image-loaded blur-up mobileonly"
+         sizes="100vw"
+         data-src="{{ slide_image_mobile | asset_img_url: default, format: 'pjpg' }}"
+         srcset="{{ slide_image_mobile | asset_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | asset_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | asset_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | asset_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | asset_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | asset_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+         />  
+  </div>
+  
+  {% endif %}
+  
+</div>

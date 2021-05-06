@@ -1,0 +1,135 @@
+{% for link in linklists[sub-menu].links %}
+  {% if link.title == 'Shop' %}
+	<div class="dropdown_container" data-dropdown="{{ link.handle }}">
+      <div class="dropdown menu blanqi-dropdown-menu">
+        <div class="dropdown_content">
+
+          <div class="dropdown_column">
+            
+            <ul class="blanqi-dropdown-column">
+              <li>
+                <div class="blanqi-sublink">CATEGORIES</div>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/support-tops" class="blanqi-sublink">Support Tops</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/leggings" class="blanqi-sublink">Support Leggings</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/support-bands/" class="blanqi-sublink">Support Bands</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/products/gift-card" class="blanqi-sublink">Gift Card</a>
+              </li>
+            </ul>
+            
+            <ul class="blanqi-dropdown-column">
+              <li>
+                <div class="blanqi-sublink">LIFESTYLE</div>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/womens" class="blanqi-sublink">Women</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/maternity-supportwear" class="blanqi-sublink">Maternity</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/womens" class="blanqi-sublink">Postpartum</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/nursing" class="blanqi-sublink">Nursing</a>
+              </li>
+            </ul>
+            
+            <ul class="blanqi-dropdown-column">
+              <li>
+                <div class="blanqi-sublink">ACTIVITY</div>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/running" class="blanqi-sublink">Running</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/yoga-training-cycle" class="blanqi-sublink">Yoga</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/yoga-training-cycle" class="blanqi-sublink">Training</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/collections/yoga-training-cycle" class="blanqi-sublink">Cycle</a>
+              </li>
+            </ul>
+            
+            <ul class="blanqi-dropdown-column two-column">
+              <li>
+                <div class="blanqi-sublink">HOW IT WORKS</div>
+              </li>
+              <li>
+                <a class="blanqi-sublink gotham-bold"><strong>Maternity</strong></a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/maternity-supportband-learn-more" class="blanqi-sublink"> Bellyband</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/maternity-leggings-learn-more" class="blanqi-sublink"> Leggings</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/maternity-overbust-tanktop-learn-more" class="blanqi-sublink"> Overbust Tanktop</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/maternity-underbust-tanktop-learn-more" class="blanqi-sublink"> Underbust Tanktop</a>
+              </li>
+              <li>
+                <div class="blanqi-sublink" style="visibility:hidden;">HOW IT WORKS</div>
+              </li>
+              <li>
+                <a class="blanqi-sublink gotham-bold"><strong>Postpartum</strong></a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/nursing-leggings-learn-more" class="blanqi-sublink"> Leggings</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/nursing-overbust-tanktop-learn-more" class="blanqi-sublink"> Overbust Tanktop</a>
+              </li>
+              <li>
+                <a href="https://www.blanqi.com/pages/nursing-underbust-tanktop-learn-more" class="blanqi-sublink"> Underbust Tanktop</a>
+              </li>
+            </ul>
+            
+          </div>
+          
+        </div>
+      </div>
+	</div>
+  {% else %}
+    {% if linklists[link.handle] != empty %}
+      {% assign link_count = linklists[link.handle].links | size %}
+      <div class="dropdown_container" data-dropdown="{{ link.handle }}">
+        <div class="dropdown menu">
+          <div class="dropdown_content {% if link_count < 4 %}dropdown_narrow{% endif %}">
+            {% for sublink in linklists[link.handle].links %}
+              <div class="dropdown_column">
+                <ul class="{% if linklists[sublink.handle] != empty %}dropdown_title{% else %}dropdown_item{% endif %}">
+                  <li>
+                    <a href="{{ sublink.url }}">{{ sublink.title }}</a>
+                  </li>
+                </ul>
+
+                {% if linklists[sublink.handle] != empty %}
+                  <ul>
+                    {% for subsublink in linklists[sublink.handle].links %}
+                      <li>
+                        <a href="{{ subsublink.url }}">{{ subsublink.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                {% endif %}
+              </div>
+              {% cycle link.handle: '', '', '', '', '<div class="dropdown_row"></div>' %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+{% endfor %}

@@ -1,0 +1,136 @@
+{% if settings.collection_banner_enabled %}
+  {% capture sizes %}100x,480x,765x,1400x,2048x{% endcapture %}
+  {% assign sizes = sizes | split: ',' %}
+
+  <header class="banner center page_banner">
+    <img  {% if settings.collection_banner_featured_image %}
+            {%- if collection.image -%}
+              src="{{ collection.image.src | collection_img_url: sizes.first }}"
+            {%- else -%}
+              src="{{ collection.products.first.featured_image | product_img_url: sizes.first }}"
+            {%- endif -%}
+          {%- else -%}
+            src="{{ 'collection_banner.jpg' | asset_img_url: sizes.first }}"
+          {% endif %}
+          alt="{{ collection.title | escape }}"
+          class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+          sizes="100vw"
+          srcset="{%- for size in sizes -%}
+                    {%- if settings.collection_banner_featured_image -%}
+                      {%- if collection.image -%}
+                        {{ collection.image.src | collection_img_url: size }}
+                      {%- else -%}
+                        {{ collection.products.first.featured_image | product_img_url: size }}
+                      {%- endif -%}
+                    {%- else -%}
+                      {{ 'collection_banner.jpg' | asset_img_url: size, format: 'pjpg' }}
+                    {%- endif -%}
+                    {{ size | replace: "x", "w" }}{% unless forloop.last %},{% endunless %}
+                  {%- endfor -%}
+          " />
+      {% if settings.display_collection_header_title %}
+        <div class="caption">
+          <h1 class="headline">{{ collection.title }}</h1>
+        </div>
+      {% endif %}
+  </header>
+  <a name="pagecontent" id="pagecontent"></a>
+  <div class="container">
+{% endif %}
+
+{% paginate collection.products by settings.pagination_limit %}
+  <div class="clearfix breadcrumb-collection">
+    {% if settings.collection_breadcrumb %}
+      <div class="eight columns breadcrumb_text" itemscope itemtype="http://schema.org/BreadcrumbList">
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="{{ shop.url }}" title="{{ shop.name | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ 'general.breadcrumbs.home' | t }}</span></a></span>
+        <span class="breadcrumb-divider">/</span>
+        <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}" title="{{ collection.title | escape }}" itemprop="item" class="breadcrumb_link"><span itemprop="name">{{ collection.title }}</span></a></span>
+        {% if current_tags %}
+          {% for tag in current_tags %}
+            <span class="breadcrumb-divider">/</span>
+            <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem"><a href="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}" title="{{ tag | escape }}" itemprop="item"><span itemprop="name">{{ tag }}</span></a></span>
+          {% endfor %}
+        {% endif %}
+
+        {% if paginate.pages != 0 %}
+          <span class="breadcrumb-divider">/</span> {{ 'general.breadcrumbs.page' | t: current_page: paginate.current_page, pages: paginate.pages }}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="section clearfix">
+    {% if settings.display_collection_title %}
+      <div class="eight columns">
+        <h1>{{ collection.title }}</h1>
+      </div>
+    {% endif %}
+      <div class="eight columns section_select {% if settings.display_collection_title == false %}offset-by-eight{% endif %}">
+    {% if collection.handle != blank and collection.products_count > 0 %}
+      {% if settings.collection_tags %}
+        {% for tag in collection.all_tags %}
+          {% if forloop.first %}
+           <label><span class="sr-only">filter</span>
+            <select name="tag_filter" id="tag_filter" class="tag_filter">
+              <option {% unless current_tags %}selected="selected"{% endunless %} value="{% if collection.handle == "all" %}/collections/all{% else %}{{ collection.url }}{% endif %}">{{ 'collections.general.all_collection_title' | t: title: collection.title }}</option>
+          {% endif %}
+
+          {% unless tag contains 'meta-' %}
+            <option {% if current_tags contains tag %}selected="selected"{% endif %} value="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}">{{ tag }}</option>
+          {% endunless %}
+
+          {% if forloop.last %}
+            </select>
+          </label>
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+
+     {% if settings.collection_sort %}
+      <label><span class="sr-only">Sort by</span>
+        <select class="sort_by" id="sort-by" data-default-sort="{{ collection.sort_by | default: collection.default_sort_by  }}">
+          <option value="manual">{{ 'collections.sorting.featured' | t }}</option>
+          <option value="best-selling">{{ 'collections.sorting.best_selling' | t }}</option>
+          <option value="title-ascending">{{ 'collections.sorting.az' | t }}</option>
+          <option value="title-descending">{{ 'collections.sorting.za' | t }}</option>
+          <option value="price-ascending">{{ 'collections.sorting.price_ascending' | t }}</option>
+          <option value="price-descending">{{ 'collections.sorting.price_descending' | t }}</option>
+          <option value="created-descending">{{ 'collections.sorting.date_descending' | t }}</option>
+          <option value="created-ascending">{{ 'collections.sorting.date_ascending' | t }}</option>
+        </select>
+      </label>
+      {% endif %}
+    {% endif %}
+    </div>
+    <div class="sixteen columns">
+      <div class="feature_divider"></div>
+    </div>
+  </div>
+
+  {% if settings.collection_sidebar %}
+    {% include 'sidebar' %}
+    <div class="twelve columns">
+  {% else %}
+    <div class="sixteen columns">
+  {% endif %}
+
+    {% assign linklist = linklists[collection.handle] %}
+    {% if linklist != empty %}
+      {% assign collections_per_row = settings.frontpage_collections_per_row %}
+      {% include 'collection-loop', collection_type: 'sub' %}
+    {% endif %}
+
+    {% if collection.description != blank %}
+      <div class="section clearfix collection_description">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+
+    {% if collection.products.size > 0 %}
+      {% assign products = collection.products %}
+      {% assign products_per_row = settings.products_per_row %}
+      {% include 'product-loop' with settings.collection_sidebar %}
+    {% endif %}
+
+    {% include 'pagination' with settings.collection_sidebar %}
+  </div>
+{% endpaginate %}

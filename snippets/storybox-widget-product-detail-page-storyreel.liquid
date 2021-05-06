@@ -1,0 +1,14 @@
+<!-- StoryBox Gallery Widget -->
+<script type="text/javascript">
+(function() {
+    var widgetId = "storybox-widget-product-detail-page-storyreel";
+    document.write('<div id="'+widgetId+'"></div>');
+    window.vgModuleSettings = {
+        containerId: widgetId
+    }
+})();
+</script>
+{% if product and product.id %}
+    {% include "storybox-product-details" %}
+{% endif %}
+<script src="//app.getstorybox.com/c/hsb/24711b/blanqi-stories.js" type="text/javascript" async="true"></script>

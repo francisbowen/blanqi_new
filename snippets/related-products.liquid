@@ -1,0 +1,31 @@
+
+{% if product.metafields.custom_fields["related_products"] != blank %}
+
+<div class="product-section related-product-title">
+  <h4 class="title text-left mb-2">YOU MAY ALSO LIKE</h4>
+</div>
+<div class="row related-items mt-4">
+  
+  {% assign count = 0 %}
+
+  {% assign values = product.metafields.custom_fields["related_products"] | split: "|" %}
+  
+  {% for value in values limit: 4 %}
+    {% unless value == product.handle %}
+    {% assign related_product = all_products[value] %}
+
+    <div class="col-6 col-md-3 thumb-items related-item">
+      <a href="{{related_product.url}}">
+        {{ related_product.featured_image | img_tag: related_product.title, 'mb-3', '360x' }}
+      </a>
+      <div class="thumb-category mb-1">{{ related_product.metafields.custom_fields["category"] }}</div>
+      <div class="thumb-title mb-2"><a href="{{related_product.url}}">{{ related_product.title }}</a></div>
+      <div class="thumb-price">{{ related_product.price | money_with_currency }}</div>
+
+      {% assign count = count | plus: 1 %}
+    </div>
+    {% endunless %}
+  {% endfor %}
+
+</div>
+{% endif %}

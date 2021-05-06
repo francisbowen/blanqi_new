@@ -1,0 +1,81 @@
+{% if settings.show_popup_email_capture %}
+<style>
+  #newsletter-popup-offer {
+    font-size:14px;
+    display:block;
+    text-transform:uppercase;
+    padding:8px 0;
+    display:none;
+  }
+</style>
+<div class="remodal remodal-custom-style rmsc modal-capture testing" data-remodal-id="modal-email-capture">
+  <div class="modal-body p-0">
+    <div class="half">
+      <img src="{{ "email-capture-img.jpg" | file_url }}" class="left-img" alt="image">
+    </div>
+    <div class="half half-custom">
+      <button data-remodal-action="close" class="close"></button>
+      <form action="https://BLANQI.us15.list-manage.com/subscribe/post?u=ab7f933879a81ed9e437d9336&amp;id=6cec2ae5b9" method="post" id="mc-embedded-subscribe-form-2" name="mc-embedded-subscribe-form" class="text-left" target="_blank" novalidate>
+      <div class="text-center">
+        <h2 class="serif mb-2">WELCOME</h2>
+      <h3></h3>
+      <p>
+        Stay updated on the latest collections, flash sales & giveaways. Tell us a bit about yourself and subscribe.
+      </p>
+    </div>
+        <fieldset>
+        <div class="field-group">
+          <div class="control-radio serif js-email-reason" data-value="I’m expecting">I’m expecting</div>
+          <div class="control-target d-none">
+            <label class="serif">Due date:</label>
+            <label><span class="sr-only">DUEDATE</span>
+            <input type="text" pattern="[0-9]*" value="" size="4" maxlength="4" name="DUEDATE[year]"  tabindex="3" class="dd" placeholder="yyyy"/>
+            <input type="text" pattern="[0-9]*" value="" size="2" maxlength="2" name="DUEDATE[day]"   tabindex="2" class="dd" placeholder="dd"/>
+            <input type="text" pattern="[0-9]*" value="" size="2" maxlength="2" name="DUEDATE[month]" tabindex="1" class="dd" placeholder="mm"/>
+            </label>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="control-radio serif js-email-reason" data-value="I'm a mama">I’m a Mama</div>
+          <div class="control-target d-none">
+            <label class="serif">Are you nursing?</label>
+            <div class="js-nursing-checkbox" data-value="Yes">Yes</div>
+            <div class="js-nursing-checkbox" data-value="No">No</div>
+          </div>
+        </div>
+        <div class="field-group">
+          <div class="control-radio serif js-email-reason" data-value="Just browsing" style="border-bottom: 0 !important;">Just browsing</div>
+        </div>
+
+        <div class="js-reason-input" style="display: none !important;">
+          <label><span class="sr-only">REASON</span>
+          <input type="radio" value="I'm pregnant" name="REASON">
+          <input type="radio" value="I'm a mama" name="REASON">
+          <input type="radio" value="Shopping for a gift" name="REASON">
+          </label>
+        </div>
+        <div class="js-nursing-input" style="display: none !important;">
+          <label><span class="sr-only">NURSING</span>
+          <input type="radio" value="Yes" name="NURSING">
+          <input type="radio" value="No" name="NURSING">
+          </label>
+        </div>
+
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+           <label class="serif"><span class="sr-only">Email</span>
+          <input type="text" name="b_ab7f933879a81ed9e437d9336_6cec2ae5b9" tabindex="-1" value="">
+          </label>
+        </div>
+
+        <div class="field-group">
+           <label><span class="sr-only">Email</span>
+          <input type="email" value="" name="EMAIL" placeholder="Your email address" class="email"/>
+          <input type="submit" name="subscribe" value="SUBSCRIBE" class="submit"/>
+          </label>
+        </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+{% endif %}

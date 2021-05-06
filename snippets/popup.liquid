@@ -1,0 +1,178 @@
+<!--  Begin holiday shipping banner    -->
+<style>
+  /*    new    */
+  #HolidayShippingBanner {
+    z-index: 2147483647;
+    width: 700px;
+    height: 400px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fcab8f;
+    text-align: left;
+    color: white;
+    margin: auto;
+    opacity: 0;
+    -webkit-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    transform: translateY(40px);
+    -webkit-transition: all 300ms ease-in-out 0s;
+    -o-transition: all 300ms ease-in-out 0s;
+    transition: all 300ms ease-in-out 0s;
+    pointer-events: none;
+  }
+  #HolidayShippingBanner.opened {
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    opacity: 1;
+    pointer-events: all;
+  }
+  #HolidayShippingBanner .close-popup {
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAMAAABrrFhUAAACLlBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8hUBqnAAAAuXRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMlJicoKSosLS4vMDEyNDU2ODk6Ozw9Pj9AQUJDREVGR0lKS0xNTk9QUVJUVVZXWFlbXF1eX2FiY2RmZ2lrbG1vcHFzdHV3eHl7fH5/gIKDhYaIiYuMjo+RkpSVl5ibnZ6goqOlpqiqq62vsLK0tbe5ury+wMHDxcfIyszOz9HT1dfZ2tze4OLk5ujp6+3v8fP19/n7/dQS2MYAAAouSURBVHja7Z3/X1RVGsefOzN8GUaJUBLN0jI3S9nc1M1WN9u+b25alm1S6qpJ5roQGSnqpun6pTTXNEVBUBKQURCYAYbnv9sfWogvM/fr55x7ntft8wc853m/lXnde865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);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    margin-right: 7px;
+    margin-top: 6px;
+  }
+  #HolidayShippingBanner .hsb-left {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    padding-top: 50px;
+    text-align: center;
+  }
+  #HolidayShippingBanner h1,
+  #HolidayShippingBanner h2
+  {
+    color: white;
+    font-weight: 900;
+    font-size: 5.1em;
+    text-align: center;
+    margin: 0;
+    line-height: 1em;
+    display:inline-block;
+    vertical-align: top;
+  }
+  #HolidayShippingBanner h1.s40 {
+    letter-spacing: 0.2em;
+  }
+  #HolidayShippingBanner h1.percent {
+    font-weight: 400;
+  }
+  #HolidayShippingBanner h2 {
+    letter-spacing: 0.2em;
+    font-weight: 500;
+  }
+  #HolidayShippingBanner h3,
+  #HolidayShippingBanner h4 {
+    text-align: center;
+    color: white;
+    font-size: 1.1em;
+    letter-spacing: 0.3em;
+    line-height: 1.3em;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+  }
+  #HolidayShippingBanner h3 {
+    letter-spacing: 0.36em;
+    margin-top: 5px;
+  }
+  #HolidayShippingBanner a {
+    font-weight: 900;
+    color: white;
+    letter-spacing: 0.3em;
+    font-size: 0.8em;
+    border: 1px solid white;
+    padding: 0.5em 0;
+    width: 204px;
+    display: inline-block;
+    margin-top: 38px;
+    -webkit-transition: all 200ms ease-in-out 0s;
+    -o-transition: all 200ms ease-in-out 0s;
+    transition: all 200ms ease-in-out 0s;
+  }
+  #HolidayShippingBanner a:hover{
+    background: white;
+    color: black;
+  }
+  #HolidayShippingBanner img {
+    width: 320px;
+    height: 350px;
+    position: absolute;
+    right: 40px;
+    top: 25px;
+  }
+  @media (max-width: 768px) {
+    #HolidayShippingBanner .hsb-right {
+      display: none;
+    }
+    #HolidayShippingBanner {
+      width: 350px;
+      height: 350px;
+      max-width: 90%;
+    }
+    #HolidayShippingBanner .hsb-left {
+      width: 100%;
+      padding-top: 30px;
+    }
+    #HolidayShippingBanner .close-popup {
+      margin-right: 10px;
+      margin-top: 10px;
+      width: 25px;
+      height: 25px;
+    }
+  }
+</style>
+<div id="HolidayShippingBanner">
+  <div id="CloseShippingPopup" class="close-popup">
+  </div>
+  <div class="hsb-left">
+    <h1 class="s40">40</h1><h1 class="percent">%</h1>
+    <h2>OFF</h2>
+    <h3>POSTPARTUM +</h3>
+    <h4>NURSING TANKS</h4>
+    <a id="HSBShopSaleNow" href="https://www.blanqi.com/collections/nursing">SHOP SALE</a>
+  </div>
+  <div class="hsb-right">
+    <img src="https://cdn.shopify.com/s/files/1/0169/0840/files/blanqi-jan2018-popup.jpg">
+  </div>
+  <script>
+    $(document).ready(function()
+                      {
+      setTimeout(function()
+                 {
+        var was_closed = localStorage.getItem("HSB-close");
+        if (was_closed && Date.now() - was_closed < (60000 * 30) * 48) // half hour * 48 = 24 hours
+        {  
+        }
+        else
+        {
+          $("#HolidayShippingBanner").addClass("opened");
+        }
+      }, 3000);	
+
+      $("#CloseShippingPopup").on("click",function(e)
+                                  {
+        document.getElementById('HolidayShippingBanner').className='closed';
+        localStorage.setItem("HSB-close", Date.now() );
+      });
+
+      $("#HSBShopSaleNow").on("click",function(e)
+                              {
+        document.getElementById('HolidayShippingBanner').className='closed';
+        localStorage.setItem("HSB-close", Date.now() );
+      });
+    });
+  </script>
+</div>
+<!--   End holiday shipping banner   -->

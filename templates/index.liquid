@@ -1,0 +1,207 @@
+{{ content_for_index }}
+  <!-- Slideshow -->
+  {% include '_blanqi-slideshow' %}
+{% comment %}
+{% endcomment %}
+{% assign default = '1400x' %}
+{% assign size2 = '768x' %}
+{% assign size4 = '1000x' %}
+{% assign size6 = '1300x' %}
+{% assign size8 = '1700x' %}
+{% assign size10 = '2000x' %}
+
+{% comment 'black friday ticker from 2020 '%}
+<div class="ticker">
+  <img src="https://cdn.shopify.com/s/files/1/0169/0840/files/navy_blanqi_tickers_dt.gif?v=1606117425" alt="ticker" class="tickerfordesktop">
+  <img src="https://cdn.shopify.com/s/files/1/0169/0840/files/navy_blanqi_tickers_mobile.gif?v=1606117419" alt="ticker" class="tickerformobile">
+</div>
+{% endcomment %}
+
+<div class="container-fluid text-center content-home homepage-collection">
+  <div class="row narrow">
+    <div class="col-12 col-md-12 mb-4 px-3">
+      <p class="sans text-md-center mb-1 mb-md-0 follow-left-img w400">
+        <span class="">
+          INNOVATIVE SUPPORTWEAR ENGINEERED
+          TO SUPPORT YOU BEFORE PREGNANCY, 
+          DURING & FOREVER AFTER
+        </span>
+      </p>
+    </div>
+  </div>
+  <div class="row homepage-collection-items">
+    <div class="col-12 col-md-4 px-0 homepage-collection-item">
+        <div class="home-collection-image" data-background-url="{{ 'BLANQI_HOMEPAGE_2020_MATERNITY-LEFT.jpg' | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }});"></div>
+        <div class="home-collection-text">
+          <div class="home-collection-textinn">
+            <h4 class="h4-small">MATERNITY</h4>
+            <p class="">Pain relieving support, making pregnancy easier.</p>
+            <a href="/collections/maternity/" class="a-btn-black mb-4 mb-md-2rem">SHOP NOW</a>  \
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 px-0 homepage-collection-item">
+        <div class="home-collection-image" data-background-url="{{ 'BLANQI_HOMEPAGE_2020_PP_NURSING-MIDDLE.jpg' | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}');"></div>
+        <div class="home-collection-text">
+          <div class="home-collection-textinn">
+            {% comment %} <h4 class="h4-small">POSTPARTUM &plus; NURSING</h4> {% endcomment %}
+            <h4 class="h4-small">Postpartum + Nursing</h4>
+            <p class="">Designed for bodies motherhood made.</p>
+            <a href="/collections/postpartum-nursing/" class="a-btn-black mb-4 mb-md-2rem">SHOP NOW</a>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-4 px-0 homepage-collection-item">
+        <div class="home-collection-image" data-background-url="{{ 'BLANQI_HOMEPAGE_2020_MOTHERHOOD-RIGHT.jpg' | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}');"></div>
+        <div class="home-collection-text">
+          <div class="home-collection-textinn">
+            <h4 class="h4-small">MOTHERHOOD</h4>
+            <p class="">Motherhood’s a marathon, dress accordingly.</p>
+            <a href="/collections/motherhood/" class="a-btn-black mb-4 mb-md-2rem">SHOP NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container text-center content-home ">
+
+  <div class="mb-2 shop-category">
+    <h3 class="h3-grey section-heading-custom mb-3 mb-md-25rem">SHOP BY CATEGORY</h3>
+    <div  class="main-carousel" id="Categories">
+      <a href="/collections/dresses/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_DRESSES.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi leggings">
+        <p>DRESSES</p>
+      </a>
+      <a href="/collections/support-tops/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_TOPS.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi tanktop"> 
+        <p>TOPS</p>
+      </a>
+
+      <a href="/collections/leggings/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_LEGGINGS.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi leggings">
+        <p>Leggings</p>
+      </a>
+
+      <a href="/collections/support-bands/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_BANDS.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi support band">
+        <p>BANDS</p>
+      </a>
+
+      <a href="/collections/denim/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_DENIM.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi leggings">
+        <p>DENIM</p>
+      </a>
+         <a href="/collections/shorts/" class="a-cat-block carousel-cell">
+        <img data-lazy-src="{{ "BLANQI_HOMEPAGE_2020_CATEGORY_GIRLSHORTS.jpg" | file_img_url: default}}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="woman in blanqi tanktop">
+        <p>GIRLSHORTS</p> 
+      </a>
+    </div>
+  </div>
+
+
+</div>
+<div class="home-how">
+  <div class="col-12 text-center">
+    <h3 class="h3-grey section-heading-custom mb-3 mb-md-25rem">HOW IT WORKS</h3> 
+  </div>
+  {% comment %} <div class="diagram-img">
+    <img class="img-fill-width d-none d-md-block" data-lazy-src="{{ "home-how-it-works-desktop.jpg" | file_img_url: default, format: 'pjpg' }}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="digram of woman wearing maternity support top">
+    <img class="img-fill-width d-block d-md-none" data-lazy-src="{{ "home-how-it-works-mobileimg.jpg" | file_img_url: default, format: 'pjpg' }}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="digram of woman wearing maternity support top">
+    <p class="mark-img a-0" style="top: 29%;">X-shaped<br class="d-block d-md-none"> back<br class="d-block d-md-none"> support</p>
+    <p class="mark-img a-1" style="top: 14%;">Breathable moisture<br class="d-block d-md-none"> wicking finish</p>
+    <p class="mark-img a-2 d-none d-md-block" style="top: 68%;">Seamless belly <br class="d-block d-md-none"> support band</p>
+    <p class="mark-img a-3" style="top: 58%;">Flexible belly panel <br class="d-block d-md-none">expands as you grow</p>
+    <p class="mark-img a-4" style="top: 77%;">Graduated compression</p>
+    <p class="mark-img a-4 d-block d-md-none" style="top: 87% !important;">Seamless belly support band</p>
+    <p class="mark-img " style="top: 87%;">Built-in <br class="d-block d-md-none">support band</p>
+  </div> {% endcomment %}
+  <div class="diagram-img">
+    <img class="img-fill-width d-none d-md-block" data-lazy-src="{{ "BLANQI_WEBSITE_2020_Homepage_How-it-works.jpg" | file_img_url: '2400x' }}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="digram of woman wearing maternity support top">
+    <img class="img-fill-width d-block d-md-none" data-lazy-src="{{ "htw-mobile.png" | file_img_url: '2000x' }}" src="{{ 'loader2x.gif' | asset_img_url }}" alt="digram of woman wearing maternity support top">
+  </div>
+</div>
+
+<div class="container text-center content-home home-shop-collection">
+  <div class="row mb-3 mb-md-5 shop-collection-head">
+    <div class="col-12 seamless-genius">
+      <h4 class="">SEAMLESS GENIUS</h4>
+      <p id="seamless-genius-copy" class="mb-1 copy">
+        Our original supportwear innovation. Find out how our<br/>
+revolutionary, maternity built-in support system works.
+      </p>
+      <a href="/pages/maternity-underbust-tanktop-learn-more
+" class="a-underline">LEARN MORE</a>
+    </div>
+  </div>
+
+  <div class="row mb-3 mb-md-2rem shop-collection-content">
+  <div class="col-12">
+  <h3 class="section-heading-custom h3-grey mb-3 mb-md-25rem">SHOP BY COLLECTION</h3>
+  </div>
+    <div class="col-12 col-md-6 mb-2 px-0 px-md-075rem">
+      <div class="shop-collection-section">
+      <a href="/collections/everyday">
+      <div class="home-collection-image" data-background-url="{{ "BLANQI_HOMEPAGE_2020_COLLECTION_EVERYDAY.jpg" | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}')"></div>
+        <div class="home-collection-text">
+          <a href="/collections/everyday" title="EVERYDAY" class="a-underline">EVERYDAY</a>
+        </div>
+        </a>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 mb-2 px-0 px-md-075rem">
+      <div class="shop-collection-section">
+          <a href="/collections/sportsupport">
+      <div class="home-collection-image" data-background-url="{{ "BLANQI_HOMEPAGE_2020_COLLECTION_SPORTSUPPORT.jpg" | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}')"></div>
+        <div class="home-collection-text">
+          <a href="/collections/sportsupport" title="SPORTSUPPORT" class="a-underline">SPORTSUPPORT</a>
+        </div>
+        </a>
+      </div>
+    </div>
+        <div class="col-12 col-md-6 mb-2 px-0 px-md-075rem">
+      <div class="shop-collection-section">
+          <a href="/collections/blanqi-body">
+      <div class="home-collection-image" data-background-url="{{ "BLANQI_HOMEPAGE_2020_COLLECTION_BODY.jpg" | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}')"></div>
+        <div class="home-collection-text">
+          <a href="/collections/blanqi-body" title="BODY" class="a-underline">BODY</a>
+        </div>
+        </a>
+      </div>
+    </div>
+        <div class="col-12 col-md-6 mb-2 px-0 px-md-075rem">
+      <div class="shop-collection-section">
+          <a href="/collections/denim">
+      <div class="home-collection-image" data-background-url="{{ "BLANQI_HOMEPAGE_2020_COLLECTION_DENIM.jpg" | file_img_url: default }}" style="background-image:url('{{ 'loader2x.gif' | asset_img_url }}')"></div>
+        <div class="home-collection-text">
+          <a href="/collections/denim" title="DENIM" class="a-underline">DENIM</a>
+        </div>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+
+  <!-- div id="BlanqiMusings" class="row mb-1 mb-md-25rem blanqi-musings">
+    <div class="col-12">
+      <h3 class="h3-grey mb-3 mb-md-2rem">BLANQI MUSINGS</h3>
+    </div>
+  </div -->  
+</div>
+
+<div class="instagram-feed text-center shop-social">
+  <h3 class="h3-grey  mb-3 mb-md-2rem">SHOP SOCIAL</h3>
+
+  <div>
+    <div id="pixlee_container"></div><script type="text/javascript" defer>window.PixleeAsyncInit = function(){Pixlee.init({apiKey:'2UUXiETG2BAujkeVebVO'});Pixlee.addSimpleWidget({widgetId:1481971});};</script><script src="//assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js" async></script>
+    {% comment %}
+     {% include "storybox-widget-homepage-reel" %}
+    {% endcomment %}
+  </div>
+  
+  <p class="serif mb-1" style="font-family:Proxima Nova; font-weight:500; color:#404345;">Join our community @blanqigirls</p>
+  <a href="https://www.instagram.com/blanqigirls/" target="_blank" class="a-btn-black mb-3 mb-md-25rem">SHOP SOCIAL</a>
+</div>
+
+<h4 class="immersive-reqs-blanqi-title center">Recommended For You</h4>
+{% comment %}Installed automatically by Cross Sell Magic{% endcomment %}
+{% include 'embedded-product-recommendations' %}

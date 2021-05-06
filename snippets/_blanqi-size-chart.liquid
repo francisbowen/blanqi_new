@@ -1,0 +1,807 @@
+{{ 'size-chart.scss.css' | asset_url | stylesheet_tag }}
+
+<!-- _blanqi-size-chart.liquid -->
+
+<div class="{{ wrapperclass }}" {% if wrapperclass == 'remodal rmsc' %}data-remodal-id="modal-size-chart"{% endif %}>
+  <div class="modal-size-chart show-in">
+  {% if product.tags contains 'denim-size-chart' %}
+
+  <style>
+    .denim-chart-header,
+    .denim-chart-paragraph,
+    .denim-chart-list{
+      text-align:left;
+    }
+    h4.denim-chart-header {
+      font-size:14px;
+      margin:16px 0 4px 0;
+      padding:0;
+    }
+    h5.denim-chart-header {
+      font-size:12px;
+      margin:16px 0 8px 0;
+      padding:0;
+    }
+    p.denim-chart-paragraph {
+      margin-bottom:25px;
+    }
+    table.denim-size-chart td.dsc-dark {
+      background:#bfc0bf; 
+    }
+    table.denim-size-chart {
+      border-left:1px solid #1f1d1d;
+      border-top:1px solid #1f1d1d;
+      border-bottom:none;
+      border-right:none;
+    }
+    table.denim-size-chart tr {
+      border:none;
+    }
+    table.denim-size-chart td {
+      border-bottom:1px solid #1f1d1d;
+      border-right:1px solid #1f1d1d;
+      border-top:none;
+      border-left:none;
+    }
+  </style>
+    
+  <button data-remodal-action="close"  {% if wrapperclass != 'remodal rmsc' %}style="display: none;"{% endif %}class="close"></button>
+  <div class="tab-window tab-tanks active">
+    <div class="mobile-only swipe-notice">Swipe right for full table</div>
+      <div class="table-container">
+        <h4 class="denim-chart-header">DENIM, DECODED.</h4>
+        <p class="denim-chart-paragraph">As a general rule, we recommend ordering your pre-pregnancy jean size. Not sure? Measure your hips at their widest point and use the below chart to find your size.</p>
+        
+        <h5 class="denim-chart-header">PRE-PREGNANCY SIZE</h5>
+        <table class="denim-size-chart">
+          <tr>
+            <td class="dsc-header"><strong>BLANQI Size:</strong></td>
+            <td class="dsc-dark">0</td>
+            <td class="dsc-dark">2</td>
+            <td class="dsc-dark">4</td>
+            <td class="dsc-dark">6</td>
+            <td class="dsc-dark">8</td>
+            <td class="dsc-dark">10</td>
+            <td class="dsc-dark">12</td>
+            <td class="dsc-dark">14</td>
+          </tr>
+          <tr>
+            <td class="dsc-header">Denim Size:</td>
+            <td>25</td>
+            <td>26</td>
+            <td>27</td>
+            <td>28</td>
+            <td>29</td>
+            <td>30</td>
+            <td>31</td>
+            <td>32</td>
+          </tr>
+          <tr>
+            <td class="dsc-header">Hip:</td>
+            <td>33-36</td>
+            <td>37-38</td>
+            <td>38-39</td>
+            <td>39-40</td>
+            <td>40-41</td>
+            <td>41-42</td>
+            <td>42-43</td>
+            <td>43-44</td>
+          </tr>
+        </table>
+
+        
+        <h4 class="denim-chart-header">HELPFUL MATERNITY DENIM TIPS:</h4>
+        <p class="denim-chart-paragraph">Carrying low? We advise sizing up one size for ultimate comfort. In your first trimester? We suggest sizing up one size to accommodate your belly till D-day. </p>
+
+        <h4 class="denim-chart-header">HELPFUL POSTPARTUM DENIM TIPS:</h4>
+        <p class="denim-chart-paragraph">Did you gain the recommended 25-30 pounds? Go ahead and select your pre-pregnancy size.
+        Did you deliver multiples or gain more than 35 pounds? We suggest sizing up one size.</p>
+
+        <h4 class="denim-chart-header">KEY BELLY PANEL FEATURES:</h4>
+        <p class="denim-chart-paragraph"><strong>Stability and support:</strong> Our seamless band effortlessly lifts and supports growing belly bumps, while keeping your maternity denim in place (read: no pesking pulling or readjusting everytime you sit or stand). Our seamless band gently compresses recovering postpartum tummies and stabilizes the lower back - a must for any recovering mama!</p>
+        <p class="denim-chart-paragraph"><strong>Sweat Wicking Breathability:</strong>  Our seamless belly bands are knit with technical yarns that keep sweatiness at bay. Stay cool and dry in your maternity or postpartum jeans. Win!</p>
+
+        <h4 class="denim-chart-header">HOW TO PUT ON:</h4>
+        <ul class="denim-chart-list">
+          <li>Unfasten button.</li>
+          <li>Scrunch the seamless support band down into the denim waistband.</li>
+          <li>Slide over your hips by holding the denim waistband, don’t pull up by the hidden support band, it may tear.</li>
+          <li>For Maternity Denim, pull support band fully over your bump until it rests just below bra line.</li>
+          <li>For Postpartum Denim, pull support band up over your abdomen until it rests at mid-waist.</li>
+          <li>Fasten button and give yourself a mental high five. Ridiculously comfy jeans with secret support band never looked this good.</li>
+        </ul>
+        {% comment %}<a href="#" class="denim-chart-video">WATCH OUR HOW-TO VIDEO NOW</a>{%endcomment %}
+        
+        <h4 class="denim-chart-header">KEY FIT FEATURES:</h4>
+        <ul class="denim-chart-list">
+          <li>Inseam measures 28” for all sizes</li>
+          <li>Functional front flat stretch miracle pocketing for a smooth fit</li>
+          <li>Functional back pockets</li>
+          <li>Pull-on design with funtional shank button</li>
+          <li>Fits true to size with ample stretch and softness</li>
+        </ul>
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <h5 class="denim-chart-header">Kahara is wearing a size 6 (40.5” hip) </h5>
+            <img src="{{ 'kahara.png' | asset_img_url: '480x' }}" alt="Kahara" />
+          </div>
+          <div class="col-12 col-md-6">
+            <h5 class="denim-chart-header">Tova is wearing a size 2 (34” hip)</h5>
+            <img src="{{ 'tova.png' | asset_img_url: '480x' }}" alt="Tova" />
+          </div>
+        </div>
+
+              
+
+  </div>
+  </div>
+
+  {% elsif product.tags contains 'bra-size-chart' %}
+
+  <button data-remodal-action="close"  {% if wrapperclass != 'remodal rmsc' %}style="display: none;"{% endif %}class="close"></button>
+
+  <div class="table-container">
+
+  <div style="height:50px;"></div>
+  <div class="size-table blanqi-body">
+    <div class="aui" style="width:100%;"><div class="name" style="margin-bottom: 15px; text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 5px; line-height: 30px;">BRA SIZE GUIDE</div>
+  </div>
+
+
+  <div class="size-table blanqi-body blanqi-body-secondary">
+    <div class="aui" style="width:20%">
+      <ul>
+        <li class="xx-large"></li>
+        <li class="xtra-small">XS</li>
+        <li class="size-small">S</li>
+        <li class="size-medium">M</li>
+        <li class="size-large">L</li>
+        <li class="xtra-large">XL</li>
+        <li class="xx-large">XXL</li>
+      </ul>
+    </div>
+    <div class="aui" style="width:20%">
+      <ul>
+        <li class="xx-large">A/B CUP</li>
+        <li class="xtra-small">30AB - 32A</li>
+        <li class="size-small">32B - 34A</li>
+        <li class="size-medium">34B - 36A</li>
+        <li class="size-large">36B - 38A</li>
+        <li class="xtra-large">38B - 40A</li>
+        <li class="xx-large"></li>
+      </ul>
+    </div>
+    <div class="aui" style="width:20%">
+      <ul>
+        <li class="xx-large">B/C CUP</li>
+        <li class="xtra-small">30C - 32B</li>
+        <li class="size-small">32C - 34B</li>
+        <li class="size-medium">34C - 36B</li>
+        <li class="size-large">36C - 38B</li>
+        <li class="xtra-large">38C - 40B</li>
+        <li class="xx-large"></li>
+      </ul>
+    </div>
+    <div class="aui" style="width:20%">
+      <ul>
+        <li class="xx-large">C/D CUP</li>
+        <li class="xx-large"></li>
+        <li class="size-small">32D - 34C</li>
+        <li class="size-medium">34D - 36C</li>
+        <li class="size-large">36D - 38C</li>
+        <li class="xtra-large">38D - 40C</li>
+        <li class="xx-large">40D - 42C</li>
+      </ul>
+    </div>
+    <div class="aui" style="width:20%">
+      <ul>
+        <li class="xx-large">D/DD CUP</li>
+        <li class="xx-large"></li>
+        <li class="xx-large"></li>
+        <li class="size-medium">34DD - 36D</li>
+        <li class="size-large">36DD - 38D</li>
+        <li class="xtra-large">38DD - 40D</li>
+        <li class="xx-large">40DD - 42DD</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div style="clear:both;"></div>
+
+  <div style="height:20px;"></div>
+  <p class="bra-content text-center">FIT HELP:</p>
+  <p class="bra-content">BLANQI ADJUSTABLE RACERBACK NURSING BRA - Tighten the front straps for additional bust support</p>
+  <p class="bra-content">BLANQI BODY COOLING MATERNITY + NURSING BRA - Features a 4-panel hook & eye for maximum adjustability</p>
+  <p class="bra-content">BLANQI RIBBED SEAMLESS BRALETTE - Runs small, if in between sizes, size up to the next size!</p>
+  
+  </div>
+
+ </div>
+ 
+ <style>
+   .bra-content{
+     color: #000;
+     font-size: 12px;
+     max-width: 600px;
+     margin: auto;
+     text-align: left;
+   }
+   .size-table.blanqi-body.blanqi-body-secondary{
+     padding: 0;
+   }
+ </style>
+
+  {% else %}
+
+  <button data-remodal-action="close"  {% if wrapperclass != 'remodal rmsc' %}style="display: none;"{% endif %}class="close"></button>
+  <h1>Find your fit</h1>
+  <h2></h2>
+  <h3></h3>
+  <p class="p2">
+    Chances are you don’t have a tape measure at home. Which is why we made it quick and easy to find your best BLANQI fit.<br /> 
+
+    Here’s the scoop: whether you’re pregnant, postpartum, nursing or not, our size chart is based off of your current height and weight.
+
+    Locate your current height and weight with the nifty size chart below. <br />
+
+    Happy shopping!
+  </p>
+
+  <div class="tab-window tab-tanks active">
+      <div class="mobile-only swipe-notice">Swipe right for full table</div>
+      <div class="table-container">
+        <div class="size-table blanqi-body">
+          <div class="aui" style="width:100%;"><div class="name" style="text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 5px;">WEIGHT IN LBS</div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="size-table blanqi-body">
+          <div class="aui column-head" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">&nbsp;</li>
+              <li>&lt; 5&apos;</li>
+              <li>5&apos;0&quot;</li>
+              <li>5&apos;1&quot;</li>
+              <li>5&apos;2&quot;</li>
+              <li>5&apos;3&quot;</li>
+              <li>5&apos;4&quot;</li>
+              <li>5&apos;5&quot;</li>
+              <li>5&apos;6&quot;</li>
+              <li>5&apos;7&quot;</li>
+              <li>5&apos;8&quot;</li>
+              <li>5&apos;9&quot;</li>
+              <li>5&apos;10&quot;</li>
+              <li>5&apos;11&quot;</li>
+              <li>6&apos;0&quot;</li>
+              <li>&gt; 6&apos;</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">&lt;100</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">100</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="xtra-small">XS</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">120</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li>&nbsp;</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">130</li>
+              <li class="size-medium">M</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-small">S</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">140</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">150</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">160</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+              <li class="size-medium">M</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">170</li>
+              <li>XL</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">180</li>
+              <li class="xx-large">XXL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">190</li>
+              <li>&nbsp;</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+              <li class="size-large">L</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">200</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+              <li class="xtra-large">XL</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:7.6923%;">
+            <ul>
+              <li class="table-head">200+</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+              <li class="xx-large">XXL</li>
+            </ul>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="size-table">
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="size-table">
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+          <div class="aui">&nbsp;</div>
+        </div>
+        <div style="clear:both;"></div>
+        <div class="size-table blanqi-body blanqi-body-secondary">
+          <div class="aui" style="width:20%"> 
+            <ul>
+              <li><strong>Alpha Size</strong></li>
+              <li><strong>Numeric Size</strong></li>
+              <li><strong>Blended Sizes</strong></li>
+              {% if product.handle contains 'baselayer' %}
+              <li><strong>Bust</strong></li>
+              {% endif %} 
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="xtra-large">S</li>
+              <li class="xtra-large">2</li>
+              <li class="xtra-large">S/M</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="xtra-large">32-34"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="xtra-large">S</li>
+              <li class="xtra-large">4</li>
+              <li class="xtra-large">S/M</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="xtra-large">32-34"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="xtra-large">M</li>
+              <li class="xtra-large">6</li>
+              <li class="xtra-large">S/M</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="xtra-large">34-36"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="xtra-large">M</li>
+              <li class="xtra-large">8</li>
+              <li class="xtra-large">S/M</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="xtra-large">34-36"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="size-large">L</li>
+              <li class="size-large">10</li>
+              <li class="size-large">L/XL</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="size-large">36-38"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="size-large">L</li>
+              <li class="size-large">12</li>
+              <li class="size-large">L/XL</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="size-large">36-38"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="size-large">XL</li>
+              <li class="size-large">14</li>
+              <li class="size-large">L/XL</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="size-large">38-40"</li>
+              {% endif %}
+            </ul>
+          </div>
+          <div class="aui" style="width:10%">
+            <ul>
+              <li class="size-large">XL</li>
+              <li class="size-large">16</li>
+              <li class="size-large">L/XL</li>
+              {% if product.handle contains 'baselayer' %}
+              <li class="size-large">38-40"</li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+        {% if product.handle contains 'baselayer' %}
+          <p style="margin:12px 0 0 66px;">Fitted through the chest and torso. For larger busts, we recommend sizing up one size. Due to the nature of the compression for the Baselayer, this top may not provide sufficient stretch in the chest for cup sizes above D.</p>
+    {% endif %}
+          
+        <div style="height:50px;"></div>
+          
+        <div class="size-table blanqi-body">
+          <div class="aui" style="width:100%;"><div class="name" style="text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 5px; line-height: 30px;">EVERYDAY DRESSES</div>
+            <p ><small>(CAP SLEEVE DRESS + RACERBACK TANK DRESS)</small></p>
+        </div>
+          
+        <div class="size-table blanqi-body blanqi-body-secondary">
+          <div class="aui" style="width:20%">
+            <ul>
+              <li><strong>Alpha Size</strong></li>
+              <li><strong>Numeric Size</strong></li>
+              <li><strong>Blended Sizes</strong></li>
+              <li style="line-height:1.25em;padding-top:1em;padding-bottom:1em;"><strong>Length<br />(HPS to Hem)</strong></li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="xtra-large">S</li>
+              <li class="xtra-large">2</li>
+              <li class="xtra-large">S/M</li>
+              <li class="xtra-large">31"</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="xtra-large">S</li>
+              <li class="xtra-large">4</li>
+              <li class="xtra-large">S/M</li>
+              <li class="xtra-large">31"</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="xtra-large">M</li>
+              <li class="xtra-large">6</li>
+              <li class="xtra-large">S/M</li>
+              <li class="xtra-large">31"</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="xtra-large">M</li>
+              <li class="xtra-large">8</li>
+              <li class="xtra-large">M/L</li>
+              <li class="xtra-large">33"</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="size-large">L</li>
+              <li class="size-large">10</li>
+              <li class="size-large">M/L</li>
+              <li class="size-large">33"</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:13.3333%">
+            <ul>
+              <li class="size-large">L</li>
+              <li class="size-large">12</li>
+              <li class="size-large">M/L</li>
+              <li class="size-large">33"</li>
+            </ul>
+          </div>
+        </div>
+        <div style="clear:both;"></div>
+      </div>
+      
+          
+          
+          
+          
+          
+          
+          <div style="height:50px;"></div>
+          
+        <div class="size-table blanqi-body">
+          <div class="aui" style="width:100%;"><div class="name" style="text-align: center; font-size: 14px; font-weight: 600; letter-spacing: 5px; line-height: 30px;">BRA SIZE GUIDE
+</div>
+        </div>
+          
+        <div class="size-table blanqi-body blanqi-body-secondary">
+          <div class="aui" style="width:20%">
+            <ul>
+              <li class="xx-large"></li>
+              <li class="xtra-small">XS</li>
+              <li class="size-small">S</li>
+              <li class="size-medium">M</li>
+              <li class="size-large">L</li>
+              <li class="xtra-large">XL</li>
+              <li class="xx-large">XXL</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:20%">
+            <ul>
+              <li class="xx-large">A/B CUP</li>
+              <li class="xtra-small">30AB - 32A</li>
+              <li class="size-small">32B - 34A</li>
+              <li class="size-medium">34B - 36A</li>
+              <li class="size-large">36B - 38A</li>
+              <li class="xtra-large">38B - 40A</li>
+              <li class="xx-large"></li>
+            </ul>
+          </div>
+          <div class="aui" style="width:20%">
+            <ul>
+              <li class="xx-large">B/C CUP</li>
+              <li class="xtra-small">30C - 32B</li>
+              <li class="size-small">32C - 34B</li>
+              <li class="size-medium">34C - 36B</li>
+              <li class="size-large">36C - 38B</li>
+              <li class="xtra-large">38C - 40B</li>
+              <li class="xx-large"></li>
+            </ul>
+          </div>
+          <div class="aui" style="width:20%">
+            <ul>
+              <li class="xx-large">C/D CUP</li>
+              <li class="xx-large"></li>
+              <li class="size-small">32D - 34C</li>
+              <li class="size-medium">34D - 36C</li>
+              <li class="size-large">36D - 38C</li>
+              <li class="xtra-large">38D - 40C</li>
+              <li class="xx-large">40D - 42C</li>
+            </ul>
+          </div>
+          <div class="aui" style="width:20%">
+            <ul>
+              <li class="xx-large">D/DD CUP</li>
+              <li class="xx-large"></li>
+              <li class="xx-large"></li>
+              <li class="size-medium">34DD - 36D</li>
+              <li class="size-large">36DD - 38D</li>
+              <li class="xtra-large">38DD - 40D</li>
+              <li class="xx-large">40DD - 42DD</li>
+            </ul>
+          </div>
+        </div>
+          <div style="height: 20px; width: 100%; display: inline-block;"></div>
+        <p class="p2">
+          FIT HELP:<br><br>
+    BLANQI ADJUSTABLE RACERBACK NURSING BRA - Tighten the front straps for additional bust support 
+BLANQI BODY COOLING MATERNITY + NURSING BRA - Features a 4-panel hook & eye for maximum adjustability 
+BLANQI RIBBED SEAMLESS BRALETTE - Runs small, if in between sizes, size up to the next size! 
+        <div style="clear:both;"></div>
+      </div>
+          
+          
+    </div>
+
+  </div>
+  </div>
+
+  {% endif %}
+
+  </div>
+</div>
+
+<script>
+  $(".modal-size-chart").on("click", ".tab", function(e){
+    $(".tab").removeClass("active");
+    $(this).addClass("active");
+    var selector = $(this).data("target");
+    $(".tab-window").removeClass("active");
+    $("."+selector).addClass("active");
+  });
+
+  $(".modal-size-chart").on("click", ".switch", function(e){
+    var selector = $(this).data("type");
+    $(".switch").removeClass("active");
+    $(".switch-"+selector).addClass("active");
+    $(".modal-size-chart").removeClass("show-cm");
+    $(".modal-size-chart").removeClass("show-in");
+    $(".modal-size-chart").addClass("show-"+selector);
+  });
+</script>

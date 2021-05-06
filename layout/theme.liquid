@@ -1,0 +1,625 @@
+{% capture content %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="{{ shop.locale }}"> <![endif]-->
+<!--[if (gte IE 10)|!(IE)]><!--><html lang="{{ shop.locale }}"> <!--<![endif]-->
+<head>
+ <!-- MLveda code starts -->
+ {% assign mlveda_code_flag = false %}
+  
+  {% if mlveda_code_flag == true %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      	$m = $.noConflict(true);
+	 window.pattern = /^(do|sv|ee|fi|fr|gd|gp|gg|hu|is|im|il|kz|ke|kg|la|mo|mk|mh|mq|ms|ma|nl|ne|ng|no|pw|py|pl|pt|kn|st|sc|sg|sk|za|sr|sj|th|to|tm|tc|uz|vu|vn|zm|af|al|as|ao|ai|an|ag|ar|as|bb|by|aq|bm|bq|bv|au|vg|bs|cv|bh|cf|bd|cn|be|co|ba|ci|bw|dk|bn|dm|bi|cd|cm|ec|ca|eg|td|gq|cx|er|cc|et|cr|eu|ga|gh|cy|gi|dj|gu|eu|gt|fk|gn|fo|gw|gf|hm|pf|hn|gm|iq|ge|ie|de|jm|gr|jp|in|ki|id|lr|je|mw|lv|my|ly|mu|li|yt|mv|mx|mc|mn|mz|nr|np|ni|nu|nf|pk|na|ph|oc|pn|om|qa|pg|re|pr|sh|ro|ru|rw|sm|bl|rs|pm|sx|vc|gs|sa|sd|sl|se|si|tj|tz|sb|tt|sa|tn|es|gb|lk|va|ch|zw|sy|tw|tl|tg|tr|um|vi|ug|us|uy|ve|af|ax|dz|ad|am|aw|at|az|bz|bj|bt|bo|br|io|bg|bf|kh|ky|cl|km|cg|ck|hr|cu|cw|cz|fj|tf|gl|gy|ht|hk|ir|it|jo|kw|lb|ls|lt|lu|mg|ml|mt|mr|fm|md|me|mm|na|nc|nz|kp|mp|ps|pa|pe|lc|mf|ws|sn|so|kr|ss|sz|tk|tv|ua|ae|wf|eh|ye|intl)$/;
+      </script>
+
+  {% endif %}
+<!-- MLveda code ends -->
+
+<script>
+  (function(root) {
+      var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
+      ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BT6OAABNNFC0MNU60T40';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(ta, s);
+  })(window);
+</script>
+  
+
+<!-- Start of the Sales tracker code (place after LiveChat tracking code) -->
+<script type="text/javascript">
+  var order_id = order_id || 0; //added 11.23.20 to remove order_id is undefined js error
+  var LC_API = LC_API || {on_after_load: function(){}};
+  (function(cb){
+    LC_API.on_after_load = function(){
+      cb();
+      try {
+        var custom_variables = [
+          {name: '__order_id', value: order_id},
+          {name: '__order_price', value: order_sum}
+        ];
+        LC_API.trigger_sales_tracker('elgBEhnlJjaSlRHpQbcnRlC1yVPGaiLP', custom_variables);
+      } catch (error) {
+        if (window.console){ console.log('LiveChat sales tracker error:', error); }
+      }
+    };
+  })(LC_API.on_after_load);
+</script>
+<!-- End of the Sales tracker code -->
+
+  <meta name="google-site-verification" content="62x1s3T8o4nSkDYMA-q5tUxP2PnBZJnCKrpk4EAnIGk" />
+  <meta charset="utf-8">
+  <meta http-equiv="cleartype" content="on">
+  <meta name="robots" content="index,follow">
+<style>.async-hide { opacity: 0 !important} </style>
+<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',7000,
+{'GTM-MFFWS6R':true});</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MFFWS6R');</script>
+<!-- End Google Tag Manager -->
+  
+  
+  <meta name="google-site-verification" content="BdIAVh-JXuE8dy25BnD6ojGtgRWrFhkt5mbhqFaDjnM" />
+
+  
+  
+  <!-- Custom Fonts -->
+  {% if settings.logo_font contains 'Google' or settings.headline_font contains 'Google' or settings.nav_font contains 'Google' or settings.slideshow_subtitle_font contains 'Google' or settings.regular_font contains 'Google' %}
+  <link href="//fonts.googleapis.com/css?family=.|{% if settings.logo_font contains 'Google' %}{{ settings.logo_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.headline_font contains 'Google' %}{{ settings.headline_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.nav_font contains 'Google' %}{{ settings.nav_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.slideshow_subtitle_font contains 'Google' %}{{ settings.slideshow_subtitle_font | replace: 'Google_', '' }}:light,normal,bold|{% endif %}{% if settings.regular_font contains 'Google' %}{{ settings.regular_font | replace: 'Google_', ''  }}:light,normal,bold{% endif %}" rel="stylesheet" type="text/css" />
+  {% endif %}
+
+  <!-- Gotham Fonts -->
+  <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6064672/7202372/css/fonts.css" />
+
+  <!-- New stylesheets -->
+  {{ 'bootstrap.min.css' | asset_url | stylesheet_tag }}
+
+  <!-- Stylesheets for Turbo 1.2.2 -->
+  {{ 'styles.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'returnly-template.scss.css' | asset_url | stylesheet_tag }}
+
+  {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+
+  {% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %}{% endif %}
+  <title>{% if template contains "index" %}{{ page_title }}{% else %}{{ page_title }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}{% endif %}{% unless page_title contains shop.name %} - {{ shop.name }}{% endunless %}{% endif %}</title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}{% if current_tags %} {{ 'general.meta.tagged_html' | t: tags: meta_tags | escape }}.{% endif %}{% if current_page != 1 %} {{ 'general.meta.page' | t: page_number: current_page }}.{% endif %}" />
+  {% endif %}
+
+  {% include 'social-meta-info' %}
+  {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
+  {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
+
+  <!-- Mobile Specific Metas -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+  <meta name="theme-color" content="{{ settings.shop_bg_color }}">
+
+  <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
+  <link rel="canonical" href="{{ canonical_url }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
+    {% if template contains 'customer' %}
+  {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+  {{ "customer_area.js" | shopify_asset_url | script_tag }}
+  {% endif %}
+  {{ content_for_header }}
+
+  {% include 'bold-common' %}
+
+
+  <!--   Mailchimp Goals Script   -->
+  <script type="text/javascript">
+    var $mcGoal = {'settings':{'uuid':'ab7f933879a81ed9e437d9336','dc':'us15'}};
+    (function() {
+      var sp = document.createElement('script'); sp.type = 'text/javascript'; sp.async = true; sp.defer = true;
+      sp.src = ('https:' == document.location.protocol ? 'https://s3.amazonaws.com/downloads.mailchimp.com' : 'http://downloads.mailchimp.com') + '/js/goal.min.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(sp, s);
+    })();
+  </script>
+
+  <!--   jQuery   -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script>
+    function trigger_manual_event (element) {
+      // used to trigger onchange of inputs, simulates user click
+      if ("createEvent" in document) {
+        var evt = document.createEvent("HTMLEvents");
+        evt.initEvent("change", false, true);
+        element.dispatchEvent(evt);
+      }
+      else {
+        element.fireEvent("onchange");
+      }
+    }
+  </script>
+ 
+
+  <!-- Start of blanqi Zendesk Widget script -->
+  <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","blanqi.zendesk.com");/*]]>*/</script>
+  <!-- End of blanqi Zendesk Widget script -->
+
+
+
+  {% include "livechat_monitoring_code" %}
+  <script>
+    window.mlvedaShopCurrency = "{{ shop.currency }}";
+    window.shopCurrency = "{{ shop.currency }}";
+    window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
+  </script>
+     <script>
+          window['friendbuy'] = window['friendbuy'] || [];
+          window['friendbuy'].push(['site', 'site-3d4d741b-www.blanqi.com']);
+          window['friendbuy'].push(['track', 'customer',
+              {
+                  id: '{{ customer.id }}',
+                  email: '{{ customer.email }}',
+                  first_name: '{{ customer.first_name }}',
+                  last_name: '{{ customer.last_name }}'
+              }
+          ]);
+          (function (f, r, n, d, b, y) {
+              b = f.createElement(r), y = f.getElementsByTagName(r)[0];b.async = 1;b.src = n;y.parentNode.insertBefore(b, y);
+          })(document, 'script', '//djnf6e5yyirys.cloudfront.net/js/friendbuy.min.js');
+ </script> 
+  <style>
+    [id$=frndby_container] img[id$=frndby_unit_loading] {
+      margin-top: 200px;
+    }
+  </style>
+  {% include 'wamhead'%}
+  {% if template contains 'product' %}
+  <!-- klaviyo product -->
+<script text="text/javascript">
+  var _learnq = _learnq || [];
+
+  var item = {
+    Name: {{ product.title|json }},
+    ProductID: {{ product.id|json }},
+    Categories: {{ product.collections|map:'title'|json }},
+    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+    URL: "{{ shop.secure_url }}{{ product.url }}",
+    Brand: {{ product.vendor|json }},
+    Price: {{ product.price|money|json }},
+    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+  };
+
+  _learnq.push(['track', 'Viewed Product', item]);
+  _learnq.push(['trackViewedItem', {
+    Title: item.Name,
+    ItemId: item.ProductID,
+    Categories: item.Categories,
+    ImageUrl: item.ImageURL,
+    Url: item.URL,
+    Metadata: {
+      Brand: item.Brand,
+      Price: item.Price,
+      CompareAtPrice: item.CompareAtPrice
+    }
+  }]);
+</script>
+<script type="text/javascript">
+  var _learnq = _learnq || [];
+  $(document).ready(function() {
+    $('.add_to_cart').on('click',function() {
+        console.log('klaviyo add to cart');                  
+ 		_learnq.push(['track', 'Added to Cart', item]);
+    });
+  });
+
+</script>
+  {% endif %}
+{% include 'discount-combine' %}
+
+  
+{% include 'booster-common' %}
+{% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
+<!-- MLveda code starts -->
+ {% if mlveda_code_flag == true %}
+    {% include 'mlveda-multipricing-options' %}
+  {% endif %}
+
+<script>
+  $(document).ready(function(){
+	$("body").bind("DOMSubtreeModified", function() {
+ 
+  if ($("label:contains('mlveda_country')").parent().css('display') !== 'none') {
+        $("label:contains('mlveda_country')").parent().css('display', 'none');
+    }
+});
+});
+</script>
+<!-- MLveda code ends -->
+</head>
+
+
+
+{% comment %}
+{% if settings.klaviyo_duedate %}
+{% include 'klaviyo-duedate-backup' %}
+{% endif %}
+{% endcomment %}
+
+
+{% if template contains "index" or template contains "-landing-page" or template contains 'social' %}
+{% assign feature_image = true %}
+{% elsif template contains "collection" and settings.collection_banner_enabled %}
+{% assign feature_image = true %}
+{% elsif template contains "blog" and settings.blog_banner_enabled %}
+{% assign feature_image = true %}
+{% elsif template contains "article" and article.image and settings.article_banner_enabled %}
+{% assign feature_image = true %}
+{% else %}
+{% assign feature_image = false %}
+{% endif %}
+<body id="Body" class="{{ template | replace: '.', '-' | handle }}">
+    {% include 'wambody'%}
+
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFFWS6R"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <!--  Popup (corner)  
+  {% include 'popup-corner' %}
+-->
+  {% include 'header' %}
+
+  {% unless feature_image %}
+  <div class="main-content {% if template == 'collection' or template contains 'blanqi-baby-registry-giveaway' %}
+  {% else %}
+  container
+{% endif %}">
+    {% endunless %}
+
+    {% if template contains 'list-collections' %}
+    <script>window.location="https://www.blanqi.com/collections/all";</script>
+    {% else %}
+    {% if template contains 'social' %}
+      <img src="{{ 'unnamed2.jpg' | asset_url }}" />
+    {% endif %}
+    <!-- MLveda code starts -->
+	{% if mlveda_code_flag == false %}
+          	{{ content_for_layout }}	
+          {% endif %}
+
+          {% if mlveda_code_flag == true %}
+            {{ content_for_layout }}
+          	{% include 'mlveda-multipricing-selectBox' %}
+          	{% include 'mlveda-multipricing-selectors' %}
+          {% endif %}
+<!-- MLveda code ends -->
+
+    {% endif %}
+
+  </div>
+
+  {% unless template contains "-landing-page" %}
+  <div class="mailing-list text-center">
+    <div class="container">
+      <div class="col-12">
+        <h4 class="h4-small text-white mt-md-2 mb-2">Subscribe</h4>
+        <p class="serif text-white mb-3 d-none">
+          Stay up to date with the latest collections, giveaways and more.
+        </p>
+        <div class="klaviyo-footer-form klaviyo-form-NtwkjN"></div>
+        <!-- <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form mb-0" id="contact_form" target="_blank">
+          <div class="js-reason-input">
+            <div class="footer-reason-item">
+              <input id="expecting" type="radio" value="I'm pregnant" name="REASON">
+              <label for="expecting">I'm expecting<span></span></label>
+              
+            </div>
+            <div class="footer-reason-item">
+              <input id="mama" type="radio" value="I'm a mama" name="REASON">
+              <label for="mama">I'm a mama <span></span></label>
+             
+            </div>
+            <div class="footer-reason-item">
+              <input id="browsing" type="radio" value="Shopping for a gift" name="REASON">
+              <label for="browsing">Just browsing <span></span></label>
+             
+            </div>
+          </div>   
+          <div class="input-group justify-content-center">
+           <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
+            <div class="input-group-append">
+              <input type="submit" value="›" class="action_button sign_up" name="subscribe" />
+            </div>
+          </div>      
+          
+          
+        </form> -->
+      </div>
+    </div>
+  </div>
+  {% endunless %}
+
+  {% include 'footer' %}
+
+  {% include 'email-capture' %}
+  
+<script>
+  $(document).ready(function() {
+    console.log('testing');
+    //$('#messageus_button').css('border','3px solid red');
+    var mssgInterval = setInterval(function() {
+      console.log('interval');
+      if($('#messageus_button').length) {
+        clearInterval(mssgInterval);
+        $('#messageus_button .messageus_unhovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/unhovered_0196a437-0153-4d48-ad46-4a199874a68a.png?v=1584543668');
+        $('#messageus_button .messageus_hovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/hovered.png?v=1584543451');
+      }
+    },100);
+  });
+</script>
+
+  <script src="{{ 'bootstrap.min.js' | asset_url }}"></script>
+
+  <script src="{{ 'app.js' | asset_url }}"></script>
+  {% if settings.show_multiple_currencies %}
+  {% include 'currencies' %}
+  {% endif %}
+  {% if settings.show_shipping_calculator and template contains "cart" %}
+  {% include 'cart-shipping-scripts' %}
+  {% endif %}
+
+  {% unless settings.performance == "sport" or template contains "customer" %}
+  <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant></script>
+
+  <script data-no-instant>
+
+    function inIframe() {
+      try {
+        return window.self !== window.top;
+      } catch (e) {
+        return true;
+      }
+    }
+
+    if (!inIframe()){
+      InstantClick.on('change', function() {
+        if (typeof ga == 'function') {
+          ga('send', 'pageview', location.pathname + location.search);
+        }
+
+        $('head script[src*="shopify"]').each(function() {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = $(this).attr('src');
+
+          $('body').append( script );
+        });
+
+        var facebookAnalytics = $('head .analytics').text();
+        var script = document.createElement( 'script' );
+        script.type = 'text/javascript';
+        script.text = facebookAnalytics;
+        $('body').append( script );
+
+        $('html').removeClass('remodal-is-locked');
+
+      });
+      InstantClick.init();
+    }
+  </script>
+  {% endunless %}
+
+<script src="{{ 'jquery.simpleTicker.js' | asset_url }}"></script>
+<script>
+    $(function(){
+      $.simpleTicker($("#ticker-fade"),{'effectType':'fade'});
+      //$.simpleTicker($("#ticker-fade1"),{'effectType':'fade'});
+    
+    });
+    </script>
+<style>
+.mam-top-banner ul {
+  margin-bottom:0;
+  list-style:none;
+}
+.mam-top-banner ul li {
+  margin-bottom:0;
+  width:100%;
+}
+</style>
+  {{ 'main.js' | asset_url | script_tag }}
+
+{% include 'criteo-tracking' %}
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+  {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}
+
+  {% include 'mlveda-flag' %}
+
+  <script>
+    setTimeout(function(){
+      var foundcurrency = window.ACSCurrency.currentCurrency;
+      var popup_was_closed = mlvedaReadCookie("popup_was_closed");
+      //         console.log(popup_was_closed, foundcurrency);
+      if (popup_was_closed == null)
+      {
+        $("body").addClass("currency-"+foundcurrency);
+        if (foundcurrency == "GBP" || foundcurrency == "AUD" || foundcurrency == "CAD") {
+          $("body").addClass("currency-int");
+        }
+      }
+      $(".alert-country .close").on("click",function(e) {
+        $("body").removeClass("currency-int");
+        mlvedaCreateCookie("popup_was_closed", 1, 1);
+      });
+
+      function set_flag (v) {
+        var all = document.getElementById("CountryFlag").children;
+        for (var i = 0; i < all.length; i++) {
+          all[i].className = "d-none";
+        }
+        if (document.getElementById("Flag-"+v)) {
+          document.getElementById("Flag-"+v).className = "";
+        }
+      }
+
+      // link currency picker in header to plugin
+      var header_set_currency = function () {
+
+//        var header_select = document.getElementById("HeaderCurrency");
+//        var mlv_select = document.getElementById("currencies");
+
+//        header_select.value = (mlv_select.value);
+//        header_select.parentElement.className += " ready";
+//        set_flag(mlv_select.value);
+
+//        trigger_manual_event(header_select);
+
+//        header_select.addEventListener("change", function(e) {
+//          mlv_select.value = this.value;
+//          trigger_manual_event(mlv_select);
+//          set_flag(this.value);
+//        });
+      };
+
+      header_set_currency();
+    }, 2500);
+  </script>
+{% include 'googletags' %}
+{% include 'klaviyo-popup-mutation-observer' %}
+
+
+{% include 'mw_GP_objects' %}{% include 'booster-discounts' %}
+<!-- MLveda code starts -->
+{% if mlveda_code_flag == true %}
+  	{% if template != 'cart' %}
+		{% include 'mlveda-multipricing-updateprice' %}
+  	{% else %}
+        <script>mlvedaFlagCalled = true;</script>
+  	{% endif %}
+  {% else %}
+		<script>mlvedaFlagCalled = true;</script>
+  {% endif %}
+<!-- MLveda code ends -->
+</body>
+</html>
+{% endcapture %}
+{% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: "<" %}
+<!-- top? -->
+{% for html in content %}{% assign htmlblock = html | strip | prepend: ' <' %}{{htmlblock | replace: ' </', '</' | replace:"‘","'" | replace:"’","'"   }}{% endfor %}
+<!-- bottom? -->
+<!-- Begin Shopify-Afterpay JavaScript Snippet (v1.0.1) -->
+<script type="text/javascript">
+// Editable fields:
+var afterpay_min = 0.04;            // As per your Afterpay contract.
+var afterpay_max = 1000.00;         // As per your Afterpay contract.
+var afterpay_logo_theme = 'black'; // Can be 'colour', 'black' or 'white'.
+
+// Overrides:
+var afterpay_product_selector = '#WasPrice';
+// var afterpay_cart_integration_enabled = true;
+var afterpay_cart_static_selector = '#cart_form_afterpay_wrap';
+// var afterpay_variable_price_fallback_selector = '#ProductPrice';
+// var afterpay_variable_price_fallback = true; // Requires afterpay_product_selector
+var afterpay_show_currency_code = false;
+var afterpay_modal_responsive = true;
+
+// Merchant-specific CSS
+//var afterpay_product_css = {}
+//var afterpay_cart_static_css = {}
+//var afterpay_cart_dynamic_css = {}
+
+// Non-editable fields:
+var afterpay_shop_currency = {{ shop.currency | json }};
+var afterpay_shop_money_format = {{ shop.money_format | json }};
+var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
+var afterpay_theme_name = {{ theme.name | json }};
+var afterpay_product = {{ product | json }};
+var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+var afterpay_cart_total_price = {{ cart.total_price | json }};
+var afterpay_js_snippet_version = '1.0.1';
+// Removes AP text on gift cards.  
+if (afterpay_product && afterpay_product.type == "Gift Card") {
+  afterpay_product_selector = '';
+}
+</script>
+<script type="text/javascript" src="https://static.afterpay.com/shopify-afterpay-javascript.js"></script>
+<!-- End Shopify-Afterpay JavaScript Snippet (v1.0.1) -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.js"></script> -->
+<script>
+{% comment %} this is bad {% endcomment %}
+/*
+document.body.innerHTML = document.body.innerHTML.replace(/((?!<sup>\s*))&reg;((?!\s*<\/sup>))/gi, '<sup>&reg;</sup>').replace(/((?!<sup>\s*))®((?!\s*<\/sup>))/gi, '<sup>&reg;</sup>');
+document.body.innerHTML = document.body.innerHTML.replace(/((?!<sup>\s*))&trade;((?!\s*<\/sup>))/gi, '<sup>&trade;</sup>').replace(/((?!<sup>\s*))™((?!\s*<\/sup>))/gi, '<sup>&trade;</sup>');
+*/
+</script>
+<style type="text/css">
+       form#cart_form p.afterpay-paragraph {
+         	font-size: .8em !important;
+          	margin: -2% 0% 4% 0% !important;
+         	text-align: right !important;
+            display: inline-block !important;
+       }
+       p.afterpay-paragraph {
+         	margin: 0% 0% 0% 0% !important;
+          	color: inherit !important;
+          	font-family: inherit !important;
+         	font-size: .9em !important;
+        }
+        .afterpay-instalments {
+	      	font-weight: bold !important;
+        }
+        .afterpay-link-inner {
+	      	font-size: 12px;
+          	margin-left: 2px;
+        }
+        .afterpay-logo {
+ 	       	width: 6em !important; 
+           	height: auto !important; 
+        }
+        .afterpay-text2 {
+          	margin-right: 1px;
+        }
+
+        @media only screen and (max-width : 768px) {
+          form#cart_form p.afterpay-paragraph {
+           	margin: 0% 0% 0% 0% !important;
+         	text-align: center !important;
+          }
+        }
+        @media only screen and (max-width : 576px) {
+          form#cart_form p.afterpay-paragraph {
+          	margin: 2% 0% 2% 0% !important;
+           	text-align: center !important;
+          }
+        }
+        @media only screen and (max-width : 480px) {
+            .afterpay-paragraph {
+                font-size: 12px;
+            }
+            .afterpay-link-inner {
+	        	font-size: 12px;
+            }
+          	.afterpay-logo {
+ 	       		width: 6em !important; 
+           		height: auto !important; 
+        	}
+        }
+
+</style>
+
+{% comment 'removed 2.22.21 by wade@wickcreative.com' %}
+<!-- {{ 'Pinterest Product Data Source.xlsx' | asset_url }} -->
+{% endcomment %}
+<!-- Added by Plus - September 16 2020 -->
+{%- if settings.plus_enable_blog_landing_images and template contains 'blog' -%}
+  {% render 'plus-custom-blog-article-images' %}
+{%- endif -%}

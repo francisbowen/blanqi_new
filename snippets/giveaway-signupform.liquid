@@ -1,0 +1,30 @@
+<div class="giveaway-form-wrap">
+  <div class="error-message"></div>
+  <form id="giveawy-form" class="giveaway-signup" action="https://manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" novalidate="novalidate">
+    <input type="hidden" name="g" style="color:#fff;" value="Mckty4" id="g">
+    <div class="form-group-row">
+      <input type="email" class="contact_email" required="" name="email" id="k_id_email" placeholder="Email">
+    </div>
+    <div class="form-group-row">
+      <button type="submit" class="btn sign_up klaviyo_submit_button non-validated-btn">{{ section.settings.cta }}</button>
+    </div>
+  </form>
+  <div class="success-message"></div>
+  <script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      KlaviyoSubscribe.attachToForms('#giveawy-form', {
+        hide_form_on_success: true,
+        extra_properties: {
+          $source: 'Blanqi Baby Registry Giveaway - BLANQI',
+          'BLANQI Giveaway 3.21': 'March 2021'
+        },
+        success: function ($form) {
+          $('#giveawy-form').find('[type="email"]').parent().hide();
+          $('#giveawy-form').find('[type="submit"]').attr('disabled', 'disabled').text("YOU'RE ALL SET");
+		  //$('#giveawy-form').closest('.giveaway-form-wrap').find('.success-message').text('Thanks for joining us!');
+        }
+      });
+    })
+  </script>
+</div>

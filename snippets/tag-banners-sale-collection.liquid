@@ -1,0 +1,20 @@
+{% for num in (1..8) %}
+  {% capture tag_key %}tag_banner_tag_{{ num }}{% endcapture %}
+  {% capture text_key %}tag_plp_text_{{ num }}{% endcapture %}
+  {% capture text_color %}tag_banner_color_{{ num }}{% endcapture %}
+  {% capture text_background %}tag_banner_background_{{ num }}{% endcapture %}
+  {% capture text_badge %}tag_banner_badge_{{ num }}{% endcapture %}
+  {% capture text_content %}tag_banner_text_{{ num }}{% endcapture %}
+
+  {% if settings[tag_key] != blank %}
+    {% for tag in product.tags %}
+      {% if tag == settings[tag_key] %}
+      {% if settings[tag_key] contains 'sale' %}
+        <div class="percentage-off {{ settings[tag_key] }}">
+            {{ settings[text_content] }}
+        </div>
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}

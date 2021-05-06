@@ -1,0 +1,183 @@
+<style>
+  .small-popup {
+    position: fixed;
+    bottom: 60px;
+    right: 42px;
+    width: 227px;
+    height: auto;
+    background: black;
+    color: white;
+    padding: 5em 1em 3em 2em;
+    font-size: 10px;
+    z-index: 1000000002;
+  }
+  .small-popup .p1 {
+    font-size: 1.2em;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    line-height: 100%;
+    margin-bottom: 2em;
+  }
+  .small-popup .p2 {
+    font-size: 1.3em;
+    letter-spacing: 0;
+    font-weight: 300;
+    line-height: 100%;
+    margin-bottom: 0.8em;
+  }
+  .small-popup .p3 {
+    font-size: 1.3em;
+    letter-spacing: 0;
+    line-height: 100%;
+    margin-bottom: 0.4em;
+    font-weight: 500;
+  }
+  .small-popup .p4 {
+    font-size: 1.15em;
+    letter-spacing: 0;
+    font-weight: 300;
+    line-height: 100%;
+    margin-bottom: 1.2em;
+  }
+  .small-popup .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+    height: 1.5rem;
+    width: 1.5rem;
+    cursor: pointer;
+  }
+  .small-popup .close:before,
+  .small-popup .close:after {
+    content: " ";
+    width: 0;
+    height: 100%;
+    border-right: 1px solid white;
+    -webkit-transform: rotateZ(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotateZ(45deg);
+    position: absolute;
+    top: 0;
+    right: 50%;
+    pointer-events: none;
+  }
+  .small-popup .close:after {
+    -webkit-transform: rotateZ(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotateZ(-45deg);
+  }
+  body.currency-AUD .country-AUD {
+    display: block !important;
+  }
+  body.currency-CAD .country-CAD {
+    display: block !important;
+  }
+  body.currency-GBP .country-GBP {
+    display: block !important;
+  }
+  body.alert-privacy .alert {
+    display: block !important;
+  }
+  .small-popup {
+    pointer-events: none;
+    opacity: 0;
+    -webkit-transition: all 300ms ease-in-out 0ms;
+    -o-transition: all 300ms ease-in-out 0ms;
+    transition: all 300ms ease-in-out 0ms;
+    -webkit-transform: translateY(100px);
+    -ms-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  body.alert-privacy .small-popup.alert-privacy-policy,
+  body.currency-int .small-popup.alert-country {
+    opacity: 1;
+    pointer-events: all;
+    -webkit-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all 300ms ease-in-out 1000ms;
+    -o-transition: all 300ms ease-in-out 1000ms;
+    transition: all 300ms ease-in-out 1000ms;
+  }
+  body:not(.currency-int) .alert-country {
+    opacity: 0;
+    pointer-events: none;
+  }
+  body:not(.alert-privacy) .alert-privacy-policy {
+    opacity: 0;
+    pointer-events: none;
+  }
+  @media (max-width: 768px) {
+    .small-popup {
+      width: auto;
+      right: 3%;
+      left: 3%;
+      bottom: 10%;
+      max-width: 400px;
+      padding: 4em 2em 3em;
+      margin: auto;
+    }
+  }
+  
+  /* alert  */
+  .alert-privacy-policy {
+    padding: 0.5rem;
+    width: 50vw;
+  }
+  
+  .alert-privacy-policy a {
+    color: white !important;
+    text-decoration: underline;
+  }
+  body.alert-privacy.currency-int .small-popup + .small-popup {
+    right: 289px;
+  }
+  @media (max-width: 768px) {
+    .alert-privacy-policy {
+      width: auto;
+    }
+    body.alert-privacy.currency-int .small-popup + .small-popup {
+      background: #2b2b2b;
+      color: white;
+    }
+  }
+  .small-popup.alert-privacy-policy .p2 {
+    margin: 0;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+    line-height: 1.6;
+  }
+</style>
+<div class="small-popup alert-country">
+  <div class="close"></div>
+  <div class="country-AUD" style="display: none;">
+    <p class="p1">WE SHIP TO AUSTRALIA</p>  
+    <p class="p2">A couple of things to know:</p>
+    <p class="p3">Shipping cost &ndash;</p>
+    <p class="p4">$12.99 USD, not including duties</p>
+    <p class="p3">Transit time &ndash;</p>
+    <p class="p4">typically 2&mdash;3 weeks</p>
+  </div>
+  <div class="country-CAD" style="display: none;">
+    <p class="p1">WE SHIP TO CANADA</p>  
+    <p class="p2">A couple of things to know:</p>
+    <p class="p3">Shipping cost &ndash;</p>
+    <p class="p4">$8.99 USD</p>
+    <p class="p3">Transit time &ndash;</p>
+    <p class="p4">typically 1&ndash;2 weeks</p>
+  </div>
+  <div class="country-GBP" style="display: none;">
+    <p class="p1">WE SHIP TO THE UK</p>  
+    <p class="p2">A couple of things to know:</p>
+    <p class="p3">Shipping cost &ndash;</p>
+    <p class="p4">$20.00 USD flat rate</p>
+    <p class="p3">Transit time &ndash;</p>
+    <p class="p4">10&ndash;16 days</p>
+  </div>
+</div>
+<div class="small-popup alert-privacy-policy">
+  <div class="close"></div>
+  <p class="p2">
+    We recently updated our <a href="/pages/privacy-policy">Privacy Policy</a>. By continuing to use this website, you acknowledge that the revised <a href="/pages/privacy-policy">Privacy Policy</a> applies.
+  </p>
+</div>

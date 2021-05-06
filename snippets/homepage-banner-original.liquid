@@ -1,0 +1,89 @@
+{% comment %}
+  This section supports full-width banners specified in theme settings.
+{% endcomment %}
+
+{% assign banner_number = homepage-banner %}
+{% assign blank_image = 'blank.gif' | asset_url %}
+
+{% capture image_image %}banner_{{banner_number}}.jpg{% endcapture %}
+{% capture image_pretext %}image_{{banner_number}}_pretext{% endcapture %}
+{% capture image_headline %}image_{{banner_number}}_headline{% endcapture %}
+{% capture image_subtitle %}image_{{banner_number}}_subtitle{% endcapture %}
+{% capture image_button1 %}image_{{banner_number}}_button1_text{% endcapture %}
+{% capture image_button1_link %}image_{{banner_number}}_button1_link{% endcapture %}
+{% capture image_button1_highlight %}image_{{banner_number}}_button1_highlight{% endcapture %}
+{% capture image_button2 %}image_{{banner_number}}_button2_text{% endcapture %}
+{% capture image_button2_link %}image_{{banner_number}}_button2_link{% endcapture %}
+{% capture image_button2_highlight %}image_{{banner_number}}_button2_highlight{% endcapture %}
+{% capture image_text_position %}image_{{banner_number}}_text_position{% endcapture %}
+{% capture image_text_align %}image_{{banner_number}}_text_align{% endcapture %}
+
+{% assign default = '1400x' %}
+{% assign size1 = '480x' %}
+{% assign size2 = '765x' %}
+{% assign size3 = '900x' %}
+{% assign size4 = '1000x' %}
+{% assign size5 = '1100x' %}
+{% assign size6 = '1300x' %}
+{% assign size7 = '1500x' %}
+{% assign size8 = '1700x' %}
+{% assign size9 = '1900x' %}
+{% assign size10 = '2000x' %}
+
+<div id="banner-{{banner_number}}" class="banner">
+  <img  src="{{ image_image | asset_img_url: '100x', format: 'pjpg' }}"
+        alt="{{ settings[image_headline] | escape }}"
+        class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+        sizes="100vw"
+        data-src="{{ image_image | asset_img_url: default, format: 'pjpg' }}"
+        srcset="
+        {{ image_image | asset_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size1, format: 'pjpg' }} {{size1 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size3, format: 'pjpg' }} {{size3 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size5, format: 'pjpg' }} {{size5 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size7, format: 'pjpg' }} {{size7 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size9, format: 'pjpg' }} {{size9 | replace: 'x', 'w'}},
+        {{ image_image | asset_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+
+         />
+  {% unless settings[image_button1_link] != blank and settings[image_button2_link] != blank %}
+    {% if settings[image_button1_link] != blank %}
+      <a href="{{ settings[image_button1_link] }}" class="banner-full-link">
+        {{ settings[image_headline] }}
+      </a>
+    {% elsif settings[image_button2_link] != blank %}
+      <a href="{{ settings[image_button2_link] }}" class="banner-full-link">
+        {{ settings[image_headline] }}
+      </a>
+    {% endif %}
+  {% endunless %}
+  {% unless settings[image_pretext] == blank and settings[image_headline] == blank and settings[image_subtitle] == blank and settings[image_button1] == blank and settings[image_button2] == blank %}
+    <div class="position-{{ settings[image_text_position] }} caption js-caption">
+      <div class="caption-content caption-background-{{settings.caption_background}} align-{{ settings[image_text_align] }}">
+        <p class="pretext">
+          {{ settings[image_pretext] }}
+        </p>
+        <p class="headline">
+          {{ settings[image_headline] }}
+        </p>
+        <p class="subtitle">
+          {{ settings[image_subtitle] }}
+        </p>
+        {% if settings[image_button1] != blank %}
+          <a {% if settings[image_button1_link] != blank %}href="{{ settings[image_button1_link] }}"{% endif %} class="action_button first_button highlight-{{settings[image_button1_highlight]}}">
+            {{ settings[image_button1] }}
+          </a>
+        {% endif %}
+        {% if settings[image_button2] != blank %}
+          <a {% if settings[image_button2_link] != blank %}href="{{ settings[image_button2_link] }}"{% endif %} class="action_button second_button highlight-{{settings[image_button2_highlight]}}">
+            {{ settings[image_button2] }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  {% endunless %}
+</div>

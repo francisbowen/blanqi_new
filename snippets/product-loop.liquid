@@ -1,0 +1,257 @@
+{% assign product_found = false %}
+{% assign skip = false %}
+<div class="row product-listing">
+  {% for product in products %}
+    {% unless product.handle == "gift-card" %}
+    {% if product.id == skip_product.id or skip == true %}
+      {% assign product_found = true %}
+    {% else %}
+      {% if forloop.rindex0 == 0 and product_found == false and forloop.length != products.count and template != 'search' %}
+        {% assign skip = true %}
+      {% else %}
+
+{% comment %} Loop and display each color variant of product {% endcomment %}
+ 
+  
+        {% assign title = product.title | strip_html %}
+        {% assign published_at = product.published_at %}
+        {% assign created_at = product.created_at %}
+        {% assign available = product.available %}
+        {% assign price = product.price %}
+        {% assign compare_at_price_max = product.compare_at_price_max %}
+        {% assign id = product.id %}
+        {% assign handle = product.handle %}
+        {% assign promo_code = product.metafields.custom_fields["promo_code"] %}
+        {% assign back_in_stock = product.metafields.custom_fields["back_in_stock"] %}
+        {% assign filter_category = product.metafields.custom_fields["category"] %}
+        {% assign filter_stage = product.metafields.custom_fields["stage"] %}
+  		{%- assign filter_category_down = filter_category | downcase -%}
+        {% if filter_category_down contains 'sportsupport' %}
+          {% assign filter_category = "SPORTSUPPORT®" %}
+        {% endif %}
+        {% assign filter_collections = "" %}
+      	{% for collection in product.collections %}
+  			{% assign filter_collections = filter_collections | append: collection.title | downcase | append: "," %}
+  		{% endfor %}
+  		{% assign filter_collections = filter_collections | split: "," | reverse | join: "," %}
+  		{% assign filter_size = "" %}
+
+        {% assign count = 0 %}
+        {% assign color_index = 0 %}
+        {% assign size_index = 0 %}
+        {% for option in product.options %}
+          {% assign downcased_option = option | downcase %}
+          {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+            {% assign color_index = count %}
+          {% endif %}
+          {% if downcased_option contains 'size' %}
+  			{% assign size_index = count %}
+  		  {% endif %}
+            {% assign count = count | plus: 1 %}
+          {% endfor %}
+        {% assign values = '' %}
+  
+        {% for variant in product.variants %}
+          {% assign downcased_size = variant.options[size_index] | downcase | remove: "(sold out)" | strip %}
+          {% unless filter_size contains downcased_size %}
+            {% assign filter_size = filter_size | append: ',' | append: downcased_size %}
+          {% endunless %}
+        {% endfor %}
+  		{% assign filter_size = filter_size | remove_first: "," %}
+
+        {% for variant in product.variants %}
+          {% assign value = variant.options[color_index] %}
+          {% unless values contains value %}
+          {% assign values = values | join: ',' %}
+          {% assign values = values | append: ',' | append: value %}
+          {% assign values = values | split: ',' %}
+          {% assign filter_color = value %}
+  
+
+{% comment %}  REMOVE MATERNITY CATEGORY FROM INITIAL LOOP ON SPORT SUPPORT PAGE, WILL ADD TO SECOND {% endcomment %}
+          {% assign hide_product = false %}
+          {% for block in section.blocks %}
+            {% if block.type == 'hide_product' and block.settings.collection == collection.handle and block.settings.product == product.handle %}
+			  {% assign hide_product = true %}
+            {% endif %}
+          {% endfor %}
+       	
+          {% unless hide_product %}
+		    {% include 'product-grid-card' %}
+          {% endunless %}
+          {% assign filter_color_handle = filter_color | handle %}
+          {% for block in section.blocks %}
+            {% if block.type == 'product_image_override' and block.settings.collection == collection.handle and block.settings.product == product.handle %}
+  		      {% for i in (1..5) %}
+                {% capture pio_index %}colorway_{{ i }}{% endcapture %}
+                {% assign coloway_setting = block.settings[pio_index] | handle %}
+                {% if coloway_setting == filter_color_handle %}
+                  {% capture pio_image_index %}image_{{ i }}{% endcapture %}
+                  {% assign image_for_override = block.settings[pio_image_index] %}
+  				        {% include 'product-grid-card' with featured_override: image_for_override %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+
+          {% endunless %}
+        {% endfor %}
+
+  
+      {% endif %}
+    {% endif %}
+  {% endunless %}
+  {% endfor %}  
+  
+  {% if collection.handle == "sportsupport" or collection.handle == "blackfriday" or collection.handle == "black-friday-sale" %}
+  
+    {% for product in products %}
+      {% unless product.handle == "gift-card" %}
+      {% if product.id == skip_product.id or skip == true %}
+        {% assign product_found = true %}
+      {% else %}
+        {% if forloop.rindex0 == 0 and product_found == false and forloop.length != products.count and template != 'search' %}
+          {% assign skip = true %}
+        {% else %}
+
+          {% comment %}
+
+          Loop and display each color variant of product
+
+          {% endcomment %}
+
+          {% assign title = product.title %}
+          {% assign published_at = product.published_at %}
+          {% assign created_at = product.created_at %}
+          {% assign available = product.available %}
+          {% assign price = product.price %}
+          {% assign compare_at_price_max = product.compare_at_price_max %}
+          {% assign id = product.id %}
+          {% assign handle = product.handle %}
+          {% assign promo_code = product.metafields.custom_fields["promo_code"] %}
+          {% assign back_in_stock = product.metafields.custom_fields["back_in_stock"] %}
+          {% assign filter_category = product.metafields.custom_fields["category"] %}
+          {% assign filter_stage = product.metafields.custom_fields["stage"] %}
+          {% assign filter_collections = "" %}
+  
+  		  {% for collection in product.collections %}
+              {% assign filter_collections = filter_collections | append: collection.title | downcase | append: "," %}
+          {% endfor %}
+  
+          {% assign filter_collections = filter_collections | split: "," | reverse | join: "," %}
+          {% assign filter_size = "" %}
+          {% assign count = 0 %}
+          {% assign color_index = 0 %}
+          {% assign size_index = 0 %}
+  
+          {% for option in product.options %}
+            {% assign downcased_option = option | downcase %}
+            {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+              {% assign color_index = count %}
+            {% endif %}
+            {% if downcased_option contains 'size' %}
+              {% assign size_index = count %}
+            {% endif %}
+              {% assign count = count | plus: 1 %}
+            {% endfor %}
+  
+          {% assign values = '' %}
+
+          {% for variant in product.variants %}
+            {% assign downcased_size = variant.options[size_index] | downcase | remove: "(sold out)" | strip %}
+            {% unless filter_size contains downcased_size %}
+              {% assign filter_size = filter_size | append: ',' | append: downcased_size %}
+            {% endunless %}
+          {% endfor %}
+  
+          {% assign filter_size = filter_size | remove_first: "," %}
+
+  
+  {% if filter_category == "SportSupport" %}
+          {% for variant in product.variants %}
+            {% assign value = variant.options[color_index] %}
+            {% unless values contains value %}
+            {% assign values = values | join: ',' %}
+            {% assign values = values | append: ',' | append: value %}
+            {% assign values = values | split: ',' %}
+            {% assign filter_color = value %}
+
+	
+{% comment %}  REMOVE MOTHERHOOD CATEGORY FROM MATERITY LOOP ON SPORT SUPPORT PAGE, WILL ADD TO SECOND {% endcomment %}
+       	  {% if collection.handle == "sportsupport" or collection.handle == "black-friday-sale" %}
+  		  	{% assign filter_collections = filter_collections | replace: ',motherhood','' %}
+  			{% assign filter_collections = filter_collections | replace: ',postpartum + nursing','' %}
+          {% endif %}
+
+			
+  		
+            <div class="col-6 col-md-4 product-wrap mb-4 mb-sm-25rem" 
+                 data-color="{{ filter_color | downcase }}"
+                 data-collections="{{ filter_category | downcase }}"
+                 data-stage="{{ filter_stage | downcase }}"
+                 data-size="{{ filter_size }}"
+                 data-category="{{ filter_collections }}"
+                 data-price="{{ price }}"
+                 data-created="{{created_at}}"
+                 data-published="{{published_at}}">
+              
+{% comment %}  APPEND m=maternity image id TO MATERNITY IMAGE LISTINGS {% endcomment %}             
+            {% for image in product.images %}
+              	{% assign color_check = variant.option1 | downcase | handleize %}             
+  				{% if image.alt contains "maternity-image" and image.alt contains color_check %}
+            		{% assign imageid = image.id %}
+ 				{% endif %}
+            {% endfor %}        
+            {% assign maternity_image_flag = "&m=1" | append: imageid %}
+              
+{% comment %}  Create Query String Value for links from BLACK FRIDAY PAGE {% endcomment %}           
+            {% if collection.handle == "black-friday-sale" %}
+            	{% assign black_friday_flag = "&bf=1" %}
+            {% else %}
+            	{% assign black_friday_flag = "&bf=0" %}
+            {% endif %}              
+         
+              <div class="relative product_image mb-2">
+                <a href="{{ variant.url | within: collection }}{{maternity_image_flag}}{{ black_friday_flag }}">
+                  {% assign featured = variant.image %}
+
+
+            {% comment %} SHOW DUPLICATE FOR SPORT LEGGINGS WITH MATERINTY IMAGE. {% endcomment %}
+                {% for image in product.images %}
+                  {% assign color_check = variant.option1 | downcase | handleize %}             
+                  {% if image.alt contains "maternity-image" and image.alt contains color_check %}
+                      {% assign featured = image %}
+                  {% endif %}
+                {% endfor %}             
+
+                  <img src="{{ featured | product_img_url: '100x' }}"
+                       alt="{{ featured.alt | escape }}"
+                       class=" lazyload js-image-loaded blur-up"
+                       data-sizes="auto"
+                       data-src="{{ featured | product_img_url: '600x' }}"
+                       data-srcset="{{ featured | product_img_url: '300x' }} 300w,
+                                    {{ featured | product_img_url: '500x' }} 500w,
+                                    {{ featured | product_img_url: '600x' }} 600w,
+                                    {{ featured | product_img_url: '700x' }} 700w,
+                                    {{ featured | product_img_url: '900x' }} 900w"/>
+                </a>
+              </div>
+            {% include 'tag-banners' with scope: 'product-loop' %}
+              
+              <div class="thumb-items">
+                <div class="thumb-category mb-1">{{ filter_category }}</div>
+                <div class="thumb-title mb-2"><a href="{{ variant.url | within: collection }}">{{ title }}</a></div>
+                <div class="thumb-price">{{ price | money_with_currency }}</div>
+              </div>
+            </div>
+            {% endunless %}
+          {% endfor %}
+{% endif %}
+
+        {% endif %}
+      {% endif %}
+    {% endunless %}
+    {% endfor %}  
+  
+  {% endif %}
+</div>

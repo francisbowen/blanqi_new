@@ -1,0 +1,84 @@
+{% comment %}
+VARS:
+  class = anything, for targeting this particular slide in css as slide-your_class]
+  href = link to store page
+  caption_position = "left", "center", "right"
+  caption_top = "50%", any css value, or empty. Defaults to 55% in stylesheet.
+  text_color = "black" for black text, "white" for white text
+  text_align = "left", "center", "right"
+  slide_image = this will be the image name from Files
+
+** Images need to be one size to avoid white space. **
+
+	Here are some useful classes:
+    <p class="pre-head"> SUPPORT </p>
+    <p class="headline"> LUXE </p>
+    <p class="post-head"> High Waist, core support... </p>
+	<a class="a-btn-white"> SHOP </a>
+{% endcomment %}
+
+{% comment %}
+	These are the srcset sizes for the slide image:
+{% endcomment %}
+{% assign default = '1400x' %}
+{% assign size2 = '768x' %}
+{% assign size4 = '1000x' %}
+{% assign size6 = '1300x' %}
+{% assign size8 = '1700x' %}
+{% assign size10 = '2000x' %}
+
+<div id="HomepageSlideshow" class="homepage-slideshow rsp-slideshow">
+  
+
+  {% assign class = "gift-guide" %}
+  {% assign href = "/products/blanqi-everyday-maternity-belly-support-girlshort" %}
+  {% assign caption_position = "center" %}
+  {% assign caption_top = "45%" %}
+  {% assign text_color = "black" %}
+  {% assign text_align = "center" %}
+  {% assign slide_image = "BLANQI_GIFT_GUIDE_2018_SLIDER_NO_TYPE.jpg" %}
+  {% assign slide_image_mobile = "BLANQI_GIFT_GUIDE_2018_SLIDER_NOTYPE_MOBILE.jpg" %}
+  {% assign slide_text-image = "Gift_Guide-BLANQI_GIRLS.png" %}
+  {% assign slide_text-image_mobile = "Gift_Guide-BLANQI_GIRLS-mobile.png" %}
+  <div class="gallery-cell slide-{{class}}">
+    <img src="{{ slide_image | file_img_url: '100x', format: 'pjpg' }}"
+         alt=""
+         class="lazyload js-image-loaded blur-up desktoponly"
+         sizes="100vw"
+         data-src="{{ slide_image | file_img_url: default, format: 'pjpg' }}"
+         srcset="{{ slide_image | file_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+                 {{ slide_image | file_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+        />
+    <img src="{{ slide_image_mobile | file_img_url: '100x', format: 'pjpg' }}"
+         alt=""
+         class="lazyload js-image-loaded blur-up mobileonly"
+         sizes="100vw"
+         data-src="{{ slide_image_mobile | file_img_url: default, format: 'pjpg' }}"
+         srcset="{{ slide_image_mobile | file_img_url: default, format: 'pjpg' }} {{default | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | file_img_url: size2, format: 'pjpg' }} {{size2 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | file_img_url: size4, format: 'pjpg' }} {{size4 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | file_img_url: size6, format: 'pjpg' }} {{size6 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | file_img_url: size8, format: 'pjpg' }} {{size8 | replace: 'x', 'w'}},
+                 {{ slide_image_mobile | file_img_url: size10, format: 'pjpg' }} {{size10 | replace: 'x', 'w'}}"
+         />
+    <div class="caption position-{{caption_position}} js-caption">
+      <div class="caption-content caption-background-false align-{{text_align}} blanqi-slide-black">
+        <div class="img-headline">
+          <img alt="Blanqi Girls" class="lazyload js-image-loaded blur-up desktoponly img-text" src="{{ slide_text-image | asset_img_url: 'original' }}" />
+          <img alt="Blanqi Girls" class="lazyload js-image-loaded blur-up mobileonly img-text" src="{{ slide_text-image_mobile | asset_img_url: 'original' }}" />
+        </div>
+        <p class="product_name">Gift guide</p>
+        <p class="subtitle2 desktoponly mt-3">DISCOVER THE GIFTS WE'RE<br />CRUSHING ON THESE HOLIDAYS.</p>
+        <p class="subtitle2 mobileonly">DISCOVER THE GIFTS WE'RE<br />CRUSHING ON THESE HOLIDAYS.</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<div class="container-fluid gift-guide-2018">
+  {{ page.content }}
+</div>

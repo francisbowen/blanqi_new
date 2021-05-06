@@ -1,0 +1,17 @@
+<!-- StoryBox Product Detail Supporting Template -->
+<script>
+(function(){
+    var productKey = {{ product.id|json }};
+    var parentKey = {{ product.type|json }};
+    var related = [];
+    var categories = [];
+    window.vgModuleSettings['tags'] = (window.vgModuleSettings['tags']?window.vgModuleSettings['tags']+",":"")
+        + "Product:"+productKey;
+    window.vgModuleSettings['product'] = {
+        key: productKey,
+        pkey: parentKey,
+        cats: categories.join(","),
+        rel: related.join(",")
+    }
+})(); 
+</script>

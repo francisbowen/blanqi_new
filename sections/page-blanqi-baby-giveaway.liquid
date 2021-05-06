@@ -1,0 +1,87 @@
+<div class="page-giveaway-wrap"
+     {% if section.settings.bg_img != nil %}
+     style="background-image: url({{ section.settings.bg_img | img_url: '1903x'}});"
+     {% endif %}
+     >
+  <div class="page-giveaway-container">
+    <div class="d-flex flex-wrap">
+      <div class="page-giveaway-left-side">
+        {% if section.settings.title != blank %}
+        	<h1>{{ section.settings.title }}</h1>
+        {% endif %}
+        {% if section.settings.subtitle != blank %}
+        	<h3>{{ section.settings.subtitle }}</h3>
+        {% endif %}
+      </div>
+      <div class="page-giveaway-right-side">
+        {% if section.settings.content != blank %}
+        	<div class="page-giveaway-content">{{ section.settings.content }}</div>
+        {% endif %}
+        {%- include 'giveaway-signupform' -%}
+        {% if section.settings.bottom_content != blank %}
+        	<div class="page-giveaway-bottom-content">{{ section.settings.bottom_content }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+  @media (max-width: 991px){
+    #shopify-section-{{ section.id }} .page-giveaway-wrap{
+      {% if section.settings.m_bg_img != nil %}
+      	background-image: url({{ section.settings.m_bg_img | img_url: '991x' }}) !important;
+      {% endif %}
+    }
+  }
+</style>
+{% schema %}
+  {
+    "name": "Giveaway Section",
+	"class": "page-giveaway-section",
+    "settings": [
+    	{
+    		"type": "image_picker",
+    		"id": "bg_img",
+    		"label": "Background Image"
+    	},
+    	{
+    		"type": "image_picker",
+    		"id": "m_bg_img",
+    		"label": "Mobile Background Image"
+    	},
+    	{
+    		"type": "text",
+    		"id": "subtitle",
+    		"label": "Sub Title"
+    	},
+    	{
+    		"type": "text",
+    		"id": "title",
+    		"label": "Title"
+    	},
+    	{
+    		"type": "richtext",
+    		"id": "content",
+    		"label": "Content"
+    	},
+    	{
+    		"type": "text",
+    		"id": "cta",
+    		"label": "CTA"
+    	},
+    	{
+    		"type": "richtext",
+    		"id": "bottom_content",
+    		"label": "Bottom Content"
+    	}
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+

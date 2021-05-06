@@ -1,0 +1,14 @@
+<!-- StoryBox Gallery Widget -->
+<script type="text/javascript">
+(function() {
+    var widgetId = "storybox-widget-stylepick-it-wall-widget";
+    document.write('<div id="'+widgetId+'"></div>');
+    window.vgModuleSettings = {
+        containerId: widgetId
+    }
+})();
+</script>
+{% if product and product.id %}
+    {% include "storybox-product-details" %}
+{% endif %}
+<script src="//app.getstorybox.com/c/shw/18a8ce/blanqi-stories.js" type="text/javascript" async="true"></script>

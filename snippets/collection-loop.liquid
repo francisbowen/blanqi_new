@@ -1,0 +1,188 @@
+{% assign collections_per_row = settings.frontpage_collections_per_row %}
+{% assign sub_collections_per_row = settings.products_per_row %}
+
+{% assign default = '700x' %}
+{% assign size1 = '200x' %}
+{% assign size2 = '300x' %}
+{% assign size3 = '400x' %}
+{% assign size4 = '500x' %}
+{% assign size5 = '600x' %}
+{% assign size6 = '700x' %}
+{% assign size7 = '800x' %}
+{% assign size8 = '890x' %}
+{% assign size9 = '1000x' %}
+{% assign size10 = '1100x' %}
+
+<div class="featured_collections clearfix
+    {% if collection-loop == 'featured-links'%}across-{{collections_per_row}}{% elsif collection_type == 'sub' %}sub-collection sub-collection--{{sub_collections_per_row}}{% endif %}">
+  {% for link in linklist.links %}
+
+    {% comment %}
+      This section supports linking to collections, products, pages, and blogs. It will use the first image found in the page content or blog article.
+    {% endcomment %}
+
+    {% assign link_item = link.object %}
+    {% assign link_image = '' %}
+    {% capture link_title %}{{ link.title | escape }}{% endcapture %}
+
+    {% if link.type == 'collection_link' %}
+      {% if link_item.image %}
+        {% capture link_image %}
+          <img  src="{{ link_item.image.src | collection_img_url: '100x' }}"
+                alt="{{ settings[image_headline] | escape }}"
+                class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                data-sizes="auto"
+                data-src="{{ link_item.image.src | collection_img_url: default }}"
+                data-srcset="
+                {{ link_item.image.src | collection_img_url: default }} {{default | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+                {{ link_item.image.src | collection_img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+                 />
+        {% endcapture %}
+      {% else %}
+        {% capture link_image %}
+          <img  src="{{ link_item.products.first.featured_image | product_img_url: '100x' }}"
+                alt="{{ settings[image_headline] | escape }}"
+                class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                data-sizes="auto"
+                data-src="{{ link_item.products.first.featured_image | product_img_url: default }}"
+                data-srcset="
+                {{ link_item.products.first.featured_image | product_img_url: default }} {{default | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+                {{ link_item.products.first.featured_image | product_img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+                 />
+        {% endcapture %}
+      {% endif %}
+    {% elsif link.type == 'product_link' %}
+      {% capture link_image %}
+        <img  src="{{ link_item.featured_image | product_img_url: '100x' }}"
+              alt="{{ settings[image_headline] | escape }}"
+              class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+              data-sizes="auto"
+              data-src="{{ link_item.featured_image | product_img_url: default }}"
+              data-srcset="
+              {{ link_item.featured_image | product_img_url: default }} {{default | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+              {{ link_item.featured_image | product_img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+               />
+      {% endcapture %}
+    {% elsif link.type == 'page_link' %}
+      {% if link_item.content contains "<img" %}
+        {% assign src = link_item.content | split: 'src="' %}
+        {% assign src = src[1] | split: '"' | first %}
+        {% if src %}
+          {% assign link_image = src %}
+          {% capture link_image %}
+            <img  src="{{ link_image }}"
+                  alt="{{ settings[image_headline] | escape }}"
+                  class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                   />
+          {% endcapture %}
+        {% endif %}
+      {% endif %}
+    {% elsif link.type == 'blog_link' %}
+      {% if link_item.articles.first.image %}
+        {% capture link_image %}
+          <img  src="{{ link_item.articles.first.image | img_url: '100x' }}"
+                alt="{{ settings[image_headline] | escape }}"
+                class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                data-sizes="auto"
+                data-src="{{ link_item.articles.first.image | img_url: default }}"
+                data-srcset="
+                {{ link_item.articles.first.image | img_url: default }} {{default | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size1 }} {{size1 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size2 }} {{size2 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size3 }} {{size3 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size4 }} {{size4 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size5 }} {{size5 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size6 }} {{size6 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size7 }} {{size7 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size8 }} {{size8 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size9 }} {{size9 | replace: 'x', 'w'}},
+                {{ link_item.articles.first.image | img_url: size10}} {{size10 | replace: 'x', 'w'}}"
+                 />
+        {% endcapture %}
+      {% elsif link_item.articles.first.content contains "<img" %}
+        {% assign src = link_item.articles.first.content | split: 'src="' %}
+        {% assign src = src[1] | split: '"' | first %}
+        {% if src %}
+          {% assign link_image = src %}
+          {% capture link_image %}
+            <img  src="{{ link_image }}"
+                  alt="{{ settings[image_headline] | escape }}"
+                  class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                   />
+          {% endcapture %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
+
+    {% if collection_type == 'sub' %}
+      <div class="thumbnail column">
+        <a href="{{ link.url }}" title="{{ link_title }}">
+          {% if link_image != '' %}
+            {{ link_image }}
+          {% endif %}
+          <div class="info">
+            <span class="title">{{ link_title }}</span>
+          </div>
+        </a>
+      </div>
+
+    {% elsif collection-loop == 'featured-links' %}
+      {% if link_image == '' %}
+        <div class="featured-link--section thumbnail featured-link--no-image section-{{ forloop.index }}">
+      {% else %}
+        <section class="featured-link--section thumbnail featured-link--image section-{{ forloop.index }}">
+      {% endif %}
+        <div class="featured-link--half featured-link__imageHalf">
+          <a href="{{ link.url }}" title="{{ link_title }}">
+            {% if link_image != '' %}
+              {{ link_image }}
+            {% endif %}
+          </a>
+        </div>
+        <div class="featured-link--half">
+          <div class="info text-align--{{settings.frontpage_text_align}}">
+            <a href="{{ link.url }}" title="{{ link_title }}" class="collection_title">
+              {{ link_item.title }}
+            </a>
+            <div class="description">{{ link_item.description | strip_html | truncate: 400 }}</div>
+            <a href="{{ link.url }}" title="{{ link_title }}" class="button">
+              {{ link_title }}
+            </a>
+          </div>
+        </div>
+      {% if link_image == '' %}
+        </div>
+      {% else %}
+        </section>
+      {% endif %}
+    {% endif %}
+
+  {% endfor %}
+</div>

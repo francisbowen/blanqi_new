@@ -1,0 +1,245 @@
+<div id="header">
+  {% if settings.search_enabled %}
+  <div class="dropdown_container center" data-dropdown="search">
+    <div class="dropdown">
+      <form action="/search" class="header_search_form">
+        {% if settings.search_option != 'everything' %}
+        <input type="hidden" name="type" value="product" />
+        {% endif %}
+        <span class="icon-search search-submit"></span>
+        <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+      </form>
+    </div>
+  </div>
+  {% endif %}
+  <div class="dropdown_container" data-dropdown="menu">
+    <div class="dropdown">
+      <ul class="menu" id="mobile_menu">
+        {% include 'mobile-menu' with settings.main_linklist %}
+        {% include 'mobile-menu' with settings.main_linklist2 %}
+        {% include 'mobile-menu' with settings.top_bar_menu %}
+        {% if settings.phone_number != blank %}
+        <li><a href="tel:+{{ settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ settings.phone_number }}</a></li>
+        {% endif %}
+
+        {% if shop.customer_accounts_enabled %}
+        {% if customer %}
+        <li>
+          <a href="/account" data-no-instant>{{ customer.name }}</a>
+        </li>
+        <li data-no-instant>
+          {{ 'layout.customer.log_out' | t | customer_logout_link }}
+        </li>
+        {% else %}
+        <li data-no-instant>
+          {{ 'layout.customer.log_in' | t | customer_login_link }}
+        </li>
+        {% endif %}
+        {% endif %}
+        {% if settings.show_multiple_currencies %}
+        <li>
+          {% include 'currencies-switcher' %}
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="MainMenu" class="{% if feature_image %}feature_image{% endif %}">
+  <div class="header {% if feature_image and settings.header_background == false %}is-absolute{% endif %}">
+    {% if settings.promo_text != blank %}
+    <div class="promo_banner">
+      {{ settings.promo_text }}
+      <div class="promo_banner-close"></div>
+    </div>
+    {% endif %}
+    <div class="top_bar clearfix">
+      {% if settings.social_icons_header %}
+      {% include 'social-icons' %}
+      {% endif %}
+      <ul class="menu left">
+        {% if settings.phone_number != blank %}
+        <li><a href="tel:+{{ settings.phone_number | replace: ' ', '' | replace: '+', '' | replace: '-', '' }}">{{ settings.phone_number }}</a></li>
+        {% endif %}
+        {% if settings.top_bar_menu != blank %}
+        {% for link in linklists[settings.top_bar_menu].links %}
+        <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+        {% endif %}
+      </ul>
+      <div class="cart_container">
+        <a href="/cart" class="{% if settings.cart_icon == "cart" %}icon-cart{% else %}icon-bag{% endif %} mini_cart dropdown_link" data-no-instant>
+          <span class="cart_count">{{ cart.item_count }}</span>
+        </a>
+        <div class="cart_content animated fadeIn">
+          <div class="js-empty-cart__message {% if cart.item_count > 0 %}hidden{% endif %}">
+            <p class="empty_cart">{{ 'layout.general.empty_cart' | t }}</p>
+          </div>
+          {% assign apply_discount = "" %}
+          {% for item in cart.items %}
+          {% if item.sku == "812083020949" %}
+          {% assign apply_discount = "?discount=GC_PROMO_75_81YNMZ6" %}
+          {% endif %}
+          {% if item.sku == "GIFTCARD_125" %}
+          {% assign apply_discount = "?discount=GC_PROMO_125_81YNMZ6" %}
+          {% endif %}
+          {% if item.sku == "GIFTCARD_200" %}
+          {% assign apply_discount = "?discount=GC_PROMO_200_81YNMZ6" %}
+          {% endif %}
+          {% endfor %}
+          <form action="/checkout{{apply_discount}}" method="post" data-money-format="{{ shop.money_format }}" data-shop-currency="{{ shop.currency }}" data-shop-name="{{ shop.name | escape }}" class="js-cart_content__form {% if cart.item_count == 0 %}hidden{% endif %} CheckOutCartForm">
+            <a class="cart_content__continue-shopping secondary_button">
+              {{ 'cart.general.continue_shopping_link_html' | t }}
+            </a>
+            <ul class="cart_items js-cart_items clearfix">
+              {% for item in cart.items %}
+              <li class="cart_item clearfix">
+                <a href="{{ item.url }}" class="Cart-SKU-{{item.sku}}">
+                  {% if item.image %}
+                  <div class="cart_image">
+                    <img src="{{ item | img_url: '320x' }}" alt="{{ item.title | escape }}" />
+                  </div>
+                  {% endif %}
+                  <strong class="right price">{{ item.price | money }}</strong>
+                  <div class="item_title">{{ item.title }}</div>
+                </a>
+                <div class="left product-quantity-box">
+                  <span class="ss-icon product-minus js-change-quantity" data-func="minus"><span class="icon-minus"></span></span>
+                  <input type="number" min="0" size="2" class="quantity" name="updates[]" id="updates_{{ item.id }}" value="{{ item.quantity }}" data-line-id="{{ forloop.index }}" />
+                  <span class="ss-icon product-plus js-change-quantity" data-func="plus"><span class="icon-plus"></span></span>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+            <hr />
+            <ul>
+              <li class="cart_subtotal js-cart_subtotal">
+                <span class="right">{{ cart.total_price | money }}</span>
+                <span>{{ 'layout.general.subtotal' | t }}</span>
+
+              </li>
+
+              <li>
+                {% if settings.display_special_instructions and settings.go_to_checkout %}
+                <textarea id="note" name="note" rows="2" placeholder="{{ 'layout.general.cart_note' | t }}" class="clearfix">{{ cart.note }}</textarea>
+                {% endif %}
+
+                {% if settings.display_tos_checkbox and settings.go_to_checkout %}
+                <p class="tos">
+                  <input type="checkbox" class="tos_agree" id="sliding_agree" required />
+                  <label class="tos_label">
+                    {{ 'cart.general.agree_to_terms_html' | t }}
+                  </label>
+                  {% if settings.tos_page != blank %}
+                  <a href="{{ pages[settings.tos_page].url }}" target="_blank" class="tos_icon">{{ 'cart.general.view_terms' | t }}</a>
+                  {% endif %}
+                </p>
+                {% endif %}
+
+                {% if settings.cart_message != blank %}
+                <p class="cart_text">
+                  {{ settings.cart_message }}
+                </p>
+                {% endif %}
+
+                <input type="submit" class="action_button CheckOutCartButton" value="{% if settings.go_to_checkout %}{{ 'layout.general.checkout' | t }}{% else %}{{ 'layout.general.go_to_cart' | t }}{% endif %}" />
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+
+      <ul class="menu right">
+        {% if settings.show_multiple_currencies %}
+        <li>
+          {% include 'currencies-switcher' %}
+        </li>
+        {% endif %}
+        {% if shop.customer_accounts_enabled %}
+        <li>
+          <a href="/account" class="icon-user" title="{{ 'layout.customer.my_account' | t }} {% if customer %}({{ customer.email }}){% endif %}"> <span>{% if customer %}{{ 'layout.customer.my_account' | t }}{% else %}{{ 'layout.customer.log_in' | t }}{% endif %}</span></a>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+
+    <div class="main_nav_wrapper">
+      <div class="main_nav clearfix">
+        {% capture logo %}
+        <div class="logo {{ settings.logo_alignment }}">
+          <a href="{{ shop.url }}" title="{{ shop.name }}">
+            {% if settings.use_logo_home %}
+            <img src="{{ 'logo_home.png' | asset_url }}" class="secondary_logo" alt="{{ shop.name | escape }}" />
+            {% endif %}
+            {% if settings.use_logo %}
+            <img src="{{ 'logo.png' | asset_url }}" class="primary_logo" alt="{{ shop.name | escape }}" />
+            {% else %}
+            {{ shop.name }}
+            {% endif %}
+          </a>
+        </div>
+        {% endcapture %}
+
+        {% capture menu_left %}
+        {% include 'menu' with settings.main_linklist %}
+        {% endcapture %}
+
+        {% capture menu_right %}
+        {% include 'menu' with settings.main_linklist2 %}
+        {% if settings.search_enabled %}
+        <li class="search_container">
+          <form action="/search" class="search_form">
+            {% if settings.search_option != 'everything' %}
+            <input type="hidden" name="type" value="product" />
+            {% endif %}
+            <span class="icon-search search-submit"></span>
+            <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" value="{% if search and search.results.first.price %}{{ search.terms }}{% endif %}" autocapitalize="off" autocomplete="off" autocorrect="off" />
+          </form>
+        </li>
+        <li class="search_link">
+          <a href="/search" class="icon-search dropdown_link" title="{{ 'general.search.title' | t | escape }}" data-dropdown-rel="search"></a>
+        </li>
+        {% endif %}
+        {% endcapture %}
+
+        {% if settings.logo_alignment == "left" or settings.menu_position == "block" %}
+        {{ logo }}
+        <div class="nav">
+          <ul class="menu {{ settings.menu_alignment }}">
+            {{ menu_left }}
+            {{ menu_right }}
+          </ul>
+        </div>
+        {% else %}
+        <div class="nav">
+          <ul class="menu {{ settings.menu_alignment }}">
+            {{ menu_left }}
+          </ul>
+        </div>
+        {{ logo }}
+        <div class="nav">
+          <ul class="menu {% if settings.menu_alignment == 'align_left' %}align_right{% elsif settings.menu_alignment == 'align_right' %}align_left{% else %}{{ settings.menu_alignment }}{% endif %}">
+            {{ menu_right }}
+          </ul>
+        </div>
+        {% endif %}
+        {% if settings.search_enabled %}
+        <div class="dropdown_container center" data-dropdown="search">
+          <div class="dropdown">
+            <form action="/search" class="header_search_form">
+              {% if settings.search_option != 'everything' %}
+              <input type="hidden" name="type" value="product" />
+              {% endif %}
+              <span class="icon-search search-submit"></span>
+              <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+            </form>
+          </div>
+        </div>
+        {% endif %}
+        {% include 'sub-menu' with settings.main_linklist %}
+        {% include 'sub-menu' with settings.main_linklist2 %}
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+{% comment %}
+  Set the extension of your color files below. Use 'png', 'jpeg', 'jpg' or 'gif'.
+{% endcomment %}
+
+{% assign file_extension = 'png' %}
+
+{% assign swatch = product-swatch %}
+{% assign found_option = false %}
+{% assign is_color = false %}
+{% assign option_index = 0 %}
+
+{% assign color_amount = 0 %}
+
+{% for option in product.options %}
+  {% if option == swatch %}
+    {% assign found_option = true %}
+    {% assign option_index = forloop.index0 %}
+    {% assign downcased_option = swatch | downcase %}
+    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+      {% assign is_color = true %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+<div class="swatch clearfix {% if is_color == false %} is_not_color {% endif %} text-left" data-option-index="{{ option_index }}">
+
+  {% if is_color == true %}
+  <div class="blanqi-selected-color">COLOR:<span></span></div>
+  {% endif %}
+  {% if is_color == false %}
+  	<div class="option_title">{{ swatch }}</div>
+  {% else %}
+  	{% if product.variants.size > 1 %}
+  		<div class="option_title blanqi-color-amount"></div>
+  	{% else %}
+  		<div class="option_title blanqi-color-amount"></div>
+  	{% endif %}
+  {% endif %}
+  {% assign values = '' %}
+   {% assign count = 1 %}
+  {% for variant in product.variants %}
+  	
+  
+    {% assign value = variant.options[option_index] %}
+    {% unless values contains value %}
+      {% assign values = values | join: ',' %}
+      {% assign values = values | append: ',' | append: value %}
+      {% assign values = values | split: ',' %}
+      <input id="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" type="radio" name="option-{{ option_index }}" value="{{ value | escape }}"{% if forloop.first %} checked{% endif %} />
+      
+      <div data-value="{{ value | escape }}" data-class="{{ value | handle }}" class="swatch-element swatch-element-{{ count }} {% if is_color %}color {% endif %}{{ value | handle }}-swatch {% if variant.available %}available{% else %}soldout{% endif %}">
+        {% if is_color %}
+          <div class="tooltip">{{ value }}</div>
+        {% endif %}
+        {% if is_color %}
+          {% assign swatch_bg_color = value | split: ' ' | last | handle %}
+          {% if swatch_bg_color == "nude" %}
+            {% assign swatch_bg_color = "#f7e4d8" %}
+          {% endif %}
+          <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="background-color: {{ swatch_bg_color }}; background-image: url({{ value | handle | append: '.' | append: file_extension | file_img_url: '50x' }}); background-position: center;display: block;">
+            <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" alt="{{ 'soldout.png' }}" />
+          </label>
+        {% else %}
+          <label for="swatch-{{ option_index }}-{{ value | handle }}-{{ product.id }}" style="display:none;">
+            {{ value }}
+            <img class="crossed-out" src="{{ 'soldout.png' | asset_url }}" alt="{{ 'soldout.png' }}" />
+          </label>
+        {% endif %}
+      </div>
+
+
+
+
+    {% endunless %}
+  {% endfor %}
+
+  <div style="display:block;margin-top:1.2em;">
+    <div class="open-size-guide-svg" style="display:inline-block;width:2.3em;vertical-align:middle;margin:0;">
+      <svg viewBox="0 0 100 50"> 
+        <line x1="0"   y1="48" x2="100" y2="48" style="stroke:black;stroke-width:4"></line> 
+        <line x1="2"   y1="48" x2="2"   y2="18" style="stroke:black;stroke-width:4"></line>
+        <line x1="98"  y1="48" x2="98"  y2="18" style="stroke:black;stroke-width:4"></line>
+        <line x1="48"  y1="48" x2="48"  y2="8"  style="stroke:black;stroke-width:4"></line>
+        <line x1="24"  y1="48" x2="24"  y2="30" style="stroke:black;stroke-width:4"></line>
+        <line x1="74"  y1="48" x2="74"  y2="30" style="stroke:black;stroke-width:4"></line>
+      </svg>
+    </div>
+	
+    <a data-remodal-target="modal-size-chart" class="open-size-guide-btn">SIZE GUIDE</a> 
+  </div>
+
+  
+</div>
+

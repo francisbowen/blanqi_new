@@ -1,0 +1,210 @@
+<div class="row contact-template">
+  <div class="col-12 col-md-3 order-2 order-md-1" id="custom-sidebar">
+    <ul class="sidebar d-none d-sm-block">
+<!--       <li><a href="javascript:void(0):">STORES</a></li> -->
+      <li><a href="https://www.blanqi.com/pages/faqs/">FAQS</a></li>
+      <li><a>CONTACT US</a></li>
+      <li><a href="https://www.blanqi.com/pages/shipping/">SHIPPING</a></li>
+      <li><a href="https://www.blanqi.com/pages/returns/">RETURNS</a></li>
+    </ul>
+    <div class="contact-us">
+      <p class="serif mb-2 mb-sm-3">Can we help you<br>with your order?</p>
+      <div class="support">
+        <span>Please click here</span><br>
+        <a href="https://blanqi.zendesk.com/hc/en-us/requests/new" target="_blank">
+          BLANQI SUPPORT
+        </a>
+      </div>
+    </div>
+
+  </div>
+  <div id="accordion" class="col-12 col-md-9 order-1 order-md-2">
+    <div class="breadcrumbs text-center text-md-left" style="margin-left: 0">
+      <a href="https://www.blanqi.com/">
+        Home
+      </a>
+      <span>/</span>
+      <a href>
+        Contact Us
+      </a>
+    </div>
+    <div class="wrap">
+      <div class="custom-page-heading">
+        <h1>CONTACT US</h1>
+        <p>Text or call us: 1 (877) 378-6486</p>
+        <p>Monday-Friday<br>9am - 5pm EST</p>
+        <p>
+          We’re constantly striving to improve our products and <br>
+          service, everyday. We love to stay connected with our <br>
+          customers and welcome your feedback, comments and <br>
+          questions. Send us a message below!
+        </p>
+      </div>
+      {% form 'contact' %}
+      <div class="custom-contact-form">
+      <h2>GET IN TOUCH</h2>
+      <p class="note">* Required field</p>
+      {% if form.posted_successfully? %}
+      <p class="quote">{{ 'contact.form.post_success' | t }}</p>
+    {% endif %}
+    {% if form.errors %}
+      <p class="quote">{{ 'general.forms.post_error' | t }}</p>
+
+     {% assign message = 'contact.form.message' | t %}
+      <ul class="center">
+        {% for field in form.errors %}
+          {% if field == 'form' %}
+            <li>
+              {{ form.errors.messages[field] }}
+            </li>
+          {% else %}
+            <li>
+              {% assign field_name = field | replace: 'body', message %}
+              {{ 'general.forms.post_field_error_html' | t: field: field_name, error: form.errors.messages[field] }}
+            </li>
+          {% endif %}
+        {% endfor %}
+       </ul>
+    {% endif %}
+      <div id="CF-form">
+        <div class="field-group">
+          <label>FIRST NAME</label>
+            <label><span class="sr-only">first</span>
+          <input type="text" name="contact[first_name]" id="CF-first">
+        </label>
+          <span>Please enter your first name.</span>
+        </div>
+
+        <div class="field-group">
+          <label>LAST NAME</label>
+          <label><span class="sr-only">last</span>
+          <input type="text" name="contact[last_name]" id="CF-last">
+        </label>
+          <span>Please enter your last name.</span>
+        </div>
+
+        <div class="field-group">
+          <label>YOUR EMAIL ADDRESS *</label>
+            <label><span class="sr-only">email</span>
+          <input type="text" required name="contact[email]" id="CF-email">
+        </label>
+          <span>Please enter your email address.</span>
+        </div>
+
+        <div class="field-group">
+          <label>PHONE NUMBER</label>
+            <label><span class="sr-only">phone</span>
+          <input type="text" name="contact[phone]" id="CF-phone">
+          <label>
+        </div>
+
+        <div class="field-group">
+          <label>SUBJECT</label>
+          <label><span class="sr-only">subject</span>
+          {% comment %} <input type="text" id="CF-subject"> {% endcomment %}
+          <select id="CF-subject" name="contact[subject]">
+          <option value="">Select a reason...</option>
+          <option value="General Inquiry">General Inquiry.</option>
+          <option value="Complaint">Complaint.</option>
+          <option value="Return">Return.</option>
+          </select>
+          <label>
+        </div>
+
+        <div class="field-group">
+          <label>YOUR MESSAGE</label>
+          <label><span class="sr-only">message</span>
+          <textarea id="CF-message" name="contact[body]"></textarea>
+        </label>
+          <span>Please enter your message.</span>
+        </div>
+        
+        <div class="field-group">
+          <button class="submit" id="CF-submit">SUBMIT</button>
+        </div>
+
+      </div>
+    </div>
+    {% endform %}
+    <div id="lcqualitybadge" class="mt-5"></div>
+    </div>
+    
+<script async src="//cdn.livechatinc.com/qb/qb-9258750-light-200.js"></script>
+
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $("#contact_form").on("submit", function (e) {
+      
+      /*if ($(this).hasClass("disabled")) return;
+      
+      console.log("Submitting to Zendesk...");
+      
+      var first = $('#CF-first').val();
+      var last = $('#CF-last').val();
+      var email = $('#CF-email').val();
+      var phone = $('#CF-phone').val();
+      var subject = $('#CF-subject').val();
+      var message = $('#CF-message').val();
+      
+      var has_errors = false;
+      
+      if (!first) {
+        $('#CF-first').parent().addClass("errors");
+        has_errors = true;
+      } else {
+        $('#CF-first').parent().removeClass("errors");
+      }
+      
+      if (!last) {
+        $('#CF-last').parent().addClass("errors");
+        has_errors = true;
+      } else {
+        $('#CF-last').parent().removeClass("errors");
+      }
+      
+      if (!email) {
+        $('#CF-email').parent().addClass("errors");
+        has_errors = true;
+      } else {
+        $('#CF-email').parent().removeClass("errors");
+      }
+      
+
+      if (!message) {
+        $('#CF-message').parent().addClass("errors");
+        has_errors = true;
+      } else {
+        $('#CF-message').parent().removeClass("errors");
+      }
+      if (!has_errors) {
+        return true;
+      } else {
+        return false;
+      }*/
+      /*if (!has_errors) {
+        $("#CF-submit").addClass('disabled');
+		$("#CF-submit").text("Sending...");
+        
+        $.ajax({
+          type: "POST",
+          url: "https://blog.blanqi.com/shop-process.php",
+          data: {
+            first: first,
+            last: last,
+            email: email,
+            phone: phone,
+            subject: subject,
+            message: message,
+          },
+          success: function(data) {
+            $("#CF-submit").parent().addClass("submitted");
+			$("#CF-submit").text("Thank You! We will contact you shortly.");
+          },
+        });
+      }*/
+    });
+  });
+</script>

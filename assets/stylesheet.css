@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'Euclid Flex';
+    src: url('EuclidFlex-Medium.eot');
+    src: url('EuclidFlex-Medium.eot?#iefix') format('embedded-opentype'),
+        url('EuclidFlex-Medium.woff2') format('woff2'),
+        url('EuclidFlex-Medium.woff') format('woff'),
+        url('EuclidFlex-Medium.ttf') format('truetype'),
+        url('EuclidFlex-Medium.svg#EuclidFlex-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Canela';
+    src: url('Canela-Light.eot');
+    src: url('Canela-Light.eot?#iefix') format('embedded-opentype'),
+        url('Canela-Light.woff2') format('woff2'),
+        url('Canela-Light.woff') format('woff'),
+        url('Canela-Light.ttf') format('truetype'),
+        url('Canela-Light.svg#Canela-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('ProximaNova-Medium.eot');
+    src: url('ProximaNova-Medium.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Medium.woff2') format('woff2'),
+        url('ProximaNova-Medium.woff') format('woff'),
+        url('ProximaNova-Medium.ttf') format('truetype'),
+        url('ProximaNova-Medium.svg#ProximaNova-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular A';
+    src: url('EuclidCircularA-Regular.eot');
+    src: url('EuclidCircularA-Regular.eot?#iefix') format('embedded-opentype'),
+        url('EuclidCircularA-Regular.woff2') format('woff2'),
+        url('EuclidCircularA-Regular.woff') format('woff'),
+        url('EuclidCircularA-Regular.ttf') format('truetype'),
+        url('EuclidCircularA-Regular.svg#EuclidCircularA-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Proxima Nova';
+    src: url('ProximaNova-Regular.eot');
+    src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+        url('ProximaNova-Regular.woff2') format('woff2'),
+        url('ProximaNova-Regular.woff') format('woff'),
+        url('ProximaNova-Regular.ttf') format('truetype'),
+        url('ProximaNova-Regular.svg#ProximaNova-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular A';
+    src: url('EuclidCircularA-Semibold.eot');
+    src: url('EuclidCircularA-Semibold.eot?#iefix') format('embedded-opentype'),
+        url('EuclidCircularA-Semibold.woff2') format('woff2'),
+        url('EuclidCircularA-Semibold.woff') format('woff'),
+        url('EuclidCircularA-Semibold.ttf') format('truetype'),
+        url('EuclidCircularA-Semibold.svg#EuclidCircularA-Semibold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular A';
+    src: url('EuclidCircularA-Light.eot');
+    src: url('EuclidCircularA-Light.eot?#iefix') format('embedded-opentype'),
+        url('EuclidCircularA-Light.woff2') format('woff2'),
+        url('EuclidCircularA-Light.woff') format('woff'),
+        url('EuclidCircularA-Light.ttf') format('truetype'),
+        url('EuclidCircularA-Light.svg#EuclidCircularA-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular A Trial';
+    src: url('EuclidCircularATrial-Bold.eot');
+    src: url('EuclidCircularATrial-Bold.eot?#iefix') format('embedded-opentype'),
+        url('EuclidCircularATrial-Bold.woff2') format('woff2'),
+        url('EuclidCircularATrial-Bold.woff') format('woff'),
+        url('EuclidCircularATrial-Bold.ttf') format('truetype'),
+        url('EuclidCircularATrial-Bold.svg#EuclidCircularATrial-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Euclid Circular A';
+    src: url('EuclidCircularA-Medium.eot');
+    src: url('EuclidCircularA-Medium.eot?#iefix') format('embedded-opentype'),
+        url('EuclidCircularA-Medium.woff2') format('woff2'),
+        url('EuclidCircularA-Medium.woff') format('woff'),
+        url('EuclidCircularA-Medium.ttf') format('truetype'),
+        url('EuclidCircularA-Medium.svg#EuclidCircularA-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+

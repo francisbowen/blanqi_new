@@ -1,0 +1,656 @@
+/* Useful variables */
+{% assign mediaXL_up    = '(min-width: 1601px)' %}
+{% assign mediaLG_only  = '(max-width: 1600px) and (min-width: 1301px)' %}
+{% assign mediaMD_only  = '(max-width: 1300px) and (min-width: 1026px )' %}
+{% assign mediaSM_only  = '(max-width: 1025px) and (min-width: 601px )' %}
+{% assign mediaXS_only  = '(max-width: 768px)' %}
+{% assign media_desktop = '(min-width: 769px)' %}
+{% assign media_mobile  = '(max-width: 768px)' %}
+{% assign media_retina  = '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)' %}
+@media {{media_mobile}} {
+  .desktop_only {
+    display: none !important;
+  }
+}
+@media {{media_desktop}} {
+  .mobile_only {
+    display: none !important;
+  }
+}
+/* Full bleed page */
+div.content {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+.blackfriday-frontpage {
+  padding-top: 0;
+  .center-center {
+    padding-left: 1.4em; // in order to center plus sign with background image
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    @media {{media_mobile}} {
+      top: 1em;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      @media (max-width: 374px) {
+        font-size: 11px;
+      }
+    }
+  }
+  .img.hero {
+    padding-bottom: 55% !important;
+    @media {{media_mobile}} {
+      padding-bottom: 158% !important;
+    }
+    .btn-underline.color-invert {
+      color: white;
+      border-bottom: 1px solid white;
+      font-size: 0.8em;
+      letter-spacing: 0.2em;
+      margin-bottom: 1.5em;
+    }
+  }
+}
+.blackfriday-landing {
+  padding-top: 38px;
+  .center-center {
+    padding-left: 1.6em; // in order to center plus sign with background image
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    @media {{media_mobile}} {
+      top: 1em;
+      -webkit-transform: none;
+      -ms-transform: none;
+      transform: none;
+      @media (max-width: 374px) {
+        font-size: 11px;
+      }
+    }
+  }
+}
+.blackfriday-frontpage,
+.blackfriday-landing {
+  font-size: 13px;
+  @media (min-width: 769px)  { font-size: 14px; }
+  @media (min-width: 1441px) { font-size: 15px; }
+  @media (min-width: 1701px) { font-size: 16px; }
+  @media (min-width: 1941px) { font-size: 17px; }
+  @media (min-width: 2000px) { font-size: 18px; }
+  h1,h2,h3,p {
+    margin: 0;
+    padding: 0;
+  }
+  .btn-black {
+    background: black;
+    font-weight: 500;
+    color: white;
+    &.color-invert {
+      color: black;
+      background: white;
+    }
+    padding: 0 4em;
+    font-size: 1em;
+    letter-spacing: 0.25em;
+    line-height: 4em;
+    display: inline-block;
+    margin-bottom: 1.25em;
+    &.small-version {
+      font-size: 0.5em;
+      margin-right: 3.4em;
+      width: 18em;
+      padding: 0;
+    }
+    &.small-version2 {
+      font-size: 0.6em;
+      margin: 0 2%;
+      max-width: 21em;
+      padding: 0;
+      width: 45%;
+    }
+  }
+  .bb-wrap {
+    margin-top: 3em;
+    .button-box {
+      width: 50%;
+      .inner {
+        display: inline-block;
+        width: auto;
+        text-align: center;
+        padding: 0 1em;
+        font-size: 0.55em;
+        @media {{media_mobile}} {
+          font-size: 0.7em;
+        }
+      }
+      &.left {
+        text-align: right;
+        padding-right: 1.4em;
+      }
+      &.right {
+        text-align: left;
+      }
+      .btn-black {
+        padding: 0;
+        width: 17em;
+        max-width: 100%;
+      }
+    }
+  }
+  @media {{media_mobile}} {
+    .col-full
+    {
+      &.first, &.hero {
+        .center-center {
+          position: initial !important;
+          padding-top: 1em !important;
+          .bb-wrap {
+            position: absolute;
+            bottom: 1em;
+            top: initial;
+            left: 0;
+            right: 0;
+            margin: auto;
+            .button-box.left {
+              padding-right: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .btn-underline {
+    color: black;
+    border-bottom: 1px solid black;
+    &.color-invert {
+      color: white;
+    border-bottom: 1px solid white;
+    }
+    display: inline-block;
+    font-size: 1em;
+    padding-bottom: 0.4em;
+    line-height: 1em;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    &.small-version {
+      font-size: 0.6em;
+      margin: 0 6.2em 0 2.9em;
+    }
+    &.small-version2 {
+      font-size: 0.6em;
+      margin: 0 2%;
+      max-width: 21em;
+      padding: 0;
+      width: 45%;
+    }
+  }
+  .btn-arrow {
+    width: 11em;
+    display: inline-block;
+    text-align: right;
+    font-weight: 500;
+    color: black;
+    font-size: 0.7em;
+    letter-spacing: 0.2em;
+    line-height: 2em;
+    padding-right: 1.3em;
+    margin-right: 1em;
+    cursor: pointer;
+    &:hover {
+      color: black;
+      text-decoration: none;
+    }
+    &:after {
+      content: " ";
+      height: 0.6em;
+      width: 0.6em;
+      border: 0.1em solid black;
+      border-left: 0;
+      border-bottom: 0;
+      position: absolute;
+      right: 0.4em;
+      top: 0;
+      -webkit-transform: rotateZ(45deg);
+      -ms-transform: rotateZ(45deg);
+      transform: rotateZ(45deg);
+      bottom: 0;
+      margin: auto;
+    }
+  }
+  .btn-arrow + .btn-arrow {
+    margin-right: 3em;
+  }
+  b {
+    font-weight: 900;
+    letter-spacing: 0.15em;
+  }
+  .center-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 5%;
+  }
+  
+  @media {{media_desktop}} {
+    .first:before {
+      content: "LEARN MORE";
+      font-weight: 500;
+      font-size: 0.9em;
+      position: absolute;
+      bottom: 0;
+      height: 7.2em;
+      padding-top: 0.7em;
+      line-height: 3.2em;
+      background: rgba(0,0,0,0.23);
+      left: 0;
+      right: 0;
+      width: 100%;
+      color: white;
+      letter-spacing: 0.2em;
+    }
+    .first:after {
+        content: " ";
+        font-size: 0.8em;
+        position: absolute;
+        bottom: 2.5em;
+        height: 2.2em;
+        left: 0;
+        right: 0;
+        width: 4.5em;
+        margin: auto;
+        background: url(//cdn.shopify.com/s/files/1/0169/0840/files/arrow-sharp.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+  }
+
+  .col-full {
+    width: 100%;
+    text-align: center;
+    &.img {
+      height: 0;
+      &.first {
+        padding-bottom: 54%;/*    First image is taller    */
+      }
+      padding-bottom: 44%;/*    Subsequent images are short    */
+      @media {{media_mobile}} {
+        padding-bottom: 142%;
+        &.first {
+          padding-bottom: 146%;
+        }
+      }
+      background-size: cover;
+      background-position: center top;
+      position: relative;
+    }
+    /*  White space with text below images    */
+    &.white {
+      background: white;
+      padding: 5.5em 1em 6em;
+      @media {{media_mobile}} {
+        padding: 3.5em 1em 2.5em 1em;
+      }
+      p, h1 {
+        letter-spacing: 0.2em;
+      }
+      p {
+        font-size: 1em;
+        margin-bottom: 1.2em;
+        line-height: 1em;
+        color: #6d6d6d;
+        @media {{media_mobile}} {
+          font-size: 0.8em;
+          letter-spacing: 0.1em;
+          color: #464545;
+          margin-bottom: 1.5em;
+          &.block-text {
+            font-size: 1em;
+            line-height: 1.5em;
+            color: #6d6d6d;
+            margin-top: 1.4em;
+            padding: 0 1em;
+          }
+        }
+      }
+      h1 {
+        font-size: 2.5em;
+        line-height: 1.25em;
+        @media {{media_mobile}} {
+          font-size: 1.4em;
+        }
+      }
+    }
+    /*   First image box, "Black Friday"   */
+    &.first, &.hero {
+      p {
+        font-weight: 600;
+        letter-spacing: 0.3em;
+        margin: 0 0 1.5em;
+        color: black;
+        @media {{media_mobile}} {
+          font-size: 1em;
+          font-weight: 500;
+          margin-bottom: 0.5em;
+        }
+      }
+      img {
+        width: 22em;
+        margin: 0 0 1em;
+        @media {{media_mobile}} {
+          width: 15.5em;
+          margin-bottom: 0;
+        }
+      }
+      h1 {
+        font-size: 1.1em;
+        padding: 0;
+        margin: 0 0 2em;
+        letter-spacing: 0.3em;
+        color: black;
+        b {
+          font-weight: 900;
+          letter-spacing: 0.15em;
+        }
+      }
+    }
+  }
+  /*  The boxes that have drawn lines  */
+  .drawing {
+    /*   A single unit of text+line   */
+    .unit {
+      width: 20%;
+      display: inline-block;
+      h1 {
+        color: white;
+        font-size: 1em;
+        letter-spacing: 0.25em;
+        margin-bottom: 0.25em;
+      }
+      p {
+        color: #9a9999;
+        font-size: 0.8em;
+        line-height: 1em;
+        letter-spacing: 0;
+      }
+      .line {
+        height: 1.5em;
+        position: relative;
+        margin-top: 0.5em;
+        margin-bottom: 0.5em;
+        @media {{media_mobile}} {
+          height: 1em;
+          margin-top: 0.2em;
+          margin-bottom: 0em;
+        }
+        &:after {
+          content: " ";
+          width: 11px;
+          height: 11px;
+          position: absolute;
+          background: white;
+          border-radius: 50%;
+        }
+      }
+      &.right, &.left {
+        text-align: right;
+        position: absolute;
+        right: initial;
+        left: 50%;
+        margin: auto;
+        .line:first-child {
+          border-top: 1px solid white;
+          border-right: 1px solid white;
+          &:after {
+            left: -20px;
+            top: -6px;
+          }
+        }
+        .line:last-child {
+          border-bottom: 1px solid white;
+          border-right: 1px solid white;
+          &:after {
+            left: -20px;
+            bottom: -6px;
+          }
+        }
+      }
+      @media {{media_desktop}} { /* On mobile, .left will revert to .right */
+        &.left {
+          text-align: left;
+          position: absolute;
+          right: 50%;
+          left: initial;
+          margin: auto;
+          .line:first-child {
+            border-top: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 0;
+            border-bottom: 0;
+            &:after {
+              right: -20px;
+              top: -6px;
+              left: initial;
+              bottom: initial;
+            }
+          }
+          .line:last-child {
+            border-bottom: 1px solid white;
+            border-left: 1px solid white;
+            border-right: 0;
+            border-top: 0;
+            &:after {
+              right: -20px;
+              bottom: -6px;
+              left: initial;
+              top: initial;
+            }
+          }
+        }
+      }
+    }
+    /*   More specific position + width     */
+    &.maternity .unit {
+      &:nth-child(1) { /* FLEXIBLE */
+        top: 42%;
+        margin-left: 6%;
+        @media {{media_mobile}} {
+          width: 45%;
+          margin-left: 0%;
+          top: 38%;
+        }
+      }
+      &:nth-child(2) { /* SUPPORTIVE */
+        top: 61.5%;
+        margin-right: 6%;
+        @media {{media_mobile}} {
+          width: 60%;
+          margin-left: -15%;
+          top: 58%;
+        }
+      }
+      &:nth-child(3) { /* SEAMLESS */
+        top: 82%;
+        margin-left: 6%;
+        @media {{media_mobile}} {
+          width: 33%;
+          margin-left: 12%;
+          top: 79%;
+        }
+      }
+    }
+    &.postpartum .unit {
+      &:nth-child(1) { /* HIGH WAIST */
+        top: 27%;
+        margin-left: 2%;
+        width: 27%;
+        @media {{media_mobile}} {
+          margin-left: 0%;
+          width: 45%;
+          top: 38%;
+        }
+      }
+      &:nth-child(2) { /* SEAMLESS */
+        top: 40%;
+        margin-right: 4%;
+        width: 25%;
+        @media {{media_mobile}} {
+          margin-left: -6%;
+          width: 51%;
+          top: 54%;
+        }
+      }
+      &:nth-child(3) { /* COMFORTABLE */
+        top: 68%;
+        margin-left: 3%;
+        width: 26%;
+        @media {{media_mobile}} {
+          margin-left: 2%;
+          width: 43%;
+          top: 71%;
+        }
+      }
+      &:nth-child(4) { /* LUXE FABRIC */
+        top: 75%;
+        width: 19%;
+        margin-right: 10%;
+        @media {{media_mobile}} {
+          margin-left: 0%;
+          width: 45%;
+          top: 86%;
+        }
+      }
+    }
+  }
+  /* 
+  Submarine is an absolute-positioned DIV
+  where width and height are both less than 100%
+  inside an intrinsic-ratio padded element.
+  Like a submarine in a sea of padding.
+  */
+  .submarine {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 25%;
+    display: inline-block;
+    &.left {
+      text-align: left;
+      left: 17%;
+    }
+    &.right {
+      text-align: right;
+      right: 17%;
+    }
+    h1 {
+      line-height: 1em;
+      color: black;
+      font-size: 1em;
+      letter-spacing: 0.2em;
+      margin-bottom: 0.25em;
+    }
+    p {
+      color: #5a5a5a;
+      font-size: 0.8em;
+      line-height: 1.75em;
+      letter-spacing: 0.02em;
+      margin: 1.5em 0 2em;
+    }
+    .btn-transparent {
+      border: 1px solid black;
+      padding: 0 1.5em;
+      line-height: 4.5em;
+      font-size: 0.7em;
+      display: inline-block;
+      color: black;
+      letter-spacing: 0.1em;
+      transition: all 300ms ease-in-out 0s;
+      &:hover {
+        color: white;
+        background: black;
+      }
+    }
+  }
+  /*  Generate optimized image sizes for BF2017-hero thru 5  */
+  {% assign basename = 'BF2017-hero' %}
+  {% assign i = "hero" %}
+  {% capture img %}{{basename}}.jpg{% endcapture %}
+  {% capture img_mobile %}{{basename}}-mobile.jpg{% endcapture %}
+  .img-{{i}} {
+    @media {{mediaXL_up}} {
+      background-image : url({{ img | file_img_url: '3200x' }});
+    }
+    @media {{mediaLG_only}} {
+      background-image : url({{ img | file_img_url: '1600x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '3200x' }});
+      }
+    }
+    @media {{mediaMD_only}} {
+      background-image : url({{ img | file_img_url: '1300x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '2600x' }});
+      }
+    }
+    @media {{mediaSM_only}} {
+      background-image : url({{ img | file_img_url: '1025x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '2050x' }});
+      }
+    }
+    @media {{mediaXS_only}} {
+      background-image : url({{ img_mobile | file_img_url: '600x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img_mobile | file_img_url: '1200x' }});
+      }
+    }
+  }
+  /*  Generate optimized image sizes for BF2017-landing-1 thru 5  */
+  {% assign basename = 'BF2017-landing' %}
+  {% for i in (1..5) %}
+  {% capture img %}{{basename}}-0{{i}}.jpg{% endcapture %}
+  {% capture img_mobile %}{{basename}}-0{{i}}-mobile.jpg{% endcapture %}
+  .img-{{i}} {
+    @media {{mediaXL_up}} {
+      background-image : url({{ img | file_img_url: '3200x' }});
+    }
+    @media {{mediaLG_only}} {
+      background-image : url({{ img | file_img_url: '1600x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '3200x' }});
+      }
+    }
+    @media {{mediaMD_only}} {
+      background-image : url({{ img | file_img_url: '1300x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '2600x' }});
+      }
+    }
+    @media {{mediaSM_only}} {
+      background-image : url({{ img | file_img_url: '1025x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img | file_img_url: '2050x' }});
+      }
+    }
+    @media {{mediaXS_only}} {
+      background-image : url({{ img_mobile | file_img_url: '600x' }});
+      @media {{media_retina}} {
+        background-image : url({{ img_mobile | file_img_url: '1200x' }});
+      }
+    }
+  }
+  {% endfor %}
+}

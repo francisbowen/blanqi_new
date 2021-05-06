@@ -1,0 +1,23 @@
+<div style="position: relative;">
+  {% comment %} <img src="{{ 'icon-mag-v2.png' | file_url }}" class="icon-img js-icon-mag" alt="search"> {% endcomment %}
+  {% comment %}{% include 'icon-search' %}{% endcomment %}
+  <img src="{{ 'magnifying-glass-icon.png' | asset_img_url }}" class="new-nav-icon" alt="Search" />
+  <div class="dropdown_container center search-open js-search-bar" data-dropdown="search">
+    <div class="dropdown">
+      <form action="/search" class="header_search_form">
+        <fieldset>
+        {% if settings.search_option != 'everything' %}
+          <label><span class="sr-only">product</span>
+        <input type="hidden" name="type" value="product" />
+        </label>
+        {% endif %}
+        <span class="icon-search search-submit"></span>
+        <label><span class="sr-only">search</span>
+        <input type="text" name="q" placeholder="{{ 'general.search.title' | t: shop_name: shop.name }}" autocapitalize="off" autocomplete="off" autocorrect="off" class="search-terms" />
+        </label>
+        <div class="close-search js-close-search"></div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

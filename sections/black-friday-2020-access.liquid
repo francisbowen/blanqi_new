@@ -1,0 +1,301 @@
+{% if section.settings.enable %}
+<div class="blackfriday-overlay" id="blackfriday-overlay">
+   <form id="black-friday-signup" class="blackfriday-frm">
+   <div class="frm-content">
+   {% if section.settings.title != blank %}
+      <h1>{{ section.settings.title }}</h1> 
+   {% endif %}
+   {{ section.settings.text }}
+      <label for="email" class="sr-only">Email</label>
+      <input id="email" name="email" class="form-control" type="email" placeholder="{{ section.settings.email_placeholder }}" required="">
+      <div class="check-box">
+         <label class="label-checkbox">
+            <span>{{ section.settings.checkbox_text }}</span>
+            <input type="checkbox" checked="checked">
+            <span class="checkmark"></span>
+          </label>
+      </div>
+      <button type="submit" class="btn btn-unlock mx-auto d-block">{{ section.settings.cta_text }}</button>
+      <div class="fyi-content">
+         {{ section.settings.fyi }}
+      </div>
+   </div>
+   </form>
+</div>
+{% if section.settings.bg_image != blank %}
+   <style>
+   .blackfriday-frm {
+      /* background-image:url({{ section.settings.bg_image | img_url: '1000x' }});
+      background-size:cover;
+      background-position:center center; */
+      background-color: #DFC3B5;
+      max-width:{{ section.settings.width }}px;
+      min-height:{{ section.settings.height }}px;
+   }
+   .frm-content {
+      position:absolute;
+      width:80%;
+      left: 10%;
+      top: 10%;
+      bottom: 10%;
+      right: 10%;
+      text-align: center;
+   }
+   .blackfriday-frm h1 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      color:{{ section.settings.title_color }};
+   }
+   .blackfriday-frm p {
+      font-size: 15px;
+      margin-bottom: 0;
+      color:{{ section.settings.text_color }};
+   }
+   .blackfriday-frm input.form-control{
+      margin: 30px 0;
+      border-radius: 0;
+      padding: 25px 15px;
+      border: 0;
+   }
+   .check-box{
+      width: 100%;
+      margin-bottom: 30px;
+      text-align: left;
+      display: inline-flex;
+   }
+   .check-box span{
+      font-size: 15px;
+      color: #424242;
+      margin-left: 0;
+      font-weight: normal;
+      text-transform: none;
+   }
+   .blackfriday-frm .btn-unlock{
+      background: #FFF400;
+      border: 0;
+      border-radius: 0;
+      color: #032957;
+      font-weight: 500;
+      letter-spacing: 3px;
+      height: 55px;
+      width: 100%;
+      margin-bottom: 30px;
+      font-size: 15px;
+   }
+   .blackfriday-frm .btn-unlock:hover{
+      background-color: #032957;
+      color: #fff;
+   }
+   .blackfriday-frm input.form-control::-webkit-input-placeholder {
+      color: #424242;
+      font-size: 15px;
+      letter-spacing: 4px;
+   }
+   .blackfriday-frm input.form-control:-ms-input-placeholder { 
+      color: #424242;
+      font-size: 15px;
+      letter-spacing: 4px;
+   }
+   .blackfriday-frm input.form-control::placeholder {
+      color: #424242;
+      font-size: 15px;
+      letter-spacing: 4px;
+   }
+   .blackfriday-frm .fyi-content{
+      text-align: left;
+   }
+   .blackfriday-frm .fyi-content p{
+      color: #6D6D6D;
+      font-size: 15px;
+   }
+   .label-checkbox {
+      display: block;
+      position: relative;
+      padding-left: 45px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+   }
+   .label-checkbox input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+   }
+   .checkmark {
+      position: absolute;
+      top: 6px;
+      left: 0;
+      height: 18px;
+      width: 18px;
+      background-color: #eee;
+   }
+   .label-checkbox input:checked ~ .checkmark {
+      background-color: #032957;
+   }
+   .checkmark:after {
+      content: "";
+      position: absolute;
+      display: none;
+   }
+   .label-checkbox input:checked ~ .checkmark:after {
+      display: block;
+   }
+   .label-checkbox .checkmark:after {
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 12px;
+      border: solid white;
+      border-width: 0 3px 3px 0;
+      -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+   }
+   @media only screen and (max-width: 1440px) {
+      .blackfriday-frm{
+         max-width: 500px;
+      }
+      .blackfriday-frm h1{
+         font-size: 16px;
+      }
+   }
+   @media only screen and (max-width: 991px) {
+      .frm-content{
+         width: 90%;
+         left: 5%;
+         right: 5%;
+         top: 15%;
+         bottom: 15%;
+      }
+      .blackfriday-frm{
+         padding: 0;
+      }
+   }
+   @media only screen and (max-width: 767px) {
+      .blackfriday-frm p,
+      .blackfriday-frm .fyi-content p{
+         word-break: break-word;
+         font-size: 11px;
+      }
+      .label-checkbox{
+         padding-left: 30px;
+      }
+   }
+   </style>
+{% endif %}
+<script>
+var has_access = localStorage.getItem("grantAccess");
+if(has_access && has_access=="true") {
+   document.getElementById("blackfriday-overlay").style.display = 'none';
+}
+   $(document).ready(function(){
+      $('#black-friday-signup').on('submit',function(e){
+         e.preventDefault();
+         $('.blackfriday-overlay').hide();
+         localStorage.setItem("grantAccess", "true");
+        
+        $.post( "https://hook.integromat.com/9mxhmbwc2f17yt82en5dou8fvhb7dwnn", { email: $('#black-friday-signup #email').val() })
+        .done(function( data ) {
+          //alert( "Data Loaded: " + data );
+        });        
+      })
+   })
+</script>
+{% endif %}
+{% schema %}
+   {
+      "name": "Collection Access Popup",
+      "settings": [
+         {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enabel protection",
+            "default": true
+         },
+         {
+            "type": "number",
+            "id": "width",
+            "label": "Width of popup",
+            "default": 600
+         },
+         {
+            "type": "number",
+            "id": "height",
+            "label": "height of popup",
+            "default": 800
+         },
+         {
+            "type": "select",
+            "id": "content_position",
+            "label": "Content position",
+            "options": [
+               {
+               "value": "top",
+               "label": "Top"
+               },
+               {
+               "value": "center",
+               "label": "Center"
+               },
+               {
+               "value": "bottom",
+               "label": "Bottom"
+               }
+            ],
+            "default": "center"
+         },
+         {
+            "type": "image_picker",
+            "id": "bg_image",
+            "label": "Background image"
+         },
+         {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+         },
+         {
+            "type": "color",
+            "id": "title_color",
+            "label": "Color",
+            "default": "#333333"
+         },
+         {
+            "type": "richtext",
+            "id": "text",
+            "label": "Copy"
+         },
+         {
+            "type": "color",
+            "id": "text_color",
+            "label": "Color",
+            "default": "#333333"
+         },
+         {
+            "type": "text",
+            "id": "email_placeholder",
+            "label": "Email placeholder"
+         },
+         {
+            "type": "richtext",
+            "id": "checkbox_text",
+            "label": "Checkbox Text"
+         },
+         {
+            "type": "text",
+            "id": "cta_text",
+            "label": "Button Text"
+         },
+         {
+            "type": "richtext",
+            "id": "fyi",
+            "label": "FYI Content"
+         }
+      ]
+   }
+{% endschema %}

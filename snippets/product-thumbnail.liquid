@@ -1,0 +1,46 @@
+{% assign count = 0 %}
+{% assign option_index = 0 %}
+{% for option in product.options %}
+    {% assign downcased_option = option | downcase %}
+    {% if downcased_option contains 'color' or downcased_option contains 'colour' %}
+      {% assign option_index = count %}
+    {% endif %}
+    {% assign count = count | plus: 1 %}
+{% endfor %}
+{% assign values = '' %}
+
+
+{% for variant in product.variants %}
+  {% assign value = variant.options[option_index] %}
+  {% unless values contains value %}
+    {% assign values = values | join: ',' %}
+    {% assign values = values | append: ',' | append: value %}
+    {% assign values = values | split: ',' %}
+
+    <div class="col-6 col-md-4" itemprop="itemListElement" itemscope itemtype="http://schema.org/Product">
+      <div class="product-wrap">
+        <div class="relative product_image swap-{{ settings.collection_secondary_image }}">
+          <a href="{{ variant.url }}" itemprop="url">
+            {% assign featured = variant.image %}
+
+            <img src="{{ featured | product_img_url: '100x' }}"
+                 alt="{{ featured.alt | escape }}"
+                 class=" lazyload js-image-loaded blur-up"
+                 data-sizes="auto"
+                 data-src="{{ featured | product_img_url: '600x' }}"
+                 data-srcset="{{ featured | product_img_url: '300x' }} 300w,
+                              {{ featured | product_img_url: '500x' }} 500w,
+                              {{ featured | product_img_url: '600x' }} 600w,
+                              {{ featured | product_img_url: '700x' }} 700w,
+                              {{ featured | product_img_url: '900x' }} 900w"/>
+          </a>
+
+          
+        </div>
+        <a class="product-info__caption hidden" href="{{ variant.url | within: collection }}" itemprop="url">
+          <!-- include "product-info" -->
+        </a>
+      </div>
+    </div>
+  {% endunless %}
+{% endfor %}

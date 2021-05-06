@@ -1,0 +1,12 @@
+<script>
+   footerFillInterval = setInterval(function() {
+    //  
+     //console.log('footerFillInterval: '+$('.klaviyo-footer-form circle').length);
+     if($('.klaviyo-footer-form circle').length > 0) {
+       clearInterval(footerFillInterval);
+       $('.klaviyo-footer-form svg[class^="SelectorInner__StyledInner"] circle').attr('fill','#b4bbc3');
+       //console.log('should clear');
+     }
+   },100);
+    
+</script>

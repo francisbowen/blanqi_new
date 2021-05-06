@@ -1,0 +1,172 @@
+{%- assign orange_tags = 'sale,new to sale,final sale,launch offer,special offer' | split: ',' -%}
+{%- assign bf_offer = false -%}
+{% for tag in product.tags %}
+  {% if tag contains 'bf-bogo' %}
+    {%- assign bf_offer = true -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{%- assign bf_denim = false -%}
+{% for tag in product.tags %}
+  {% if tag contains 'bf-denim' %}
+    {%- assign bf_denim = true -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{%- assign bf_bra = false -%}
+{% for tag in product.tags %}
+  {% if tag contains 'bf-bra' %}
+    {%- assign bf_bra = true -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+{% assign on_sale = false %}
+{% if variant.compare_at_price > variant.price %}
+	{% assign on_sale = true %}
+{% endif %}
+{%- assign varNew = false -%}
+{%- assign allNew = false -%}
+{%- assign specifyNew = false -%}
+{%- assign hideClass = '' -%}
+{%- if product.tags contains 'new-product' -%}
+{%- assign allNew = true -%}
+{%- endif -%}
+  {%- for tag in product.tags -%}
+    {%- if tag contains 'new--' -%}
+    {%- assign specifyNew = true -%}
+    {% if tag contains filter_color %}
+    {%- assign allNew = false -%}
+    {%- assign varNew = true -%}
+    {% endif %}
+    {%- endif -%}
+  {%- endfor -%}
+  {% if collection.handle == 'new' %}
+    {%- if specifyNew and varNew -%}
+      {%- assign hideClass = '' -%}
+      {%- elsif specifyNew -%}
+      {%- assign hideClass = ' hide ' -%}
+    {%- endif -%}
+  {% endif %}
+<div class="col-6 col-md-4 product-wrap {{ hideClass }} {% if exclude_old_color %} hide {% endif %} {% if collection.handle == 'sale' and on_sale == false %}d-none{% endif %}" 
+               data-color="{{ filter_color | downcase }}"
+               data-collections="{{ filter_category | downcase }}"
+               data-stage="{{ filter_stage | downcase }}"
+               data-size="{{ filter_size }}"
+               data-category="{{ filter_collections }}"
+               data-price="{{ price }}"
+               data-created="{{created_at}}"
+               data-published="{{published_at}}">
+             
+
+{% comment %}  APPEND m=maternity image id TO MATERNITY IMAGE LISTINGS {% endcomment %}
+
+                
+  			{% if filter_category == "SportSupport" and collection.handle == "maternity"  %}
+              {% for image in product.images %}
+                {% assign color_check = variant.option1 | downcase | handleize %}             
+  				{% if image.alt contains "maternity-image" and image.alt contains color_check %}
+            		{% assign imageid = image.id %}
+ 				{% endif %}
+              {% endfor %}
+            {% endif %}
+            
+            {% if filter_category == "SportSupport" and collection.handle == "maternity"  %}
+            	{% assign maternity_image_flag = "&m=1" | append: imageid %}
+            {% else %}
+            	{% assign maternity_image_flag = "" %}
+            {% endif %}
+            
+            {% comment %}  Create Query String Value for links from BLACK FRIDAY PAGE {% endcomment %}   
+
+            {% if collection.handle == "black-friday-sale" %}
+            	{% assign black_friday_flag = "&bf=1" %}
+            {% else %}
+            	{% assign black_friday_flag = "&bf=0" %}
+            {% endif %}  
+  
+  			
+            
+  			
+            
+            <div class="relative product_image mb-2">
+              <a href="{{ variant.url | within: collection }}{{ maternity_image_flag }}{{ black_friday_flag }}">
+                {% if featured_override %}
+                {% assign featured = featured_override %}
+                {% else %}
+                {% assign featured = variant.image %}
+                {% endif %}                
+                
+                {% comment %} Check for maternity photos and replace product_img_url if found. {% endcomment %}
+                
+                {% if filter_category == "SportSupport" and collection.handle == "maternity"  %}
+                {% for image in product.images %}
+                {% assign color_check = variant.option1 | downcase | handleize %}             
+                {% if image.alt contains "maternity-image" and image.alt contains color_check %}
+                {% assign featured = image %}
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+                <img src="{{ 'loader2x.gif' | asset_img_url }}"
+                     alt="{{ featured.alt | escape }}"
+                     class=" lazyload js-image-loaded blur-up"
+                     data-sizes="auto"
+                     data-src="{{ featured | product_img_url: '600x' }}"
+                     data-srcset="{{ featured | product_img_url: '300x' }} 300w,
+                                  {{ featured | product_img_url: '500x' }} 500w,
+                                  {{ featured | product_img_url: '600x' }} 600w,
+                                  {{ featured | product_img_url: '700x' }} 700w,
+                                  {{ featured | product_img_url: '900x' }} 900w"/>
+              </a>
+            </div>
+
+            {% comment %}
+            {% include 'tag-banners' with scope: 'product-loop' %}
+            {% endcomment %}
+
+            <div class="thumb-items">
+              {%- for tag in product.tags -%}
+                {%- if tag contains 'tag--' -%}
+                {%- assign tag_name = tag | remove: 'tag--' -%}
+                {%- if tag_name contains '//' -%}
+                {%- assign tag_split = tag_name | split: '//' -%}
+                {%- if tag_split[1] contains filter_color -%}
+                <div class="pre-tag {% if orange_tags contains tag_split[0] %}offer-tag{% endif %}">{{ tag_split[0] }}</div>
+                {%- endif -%}
+                {%- else -%}
+                <div class="pre-tag {% if orange_tags contains tag_name %}offer-tag{% endif %}">{{ tag_name }}</div>
+                {%- endif -%}
+                {%- endif -%}
+              {%- endfor -%}
+
+
+
+              {% if varNew %}
+              <div class="plp-product-tags">NEW</div>
+              {% endif %}
+              {% if bf_offer or bf_bra %}
+              	{% if product.title contains "Denim"%}<div class="percentage-off">Buy One, Get One 75% Off</div>{% else %}
+                <div class="percentage-off">Buy One, Get One 1/2 Off</div>
+              {% endif %}
+         {% endif %}
+              {% include 'tag-banners-collection' with scope: 'product-mobile' %}
+              {%- comment -%}
+              {% if filter_category %}
+              <div class="thumb-category mb-1">{{ filter_category }}</div>
+              {% endif %}
+              {%- endcomment -%}
+              <div class="thumb-title mb-2"><a href="{{ variant.url | within: collection }}">{{ title }}</a></div>
+              <div class="thumb-price">
+                {% if variant.price < variant.compare_at_price %}
+                <s id="ComparePrice" class="product-single__price--compare-at"> {{ product.compare_at_price_min | money_without_trailing_zeros }} </s>
+                {% endif %}
+                {{ variant.price | money_with_currency }}
+              </div>
+              
+              {% include 'tag-banners-sale-collection' with scope: 'product-mobile' %}
+              <div class="plp-color-name">{{ filter_color }}</div>
+            </div>
+          </div>

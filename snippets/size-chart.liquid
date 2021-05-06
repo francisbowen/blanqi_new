@@ -1,0 +1,211 @@
+<div id="Dimensions-{{ product.id }}" class="text-center size-dimensions d-flex"></div>
+<script type="application/json" id="SizingJSON-{{ product.id }}">
+  {%- assign prod_title_compare = product.title | downcase -%}
+
+  [
+  {% if prod_title_compare contains "tank" or prod_title_compare contains "bellyband" or prod_title_compare contains "short"%}
+      {
+        "size":"x-small",
+        "dimensions":[
+          {
+            "Numeric":"0",
+            "Bust":"30",
+            "Hip": "32"
+          }
+        ]
+      },
+      {
+        "size":"small",
+        "dimensions":[
+          {
+            "Numeric":"2-4",
+            "Bust":"32-34",
+            "Hip": "34-35"
+          }
+        ]
+      },
+      {
+        "size":"medium",
+        "dimensions":[
+          {
+            "Numeric":"6-8",
+            "Bust":"36-37",
+            "Hip": "36-37"
+          }
+        ]
+      },
+      {
+        "size":"large",
+        "dimensions":[
+          {
+            "Numeric":"10-12",
+            "Bust":"38-39",
+            "Hip": "38-39"
+          }
+        ]
+      },
+      {
+        "size":"x-large",
+        "dimensions":[
+          {
+            "Numeric":"14-16",
+            "Bust":"40-41",
+            "Hip": "42-44"
+          }
+        ]
+      },
+      {
+        "size":"small/medium",
+        "dimensions":[
+          {
+            "Numeric":"2-8",
+            "Bust":"32-37",
+            "Hip": "34-37"
+          }
+        ]
+      },
+      {
+        "size":"large/xlarge",
+        "dimensions":[
+          {
+            "Numeric":"10-16",
+            "Bust":"38-41",
+            "Hip": "38-44"
+          }
+        ]
+      }
+     {% elsif prod_title_compare contains "legging" and prod_title_compare contains "sportsupport" %} 
+     
+      {
+        "size":"x-small",
+        "dimensions":[
+          {
+            "Numeric":"0",
+            "Hip":"30",
+            "Inseam": "29"
+          }
+        ]
+      },
+      {
+        "size":"small",
+        "dimensions":[
+          {
+            "Numeric":"2-4",
+            "Hip":"32-34",
+            "Inseam": "30"
+          }
+        ]
+      },
+      {
+        "size":"medium",
+        "dimensions":[
+         {
+            "Numeric":"6-8",
+            "Hip":"36-38",
+            "Inseam": "31"
+          }
+        ]
+      },
+      {
+        "size":"large",
+        "dimensions":[
+         {
+            "Numeric":"10-12",
+            "Hip":"40-42",
+            "Inseam": "32"
+          }
+        ]
+      },
+      {
+        "size":"x-large",
+        "dimensions":[
+          {
+            "Numeric":"14-16",
+            "Hip":"44-46",
+            "Inseam": "33"
+          }
+        ]
+      }
+    {% elsif prod_title_compare contains "legging" and prod_title_compare contains "everyday" %} 
+     
+      {
+        "size":"x-small",
+        "dimensions":[
+          {
+            "Numeric":"0",
+            "Hip":"32",
+            "Inseam": "-"
+          }
+        ]
+      },
+      {
+        "size":"small",
+        "dimensions":[
+          {
+            "Numeric":"2-4",
+            "Hip":"34-36",
+            "Inseam": "24<sup>1/4</sup>"
+          }
+        ]
+      },
+      {
+        "size":"medium",
+        "dimensions":[
+         {
+            "Numeric":"6-8",
+            "Hip":"38-40",
+            "Inseam": "25<sup>1/4</sup>"
+          }
+        ]
+      },
+      {
+        "size":"large",
+        "dimensions":[
+         {
+            "Numeric":"10-12",
+            "Hip":"42-44",
+            "Inseam": "26<sup>1/4</sup>"
+          }
+        ]
+      },
+      {
+        "size":"x-large",
+        "dimensions":[
+          {
+            "Numeric":"14-16",
+            "Hip":"46-48",
+            "Inseam": "27<sup>1/4</sup>"
+          }
+        ]
+      }
+	{% endif %}
+
+  ]
+</script>
+<script>
+  $(document).ready(function(){
+    var currSize = $(".blanqi-show-me .single-option-selector").val();
+   		getSize();
+      $('.blanqi-show-me .single-option-selector').on('change', function() {
+         currSize = this.value,
+       getSize();
+      });
+    function getSize(){
+    var sizingJson = JSON.parse(document.getElementById('SizingJSON-{{ product.id }}').innerHTML),
+        dimensionsObject = $('#Dimensions-{{ product.id }}');
+    currSize = currSize.toLowerCase();
+    var sizeDimensions = $.grep(sizingJson, function (element, index) {
+
+        return element.size == currSize;
+    });
+    console.log(sizeDimensions);
+    dimensionsObject.html('');
+    if (typeof sizeDimensions[0]  !== "undefined"){
+      $.each(sizeDimensions[0].dimensions[0],function(key,value){
+        dimensionsObject.append('<div class="col-md-4 p-1"><strong>'+ key + '</strong>' + '<p>' + value + '</p>' +'</div>');
+      });
+    	}
+    }
+    
+  });
+</script>

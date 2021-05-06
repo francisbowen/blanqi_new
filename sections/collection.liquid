@@ -1,0 +1,546 @@
+<div class="custom-collection-page">
+  <div class="container">
+{% if collection.metafields.custom_fields["hide_header_title"] == 'yes' %}
+<style>
+  .collection-image .title {
+    display:none;
+  }
+  
+  @media screen and (min-width:768px) {
+    .collection-desc {
+      display:none !important;
+    }
+  }
+  
+</style>
+{% endif %}
+{% if collection.handle == 'sale' %}
+<style>
+  .product-listing .product-wrap:nth-child(3)  {
+    display:none;
+  }
+</style>
+{% endif %}
+
+{% if collection.metafields.custom_fields["mobile_image"] != blank %}
+  {% assign col_mobile_image = collection.metafields.custom_fields["mobile_image"] %}
+{% elsif collection.metafields.custom_fields["mobile_image2"] != blank %}
+  {% assign col_mobile_image = collection.metafields.custom_fields["mobile_image2"] %}
+{% endif %}
+    
+{% if collection.image %}
+<div class="row collection-image">
+  <div class="col-12">
+  {% if col_mobile_image %}
+  <img src="{{ collection.image.src | collection_img_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-none d-sm-block"/>
+    <img src="{{ col_mobile_image | file_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-block d-sm-none"/>
+    {% else %}
+      <img src="{{ collection.image.src | collection_img_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }}"/>
+    {% endif %}
+      {% if collection.handle contains 'black-friday' %}
+        <div class="vert-center bf-vert-center">
+          <!-- h1 class="title mx-auto mb-0 mb-sm-2 black-friday">{{ collection.title }}</h1 -->
+          <div class="d-none d-md-flex black-friday">{{ collection.description }}</div>
+        </div>    
+      {% else %}
+        <div class="vert-center">
+          {% unless collection.handle == 'bras' %}<h1 class="title mx-auto {% if collection.metafields.custom_fields["show_mobile_heading"] != blank %} show-mobile-heading {% endif %}">{{ collection.title }}</h1>{% endunless %}
+          <div class="collection-desc d-none d-md-block">{{ collection.description }}</div>
+        </div>
+      {% endif %}    
+  </div>
+  {% if collection.description %}
+  <div class="col-12 d-block d-md-none text-center black-friday">
+    <div class="mobil-custom-detail">
+    {{ collection.description }}
+  </div>
+  </div>
+  {% endif %}
+</div>
+  {% if collection.id == 154747699270 %}
+  <div class="mobile-collection-subheader d-block d-sm-none">
+    Dressing made easy. A do-it-all maternity<br />staple you can wear. All. Pregnancy. Long.
+  </div>
+  {% endif %}
+  {% if collection.id == 157234888774 %}
+  <div class="mobile-collection-subheader d-block d-sm-none">
+    Enjoy 20%, 30%, &amp; 60% off - in honor of Motherhood Appreciation Month<br />(which, let's be real, should be every month).
+  </div>
+  {% endif %}
+<a name="pagecontent" id="pagecontent"></a>
+{% else %}
+<div class="mb-3"></div>
+{% endif %}
+
+<div class="row">
+  <script type="application/ld+json" class="google-breadcrumbs">
+  [{
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [{
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ shop.secure_url }}"
+    },{
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": "{{ shop.secure_url }}/collections/all/"
+    }
+    {% if collection %}
+    ,{
+      "@type": "ListItem",
+      "position": 3,
+      "name": "{{ collection.title | escape }}",
+      "item": "{{ shop.secure_url }}{{ collection.url }}"
+    }
+    {% endif %}
+  ]}]
+  </script>
+  <div class="col-12 col-md-6 breadcrumb-collection d-none d-md-block">
+    <div class="breadcrumbs">
+      <a href="{{ shop.secure_url }}">
+        Home
+      </a>
+      <span>/</span>
+      <a href="/collections/all/">
+        Shop
+      </a>
+      {% if collection %}
+      <span>/</span>
+      <a href="{{ collection.url }}">
+        {{ collection.title }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-6 col-sm-12 col-md-6 sort-products order-2 order-sm-1 text-center text-sm-right">
+    <label><span class="sr-only">Sort by</span>
+    <select class="sort-select" id="SortBy">
+      <option disabled selected value>Sort by</option>
+      <option value="price-ascending">Price: Low to High</option>
+      <option value="price-descending">Price: High to Low</option>
+      <option value="most-recent">Most Recent</option>
+    </select>
+  </label>
+  </div>
+  <div class="col-6 col-sm-4 col-md-3 order-1 order-md-2 text-center text-md-left">
+
+    <div class="filter collection-{{ collection.handle }}" id="Filter-Accordion">
+      <h1 class="title">FILTER</h1>
+      <div class="filter-wrap">
+        
+        {% assign filter_name = 'stage' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            STAGE <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="maternity">Maternity</div>
+          <div class="js-filter js-checkbox" data-value="postpartum">Postpartum</div>
+          <div class="js-filter js-checkbox" data-value="nursing">Nursing</div>
+          <div class="js-filter js-checkbox" data-value="motherhood">Motherhood</div>
+        </div>
+        
+        {% assign filter_name = 'category' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            CATEGORY <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="tops">Tops</div>
+          <div class="js-filter js-checkbox" data-value="leggings">Leggings</div>
+          <div class="js-filter js-checkbox" data-value="bands">Bands</div>
+          <div class="js-filter js-checkbox" data-value="shorts">Shorts</div>
+          <div class="js-filter js-checkbox" data-value="jeans">Jeans</div>
+          <div class="js-filter js-checkbox" data-value="tees">Tees</div>
+          <div class="js-filter js-checkbox" data-value="dresses">Dresses</div>
+          <div class="js-filter js-checkbox" data-value="intimates">Intimates</div>
+        </div>
+        
+        {% assign filter_name = 'collections' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            COLLECTION <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="blanqi everyday">BLANQI® Everyday™</div>
+          <div class="js-filter js-checkbox" data-value="sportsupport">SportSupport®</div>
+          <div class="js-filter js-checkbox" data-value="blanqi body">BLANQI® Body™</div>
+          <div class="js-filter js-checkbox" data-value="denim">Denim</div>
+          <div class="js-filter js-checkbox" data-value="blanqi house">BLANQI® House™</div>
+        </div>
+
+        {% assign filter_name = 'size' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            SIZE <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox-size" data-value="small,small/medium">SM</div>
+          <div class="js-filter js-checkbox-size" data-value="medium,small/medium">M</div>
+          <div class="js-filter js-checkbox-size" data-value="large,large/xlarge">L</div>
+          <div class="js-filter js-checkbox-size" data-value="x-large,large/xlarge">XL</div>
+        </div> 
+
+        {% assign filter_name = 'color' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            COLOR <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div data-value="white,winter white" class="white-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="black deepest,black knee slit, black" class="black-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="pale nude,pale peach" class="pale-nude-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="Pale Peach,Frosty Pink" class="pale-peach-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="light,grey,dove grey, light grey" class="dove-grey-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="heather,grey, dark grey,heather grey" class="dark-grey-swatch js-filter js-checkbox-color"><label></label></div> 
+          <div data-value="Light Moss" class="light-moss-swatch js-filter js-checkbox-color"><label></label></div>
+
+          {% assign file_extension = 'png' %}
+
+          <div data-value="forest, night,olive" class="forest-night-swatch js-filter js-checkbox-color"><label style="background-image: url({{ 'forest-night' | append: '.' | append: file_extension | file_img_url: '50x' }});"></label></div>
+          <div data-value="oil, blue,Light Destroy Wash" class="oil-blue-swatch js-filter js-checkbox-color"><label style="background-image: url({{ 'oil-blue' | append: '.' | append: file_extension | file_img_url: '50x' }});"></label></div>
+          <div data-value="storm,medium,clean,Medium Clean Wash" class="storm-swatch js-filter js-checkbox-color"><label style="background-image: url({{ 'storm' | append: '.' | append: file_extension | file_img_url: '50x' }});"></label></div>
+          <div data-value="navy" class="navy-swatch js-filter js-checkbox-color"><label style="background-image: url({{ 'navy' | append: '.' | append: file_extension | file_img_url: '50x' }});"></label></div>
+        </div> 
+        <hr class="line-break d-block d-md-none" style="border-color:#eaeaea;margin-top:0!important;">
+        <div class="js-clear-filter">CLEAR FILTER</div>
+        <div class="js-close-filter d-sm-none">CLOSE FILTER</div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 col-sm-8 col-md-9 order-3 collection-z">
+    {% if collection.products.size == 0 %}
+      <p class="quote">Sorry, no products match the search.</p>
+    {% else %}
+      {% assign products = collection.products %}
+      {% include 'product-loop' %}
+    {% endif %}
+  </div>
+</div>
+{% if collection.metafields.custom_fields["seo_text"] != blank %}
+<div class="row seo-text">
+  <div class="col-12 text-center">
+    <hr class="line-break">
+    <h1>
+      {% if collection.metafields.custom_fields["seo_headline"] != blank %}{{ collection.metafields.custom_fields["seo_headline"] }}{% else %}{{ collection.title }}{% endif %}
+    </h1>
+    <p>
+      {{ collection.metafields.custom_fields["seo_text"] }}
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  /*  hide own filter when in stage / category / collection  */
+  .filter.collection-maternity .name-stage,
+  .filter.collection-postpartum-nursing .name-stage,
+  .filter.collection-womens .name-stage {
+    display: none !important;
+  }
+  .filter.collection-support-tops .name-category,
+  .filter.collection-leggings .name-category,
+  .filter.collection-support-bands .name-category {
+    display: none !important;
+  }
+  .filter.collection-everyday .name-collections,
+  .filter.collection-sportsupport .name-collections {
+    display: none !important;
+  }
+  .mobile-collection-subheader {
+    text-align:center;
+    font-size:14px;
+    line-height:20px;
+    padding:50px 0;
+  }
+  {% if collection.handle == 'shorts' or collection.handle == 'new' %}
+  {% comment %} .collection-image .title{
+  	display:none;
+  } {% endcomment %}
+  {% endif %}
+</style>
+
+<script>
+  $(document).ready(function(){
+    var by = {
+      color: "",
+      size: "",
+      collections: "",
+      category: "",
+      stage: "",
+    };
+
+    function filter_by () {
+      by.color = $("#FilterBy-color").data("value").toLowerCase().split(",");
+      by.size = $("#FilterBy-size").data("value").toLowerCase().split(",");
+      by.collections = $("#FilterBy-collections").data("value").toLowerCase().split(",");
+      by.category = $("#FilterBy-category").data("value").toLowerCase().split(",");
+      by.stage = $("#FilterBy-stage").data("value").toLowerCase().split(",");
+
+      function contains_filter (data, arr) {
+        for (var i = 0; i < arr.length; i++) {
+          if (data.indexOf(arr[i]) >= 0) return true;
+        }
+      }
+      
+      $(".product-wrap").each(function(){
+        $this = $(this);
+
+        var display_color = by.color == "" || contains_filter($this.data("color"), by.color);
+        var display_size = by.size == "" || contains_filter($this.data("size"), by.size);
+        var display_collections = by.collections == "" || contains_filter($this.data("category"), by.collections);
+        var display_category = by.category == "" || contains_filter($this.data("category"), by.category);
+        var display_stage = by.stage == "" || contains_filter($this.data("category"), by.stage);
+
+        if (display_color && display_size && display_collections && display_category && display_stage) {
+          $this.removeClass("d-none");
+        }
+        else {
+          $this.addClass("d-none");
+        }
+      });
+    }
+    
+    $(".filtered").on("click", function(e) {
+      $(this).data("value","");
+      filter_by();
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    });
+    
+    $(document).on("click", ".js-filter", function(e) {
+      var filter = $(this).parent().data("filter");
+      var value = $(this).data("value");
+      var $parent = $(e.target).parent();
+        
+      if ($(e.target).hasClass("js-radio")) {
+        $parent.children(".js-checked").each(function(e) {
+          $(this).removeClass("js-checked");
+        });
+        $(e.target).toggleClass("js-checked");
+        if (!$(e.target).hasClass("js-checked")) {
+          value = "";
+        }
+      }
+      else {
+        $(e.target).toggleClass("js-checked");
+        value = "";
+        $parent.children(".js-checked").each(function(e) {
+          value += $(this).data("value") + ",";
+        });
+      }
+      value = value.substring(value, value.length - 1);
+      $("#FilterBy-"+filter).data("value", value);
+
+      filter_by();
+    });
+    
+    $('#SortBy').on('change', function() {
+      
+      var value = this.value;
+      var divs = [];
+      
+      $(".product-wrap").each(function(){
+        divs.push({
+          el: this,
+          price: parseInt($(this).data("price")),
+          created: new Date($(this).data("created")),
+        });
+      });
+      
+      $(".product-listing").fadeOut("fast", function(){
+        $(this).empty();
+        
+        if (value == "price-ascending") {
+          divs.sort(function (b, a) {
+            return b.price - a.price; 
+          });
+        }
+        else if (value == "price-descending") {
+          divs.sort(function (a, b) {
+            return b.price - a.price; 
+          });
+        }
+        else if (value == "most-recent") {
+          divs.sort(function (a, b) {
+            return b.created - a.created;
+          });
+        }
+        
+        for (var i = 0; i < divs.length; i++) {
+          $(".product-listing").append(divs[i].el);
+        }
+        
+        $(this).fadeIn("fast");
+      });  
+    });
+    
+    $(".js-clear-filter").on("click", function(e) {
+      $(".js-filter.js-checked").each(function(){
+        $(this).removeClass("js-checked");
+      });
+      $("#FilterBy-color").data("value", "");
+      $("#FilterBy-size").data("value", "");
+      $("#FilterBy-collections").data("value", "");
+      $("#FilterBy-category").data("value", "");
+      $("#FilterBy-stage").data("value", "");
+      filter_by();
+    });
+    
+    var new_from_date = Date.now() - (5184000000 * 2); // 120 days
+    $(".tags").each(function () {
+      var $tag_new = $(this).find(".tag-new");
+      
+      if ( new Date($tag_new.data("published")) > new_from_date ) {
+        $tag_new.addClass("d-inline-block").removeClass("d-none");
+      }
+    });
+    
+    $(".js-close-filter").on("click", function(e) {
+      $(".filter").removeClass("open");
+    });
+  });
+</script>
+</div>
+
+<div class="instagram-feed text-center">
+  <h3>SHOP SOCIAL</h3>
+
+  <div>
+    <div id="pixlee_container"></div><script type="text/javascript">window.PixleeAsyncInit = function(){Pixlee.init({apiKey:'2UUXiETG2BAujkeVebVO'});Pixlee.addSimpleWidget({widgetId:1481971});};</script><script src="//assets.pxlecdn.com/assets/pixlee_widget_1_0_0.js"></script>
+  </div>
+    <a href="https://www.instagram.com/blanqigirls/" target="_blank" class="a-btn-black mb-3 mb-md-25rem">SHOP SOCIAL</a>
+</div>
+
+</div>
+
+
+{% schema %}
+  {
+    "name": "Collection Section",
+    "settings": [
+
+	],
+    "blocks": [
+      {
+        "type": "product_image_override",
+        "name": "Additional Product Image",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info":"For admin display only"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection",
+            "info": "Collection to assign additional product image to"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Product for additional product image"
+          },
+          {
+            "type": "text",
+            "id": "colorway_1",
+            "label": "Colorway 1"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Additional product image for the above colorway"
+          },
+          {
+            "type": "text",
+            "id": "colorway_2",
+            "label": "Colorway 2"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Additional product image for the above colorway"
+          },
+          {
+            "type": "text",
+            "id": "colorway_3",
+            "label": "Colorway 3"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Additional product image for the above colorway"
+          },
+          {
+            "type": "text",
+            "id": "colorway_4",
+            "label": "Colorway 4"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Additional product image for the above colorway"
+          },
+          {
+            "type": "text",
+            "id": "colorway_5",
+            "label": "Colorway 5"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_5",
+            "label": "Additional product image for the above colorway"
+          }
+        ]
+      },
+      {
+        "type": "hide_product",
+        "name": "Hide Default Product",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "info":"For admin display only"
+          },
+          {
+            "type": "collection",
+            "id": "collection",
+            "label": "Collection",
+            "info": "Collection to hide additional product image from"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Default product to hide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

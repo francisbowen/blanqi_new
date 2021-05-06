@@ -1,0 +1,147 @@
+<div class="container">
+  <div class="row">
+    {% assign col_open = false %}
+    {% assign col_width = 'narrow' %}
+
+    {% for block in section.blocks %}
+      {% if block.type == 'column' %}
+        {% if block.settings.col_width == 'col-xl-6 col-sm-12 col-md-6' %}
+          {% assign col_width = 'narrow' %}
+        {% else %}
+          {% assign col_width = 'wide' %}
+        {% endif %}
+        
+        {% if col_open == true %}
+            <div class="clear"></div>
+          </div><!-- gift-guide-column close -->
+          {% assign col_open = false %}
+        {% endif %}
+          <div class="gift-guide-column {{ block.settings.col_width }}">
+        {% assign col_open = true %}  
+
+      {% endif %}
+      {% if block.type == 'category' %}
+        <div class="gift-guide-category">
+          <h4><span>Gifts For The</span><strong>{{ block.settings.title }}</strong></h4>
+        </div>
+      {% endif %}
+      {% if block.type == 'item' %}
+        {% include 'gift-guide-item' with col_width %}
+      {% endif %}
+
+    {% endfor %}
+        
+  </div><!-- row -->
+</div><!-- container -->
+
+{% schema %}
+  {
+    "name": "Gift Guide",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Column",
+        "settings": [
+          {
+            "type": "select",
+            "id": "col_width",
+            "label": "Column style",
+            "default": "col-xl-6 col-sm-12 col-md-6",
+            "options": [
+              {
+                "label": "Narrow",
+                "value": "col-xl-6 col-sm-12 col-md-6"
+              },
+              {
+                "label": "Wide",
+                "value": "col-xl-12 col-sm-12 col-md-12"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "category",
+        "name": "Category",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          }
+        ]
+      },
+      {
+        "type": "item",
+        "name": "Gift Guide Item",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "richtext",
+            "id": "copy",
+            "label": "Product Copy",
+            "default":"<p>product information copy</p>"
+          },
+          {
+            "type": "text",
+            "id": "offer",
+            "label": "Offer",
+            "info":"e.g. 50% OFF"
+          },
+          {
+            "type": "text",
+            "id": "code",
+            "label": "Code",
+            "info":"e.g. CODE: ABCDEFG"
+          },
+          {
+            "type": "text",
+            "id": "disclaimer",
+            "label": "Disclaimer",
+            "info":"e.g. *Some restrictions apply"
+          },
+          {
+            "type": "text",
+            "id": "expiration",
+            "label": "Expiration",
+            "default":"Valid through 12/19",
+            "info":"e.g. Valid through 12/19"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link"
+          },
+          {
+            "type": "checkbox",
+            "id": "target_blank",
+            "label": "Open link in new tab?",
+            "default":true
+          },
+          {
+            "type": "text",
+            "id": "button_text",
+            "label": "Button text",
+            "default":"Shop Now"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

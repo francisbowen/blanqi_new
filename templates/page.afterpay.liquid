@@ -1,0 +1,22 @@
+<div class="row faq-template custom-faq-template">
+  <div class="col-12 col-sm-2 order-2 order-sm-1" id="custom-sidebar">
+    {% include 'sidebar' %}
+  </div>
+  <div id="accordion" class="col-12 col-sm-10 order-1 order-sm-2">
+    <div class="breadcrumbs mb-2 mb-sm-2rem text-center text-sm-left" style="margin-left: 0">
+      <a href="{{ shop.secure_url }}">
+        HOME
+      </a>
+      <span>/</span>
+      <a href>
+        {{ page.title }}
+      </a>
+    </div>
+
+    <h1>{{ page.title }}</h1>
+    <p>
+    {{ page.content }}
+    </p>
+
+  </div>
+</div>

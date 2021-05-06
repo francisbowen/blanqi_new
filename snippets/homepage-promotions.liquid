@@ -1,0 +1,75 @@
+{% comment %}
+  This section supports linking to promotions specified in theme settings.
+{% endcomment %}
+
+{% assign featured_promos_per_row = settings.featured_promos_per_row | minus: 0 %}
+{% assign featured_promos_grid = settings.featured_promos_grid %}
+{% assign title_on_image = settings.feature_title_on_image_enabled %}
+
+<div class="container promotions-grid-{{featured_promos_grid}} not-behind-menu">
+  <div id="js-featured-promotions" class="featured-promotions promo-per-row-{{featured_promos_per_row}} clearfix">
+      {% for i in (1..8) %}
+        {% capture feature_enabled %}feature{{ i }}_enabled{% endcapture %}
+        {% capture feature_image %}feature{{ i }}.jpg{% endcapture %}
+        {% capture feature_link %}feature{{ i }}_link{% endcapture %}
+        {% capture feature_title %}feature{{ i }}_title{% endcapture %}
+        {% capture feature_description %}feature{{ i }}_description{% endcapture %}
+        {% capture feature_button %}feature{{ i }}_button{% endcapture %}
+
+        {% if settings[feature_enabled] %}
+          <figure class="feature-section section-{{ forloop.index }} promo-{{i}} title-overlay-{{title_on_image}}">
+              <div class="feature-inner">
+                <img  src="{{ feature_image | asset_img_url: '100x' }}"
+                      onError="this.onerror=null;this.src='{{ blank_image }}';"
+                      alt="{{ settings[feature_title] | escape }}"
+                      class="lazyload js-image-loaded {{ settings.image_loading_style }}"
+                      data-sizes="auto"
+                    {% if featured_promos_per_row == 2 %}
+                      data-src="{{ feature_image | asset_img_url: '1200x' }}"
+                      data-srcset=" {{ feature_image | asset_img_url: '960x' }} 480w,
+                                    {{ feature_image | asset_img_url: '1200x' }} 600w,
+                                    {{ feature_image | asset_img_url: '2048x' }} 1024w"
+                    {% elsif featured_promos_per_row == 3 %}
+                      data-src="{{ feature_image | asset_img_url: '960x' }}"
+                      data-srcset=" {{ feature_image | asset_img_url: '480x' }} 240w,
+                                    {{ feature_image | asset_img_url: '960x' }} 480w,
+                                    {{ feature_image | asset_img_url: '1200x' }} 600w"
+                    {% else %}
+                      data-src="{{ feature_image | asset_img_url: '480x' }}"
+                      data-srcset=" {{ feature_image | asset_img_url: '320x' }} 160w,
+                                    {{ feature_image | asset_img_url: '480x' }} 240w,
+                                    {{ feature_image | asset_img_url: '960x' }} 480w"
+                    {% endif %}
+                       />
+                <figcaption class="feature-overlay">
+                  <a {% if settings[feature_link] != blank %}href="{{ settings[feature_link] }}"{% endif %}class="link-promo"></a>
+                    <div class="feature-wrap">
+                      {% if settings[feature_title] != blank %}
+                        <h2 class="title">{{ settings[feature_title] }}</h2>
+                        <h3></h3>
+                      {% endif %}
+                      <div class="feature-details">
+                        {% if settings[feature_description] != blank %}
+                          <p class="description">{{ settings[feature_description] }}</p>
+                        {% endif %}
+
+                        {% if settings[feature_button] != blank %}
+                          <div class="button">{{ settings[feature_button] }}</div>
+                        {% endif %}
+                      </div>
+                    </div>
+                </figcaption>
+              </div>
+            {% if title_on_image == blank %}
+              {% if settings[feature_title] != blank %}
+                <a {% if settings[feature_link] != blank %}href="{{ settings[feature_link] }}"{% endif %}>
+                  <h2 class="title title-below">{{ settings[feature_title] }}</h2>
+                  <h3></h3>
+                </a>
+              {% endif %}
+            {% endif %}
+          </figure>
+        {% endif %}
+      {% endfor %}
+  </div>
+</div>

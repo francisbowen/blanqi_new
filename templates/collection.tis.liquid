@@ -1,0 +1,404 @@
+
+{% assign col_mobile_image = collection.metafields.custom_fields["mobile_image"] %}
+
+{% if collection.image %}
+<div class="row collection-image">
+  <div class="col-12">
+    {% comment 'removed 6/3/19' %}
+    {% if collection.handle == "everyday" %}
+    <img src="{{ "everydaycol.jpg"| asset_img_url: "2000x" }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-none d-sm-block"/>
+    <img src="{{ "everydaycolmob.jpg"| asset_img_url: "2000x" }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-block d-sm-none"/>    
+    {%else %}
+    <img src="{{ collection.image.src | collection_img_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-none d-sm-block"/>
+    <img src="{{ col_mobile_image | file_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-block d-sm-none"/>
+    {%endif %}
+    {% endcomment %}
+    
+    {% comment 'added 6/3/19' %}{% endcomment %}
+    <img src="{{ collection.image.src | collection_img_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-none d-sm-block"/>
+    
+    {% comment %}
+    <img src="{{ col_mobile_image | file_url }}"
+         alt="{{ collection.title | escape }}"
+         class="lazyload js-image-loaded {{ settings.image_loading_style }} d-block d-sm-none"/>
+    {% endcomment %}
+    
+        <div class="vert-center">
+          <div class="d-none d-md-block tis-collection-description">{{ collection.description }}</div>
+        </div>
+  </div>
+  <div class="col-12 d-block d-md-none p-2 text-center black-friday tis-collection-description mobile-description"  style="background-image:url({{ col_mobile_image | file_url }});">
+    {{ collection.description }}
+  </div>
+</div>
+<a name="pagecontent" id="pagecontent"></a>
+{% else %}
+<div class="mb-3"></div>
+{% endif %}
+
+<div class="row">
+  <div class="col-12 col-md-6 breadcrumb-collection d-none d-md-block">
+    <div class="breadcrumbs">
+      <a href="{{ shop.secure_url }}">
+        HOME
+      </a>
+      <span>/</span>
+      <a href="/collections/all/">
+        SHOP
+      </a>
+      {% if collection %}
+      <span>/</span>
+      <a href="{{ collection.url }}">
+        {{ collection.title }}
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-6 col-sm-12 col-md-6 sort-products order-2 order-sm-1 text-center text-sm-right">
+    <label><span class="sr-only">Sort by</span>
+    <select class="sort-select my-3 mb-sm-4 mt-sm-0" id="SortBy">
+      <option disabled selected value>Sort by</option>
+      <option value="price-ascending">Price: Low to High</option>
+      <option value="price-descending">Price: High to Low</option>
+      <option value="most-recent">Most Recent</option>
+    </select>
+  </label>
+  </div>
+  <div class="col-6 col-sm-4 col-md-3 order-1 order-md-2 text-center text-md-left">
+
+    <div class="filter collection-{{ collection.handle }}" id="Filter-Accordion">
+      <h1 class="title my-3 mb-md-4 mt-md-0">FILTER BY</h1>
+      <div class="filter-wrap">
+        
+        {% assign filter_name = 'stage' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            STAGE <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="maternity">Maternity</div>
+          <div class="js-filter js-checkbox" data-value="nursing">Postpartum &plus; Nursing</div>
+          <div class="js-filter js-checkbox" data-value="motherhood">Motherhood</div>
+        </div>
+        
+        {% assign filter_name = 'category' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            CATEGORY <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="support tops">Support Tops</div>
+          <div class="js-filter js-checkbox" data-value="support bottoms">Support Bottoms</div>
+          <div class="js-filter js-checkbox" data-value="support bands">Support Bands</div>
+        </div>
+        
+        {% assign filter_name = 'collections' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            COLLECTION <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox" data-value="blanqi everyday">BLANQI Everyday</div>
+          <div class="js-filter js-checkbox" data-value="sportsupport">SportSupport</div>
+          <div class="js-filter js-checkbox" data-value="blanqi body">BLANQI® Body™</div>
+          <div class="js-filter js-checkbox" data-value="denim">Denim</div>
+          <div class="js-filter js-checkbox" data-value="blanqi house">BLANQI® House™</div>
+        </div>
+
+        {% assign filter_name = 'size' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            SIZE <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div class="js-filter js-checkbox-size" data-value="small,small/medium">SM</div>
+          <div class="js-filter js-checkbox-size" data-value="medium,small/medium">M</div>
+          <div class="js-filter js-checkbox-size" data-value="large,large/xlarge">L</div>
+          <div class="js-filter js-checkbox-size" data-value="x-large,large/xlarge">XL</div>
+        </div> 
+
+        {% assign filter_name = 'color' %}
+        <div class="details-header name-{{ filter_name }}" id="Collapse-{{filter_name}}">
+          <div class="" data-toggle="collapse" data-target="#Target-{{filter_name}}" aria-expanded="true" aria-controls="Target-{{filter_name}}">
+            COLOR <span id="FilterBy-{{filter_name}}" class="filtered" data-value=""></span>
+          </div>
+        </div>
+        <div data-filter="{{filter_name}}" id="Target-{{filter_name}}" class="collapse show name-{{ filter_name }}" aria-labelledby="Collapse-{{filter_name}}">
+          <div data-value="white,winter white" class="white-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="black,deepest black" class="black-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="pale nude,pale peach" class="pale-nude-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="dove grey" class="dove-grey-swatch js-filter js-checkbox-color"><label></label></div>
+          <div data-value="dark grey" class="dark-grey-swatch js-filter js-checkbox-color"><label></label></div>
+        </div> 
+        <hr class="line-break d-block d-md-none" style="border-color:#eaeaea;margin-top:0!important;">
+        <div class="js-clear-filter">CLEAR FILTER</div>
+        <div class="js-close-filter d-md-none">CLOSE FILTER</div>
+        
+      </div>
+    </div>
+
+  </div>
+  <div class="col-12 col-sm-8 col-md-9 order-3 collection-z">
+    {% if collection.products.size == 0 %}
+      <p class="quote">Sorry, no products match the search.</p>
+    {% else %}
+      {% assign products = collection.products %}
+      {% include 'product-loop' %}
+    {% endif %}
+  </div>
+</div>
+
+
+{% if collection.metafields.custom_fields["seo_text"] != blank %}
+<div class="row seo-text">
+  <div class="col-12 text-center">
+    <hr class="line-break">
+    <h1>
+      {{ collection.metafields.custom_fields["seo_headline"] }}
+    </h1>
+    <p>
+      {{ collection.metafields.custom_fields["seo_text"] }}
+    </p>
+  </div>
+</div>
+{% endif %}
+
+<style>
+  /*  hide own filter when in stage / category / collection  */
+  .filter.collection-maternity .name-stage,
+  .filter.collection-postpartum-nursing .name-stage,
+  .filter.collection-womens .name-stage {
+    display: none !important;
+  }
+  .filter.collection-support-tops .name-category,
+  .filter.collection-leggings .name-category,
+  .filter.collection-support-bands .name-category {
+    display: none !important;
+  }
+  .filter.collection-everyday .name-collections,
+  .filter.collection-sportsupport .name-collections {
+    display: none !important;
+  }
+  .tis-collection-description h3 {
+	font-size:24px;
+    letter-spacing:4px;
+    color:#fff;
+    font-weight:800;
+    margin-top:0;
+    margin-bottom:0;
+    line-height:1;
+    font-family:"Gotham A", "Gotham B", sans-serif;
+  }
+  .tis-collection-description h4 {
+	font-size:16px;
+    letter-spacing:2px;
+    color:#fff;
+    font-weight:300;
+    margin-top:0;
+    margin-bottom:0;
+    line-height:1;
+    font-family:"Gotham A", "Gotham B", sans-serif;
+  }
+  .tis-collection-description h5 {
+	color:#fbab90;
+    font-weight:900;
+    font-size:28px;
+    margin-top:0;
+    margin-bottom:0;
+    line-height:1;
+    position:relative;
+    top:-4px;
+    letter-spacing:1px;
+    word-spacing:2px;
+    font-family:"Gotham A", "Gotham B", sans-serif;
+  }
+  .tis-collection-description strong {   
+	font-size:16px;
+    letter-spacing:2px;
+    color:#fff;
+    font-weight:800;
+    display:block;
+    margin-top:16px;
+    margin-bottom:0;
+    line-height:1;
+    font-family:"Gotham A", "Gotham B", sans-serif;
+  }
+  .tis-collection-description.mobile-description {
+    padding:24px 0 !important;
+    background-size:cover;
+    background-position:center center;
+  }
+  .tis-collection-description.mobile-description h3 {
+    font-size:80%;
+  }
+  .tis-collection-description.mobile-description h4 {
+    font-size:80%;
+  }
+  .tis-collection-description.mobile-description h5 {
+    font-size:80%;
+  }
+  .tis-collection-description.mobile-description strong {
+    font-size:80%;
+  }
+
+  .collection-image .vert-center {
+     max-width:48em; 
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    var by = {
+      color: "",
+      size: "",
+      collections: "",
+      category: "",
+      stage: "",
+    };
+
+    function filter_by () {
+      by.color = $("#FilterBy-color").data("value").toLowerCase().split(",");
+      by.size = $("#FilterBy-size").data("value").toLowerCase().split(",");
+      by.collections = $("#FilterBy-collections").data("value").toLowerCase().split(",");
+      by.category = $("#FilterBy-category").data("value").toLowerCase().split(",");
+      by.stage = $("#FilterBy-stage").data("value").toLowerCase().split(",");
+
+      function contains_filter (data, arr) {
+        for (var i = 0; i < arr.length; i++) {
+          if (data.indexOf(arr[i]) >= 0) return true;
+        }
+      }
+      
+      $(".product-wrap").each(function(){
+        $this = $(this);
+
+        var display_color = by.color == "" || contains_filter($this.data("color"), by.color);
+        var display_size = by.size == "" || contains_filter($this.data("size"), by.size);
+        var display_collections = by.collections == "" || contains_filter($this.data("category"), by.collections);
+        var display_category = by.category == "" || contains_filter($this.data("category"), by.category);
+        var display_stage = by.stage == "" || contains_filter($this.data("category"), by.stage);
+
+        if (display_color && display_size && display_collections && display_category && display_stage) {
+          $this.removeClass("d-none");
+        }
+        else {
+          $this.addClass("d-none");
+        }
+      });
+    }
+    
+    $(".filtered").on("click", function(e) {
+      $(this).data("value","");
+      filter_by();
+      e.preventDefault();
+      e.stopPropagation();
+      return false;
+    });
+    
+    $(document).on("click", ".js-filter", function(e) {
+      var filter = $(this).parent().data("filter");
+      var value = $(this).data("value");
+      var $parent = $(e.target).parent();
+        
+      if ($(e.target).hasClass("js-radio")) {
+        $parent.children(".js-checked").each(function(e) {
+          $(this).removeClass("js-checked");
+        });
+        $(e.target).toggleClass("js-checked");
+        if (!$(e.target).hasClass("js-checked")) {
+          value = "";
+        }
+      }
+      else {
+        $(e.target).toggleClass("js-checked");
+        value = "";
+        $parent.children(".js-checked").each(function(e) {
+          value += $(this).data("value") + ",";
+        });
+      }
+      value = value.substring(value, value.length - 1);
+      $("#FilterBy-"+filter).data("value", value);
+
+      filter_by();
+    });
+    
+    $('#SortBy').on('change', function() {
+      
+      var value = this.value;
+      var divs = [];
+      
+      $(".product-wrap").each(function(){
+        divs.push({
+          el: this,
+          price: parseInt($(this).data("price")),
+          created: new Date($(this).data("created")),
+        });
+      });
+      
+      $(".product-listing").fadeOut("fast", function(){
+        $(this).empty();
+        
+        if (value == "price-ascending") {
+          divs.sort(function (b, a) {
+            return b.price - a.price; 
+          });
+        }
+        else if (value == "price-descending") {
+          divs.sort(function (a, b) {
+            return b.price - a.price; 
+          });
+        }
+        else if (value == "most-recent") {
+          divs.sort(function (a, b) {
+            return b.created - a.created;
+          });
+        }
+        
+        for (var i = 0; i < divs.length; i++) {
+          $(".product-listing").append(divs[i].el);
+        }
+        
+        $(this).fadeIn("fast");
+      });  
+    });
+    
+    $(".js-clear-filter").on("click", function(e) {
+      $(".js-filter.js-checked").each(function(){
+        $(this).removeClass("js-checked");
+      });
+      $("#FilterBy-color").data("value", "");
+      $("#FilterBy-size").data("value", "");
+      $("#FilterBy-collections").data("value", "");
+      $("#FilterBy-category").data("value", "");
+      $("#FilterBy-stage").data("value", "");
+      filter_by();
+    });
+    
+    var new_from_date = Date.now() - (5184000000 * 2); // 120 days
+    $(".tags").each(function () {
+      var $tag_new = $(this).find(".tag-new");
+      
+      if ( new Date($tag_new.data("published")) > new_from_date ) {
+        $tag_new.addClass("d-inline-block").removeClass("d-none");
+      }
+    });
+    
+    $(".js-close-filter").on("click", function(e) {
+      $(".filter").removeClass("open");
+    });
+  });
+</script>

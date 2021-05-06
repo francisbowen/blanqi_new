@@ -1,0 +1,3 @@
+<script id="skup-voyager" data-item="product" type="application/json">
+{% assign count = shop.metafields.voyager.size %}{"product_id":{{ product.id }},"upsells":[{% for i in (1..count) %}{% assign key = 'upsell_' | append: i %}{% if shop.metafields.voyager[key] %}{% for upsell in shop.metafields.voyager[key] %}{{ upsell | json}}{% if forloop.last == true %} {% else %}, {% endif %}{% endfor %}{% endif %}{% endfor %}],"collections": {{ product.collections | json }}}
+</script>

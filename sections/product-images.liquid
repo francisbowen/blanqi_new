@@ -1,0 +1,120 @@
+
+{% capture list %}
+{% for image in product.images %}
+{{ image.id }}`~`{{ image.alt }}`~`{{ image | product_img_url: '100x' }}`~`{{ image | product_img_url: '200x' }}`~`{{ image | product_img_url: '400x' }}`~`{{ image | product_img_url: '600x' }}`~`{{ image | product_img_url: '800x' }}`~`{{ image | product_img_url: '1200x' }}`~`{{ image | product_img_url: '2000x' }}
+{% if forloop.last == false %}^{% endif %}
+{% endfor %}
+{% endcapture %}
+{% assign image_list = list | split: "^" %}
+
+{% capture variant_images %}{% for variants in product.variants %}{{ variants.image.id }}`~`{{ variants.image.alt }}`~`{{ variants.image | product_img_url: '100x' }}`~`{{ variants.image | product_img_url: '200x' }}`~`{{ variants.image | product_img_url: '400x' }}`~`{{ variants.image | product_img_url: '600x' }}`~`{{ variants.image | product_img_url: '800x' }}`~`{{ variants.image | product_img_url: '1200x' }}`~`{{ variants.image | product_img_url: '2000x' }}`E`{% endfor %}{% endcapture %}
+{% assign uniq_imgs = variant_images | split: "`E`" | uniq %}
+
+<div class="col-1 col-product-thumbs d-none d-sm-block">
+ <div id='BlanqiMinorImages' class='blanqi-minor-images'>
+    {% for image_item in image_list %}
+      {% assign image = image_item | split: "`~`" %}
+      {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
+      {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
+      {% capture image_color %}{{ image_alt | remove: 'featured' | remove: product.title | remove: 'maternity-image' | strip }}{% endcapture %}
+      {% comment %}
+      Only display images that are NOT variant images AND have alt tag with name of color
+      {% endcomment %}
+        {% if image_color != blank %}
+          {% capture image_100x %}{{ image[2] }}{% endcapture %}
+          {% capture image_200x %}{{ image[3] }}{% endcapture %}
+          {% capture image_400x %}{{ image[4] }}{% endcapture %}
+          {% capture image_600x %}{{ image[5] }}{% endcapture %}
+          {% capture image_800x %}{{ image[6] }}{% endcapture %}
+          {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+          {% capture image_2000x %}{{ image[8] }}{% endcapture %}
+
+          <div data-color="{{ image_color | lowercase | handleize }}" data-index="{{ forloop.index0 }}">
+            <img src="{{ image_100x }}"
+                 data-id="{{ image_id }}" 
+                 alt="{{ image_alt | escape }}"
+                 class=" lazyload js-image-loaded {{ settings.image_loading_style }} image-select"
+                 data-sizes="auto"
+                 data-src="{{ image_800x }}"
+                 data-srcset="{{ image_200x }} 200w,
+                              {{ image_400x }} 400w,
+                              {{ image_600x }} 600w,
+                              {{ image_800x }} 800w,
+                              {{ image_1200x }} 1200w,
+                              {{ image_2000x }} 2000w"
+                 />
+          </div>
+        {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+<div class="col-12 col-sm-6 col-product-image">
+  <div id="DisplayImage" class="main-carousel">
+    {% for image_item in image_list %}
+      {% assign image = image_item | split: "`~`" %}
+      {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
+      {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
+      {% capture image_color %}{{ image_alt | remove: 'featured' | remove: product.title | strip }}{% endcapture %}
+      {% comment %}
+      Only display images that are NOT variant images AND have alt tag with name of color
+      {% endcomment %}
+      {% if image_color != blank %}
+        {% capture image_100x %}{{ image[2] }}{% endcapture %}
+        {% capture image_200x %}{{ image[3] }}{% endcapture %}
+        {% capture image_400x %}{{ image[4] }}{% endcapture %}
+        {% capture image_600x %}{{ image[5] }}{% endcapture %}
+        {% capture image_800x %}{{ image[6] }}{% endcapture %}
+        {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+        {% capture image_2000x %}{{ image[8] }}{% endcapture %}
+
+        <div id="DisplayImage-{{image_id}}" 
+             data-id="{{ image_id }}" 
+             data-color="{{ image_color | lowercase | handleize }}" 
+             data-index="{{ forloop.index0 }}" 
+             class="display-image carousel-cell">
+          <img src="{{ image_100x }}"
+               alt="{{ image_alt | escape }}"
+               class=" lazyload js-image-loaded {{ settings.image_loading_style }}"
+               data-sizes="auto"
+               data-src="{{ image_800x }}"
+               data-srcset="{{ image_200x }} 200w,
+                            {{ image_400x }} 400w,
+                            {{ image_600x }} 600w,
+                            {{ image_800x }} 800w,
+                            {{ image_1200x }} 1200w,
+                            {{ image_2000x }} 2000w"
+               />
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  {% if product.tags contains "mothermuse" %}
+  <p class="serif d-none d-sm-block newbar" style="    background: #feab8d;
+    padding: 10px;
+    text-align: center;
+    color: white;">
+    <span class="navpink">50% OFF</span> EVERYDAY™ MATERNITY + POSTPARTUM LEGGINGS & TANKS <span class="navpink">USE CODE:</span> <span class="navcode">MOTHERMUSE</span>
+  </p>
+  {% elsif product.tags contains 'new product' %}
+  <p class="serif d-none d-sm-block newbar" style="    background: #feab8d;
+    padding: 10px;
+    text-align: center;
+    color: white;">
+    <span class="navpink">NEW</span>
+  </p>
+  {% endif %}
+</div>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": []
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
