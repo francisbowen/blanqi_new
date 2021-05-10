@@ -276,7 +276,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!--  Popup (corner)  
   {% include 'popup-corner' %}
 -->
-  {% include 'header' %}
+
+  {% section 'header' %}
+  {% section 'header-dropdown-icon' %}
 
   {% unless feature_image %}
   <div class="main-content {% if template == 'collection' or template contains 'blanqi-baby-registry-giveaway' %}

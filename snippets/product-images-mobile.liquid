@@ -48,6 +48,7 @@
     {% endfor %}
   </div>
 </div>
+
 {%- assign video = cart.attributes.video_url -%}
 <div class="col-12 col-sm-12 col-product-image p-0 m-0 d-block d-md-none">
   {%- if product.type  == "Gift Card" -%}
@@ -57,7 +58,8 @@
         <div class="mobile-product-image" style="background-image:url('{{ image | product_img_url: '600x' }}')"></div>
       </div>
 	  {% endfor %}
-	</div>
+	  </div>
+
   	 <script>
       $('#DisplayImage2').slick({
         dots: true,
@@ -71,84 +73,61 @@
   {%- else -%}
   <div id="DisplayImage1" class="main-carousel1">
     {% for image_item in uniq_imgs %}
-    {% assign count = "first" %}
-    {% assign image = image_item | split: "`~`" %}
-    {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
-    {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
-    {% capture image_color %}{{ image_alt | remove: 'featured' | remove: product.title | strip }}{% endcapture %}
-    {% comment %}
-    Only display images that are NOT variant images AND have alt tag with name of color
-    {% endcomment %}
-    {% if image_color != blank %}
-    {% capture image_100x %}{{ image[2] }}{% endcapture %}
-    {% capture image_200x %}{{ image[3] }}{% endcapture %}
-    {% capture image_400x %}{{ image[4] }}{% endcapture %}
-    {% capture image_600x %}{{ image[5] }}{% endcapture %}
-    {% capture image_800x %}{{ image[6] }}{% endcapture %}
-    {% capture image_1200x %}{{ image[7] }}{% endcapture %}
-    {% capture image_2000x %}{{ image[8] }}{% endcapture %}
+      {% assign count = "first" %}
+      {% assign image = image_item | split: "`~`" %}
+      {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
+      {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
+      {% capture image_color %}{{ image_alt | remove: 'featured' | remove: product.title | strip }}{% endcapture %}
+      {% comment %}
+      Only display images that are NOT variant images AND have alt tag with name of color
+      {% endcomment %}
+      {% if image_color != blank %}
+        {% capture image_100x %}{{ image[2] }}{% endcapture %}
+        {% capture image_200x %}{{ image[3] }}{% endcapture %}
+        {% capture image_400x %}{{ image[4] }}{% endcapture %}
+        {% capture image_600x %}{{ image[5] }}{% endcapture %}
+        {% capture image_800x %}{{ image[6] }}{% endcapture %}
+        {% capture image_1200x %}{{ image[7] }}{% endcapture %}
+        {% capture image_2000x %}{{ image[8] }}{% endcapture %}
 
-    {% comment %} <div id="DisplayImage-{{image_id}}" 
-         data-id="{{ image_id }}" 
-         data-color="{{ image_color | lowercase | handleize }}" 
-         data-index="{{ forloop.index0 }}" 
-         class="display-image carousel-cell"> {% endcomment %}
-      <!-- <img class="varient-image" src="{{ image_800x }}"
-           alt="{{ image_alt | escape }}"
-           class=" lazyload js-image-loaded {{ settings.image_loading_style }}"
-           data-sizes="auto"
-           data-src="{{ image_800x }}"
-           data-srcset="{{ image_200x }} 200w,
-                        {{ image_400x }} 400w,
-                        {{ image_600x }} 600w,
-                        {{ image_800x }} 800w,
-                        {{ image_1200x }} 1200w,
-                        {{ image_2000x }} 2000w"
-           /> -->
-          {% assign colorClass =  image_color | lowercase | handleize %}
-      <div class="dots-wrap {{colorClass}}" style="display: none;">
-            {% for image_item in image_list %}
-              {% assign image = image_item | split: "`~`" %}
-              {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
-              {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
-              {% capture image_color_2 %}{{ image_alt | remove: 'featured' | remove: product.title | strip }}{% endcapture %}
-              {% capture image_url %}{{ image [6] }}{% endcapture %}
-              {% if image_color == image_color_2 %}
-              <div class="mobile-image-slide">
-                <div class="mobile-product-image" style="background-image:url('{{image_url}}')"></div>
-                {% if video %}
+        {% assign colorClass =  image_color | lowercase | handleize %}
+        <div class="dots-wrap {{colorClass}}" style="display: none;">
+          {% for image_item in image_list %}
+            {% assign image = image_item | split: "`~`" %}
+            {% capture image_id %}{{ image[0] | strip }}{% endcapture %}
+            {% capture image_alt %}{{ image[1] | strip }}{% endcapture %}
+            {% capture image_color_2 %}{{ image_alt | remove: 'featured' | remove: product.title | strip }}{% endcapture %}
+            {% capture image_url %}{{ image [6] }}{% endcapture %}
+            {% if image_color == image_color_2 %}
+            <div class="mobile-image-slide">
+              <div class="mobile-product-image" style="background-image:url('{{image_url}}')"></div>
+              {% if video %}
                 {% if forloop.last == true %}
-                  <div class="video-dot">
-                    <a class="video-popup" href="{{video}}"> <div class="play-icon-item"> <i class="fa fa-play fa-2x"></i></div></a>
-                  </div>
-                  {% endif %}
+                <div class="video-dot">
+                  <a class="video-popup" href="{{video}}"> <div class="play-icon-item"> <i class="fa fa-play fa-2x"></i></div></a>
+                </div>
+                {% endif %}
               {% endif %}
-              </div>
-              
-              {% endif %}
-
-        {% endfor %}
+            </div>
+            {% endif %}
+          {% endfor %}
         </div>
+
         <script>
-            $('.{{colorClass}}').slick({
-              dots: true,
-              infinite: true,
-              speed: 300,
-              slidesToShow: 1,
-               arrows : false,
-              adaptiveHeight: true
-            });
-          </script>
-    
-     
-    {% endif %}
+          $('.{{colorClass}}').slick({
+            dots: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+              arrows : false,
+            adaptiveHeight: true
+          });
+        </script>
+      {% endif %}
     {% endfor %}
   </div>
-</div>
   {%- endif -%}
-
-
-
+</div>
 
 
 <div class="col-12 p-0 d-none">

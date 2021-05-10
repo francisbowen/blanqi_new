@@ -1,0 +1,54 @@
+
+{% if section.settings.enable %}
+
+{% style %}
+{% for block in section.blocks %}
+
+    {% if block.type  == 'first_level' %}
+
+        {% if block.settings.menu_title != blank and block.settings.menu_image %}
+        #first_level_{{ block.settings.menu_title | handleize }} {
+            background-image: url("{{ block.settings.menu_image | img_url: 'master' }}");
+        }
+        {% endif %}
+
+    {% endif %}
+
+{% endfor %}
+
+{% endstyle %}
+
+{% endif %}
+
+
+{% schema %}
+{
+      "name": "Header DropDown Image",
+      "settings":[
+        {
+            "type": "checkbox",
+            "id": "enable",
+            "label": "Enable",
+            "default": true
+        }
+      ],
+      "blocks": [
+        {
+            "type": "first_level",
+            "name": "First Level Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "menu_title",
+                    "label": "Menu Title"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "menu_image",
+                    "label": "Menu Image"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

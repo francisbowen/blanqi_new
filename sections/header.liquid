@@ -1,0 +1,80 @@
+{% include 'header' %}
+
+{% schema %}
+   {
+      "name": "Header",
+      "settings":[
+      ],
+      "blocks": [
+        {
+            "type": "menu_item",
+            "name": "Menu Item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "url",
+                    "id": "url",
+                    "label": "Url"
+                },
+                {
+                    "type" : "header",
+                    "content": "Header"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "is_dropdown",
+                    "label": "Enable DropDown Menu"
+                },
+                {
+                    "type": "text",
+                    "id": "dropdown_title",
+                    "label": "Dropdown Title"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu_1",
+                    "label": "Menu 1"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu_2",
+                    "label": "Menu 2"
+                },
+                {
+                    "type": "link_list",
+                    "id": "menu_3",
+                    "label": "Menu 3"
+                },
+                {
+                    "type": "header",
+                    "content": "Image Block"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "image_title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "id": "image_btn",
+                    "label": "Button"
+                },
+                {
+                    "type": "url",
+                    "id": "image_url",
+                    "label": "Url"
+                }
+            ]
+        }
+      ]
+   }
+{% endschema %}

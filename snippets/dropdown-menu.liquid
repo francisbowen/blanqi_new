@@ -1,0 +1,31 @@
+<div class="col-12 col-sm-3 text-left">
+    {% assign name = linklists[menu].title %}
+
+    <h2 class="collapsed" data-toggle="collapse" data-handle="{{ linklists[menu].handle }}"
+        data-target="#Target-{{name | handleize }}" 
+        aria-expanded="true" 
+        aria-controls="Target-{{name | handleize }}">{{ name }}</h2>
+
+    <ul id="Target-{{name | handleize }}" 
+        class="collapse navbar-collapse d-sm-block" 
+        aria-labelledby="Collapse-{{name}}" 
+        data-parent="#Header-Accordion-{{ block.settings.title }}">
+
+        {% for link in linklists[menu].links %}
+            {%- assign child_list_handle = link.title | handleize -%}
+            <li>
+                {% assign imageName = name | handleize | append: '-' | append: link.title | handleize | append: '.png' %}
+                {% assign image_url = imageName | file_url %}
+                {% if image_url != blank %}
+                <img class="second-level-image_icon" src="{{ imageName | file_url }}" alt="" onError="style.display = 'none';">
+                {% endif %}
+
+                <a href="{{ link.url }}">{{ link.title }}</a>
+                <script>
+                    console.log('{{ imageName }}');
+                </script>
+                
+            </li>
+        {% endfor %}
+    </ul>
+</div>

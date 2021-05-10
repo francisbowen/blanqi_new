@@ -159,9 +159,24 @@ $(document).ready(function () {
       }
     });
   }
+
+  function jqUpdateSize(){
+    var width = $(window).width();
+
+    if (width > 768) {
+      $('.mobile-menu_enabled').removeClass('mobile-menu_enabled');
+      $('.menu.show').removeClass('show');
+    }
+  };
+
+  $(document).ready(jqUpdateSize);
+  $(window).resize(jqUpdateSize); 
   
   $(".m-burger").on("click", function(e) {
+    console.log('m-burger -------------------------------------------------- ');
     $(".menu").toggleClass("d-none");
+    $(".menu").toggleClass("show");
+    $("#Body").toggleClass("mobile-menu_enabled");
   });
 
   $(".filter .title").on("click", function(e) {

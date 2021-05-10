@@ -15,148 +15,65 @@
             <span class="m-line"></span>
             <span class="m-line"></span>
           </div>
-        <!--  <div class="d-none d-sm-block">
-            <div class="js-header-currency">
-              <span id="CountryFlag" class="country-flag">
-                {% include "flags" %}
-              </span>
-               <label><span class="sr-only">USD</span>
-              <select id="HeaderCurrency" class="js-select-curr">
-                <option value="USD">USD</option>
-                <option value="CAD">CAD</option>
-                <option value="AUD">AUD</option>
-                <option value="GBP">GBP</option>
-                <option value="EUR">EUR</option>              
-              </select>
-              </label>
-            </div>
-          </div>-->
-
+ 
+          {% if section.blocks.size > 0 %}
           <div class="menu d-none d-md-block navbar navbar-expand-md" id="Header-Accordion">
-            {% comment %} <ul class="d-flex justify-content-center"> {% endcomment %}
             <ul class="d-md-flex">
+            {% for block in section.blocks %}
               <li>
-                <a href="/collections/sale"><h1>SALE</h1><h2></h2><h3></h3></a>
-              </li>
-              <li>
-                <a href="/collections/new"><h1>NEW</h1><h2></h2><h3></h3></a>
-              </li>
-              <li>
-                {% assign name = "header-shop" %}
-                <h1 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">SHOP</h1>
-                <h2></h2>                
-                {% comment %} Mega Menu {% endcomment %}
-                <div id="Target-{{name}}" class="sub-menu collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion">
+                {% unless block.settings.is_dropdown %}
+                  <a class="first-level_menu" href="{{ block.settings.url }}">
+                    <h1>{{ block.settings.title }}</h1>
+                    <div id="first_level_{{ block.settings.title | handleize }}" class="dropdown-first_level_icon"></div>
+                  </a>
+                {% else %}
+                  {% assign name = block.id %}
+                
+                  <a class="first-level_menu">
+                    <h1 class="collapsed"data-toggle="collapse"data-target="#Target-{{name}}" aria-expanded="true" 
+                      aria-controls="Target-{{name}}">{{ block.settings.title }}</h1>
+                    <div id="first_level_{{ block.settings.title | handleize }}" class="dropdown-first_level_icon"></div>
+                  </a>
+                  
+                  <div id="Target-{{name}}"class="sub-menu collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" 
+                    data-parent="#Header-Accordion">
 
-                  <div class="row" id="Header-Accordion-Shop">
-                    <div class="col-12 col-sm-3 text-left">
-                      {% assign name = "header-shop-stage" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY STAGE</h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
-                        <li><a href="/collections/maternity">Maternity</a></li>
-                        <li><a href="/collections/postpartum">Postpartum</a></li>
-                        <li><a href="/collections/nursing">Nursing</a></li>
-                        <li><a href="/collections/motherhood">Motherhood</a></li>
-                      </ul>
-                      <h2 class="d-none d-sm-block">SOCIAL</h2>
-                      <ul class="d-none d-sm-block">
-                        <li><a href="/pages/shop-our-instagram" target="_blank">SHOP OUR INSTAGRAM</a></li>
-                      </ul>
-                    </div>
+                    <div class="row" id="Header-Accordion-{{ block.settings.title }}">
+                      <h2 class="how-it-works-menu d-none d-sm-block" style="padding-left: 15px">{{ block.settings.dropdown_title }}</h2>
 
-                    <div class="col-12 col-sm-3 text-left">
-                      {% assign name = "header-shop-category" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY CATEGORY</h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
-                        <li><a href="/collections/intimates">Intimates</a></li>  
-                        <li><a href="/collections/tops">Tops</a></li>
-                        <li><a href="/collections/leggings">Leggings</a></li>
-                        <li><a href="/collections/bands">Bands</a></li>
-                        <li><a href="/collections/dresses">Dresses</a></li>
-                        <li><a href="/collections/shorts">Shorts</a></li>
-                        <li><a href="/collections/jeans">Jeans</a></li>
-                        <li><a href="/collections/tees">Tees</a></li>
-                        <li><a href="/products/gift-card">Gift Card</a></li>
-                      </ul>
-                    </div>
+                      {% if block.settings.menu_1 != blank %}
+                        {% include 'dropdown-menu', menu: block.settings.menu_1 %}
+                      {% endif %}
 
-                    <div class="col-12 col-sm-3 text-left">
-                      {% assign name = "header-shop-collection" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">BY COLLECTION</h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Shop">
-                        <li><a href="/collections/everyday">BLANQI Everyday</a></li>
-                        <li><a href="/collections/sportsupport">Sportsupport</a></li>
-                        <li><a href="/collections/blanqi-body">BLANQI Body</a></li>
-                        <li><a href="/collections/denim">BLANQI Denim</a></li>
-                        <li><a href="/collections/house">BLANQI House</a></li>
-                      </ul>
-                    </div>
-                    
-                    <div class="col-12 col-sm-3 text-left" style="padding-right:0;">
-                        <img src="{{ "megamenu-img.jpg" | asset_url }}" alt="woman in blanqi tanktop">
-                    </div>
+                      {% if block.settings.menu_2 != blank %}
+                        {% include 'dropdown-menu', menu: block.settings.menu_2 %}
+                      {% endif %}
 
-                  </div>
+                      {% if block.settings.menu_3 != blank %}
+                        {% include 'dropdown-menu', menu: block.settings.menu_3 %}
+                      {% endif %}
 
-                </div>
-                {% comment %} Mega Menu Ends{% endcomment %}
-
-              </li>
-              <li>
-                {% assign name = "header-discover" %}
-                <h1 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">DISCOVER</h1>
-              <h2></h2>
-                <div id="Target-{{name}}" class="sub-menu collapse navbar-collapse" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion">
-
-                  <div class="row" id="Header-Accordion-Discover">
-                    <h2 class="how-it-works-menu d-none d-sm-block" style="padding-left: 15px">HOW IT WORKS</h2>
-                    <div class="col-12 col-sm-4 text-left">
-                      {% assign name = "header-discover-maternity" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
-                        MATERNITY
-                      </h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
-                        <li><a href="/pages/maternity-supportband-learn-more">BellyBand</a></li>
-                        <li><a href="/pages/maternity-leggings-learn-more">Leggings</a></li>
-                        <li><a href="/pages/maternity-overbust-tanktop-learn-more">Overbust Tanktop</a></li>
-                        <li><a href="/pages/maternity-underbust-tanktop-learn-more">Underbust Tanktop</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="col-12 col-sm-4 text-left">
-                      {% assign name = "header-discover-nursing" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
-                        POSTPARTUM
-                      </h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
-                        <li><a href="/pages/nursing-leggings-learn-more">Leggings</a></li> 
-                        <li><a href="/pages/nursing-overbust-tanktop-learn-more">Overbust Tank Top</a></li>
-                        <li><a href="/pages/nursing-underbust-tanktop-learn-more">Underbust Tank Top</a></li>
-                      </ul>
-                    </div>
-
-                    <div class="col-12 col-sm-4 text-left">
-                      {% assign name = "header-discover-about" %}
-                      <h2 class="collapsed" data-toggle="collapse" data-target="#Target-{{name}}" aria-expanded="true" aria-controls="Target-{{name}}">
-                        ABOUT
-                      </h2>
-                      <ul id="Target-{{name}}" class="collapse navbar-collapse d-sm-block" aria-labelledby="Collapse-{{name}}" data-parent="#Header-Accordion-Discover">
-                        <li><a href="/pages/videos">Video</a></li>
-                      </ul>
+                      {% if block.settings.image != blank %}
+                      <div class="col-12 col-sm-3 text-left" style="padding-right:0;">
+                        <img src="{{ block.settings.image | img_url: 'master' }}" alt="woman in blanqi tanktop">
+                        {% if block.settings.image_title != blank %}
+                        <h2 style="margin-top: 15px;margin-bottom: 5px;">{{ block.settings.image_title }}</h2>
+                        {% endif %}
+                        {% if block.settings.image_url != blank and block.settings.image_btn != blank %}
+                        <ul><li><a href="{{ block.settings.image_url }}">{{ block.settings.image_btn }}</a></li></ul>
+                        {% endif %}
+                      </div>
+                      {% endif %}
                     </div>
                   </div>
+                {% endunless %}
+              </li>
+            {% endfor %}
 
-                </div>
-              </li>
-              
-              <li>
-                <a href="/pages/giveaways"><h1>OFFERS</h1><h2></h2><h3></h3></a>
-              </li>
-              <li>
-                <a href="https://www.blanqi.com/blogs/musings"><h1>BLOG</h1><h2></h2><h3></h3></a>
-              </li> 
             </ul>
           </div>
+          {% endif %}
+
         </div>
         {% comment %} <div class="col-2 d-block d-md-none text-left pl-0">
           <div class="icon icon-mag mobile">

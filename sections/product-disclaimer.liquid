@@ -1,0 +1,45 @@
+{% assign isDisclaimer = false %}
+
+{% for block in section.blocks %}
+
+  {% if block.type == 'disclaimer_product' %}
+    {% if product.handle == block.settings.product %}
+      {% assign isDisclaimer = true %}
+      {% break %}
+    {% endif %}
+  {% endif %}
+  
+{% endfor %}
+
+{% if isDisclaimer and section.settings.disclaimer_description != blank %}
+  <p style="color: red;font-style: italic;">
+    {{ section.settings.disclaimer_description }}
+  </p>
+{% endif %}
+
+{% schema %}
+{
+      "name": "Product disclaimer",
+      "class": "product_disclaimer",
+      "settings":[
+        {
+            "type": "textarea",
+            "id": "disclaimer_description",
+            "label": "Disclaimer"
+        }
+      ],
+      "blocks": [
+        {
+            "type": "disclaimer_product",
+            "name": "Disclaimer Product",
+            "settings": [
+                {
+                    "type": "product",
+                    "id": "product",
+                    "label": "Product"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

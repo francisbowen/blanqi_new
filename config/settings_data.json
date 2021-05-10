@@ -2649,6 +2649,195 @@
           "cta": "Enter to win",
           "bottom_content": "<p>To enter the giveaway, simply enter your email between 3\/16 and 3\/23. One lucky<\/p><p>winner will be notified via email within two business days. US entrants only.<\/p><p>Must be 18 years of age or older. By entering this giveaway, you agree to receive<\/p><p>communications from BLANQI and other participating brands.<\/p>"
         }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "99069b10-189c-4214-9f06-a23ad60ee452": {
+            "type": "menu_item",
+            "settings": {
+              "title": "Sale",
+              "url": "shopify:\/\/collections\/sale",
+              "is_dropdown": false,
+              "dropdown_title": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "image_title": "",
+              "image_btn": ""
+            }
+          },
+          "0ae72e2a-c142-4097-aca8-7f9469b5411c": {
+            "type": "menu_item",
+            "settings": {
+              "title": "New",
+              "url": "shopify:\/\/collections\/new",
+              "is_dropdown": false,
+              "dropdown_title": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "image_title": "",
+              "image_btn": ""
+            }
+          },
+          "f67bfb7d-384e-4759-825f-66531e644cc8": {
+            "type": "menu_item",
+            "settings": {
+              "title": "shop",
+              "is_dropdown": true,
+              "dropdown_title": "",
+              "menu_1": "by-stage-1",
+              "menu_2": "by-category-1",
+              "menu_3": "by-collection-1",
+              "image": "shopify:\/\/shop_images\/Highwaist_menu_dropdown_image.jpg",
+              "image_title": "NEW HIGHWAIST HUES",
+              "image_btn": "shop now",
+              "image_url": "#"
+            }
+          },
+          "dac1ae4a-ae86-42f6-88a7-30bcf1286769": {
+            "type": "menu_item",
+            "settings": {
+              "title": "discover",
+              "is_dropdown": true,
+              "dropdown_title": "HOW IT WORKS",
+              "menu_1": "maternity",
+              "menu_2": "postpartum",
+              "menu_3": "about",
+              "image": "shopify:\/\/shop_images\/LearnMore_menu_dropdown_image.jpg",
+              "image_title": "WEARABLE TECH",
+              "image_btn": "learn more",
+              "image_url": "#"
+            }
+          },
+          "3b8092f3-313f-4ecc-8c01-8356b65fe28a": {
+            "type": "menu_item",
+            "settings": {
+              "title": "offers",
+              "url": "shopify:\/\/pages\/giveaways",
+              "is_dropdown": false,
+              "dropdown_title": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "image_title": "",
+              "image_btn": ""
+            }
+          },
+          "c6c4fe1a-19e7-46a9-a3a9-b22134f4fe57": {
+            "type": "menu_item",
+            "settings": {
+              "title": "Blog",
+              "url": "shopify:\/\/blogs\/musings",
+              "is_dropdown": false,
+              "dropdown_title": "",
+              "menu_1": "",
+              "menu_2": "",
+              "menu_3": "",
+              "image_title": "",
+              "image_btn": ""
+            }
+          }
+        },
+        "block_order": [
+          "99069b10-189c-4214-9f06-a23ad60ee452",
+          "0ae72e2a-c142-4097-aca8-7f9469b5411c",
+          "f67bfb7d-384e-4759-825f-66531e644cc8",
+          "dac1ae4a-ae86-42f6-88a7-30bcf1286769",
+          "3b8092f3-313f-4ecc-8c01-8356b65fe28a",
+          "c6c4fe1a-19e7-46a9-a3a9-b22134f4fe57"
+        ],
+        "settings": {}
+      },
+      "header-dropdown-icon": {
+        "type": "header-dropdown-icon",
+        "blocks": {
+          "72f860e1-cc03-4fd7-a731-a2a3dfc0722c": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "sale",
+              "menu_image": "shopify:\/\/shop_images\/1.png"
+            }
+          },
+          "8d886e8f-c24d-4cac-b8ad-2471afcecc35": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "new",
+              "menu_image": "shopify:\/\/shop_images\/2.png"
+            }
+          },
+          "e60876ab-4c09-440b-8035-bec00dd1e750": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "shop",
+              "menu_image": "shopify:\/\/shop_images\/3.png"
+            }
+          },
+          "de5e3fb5-7535-4d58-80ac-cad72c17f684": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "discover",
+              "menu_image": "shopify:\/\/shop_images\/4.png"
+            }
+          },
+          "879e6cea-167b-4598-b5e6-4d977ae2b384": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "offers",
+              "menu_image": "shopify:\/\/shop_images\/5.png"
+            }
+          },
+          "f8fc4be5-5592-4ceb-aeae-dcb4882cb614": {
+            "type": "first_level",
+            "settings": {
+              "menu_title": "blog",
+              "menu_image": "shopify:\/\/shop_images\/6.png"
+            }
+          }
+        },
+        "block_order": [
+          "72f860e1-cc03-4fd7-a731-a2a3dfc0722c",
+          "8d886e8f-c24d-4cac-b8ad-2471afcecc35",
+          "e60876ab-4c09-440b-8035-bec00dd1e750",
+          "de5e3fb5-7535-4d58-80ac-cad72c17f684",
+          "879e6cea-167b-4598-b5e6-4d977ae2b384",
+          "f8fc4be5-5592-4ceb-aeae-dcb4882cb614"
+        ],
+        "settings": {
+          "enable": true
+        }
+      },
+      "product-disclaimer": {
+        "type": "product-disclaimer",
+        "blocks": {
+          "edfdd23e-d839-4b08-8b1b-bc2abae732a9": {
+            "type": "disclaimer_product",
+            "settings": {
+              "product": "blanqi-everyday-maternity-belly-support-leggings"
+            }
+          },
+          "2236489c-6af7-4a92-9dc8-55c5c3ab8d06": {
+            "type": "disclaimer_product",
+            "settings": {
+              "product": "blanqi-everyday-highwaist-postpartum-nursing-support-leggings"
+            }
+          },
+          "4beeeffa-7a91-4a45-8fda-b67e28fe9c4c": {
+            "type": "disclaimer_product",
+            "settings": {
+              "product": "blanqi-everyday-hipster-support-leggings"
+            }
+          }
+        },
+        "block_order": [
+          "edfdd23e-d839-4b08-8b1b-bc2abae732a9",
+          "2236489c-6af7-4a92-9dc8-55c5c3ab8d06",
+          "4beeeffa-7a91-4a45-8fda-b67e28fe9c4c"
+        ],
+        "settings": {
+          "disclaimer_description": "Black colorway runs small - please size up\n\nDue to the nature of seamless manufacturing, there are sometimes variations from batch to batch.  Our latest round of black leggings are running a bit smaller than usual, so we recommend sizing up for a more comfortable fit.  Please continue ordering your normal size for our other colors."
+        }
       }
     },
     "content_for_index": [
