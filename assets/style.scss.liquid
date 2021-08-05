@@ -2926,7 +2926,7 @@ header {
       padding: 0;
       @media screen and (max-width:767px){
         padding: 10px;
-        padding-top: 30px;
+        margin-top: 20px;
       }
     }
     .menu > ul {
@@ -3050,6 +3050,10 @@ header {
             }
             > div {
               padding-right: 2rem;
+              @media (max-width: $breakpoint-md-max) {
+                padding-left: 0;
+                padding-right: 0;
+              }
               @media (max-width: $breakpoint-sm-max) {
                 &:first-child {
                   border-top: 1px solid #e2e2e2;
@@ -3840,6 +3844,7 @@ faq
 .page-terms .main-content,
 .page-faq .main-content,
 .page-afterpay .main-content,
+.page-careers .main-content,
  {
   // 2020 Update
   padding-top: 3rem;
@@ -7041,7 +7046,22 @@ header{
   	display: none!important;
   }
 } */
-
+.mailing-list{
+  .jpJaOG.jpJaOG{
+    font-weight: 100;
+    position: relative;
+    display: block;
+    line-height: 1;
+    font-size: 12px;
+    letter-spacing: 0.125rem;
+    text-transform: uppercase;
+    font-family: Euclid Circular A;
+    color: #333333;
+    @media screen and (max-width:767px){
+      font-size: 12px;
+    }
+  }
+}
 /* Fade CSS */
 
 @media screen and (max-width:767px){
@@ -7068,3 +7088,6 @@ header{
   }
 }
 
+header .nav-main .menu {
+  width: 85%;
+}

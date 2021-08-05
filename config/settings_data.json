@@ -1,8 +1,22 @@
 {
   "current": {
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#03a196",
+    "checkout_button_color": "#03a196",
+    "checkout_error_color": "#e1255f",
     "pause_blanqi": false,
     "pause_blanqi_message": "We'll be right back!",
-    "klaviyo_duedate": false,
+    "klaviyo_duedate": true,
     "performance": "sport",
     "image_loading_style": "blur-up",
     "logo_color": "#ffffff",
@@ -122,10 +136,10 @@
     "notification_bar_linktext": "DETAILS",
     "notification_bar_link": "shopify:\/\/pages\/covid-19-update",
     "notification_bar_popup": "",
-    "notification_bar_text2": "FREE SHIPPING WITH PURCHASE OF $100",
+    "notification_bar_text2": "FREE SHIPPING WITH PURCHASE OF $125",
     "notification_bar_linktext2": "DETAILS",
     "notification_bar_link2": "",
-    "notification_bar_popup2": "Free standard shipping with purchases over $100 valid on blanqi.com orders shipping to the U.S. only. Offer cannot be applied to previous purchases and cannot be redeemed for cash. Free shipping will need to be selected at checkout. See blanqi.com for full shipping details. Terms of offers are subject to change.",
+    "notification_bar_popup2": "Free standard shipping with purchases over $125 valid on blanqi.com orders shipping to the U.S. only. Offer cannot be applied to previous purchases and cannot be redeemed for cash. Free shipping will need to be selected at checkout. See blanqi.com for full shipping details. Terms of offers are subject to change.",
     "notification_bar_background": "#414241",
     "notification_bar_text_color": "#ffffff",
     "collection_sidebar": false,
@@ -420,45 +434,45 @@
     "tag_banner_color_1": "#f26c4f",
     "tag_banner_background_1": "transparent",
     "tag_banner_badge_1": false,
-    "tag_banner_tag_2": "sale-70",
-    "tag_banner_text_2": "<p><strong>70% OFF.  PRICE AS MARKED.<\/strong><\/p><p><\/p>",
-    "tag_plp_text_2": "70% OFF",
+    "tag_banner_tag_2": "backinstock-tag",
+    "tag_banner_text_2": "<p><strong>BACK IN STOCK<\/strong><\/p>",
+    "tag_plp_text_2": "BACK IN STOCK",
     "tag_banner_color_2": "#f26c4f",
     "tag_banner_background_2": "transparent",
     "tag_banner_badge_2": false,
-    "tag_banner_tag_3": "sale-30",
-    "tag_banner_text_3": "<p><strong>30% OFF. PRICE AS MARKED.<\/strong><\/p>",
-    "tag_plp_text_3": "30% OFF",
+    "tag_banner_tag_3": "bogo-sale",
+    "tag_banner_text_3": "<p><strong>Buy One, Get One 1\/2 Off.<\/strong><\/p><p><strong>APPLIED AT CHECKOUT.<\/strong><\/p>",
+    "tag_plp_text_3": "BOGO SALE",
     "tag_banner_color_3": "#f26c4f",
     "tag_banner_background_3": "rgba(0,0,0,0)",
     "tag_banner_badge_3": false,
-    "tag_banner_tag_4": "sale-50",
-    "tag_banner_text_4": "<p><strong>50% OFF. PRICE AS MARKED.<\/strong>.<\/p>",
-    "tag_plp_text_4": "50% OFF",
+    "tag_banner_tag_4": "sale-30",
+    "tag_banner_text_4": "<p><strong>30% OFF. PRICE AS MARKED.<\/strong><br\/><\/p>",
+    "tag_plp_text_4": "30% OFF",
     "tag_banner_color_4": "#f26c4f",
     "tag_banner_background_4": "rgba(0,0,0,0)",
     "tag_banner_badge_4": false,
-    "tag_banner_tag_5": "backinstock-tag",
-    "tag_banner_text_5": "<p><strong>BACK IN STOCK<\/strong><\/p>",
-    "tag_plp_text_5": "BACK IN STOCK",
+    "tag_banner_tag_5": "sale-40",
+    "tag_banner_text_5": "<p><strong>40% OFF. PRICE AS MARKED.<\/strong><br\/><br\/><br\/><br\/><\/p>",
+    "tag_plp_text_5": "40% OFF",
     "tag_banner_color_5": "#f26c4f",
     "tag_banner_background_5": "transparent",
     "tag_banner_badge_5": false,
-    "tag_banner_tag_6": "bestseller-tag",
-    "tag_banner_text_6": "<p><strong>BEST SELLER<\/strong><\/p>",
-    "tag_plp_text_6": "BEST SELLER",
+    "tag_banner_tag_6": "sale-50",
+    "tag_banner_text_6": "<p><strong>50% OFF. PRICE AS MARKED.<\/strong><br\/><\/p>",
+    "tag_plp_text_6": "50% OFF",
     "tag_banner_color_6": "#f26c4f",
     "tag_banner_background_6": "transparent",
     "tag_banner_badge_6": false,
-    "tag_banner_tag_7": "fewleft-tag",
-    "tag_banner_text_7": "<p><strong>FEW LEFT!<\/strong><\/p>",
-    "tag_plp_text_7": "FEW LEFT!",
+    "tag_banner_tag_7": "sale-70",
+    "tag_banner_text_7": "<p><strong>70% OFF. PRICE AS MARKED.<\/strong><br\/><\/p>",
+    "tag_plp_text_7": "70% OFF",
     "tag_banner_color_7": "#f26c4f",
     "tag_banner_background_7": "transparent",
     "tag_banner_badge_7": false,
-    "tag_banner_tag_8": "sale-40",
-    "tag_banner_text_8": "<p><strong>40% OFF. PRICE AS MARKED.<\/strong>.<\/p>",
-    "tag_plp_text_8": "40% OFF",
+    "tag_banner_tag_8": "",
+    "tag_banner_text_8": "",
+    "tag_plp_text_8": "",
     "tag_banner_color_8": "#f26c4f",
     "tag_banner_background_8": "transparent",
     "tag_banner_badge_8": false,
@@ -543,21 +557,7 @@
     "covid_pdp_show": false,
     "covid_co_show": false,
     "plus_enable_blog_landing_images": true,
-    "checkout_header_image": "",
     "checkout_use_storefront_logo": false,
-    "checkout_logo_image": "",
-    "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "Helvetica Neue",
-    "checkout_body_font": "Helvetica Neue",
-    "checkout_accent_color": "#03a196",
-    "checkout_button_color": "#03a196",
-    "checkout_error_color": "#e1255f",
     "tag_plp_text_1": "NEW",
     "featured_links_weight": "bold",
     "featured_blog_position": "13",
@@ -2249,6 +2249,30 @@
       "blog-slider": {
         "type": "blog-slider",
         "blocks": {
+          "3a1f77dd-483e-4983-8b6e-e96ac746a7ef": {
+            "type": "slide",
+            "settings": {
+              "article": "musings\/nurse-diaries-the-postpartum-pooch-isnt-always-what-it-seems"
+            }
+          },
+          "03315dd3-359e-45f7-b18b-3fe417fdb5c7": {
+            "type": "slide",
+            "settings": {
+              "article": "musings\/pregnancy-pains-survive-9-months-back-aches-lightning-crotch-dont-ask-just-google-emotional-meltdowns"
+            }
+          },
+          "f8f0e022-2026-410b-85a5-79bf9c535a81": {
+            "type": "slide",
+            "settings": {
+              "article": "musings\/blanqis-essential-for-pregnancy"
+            }
+          },
+          "f5f9db29-4d89-43cb-b756-ed35591e8412": {
+            "type": "slide",
+            "settings": {
+              "article": "musings\/guide-sex-pregnancy"
+            }
+          },
           "ee648a4f-937a-45e6-9ff2-b02eba32365b": {
             "type": "slide",
             "settings": {
@@ -2281,6 +2305,10 @@
           }
         },
         "block_order": [
+          "3a1f77dd-483e-4983-8b6e-e96ac746a7ef",
+          "03315dd3-359e-45f7-b18b-3fe417fdb5c7",
+          "f8f0e022-2026-410b-85a5-79bf9c535a81",
+          "f5f9db29-4d89-43cb-b756-ed35591e8412",
           "ee648a4f-937a-45e6-9ff2-b02eba32365b",
           "1601405763261",
           "1585162287359",
@@ -2460,11 +2488,11 @@
       "160431898074eda36c": {
         "type": "slideshow",
         "blocks": {
-          "bd555f7c-171e-48d9-a2fa-1b089fbfc34e": {
+          "8f69a89f-a9a3-4610-8124-f396f9e62ce2": {
             "type": "image",
             "settings": {
               "screen": "desktop",
-              "image": "shopify:\/\/shop_images\/BLANQI_MAM_2021_Website_Slider_DESKTOP_ART_R.jpg",
+              "image": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART.jpg",
               "overlay": false,
               "hide_text": true,
               "alignment": "top",
@@ -2472,7 +2500,64 @@
               "text_layout": "text_layout-center",
               "mobile_text_layout": "mobile_text_layout-center",
               "text_align": "center",
-              "title": "MAM DESKTOP",
+              "title": "WBW Sale",
+              "giant_title": false,
+              "title_color": "",
+              "subtitle": "Image slide subtitle",
+              "subtitle_color": "",
+              "copy": "",
+              "copy_color": "",
+              "copy_alignment": "center",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/wbw-sale-2021",
+              "button_color": "#ffffff",
+              "button_hover_color": "#ffffff",
+              "button_background_color": "#000000",
+              "button_background_hover_color": "#000000"
+            }
+          },
+          "7dbc6a6a-fb6e-4b9c-9837-e496453f49ce": {
+            "type": "image",
+            "settings": {
+              "screen": "mobile",
+              "image": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART_MOB.jpg",
+              "mobileimage": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART_MOB.jpg",
+              "overlay": false,
+              "hide_text": true,
+              "alignment": "top",
+              "text_box_width": "25%",
+              "text_layout": "text_layout-center",
+              "mobile_text_layout": "mobile_text_layout-center",
+              "text_align": "center",
+              "title": "WBW Sale",
+              "giant_title": false,
+              "title_color": "",
+              "subtitle": "Image slide subtitle",
+              "subtitle_color": "",
+              "copy": "",
+              "copy_color": "",
+              "copy_alignment": "center",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/wbw-sale-2021",
+              "button_color": "#ffffff",
+              "button_hover_color": "#ffffff",
+              "button_background_color": "#000000",
+              "button_background_hover_color": "#000000"
+            }
+          },
+          "208b9fdd-fbc1-41a1-ba12-efea0181f95a": {
+            "type": "image",
+            "settings": {
+              "screen": "desktop",
+              "image": "shopify:\/\/shop_images\/BLANQI_30_70_OFF_JULY_WEB_Slider_DESKTOP.jpg",
+              "overlay": false,
+              "hide_text": true,
+              "alignment": "top",
+              "text_box_width": "25%",
+              "text_layout": "text_layout-center",
+              "mobile_text_layout": "mobile_text_layout-center",
+              "text_align": "center",
+              "title": "30-70% Off",
               "giant_title": false,
               "title_color": "",
               "subtitle": "Image slide subtitle",
@@ -2488,12 +2573,11 @@
               "button_background_hover_color": "#000000"
             }
           },
-          "b30b4d78-1a93-4837-b709-1fa7ca3196d4": {
+          "fd17f085-01ee-44d4-9f0b-aefdead6b1ff": {
             "type": "image",
             "settings": {
               "screen": "mobile",
-              "image": "shopify:\/\/shop_images\/BLANQI_MAM_2021_Website_Slider_1_MOBILE_ART_R.jpg",
-              "mobileimage": "shopify:\/\/shop_images\/BLANQI_MAM_2021_Website_Slider_1_MOBILE_ART_R.jpg",
+              "image": "shopify:\/\/shop_images\/BLANQI_30_70_OFF_JULY_WEB_Slider_MOBILE.jpg",
               "overlay": false,
               "hide_text": true,
               "alignment": "top",
@@ -2501,7 +2585,7 @@
               "text_layout": "text_layout-center",
               "mobile_text_layout": "mobile_text_layout-center",
               "text_align": "center",
-              "title": "MAM PP MOBILE",
+              "title": "30-70% Off",
               "giant_title": false,
               "title_color": "",
               "subtitle": "Image slide subtitle",
@@ -2517,12 +2601,12 @@
               "button_background_hover_color": "#000000"
             }
           },
-          "c6893a32-7f1b-4b60-bd40-4afe129df2d0": {
+          "e09c522f-b72e-4f2c-97b4-f5f278f1cf22": {
             "type": "image",
             "settings": {
-              "screen": "mobile",
-              "image": "shopify:\/\/shop_images\/BLANQI_MAM_2021_Website_Slider_2_MOBILE_ART_b17aaf28-c6fe-47cd-b3f6-2ba2605f092c.jpg",
-              "mobileimage": "shopify:\/\/shop_images\/BLANQI_MAM_2021_Website_Slider_2_MOBILE_ART_b17aaf28-c6fe-47cd-b3f6-2ba2605f092c.jpg",
+              "screen": "desktop",
+              "image": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_DESKTOP_ART_46de1fb8-ed05-4cff-b729-ec75f4fba793.jpg",
+              "mobileimage": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_MOBILE_1_ART_110999a5-2aeb-4762-9f3c-911e9dc19e38.jpg",
               "overlay": false,
               "hide_text": true,
               "alignment": "top",
@@ -2530,7 +2614,7 @@
               "text_layout": "text_layout-center",
               "mobile_text_layout": "mobile_text_layout-center",
               "text_align": "center",
-              "title": "MAM MAT MOBILE",
+              "title": "BOGO 1\/2 Off Girlshorts",
               "giant_title": false,
               "title_color": "",
               "subtitle": "Image slide subtitle",
@@ -2539,7 +2623,35 @@
               "copy_color": "",
               "copy_alignment": "center",
               "button": "Shop Now",
-              "link": "shopify:\/\/collections\/sale",
+              "link": "shopify:\/\/collections\/bogo-salex",
+              "button_color": "#ffffff",
+              "button_hover_color": "#ffffff",
+              "button_background_color": "#000000",
+              "button_background_hover_color": "#000000"
+            }
+          },
+          "6b9b389b-59cf-4d81-9fd3-0451fc58a056": {
+            "type": "image",
+            "settings": {
+              "screen": "mobile",
+              "image": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_MOBILE_1_ART_110999a5-2aeb-4762-9f3c-911e9dc19e38.jpg",
+              "overlay": false,
+              "hide_text": true,
+              "alignment": "top",
+              "text_box_width": "25%",
+              "text_layout": "text_layout-center",
+              "mobile_text_layout": "mobile_text_layout-center",
+              "text_align": "center",
+              "title": "BOGO 1\/2 Off Girlshorts",
+              "giant_title": false,
+              "title_color": "",
+              "subtitle": "Image slide subtitle",
+              "subtitle_color": "",
+              "copy": "",
+              "copy_color": "",
+              "copy_alignment": "center",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/bogo-salex",
               "button_color": "#ffffff",
               "button_hover_color": "#ffffff",
               "button_background_color": "#000000",
@@ -2548,9 +2660,12 @@
           }
         },
         "block_order": [
-          "bd555f7c-171e-48d9-a2fa-1b089fbfc34e",
-          "b30b4d78-1a93-4837-b709-1fa7ca3196d4",
-          "c6893a32-7f1b-4b60-bd40-4afe129df2d0"
+          "8f69a89f-a9a3-4610-8124-f396f9e62ce2",
+          "7dbc6a6a-fb6e-4b9c-9837-e496453f49ce",
+          "208b9fdd-fbc1-41a1-ba12-efea0181f95a",
+          "fd17f085-01ee-44d4-9f0b-aefdead6b1ff",
+          "e09c522f-b72e-4f2c-97b4-f5f278f1cf22",
+          "6b9b389b-59cf-4d81-9fd3-0451fc58a056"
         ],
         "settings": {
           "contained": "container-fluid",
@@ -2661,10 +2776,12 @@
               "is_dropdown": false,
               "dropdown_title": "",
               "menu_1": "",
+              "menu_1_1": "",
               "menu_2": "",
               "menu_3": "",
               "image_title": "",
-              "image_btn": ""
+              "image_btn": "",
+              "image_url": ""
             }
           },
           "0ae72e2a-c142-4097-aca8-7f9469b5411c": {
@@ -2675,40 +2792,46 @@
               "is_dropdown": false,
               "dropdown_title": "",
               "menu_1": "",
+              "menu_1_1": "",
               "menu_2": "",
               "menu_3": "",
               "image_title": "",
-              "image_btn": ""
+              "image_btn": "",
+              "image_url": ""
             }
           },
           "f67bfb7d-384e-4759-825f-66531e644cc8": {
             "type": "menu_item",
             "settings": {
               "title": "shop",
+              "url": "",
               "is_dropdown": true,
               "dropdown_title": "",
               "menu_1": "by-stage-1",
+              "menu_1_1": "social",
               "menu_2": "by-category-1",
               "menu_3": "by-collection-1",
-              "image": "shopify:\/\/shop_images\/Highwaist_menu_dropdown_image.jpg",
-              "image_title": "NEW HIGHWAIST HUES",
+              "image": "shopify:\/\/shop_images\/Nursing_Pads_menu_dropdown_image.jpg",
+              "image_title": "NEXT LEVEL NURSING PADS",
               "image_btn": "shop now",
-              "image_url": "#"
+              "image_url": "shopify:\/\/products\/washable-nursing-pads"
             }
           },
           "dac1ae4a-ae86-42f6-88a7-30bcf1286769": {
             "type": "menu_item",
             "settings": {
               "title": "discover",
+              "url": "",
               "is_dropdown": true,
               "dropdown_title": "HOW IT WORKS",
               "menu_1": "maternity",
+              "menu_1_1": "",
               "menu_2": "postpartum",
               "menu_3": "about",
               "image": "shopify:\/\/shop_images\/LearnMore_menu_dropdown_image.jpg",
               "image_title": "WEARABLE TECH",
               "image_btn": "learn more",
-              "image_url": "#"
+              "image_url": "https:\/\/www.blanqi.com\/pages\/maternity-overbust-tanktop-learn-more"
             }
           },
           "3b8092f3-313f-4ecc-8c01-8356b65fe28a": {
@@ -2719,10 +2842,12 @@
               "is_dropdown": false,
               "dropdown_title": "",
               "menu_1": "",
+              "menu_1_1": "",
               "menu_2": "",
               "menu_3": "",
               "image_title": "",
-              "image_btn": ""
+              "image_btn": "",
+              "image_url": ""
             }
           },
           "c6c4fe1a-19e7-46a9-a3a9-b22134f4fe57": {
@@ -2733,10 +2858,12 @@
               "is_dropdown": false,
               "dropdown_title": "",
               "menu_1": "",
+              "menu_1_1": "",
               "menu_2": "",
               "menu_3": "",
               "image_title": "",
-              "image_btn": ""
+              "image_btn": "",
+              "image_url": ""
             }
           }
         },
@@ -2757,14 +2884,14 @@
             "type": "first_level",
             "settings": {
               "menu_title": "sale",
-              "menu_image": "shopify:\/\/shop_images\/1.png"
+              "menu_image": "shopify:\/\/shop_images\/Untitled_e82c2e22-3182-409e-8e9d-4f2fd4d6858a.png"
             }
           },
           "8d886e8f-c24d-4cac-b8ad-2471afcecc35": {
             "type": "first_level",
             "settings": {
               "menu_title": "new",
-              "menu_image": "shopify:\/\/shop_images\/2.png"
+              "menu_image": "shopify:\/\/shop_images\/Untitled_e0b7294e-e9aa-4cfa-8ac4-0c5c1e1c8d8a.png"
             }
           },
           "e60876ab-4c09-440b-8035-bec00dd1e750": {
@@ -2838,6 +2965,10 @@
         "settings": {
           "disclaimer_description": "Black colorway runs small - please size up\n\nDue to the nature of seamless manufacturing, there are sometimes variations from batch to batch.  Our latest round of black leggings are running a bit smaller than usual, so we recommend sizing up for a more comfortable fit.  Please continue ordering your normal size for our other colors."
         }
+      },
+      "footer-subscribe_form": {
+        "type": "footer-subscribe_form",
+        "settings": {}
       }
     },
     "content_for_index": [

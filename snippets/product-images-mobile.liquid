@@ -481,30 +481,29 @@ $(".dot").click(function(){
     padding: 1rem 0;
     
     list-style-type: none;
-    
-      li {
-        margin: 0 0.25rem;
-      }
-    
-      button {
-        display: block;
-        width: 1rem;
-        height: 1rem;
-        padding: 0;
-        
-        border: none;
-        border-radius: 100%;
-        background-color: blue;
-        
-        text-indent: -9999px;
-      }
-    
-      li.slick-active button {
-        background-color: red;
-      }
-    
   }
     
+  .slick-dots  li {
+    margin: 0 0.25rem;
+  }
+
+  .slick-dots button {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    padding: 0;
+    
+    border: none;
+    border-radius: 100%;
+    background-color: blue;
+    
+    text-indent: -9999px;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: red;
+  }
+
   .slick-dots li {
       width: 13px;
       height: 13px;
@@ -520,9 +519,9 @@ $(".dot").click(function(){
     background-color: #414141;
   }
   .slick-dots{
-    bottom: -51px;
-    right: 10px;
-    justify-content: flex-end;
+    bottom: -10px;
+    /* right: 10px; */
+    justify-content: center;
   }
   .slick-dotted.slick-slider {
     z-index: 2;

@@ -480,9 +480,9 @@ em, i {
   font-style: italic;
 }
 
-strong, b {
-  font-weight: 500;
-}
+// strong, b {
+//   font-weight: 500;
+// }
 
 small {
   font-size: 90%;
@@ -10637,9 +10637,44 @@ body {
 
   width: 60px;
   height: 100%;
-  right: 0;
+  right: 10px;
   position: absolute;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
+}
+
+.mobile-nav-close_btn {
+  right: 30px;
+  top: 100px;
+  position: fixed !important;
+  background-color: #414141;
+  width: 30px;
+  height: 30px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .show & {
+    display: flex!important;
+  }
+}
+
+.dropdown-title {
+  display: block;
+  width: 100%;
+  text-align: left;
+
+  @media (min-width: 768px){
+    padding-left: 15px!important;
+  }
+
+  @media (max-width: 767px){
+    border-bottom: 1px solid #e2e2e2!important;
+  }
+}
+  
+.facebook-message-us-button {
+	display: none;
 }

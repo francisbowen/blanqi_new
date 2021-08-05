@@ -244,14 +244,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- MLveda code ends -->
 </head>
 
-
-
 {% comment %}
 {% if settings.klaviyo_duedate %}
 {% include 'klaviyo-duedate-backup' %}
 {% endif %}
 {% endcomment %}
-
 
 {% if template contains "index" or template contains "-landing-page" or template contains 'social' %}
 {% assign feature_image = true %}
@@ -310,49 +307,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   {% unless template contains "-landing-page" %}
-  <div class="mailing-list text-center">
-    <div class="container">
-      <div class="col-12">
-        <h4 class="h4-small text-white mt-md-2 mb-2">Subscribe</h4>
-        <p class="serif text-white mb-3 d-none">
-          Stay up to date with the latest collections, giveaways and more.
-        </p>
-        <div class="klaviyo-footer-form klaviyo-form-NtwkjN"></div>
-        <!-- <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form mb-0" id="contact_form" target="_blank">
-          <div class="js-reason-input">
-            <div class="footer-reason-item">
-              <input id="expecting" type="radio" value="I'm pregnant" name="REASON">
-              <label for="expecting">I'm expecting<span></span></label>
-              
-            </div>
-            <div class="footer-reason-item">
-              <input id="mama" type="radio" value="I'm a mama" name="REASON">
-              <label for="mama">I'm a mama <span></span></label>
-             
-            </div>
-            <div class="footer-reason-item">
-              <input id="browsing" type="radio" value="Shopping for a gift" name="REASON">
-              <label for="browsing">Just browsing <span></span></label>
-             
-            </div>
-          </div>   
-          <div class="input-group justify-content-center">
-           <input type="email" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.placeholder' | t }}">
-            <div class="input-group-append">
-              <input type="submit" value="›" class="action_button sign_up" name="subscribe" />
-            </div>
-          </div>      
-          
-          
-        </form> -->
-      </div>
-    </div>
-  </div>
+    {% section 'footer-subscribe_form' %}
   {% endunless %}
 
   {% include 'footer' %}
 
   {% include 'email-capture' %}
+  <style>
+  	.dUuwjN.dUuwjN{
+		max-width: 610px;
+	}
+  </style>
   
 <script>
   $(document).ready(function() {
@@ -495,25 +460,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       header_set_currency();
     }, 2500);
   </script>
-{% include 'googletags' %}
-{% include 'klaviyo-popup-mutation-observer' %}
 
+  {% include 'googletags' %}
+  {% include 'klaviyo-popup-mutation-observer' %}
+  {% include 'mw_GP_objects' %}
+  {% include 'booster-discounts' %}
 
-{% include 'mw_GP_objects' %}{% include 'booster-discounts' %}
-<!-- MLveda code starts -->
-{% if mlveda_code_flag == true %}
-  	{% if template != 'cart' %}
-		{% include 'mlveda-multipricing-updateprice' %}
-  	{% else %}
+  <!-- MLveda code starts -->
+  {% if mlveda_code_flag == true %}
+    {% if template != 'cart' %}
+      {% include 'mlveda-multipricing-updateprice' %}
+    {% else %}
         <script>mlvedaFlagCalled = true;</script>
-  	{% endif %}
+    {% endif %}
   {% else %}
-		<script>mlvedaFlagCalled = true;</script>
+    <script>mlvedaFlagCalled = true;</script>
   {% endif %}
-<!-- MLveda code ends -->
+  <!-- MLveda code ends -->
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=P735TC"></script>
 </body>
 </html>
 {% endcapture %}
+
 {% assign content = content | replace_first: '<!DOCTYPE', '!DOCTYPE' | split: "<" %}
 <!-- top? -->
 {% for html in content %}{% assign htmlblock = html | strip | prepend: ' <' %}{{htmlblock | replace: ' </', '</' | replace:"‘","'" | replace:"’","'"   }}{% endfor %}

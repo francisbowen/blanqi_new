@@ -39,10 +39,10 @@
                     data-parent="#Header-Accordion">
 
                     <div class="row" id="Header-Accordion-{{ block.settings.title }}">
-                      <h2 class="how-it-works-menu d-none d-sm-block" style="padding-left: 15px">{{ block.settings.dropdown_title }}</h2>
+                      <h2 class="dropdown-title">{{ block.settings.dropdown_title }}</h2>
 
                       {% if block.settings.menu_1 != blank %}
-                        {% include 'dropdown-menu', menu: block.settings.menu_1 %}
+                        {% include 'dropdown-menu', menu: block.settings.menu_1, menu_1: block.settings.menu_1_1 %}
                       {% endif %}
 
                       {% if block.settings.menu_2 != blank %}
@@ -51,6 +51,10 @@
 
                       {% if block.settings.menu_3 != blank %}
                         {% include 'dropdown-menu', menu: block.settings.menu_3 %}
+                      {% endif %}
+
+                      {% if block.settings.menu_1_1 != blank %}
+                        {% include 'dropdown-menu', menu: block.settings.menu_1_1, ismobile: true %}
                       {% endif %}
 
                       {% if block.settings.image != blank %}
@@ -71,6 +75,7 @@
             {% endfor %}
 
             </ul>
+            <div id="mobile-nav-close_btn" class="d-none mobile-nav-close_btn">✖</div>
           </div>
           {% endif %}
 

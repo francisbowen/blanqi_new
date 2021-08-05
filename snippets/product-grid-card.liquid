@@ -27,6 +27,13 @@
 {% if variant.compare_at_price > variant.price %}
 	{% assign on_sale = true %}
 {% endif %}
+
+{% if collection.handle == 'sale' %}
+  {% if product.tags contains 'tag—sale' or product.tags contains 'sale' %}
+    {% assign on_sale = true %}
+  {% endif %}
+{% endif %}
+
 {%- assign varNew = false -%}
 {%- assign allNew = false -%}
 {%- assign specifyNew = false -%}

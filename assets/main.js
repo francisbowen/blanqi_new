@@ -179,6 +179,13 @@ $(document).ready(function () {
     $("#Body").toggleClass("mobile-menu_enabled");
   });
 
+  $('#mobile-nav-close_btn').on("click", function(e) {
+    console.log('mobile-nav-close_btn --------------------------------------- ')
+    $(".menu").addClass("d-none");
+    $(".menu").removeClass("show");
+    $("#Body").removeClass("mobile-menu_enabled");
+  })
+
   $(".filter .title").on("click", function(e) {
     $(this).parent().toggleClass("open");
   });

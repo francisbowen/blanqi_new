@@ -16,7 +16,7 @@
           {% endcomment %}
 
           {%- assign article_image_file_name = articles[block.settings.article].handle | remove: blog.handle | remove: '/' | append: '.jpg' -%}
-            <div class="blog-slide-bg plus-blog-slider-article-image" style="background-image:url({{ article_image_file_name | file_img_url: '2000x800' }}); opacity: 0;" 
+    <div class="blog-slide-bg plus-blog-slider-article-image" style="background-image:url({{ article_image_file_name | file_img_url: '2000x800' }}); opacity: 0;" 
               data-fallback-image="{{ articles[block.settings.article].image.src | img_url: '2000x800' }}" data-secondary-image="{{ article_image_file_name | file_img_url }}"></div>
           {%- else -%}
             <div class="blog-slide-bg" style="background-image:url({{ articles[block.settings.article].image.src | img_url: '2000x800' }});"></div>

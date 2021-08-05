@@ -1,3 +1,6 @@
+.sticky-cart-button {
+  display:none !important;
+}
 @font-face {
     font-family: 'Euclid Flex';
     src: url('EuclidFlex-Medium.eot');

@@ -1,12 +1,18 @@
-<div class="col-12 col-sm-3 text-left">
+{% if ismobile == true %}
+{% assign class = 'col-12 col-sm-3 text-left d-md-none' %}
+{% else %}
+{% assign class = 'col-12 col-sm-3 text-left' %}
+{% endif %}
+
+<div class="{{ class }}">
     {% assign name = linklists[menu].title %}
 
     <h2 class="collapsed" data-toggle="collapse" data-handle="{{ linklists[menu].handle }}"
-        data-target="#Target-{{name | handleize }}" 
+        data-target="#Target-{{name | handleize }}{{ ismobile }}" 
         aria-expanded="true" 
-        aria-controls="Target-{{name | handleize }}">{{ name }}</h2>
+        aria-controls="Target-{{name | handleize }}{{ ismobile }}">{{ name }}</h2>
 
-    <ul id="Target-{{name | handleize }}" 
+    <ul id="Target-{{name | handleize }}{{ ismobile }}" 
         class="collapse navbar-collapse d-sm-block" 
         aria-labelledby="Collapse-{{name}}" 
         data-parent="#Header-Accordion-{{ block.settings.title }}">
@@ -17,15 +23,51 @@
                 {% assign imageName = name | handleize | append: '-' | append: link.title | handleize | append: '.png' %}
                 {% assign image_url = imageName | file_url %}
                 {% if image_url != blank %}
-                <img class="second-level-image_icon" src="{{ imageName | file_url }}" alt="" onError="style.display = 'none';">
+                <img class="second-level-image_icon" 
+                    src="{{ imageName | file_img_url: '70x70' }}" 
+                    alt="" onError="style.display = 'none';">
                 {% endif %}
 
                 <a href="{{ link.url }}">{{ link.title }}</a>
                 <script>
                     console.log('{{ imageName }}');
                 </script>
-                
             </li>
         {% endfor %}
     </ul>
+
+    {% if menu_1 != blank %}
+
+        {% assign name = linklists[menu_1].title %}
+
+        <h2 class="collapsed d-none d-md-block" data-toggle="collapse" data-handle="{{ linklists[menu_1].handle }}"
+            data-target="#Target-{{name | handleize }}" 
+            aria-expanded="true" 
+            aria-controls="Target-{{name | handleize }}">{{ name }}</h2>
+
+        <ul id="Target-{{name | handleize }}" 
+            class="collapse navbar-collapse d-sm-block d-none d-md-block" 
+            aria-labelledby="Collapse-{{name}}" 
+            data-parent="#Header-Accordion-{{ block.settings.title }}">
+
+            {% for link in linklists[menu_1].links %}
+                {%- assign child_list_handle = link.title | handleize -%}
+                <li>
+                    {% assign imageName = name | handleize | append: '-' | append: link.title | handleize | append: '.png' %}
+                    {% assign image_url = imageName | file_url %}
+                    {% if image_url != blank %}
+                    <img class="second-level-image_icon" 
+                        src="{{ imageName | file_img_url: '70x70' }}" alt="" 
+                        onError="style.display = 'none';">
+                    {% endif %}
+
+                    <a href="{{ link.url }}">{{ link.title }}</a>
+                    <script>
+                        console.log('{{ imageName }}');
+                    </script>
+                    
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
 </div>
