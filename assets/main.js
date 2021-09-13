@@ -281,13 +281,14 @@ $(document).ready(function () {
       var item = $(this);
       item.next().after(item);
     });
+
     function build_selector()
     {
       var index = $(".swatch.is_not_color").index();
       var found = 0;
       $(".selector-wrapper").eq(index).each(function(){
         found++;
-        $(this).addClass("blanqi-show-me");
+        $(this).addClass("blanqi-show-me agc");
         $(this).find('select').addClass("product-size-custom");
       }); 
       if (found == 0) {

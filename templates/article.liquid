@@ -311,3 +311,6 @@
   {% include "blog-sidebar" with blog.handle %}
 {% endpaginate %}
 
+{% if article.image and settings.article_banner_enabled %}
+</div>
+{% endif %}

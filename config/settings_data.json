@@ -1,19 +1,5 @@
 {
   "current": {
-    "checkout_header_image": "",
-    "checkout_logo_image": "",
-    "checkout_logo_position": "left",
-    "checkout_logo_size": "medium",
-    "checkout_body_background_image": "",
-    "checkout_body_background_color": "#fff",
-    "checkout_input_background_color_mode": "white",
-    "checkout_sidebar_background_image": "",
-    "checkout_sidebar_background_color": "#fafafa",
-    "checkout_heading_font": "Helvetica Neue",
-    "checkout_body_font": "Helvetica Neue",
-    "checkout_accent_color": "#03a196",
-    "checkout_button_color": "#03a196",
-    "checkout_error_color": "#e1255f",
     "pause_blanqi": false,
     "pause_blanqi_message": "We'll be right back!",
     "klaviyo_duedate": true,
@@ -557,7 +543,21 @@
     "covid_pdp_show": false,
     "covid_co_show": false,
     "plus_enable_blog_landing_images": true,
+    "checkout_header_image": "",
     "checkout_use_storefront_logo": false,
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "Helvetica Neue",
+    "checkout_body_font": "Helvetica Neue",
+    "checkout_accent_color": "#03a196",
+    "checkout_button_color": "#03a196",
+    "checkout_error_color": "#e1255f",
     "tag_plp_text_1": "NEW",
     "featured_links_weight": "bold",
     "featured_blog_position": "13",
@@ -2488,11 +2488,11 @@
       "160431898074eda36c": {
         "type": "slideshow",
         "blocks": {
-          "8f69a89f-a9a3-4610-8124-f396f9e62ce2": {
+          "4b2e63ab-432b-46d1-b5a1-4c2342345704": {
             "type": "image",
             "settings": {
               "screen": "desktop",
-              "image": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART.jpg",
+              "image": "shopify:\/\/shop_images\/BLANQI_BRALETTE_SoftFawn_Bone_Website_Slider_Desktop_ART.jpg",
               "overlay": false,
               "hide_text": true,
               "alignment": "top",
@@ -2500,7 +2500,7 @@
               "text_layout": "text_layout-center",
               "mobile_text_layout": "mobile_text_layout-center",
               "text_align": "center",
-              "title": "WBW Sale",
+              "title": "Bralette Faves",
               "giant_title": false,
               "title_color": "",
               "subtitle": "Image slide subtitle",
@@ -2509,19 +2509,18 @@
               "copy_color": "",
               "copy_alignment": "center",
               "button": "Shop Now",
-              "link": "shopify:\/\/collections\/wbw-sale-2021",
+              "link": "shopify:\/\/collections\/new",
               "button_color": "#ffffff",
               "button_hover_color": "#ffffff",
               "button_background_color": "#000000",
               "button_background_hover_color": "#000000"
             }
           },
-          "7dbc6a6a-fb6e-4b9c-9837-e496453f49ce": {
+          "b4ebf66c-8658-4e20-918b-ba4f3e977786": {
             "type": "image",
             "settings": {
               "screen": "mobile",
-              "image": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART_MOB.jpg",
-              "mobileimage": "shopify:\/\/shop_images\/BLANQI_WBW_2021_WebSlider_ART_MOB.jpg",
+              "image": "shopify:\/\/shop_images\/BLANQI_BRALETTE_SoftFawn_Bone_Website_Slider_Mobile_ART.jpg",
               "overlay": false,
               "hide_text": true,
               "alignment": "top",
@@ -2529,7 +2528,7 @@
               "text_layout": "text_layout-center",
               "mobile_text_layout": "mobile_text_layout-center",
               "text_align": "center",
-              "title": "WBW Sale",
+              "title": "Bralette Faves",
               "giant_title": false,
               "title_color": "",
               "subtitle": "Image slide subtitle",
@@ -2538,7 +2537,64 @@
               "copy_color": "",
               "copy_alignment": "center",
               "button": "Shop Now",
-              "link": "shopify:\/\/collections\/wbw-sale-2021",
+              "link": "shopify:\/\/collections\/new",
+              "button_color": "#ffffff",
+              "button_hover_color": "#ffffff",
+              "button_background_color": "#000000",
+              "button_background_hover_color": "#000000"
+            }
+          },
+          "8b0e5909-11fc-42d0-9971-24026d0676ee": {
+            "type": "image",
+            "settings": {
+              "screen": "desktop",
+              "image": "shopify:\/\/shop_images\/BLANQI_HIPSTER_GIRLSHORTS_LAUNCH_Website_Slider_Desktop_ART.jpg",
+              "overlay": false,
+              "hide_text": true,
+              "alignment": "top",
+              "text_box_width": "25%",
+              "text_layout": "text_layout-center",
+              "mobile_text_layout": "mobile_text_layout-center",
+              "text_align": "center",
+              "title": "Hipster Girlshorts",
+              "giant_title": false,
+              "title_color": "",
+              "subtitle": "Image slide subtitle",
+              "subtitle_color": "",
+              "copy": "",
+              "copy_color": "",
+              "copy_alignment": "center",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/bogo-sale",
+              "button_color": "#ffffff",
+              "button_hover_color": "#ffffff",
+              "button_background_color": "#000000",
+              "button_background_hover_color": "#000000"
+            }
+          },
+          "645f6d93-c7fd-4323-ac30-c19da8822d62": {
+            "type": "image",
+            "settings": {
+              "screen": "mobile",
+              "image": "shopify:\/\/shop_images\/BLANQI_HIPSTER_GIRLSHORTS_LAUNCH_Website_Slider_Mobile_ART.jpg",
+              "mobileimage": "shopify:\/\/shop_images\/BLANQI_HIPSTER_GIRLSHORTS_LAUNCH_Website_Slider_Mobile_ART.jpg",
+              "overlay": false,
+              "hide_text": true,
+              "alignment": "top",
+              "text_box_width": "25%",
+              "text_layout": "text_layout-center",
+              "mobile_text_layout": "mobile_text_layout-center",
+              "text_align": "center",
+              "title": "Hipster Girlshorts",
+              "giant_title": false,
+              "title_color": "",
+              "subtitle": "Image slide subtitle",
+              "subtitle_color": "",
+              "copy": "",
+              "copy_color": "",
+              "copy_alignment": "center",
+              "button": "Shop Now",
+              "link": "shopify:\/\/collections\/bogo-sale",
               "button_color": "#ffffff",
               "button_hover_color": "#ffffff",
               "button_background_color": "#000000",
@@ -2600,72 +2656,15 @@
               "button_background_color": "#000000",
               "button_background_hover_color": "#000000"
             }
-          },
-          "e09c522f-b72e-4f2c-97b4-f5f278f1cf22": {
-            "type": "image",
-            "settings": {
-              "screen": "desktop",
-              "image": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_DESKTOP_ART_46de1fb8-ed05-4cff-b729-ec75f4fba793.jpg",
-              "mobileimage": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_MOBILE_1_ART_110999a5-2aeb-4762-9f3c-911e9dc19e38.jpg",
-              "overlay": false,
-              "hide_text": true,
-              "alignment": "top",
-              "text_box_width": "25%",
-              "text_layout": "text_layout-center",
-              "mobile_text_layout": "mobile_text_layout-center",
-              "text_align": "center",
-              "title": "BOGO 1\/2 Off Girlshorts",
-              "giant_title": false,
-              "title_color": "",
-              "subtitle": "Image slide subtitle",
-              "subtitle_color": "",
-              "copy": "",
-              "copy_color": "",
-              "copy_alignment": "center",
-              "button": "Shop Now",
-              "link": "shopify:\/\/collections\/bogo-salex",
-              "button_color": "#ffffff",
-              "button_hover_color": "#ffffff",
-              "button_background_color": "#000000",
-              "button_background_hover_color": "#000000"
-            }
-          },
-          "6b9b389b-59cf-4d81-9fd3-0451fc58a056": {
-            "type": "image",
-            "settings": {
-              "screen": "mobile",
-              "image": "shopify:\/\/shop_images\/BLANQI_APR2021_GIRLSHORTS_BOGO_SLIDER_MOBILE_1_ART_110999a5-2aeb-4762-9f3c-911e9dc19e38.jpg",
-              "overlay": false,
-              "hide_text": true,
-              "alignment": "top",
-              "text_box_width": "25%",
-              "text_layout": "text_layout-center",
-              "mobile_text_layout": "mobile_text_layout-center",
-              "text_align": "center",
-              "title": "BOGO 1\/2 Off Girlshorts",
-              "giant_title": false,
-              "title_color": "",
-              "subtitle": "Image slide subtitle",
-              "subtitle_color": "",
-              "copy": "",
-              "copy_color": "",
-              "copy_alignment": "center",
-              "button": "Shop Now",
-              "link": "shopify:\/\/collections\/bogo-salex",
-              "button_color": "#ffffff",
-              "button_hover_color": "#ffffff",
-              "button_background_color": "#000000",
-              "button_background_hover_color": "#000000"
-            }
           }
         },
         "block_order": [
-          "8f69a89f-a9a3-4610-8124-f396f9e62ce2",
-          "7dbc6a6a-fb6e-4b9c-9837-e496453f49ce",
+          "4b2e63ab-432b-46d1-b5a1-4c2342345704",
+          "b4ebf66c-8658-4e20-918b-ba4f3e977786",
+          "8b0e5909-11fc-42d0-9971-24026d0676ee",
+          "645f6d93-c7fd-4323-ac30-c19da8822d62",
           "208b9fdd-fbc1-41a1-ba12-efea0181f95a",
-          "fd17f085-01ee-44d4-9f0b-aefdead6b1ff",
-          "e09c522f-b72e-4f2c-97b4-f5f278f1cf22",
-          "6b9b389b-59cf-4d81-9fd3-0451fc58a056"
+          "fd17f085-01ee-44d4-9f0b-aefdead6b1ff"
         ],
         "settings": {
           "contained": "container-fluid",
@@ -2884,14 +2883,14 @@
             "type": "first_level",
             "settings": {
               "menu_title": "sale",
-              "menu_image": "shopify:\/\/shop_images\/Untitled_e82c2e22-3182-409e-8e9d-4f2fd4d6858a.png"
+              "menu_image": "shopify:\/\/shop_images\/icon1.png"
             }
           },
           "8d886e8f-c24d-4cac-b8ad-2471afcecc35": {
             "type": "first_level",
             "settings": {
               "menu_title": "new",
-              "menu_image": "shopify:\/\/shop_images\/Untitled_e0b7294e-e9aa-4cfa-8ac4-0c5c1e1c8d8a.png"
+              "menu_image": "shopify:\/\/shop_images\/icon2.png"
             }
           },
           "e60876ab-4c09-440b-8035-bec00dd1e750": {
@@ -2968,7 +2967,9 @@
       },
       "footer-subscribe_form": {
         "type": "footer-subscribe_form",
-        "settings": {}
+        "settings": {
+          "form": "<style>\n .mailing-list .dUoLAQ.dUoLAQ.dUoLAQ.dUoLAQ.dUoLAQ.dUoLAQ.dUoLAQ.dUoLAQ .ql-container p:first-of-type span {\n\t    font-family: 'Euclid Circular A';\n    font-size: 22px!important;\n} \n.mailing-list .ggWihM.ggWihM,\n.mailing-list .ikHPKM.ikHPKM.ikHPKM.ikHPKM.ikHPKM.ikHPKM,\n.mailing-list \n.iswzCK.iswzCK.iswzCK.iswzCK.iswzCK.iswzCK {\n    font-family: 'Proxima Nova';\n}\n.mailing-list .fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu {\n    border-top: unset;\n    border-left: unset;\n    border-right: unset;\n    background-color: transparent!important;\n}\n.mailing-list .bHjXcE.bHjXcE.bHjXcE.bHjXcE.bHjXcE.bHjXcE {\nbackground: transparent;\n    color: rgb(180, 187, 195);\n    border-top: unset;\n    border-left: unset;\n    border-right: unset;\n    border-bottom: 1px solid;\n}\n.mailing-list .iAEzeA.iAEzeA.iAEzeA.iAEzeA.iAEzeA.iAEzeA {\nborder-top: unset;\n    border-left: unset;\n    border-right: unset;\n    background: unset;\n}\n<\/style>\n<div class=\"klaviyo-form-NtwkjN\"><\/div>"
+        }
       }
     },
     "content_for_index": [

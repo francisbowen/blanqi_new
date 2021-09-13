@@ -2280,7 +2280,7 @@ p {
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    max-width: 24rem;
+    max-width: 18rem;
     margin: auto;
     text-align: center;
     
@@ -6747,9 +6747,9 @@ header{
     font-size: 21px !important;
     line-height: 1.4 !important;
   }
-  .kl-private-quill-wrapper-Lkqws1.kl-private-quill-wrapper-Lkqws1.kl-private-quill-wrapper-Lkqws1 .ql-editor strong{
+/*   .kl-private-quill-wrapper-Lkqws1.kl-private-quill-wrapper-Lkqws1.kl-private-quill-wrapper-Lkqws1 .ql-editor strong{
   	font-size: 21px !important;
-  }
+  } */
   .klaviyo-form p{
   	font-family: "Proxima Nova" !important;
   }
@@ -7081,13 +7081,132 @@ header{
     z-index: 0
   }
 }
-
 #BlanqiMinorImages {
   div[data-color="gift-card"] {
     display:block !important;
   }
 }
-
 header .nav-main .menu {
   width: 85%;
+}
+// Giveaways LP
+.giveaway-wrapper {
+  background-color: #303c4a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width:767px) {
+    flex-direction: column;
+  }
+  >div {
+    width: 100%;
+  }
+  .giveaway-col {
+    max-width: 220px;
+    @media screen and (max-width:767px) {
+      padding: 0;
+      max-width: 420px; 
+    }
+  }
+  .giveaway-images {
+    display: flex;
+    flex-direction: column;
+    @media screen and (max-width:767px) {
+      flex-direction: row;
+    }
+    >div {
+      width: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      padding: 50% 0; 
+      @media screen and (max-width:767px) {
+        padding: 16%;
+      }
+    }
+  }
+  .giveaway-content {
+    text-align: center;
+    color: #f8f8f8;
+    font-family: "Euclid Circular A";
+    padding: 20px;
+    .top-line {
+      font-weight: 600;
+      font-size: 18px;
+      @media screen and (max-width:767px){
+        font-size: 14px;
+      }
+      span {
+        color: #ff8a6d;
+      }
+    }
+    .giveaway-heading {
+      font-weight: 300;
+      margin: 50px 0;
+      font-size: 52px;
+      span {
+        color: #ff8a6d;
+      }
+      @media screen and (max-width:767px){
+        margin: 30px 0;
+        font-size: 30px;
+        line-height: 1;
+      }
+      @media screen and (max-width:1200px) {
+        font-size: 40px;
+        margin: 40px 0;
+        line-height: 1;
+      }
+    }
+    .mid-content {
+      font-weight: 500;
+      font-size: 18px;
+      span {
+        color: #ff8a6d;
+      }
+      br {
+        @media screen and (max-width:767px){
+          display: none;
+        }
+      }
+      @media screen and (max-width:1200px) {
+        font-size: 13px;
+      }
+      @media screen and (max-width:767px){
+        font-size: 14px;
+      }
+    }
+    .bottom-content {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: .060em;
+      margin: 45px 0;
+      @media screen and (max-width:767px){
+        font-size: 12px;
+        margin: 20px 0;
+      }
+      @media screen and (max-width:1200px) {
+        font-size: 11px;
+        margin: 30px 0;
+        letter-spacing: 0;
+      }
+    }
+    .giveaway-cta {
+      display: flex;
+      justify-content: center;
+      a {
+        color: #f8f8f8;
+        background-color: #ff8a6d;
+        font-weight: 600;
+        padding: 15px 30px;
+        letter-spacing: .28em;
+        font-size: 11.5px;
+        min-width: 170px;
+        @media screen and (max-width:767px) {
+          padding: 10px 20px;
+          font-size: 11px;
+        }
+      }
+    }
+  }
 }

@@ -4,6 +4,7 @@
     <aside class="five columns account-sidebar">
       <h4 class="name"><a href="/account" title="{{ 'layout.customer.my_account' | t }}">{{ customer.name }}</a></h4>
       <p class="email note">{{ customer.email }}</p>
+      <p><a href="{{ routes.account_logout_url }}">Logout</a></p>
       <h4>Primary Address</h4>
       <div class="address note">
         {% if customer.default_address != nil %}

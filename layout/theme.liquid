@@ -6,73 +6,70 @@
 <!--[if IE 9 ]><html class="ie ie9" lang="{{ shop.locale }}"> <![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html lang="{{ shop.locale }}"> <!--<![endif]-->
 <head>
- <!-- MLveda code starts -->
- {% assign mlveda_code_flag = false %}
-  
+  <!-- MLveda code starts -->
+  {% assign mlveda_code_flag = false %}
+
   {% if mlveda_code_flag == true %}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      	$m = $.noConflict(true);
-	 window.pattern = /^(do|sv|ee|fi|fr|gd|gp|gg|hu|is|im|il|kz|ke|kg|la|mo|mk|mh|mq|ms|ma|nl|ne|ng|no|pw|py|pl|pt|kn|st|sc|sg|sk|za|sr|sj|th|to|tm|tc|uz|vu|vn|zm|af|al|as|ao|ai|an|ag|ar|as|bb|by|aq|bm|bq|bv|au|vg|bs|cv|bh|cf|bd|cn|be|co|ba|ci|bw|dk|bn|dm|bi|cd|cm|ec|ca|eg|td|gq|cx|er|cc|et|cr|eu|ga|gh|cy|gi|dj|gu|eu|gt|fk|gn|fo|gw|gf|hm|pf|hn|gm|iq|ge|ie|de|jm|gr|jp|in|ki|id|lr|je|mw|lv|my|ly|mu|li|yt|mv|mx|mc|mn|mz|nr|np|ni|nu|nf|pk|na|ph|oc|pn|om|qa|pg|re|pr|sh|ro|ru|rw|sm|bl|rs|pm|sx|vc|gs|sa|sd|sl|se|si|tj|tz|sb|tt|sa|tn|es|gb|lk|va|ch|zw|sy|tw|tl|tg|tr|um|vi|ug|us|uy|ve|af|ax|dz|ad|am|aw|at|az|bz|bj|bt|bo|br|io|bg|bf|kh|ky|cl|km|cg|ck|hr|cu|cw|cz|fj|tf|gl|gy|ht|hk|ir|it|jo|kw|lb|ls|lt|lu|mg|ml|mt|mr|fm|md|me|mm|na|nc|nz|kp|mp|ps|pa|pe|lc|mf|ws|sn|so|kr|ss|sz|tk|tv|ua|ae|wf|eh|ye|intl)$/;
-      </script>
+  <script>
+    $m = $.noConflict(true);
+    window.pattern = /^(do|sv|ee|fi|fr|gd|gp|gg|hu|is|im|il|kz|ke|kg|la|mo|mk|mh|mq|ms|ma|nl|ne|ng|no|pw|py|pl|pt|kn|st|sc|sg|sk|za|sr|sj|th|to|tm|tc|uz|vu|vn|zm|af|al|as|ao|ai|an|ag|ar|as|bb|by|aq|bm|bq|bv|au|vg|bs|cv|bh|cf|bd|cn|be|co|ba|ci|bw|dk|bn|dm|bi|cd|cm|ec|ca|eg|td|gq|cx|er|cc|et|cr|eu|ga|gh|cy|gi|dj|gu|eu|gt|fk|gn|fo|gw|gf|hm|pf|hn|gm|iq|ge|ie|de|jm|gr|jp|in|ki|id|lr|je|mw|lv|my|ly|mu|li|yt|mv|mx|mc|mn|mz|nr|np|ni|nu|nf|pk|na|ph|oc|pn|om|qa|pg|re|pr|sh|ro|ru|rw|sm|bl|rs|pm|sx|vc|gs|sa|sd|sl|se|si|tj|tz|sb|tt|sa|tn|es|gb|lk|va|ch|zw|sy|tw|tl|tg|tr|um|vi|ug|us|uy|ve|af|ax|dz|ad|am|aw|at|az|bz|bj|bt|bo|br|io|bg|bf|kh|ky|cl|km|cg|ck|hr|cu|cw|cz|fj|tf|gl|gy|ht|hk|ir|it|jo|kw|lb|ls|lt|lu|mg|ml|mt|mr|fm|md|me|mm|na|nc|nz|kp|mp|ps|pa|pe|lc|mf|ws|sn|so|kr|ss|sz|tk|tv|ua|ae|wf|eh|ye|intl)$/;
+  </script>
 
   {% endif %}
-<!-- MLveda code ends -->
+  <!-- MLveda code ends -->
 
-<script>
-  (function(root) {
+  <script>
+    (function(root) {
       var ta = document.createElement('script'); ta.type = 'text/javascript'; ta.async = true;
       ta.src = 'https://analytics.tiktok.com/i18n/pixel/sdk.js?sdkid=BT6OAABNNFC0MNU60T40';
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(ta, s);
-  })(window);
-</script>
+    })(window);
+  </script>
   
-
-<!-- Start of the Sales tracker code (place after LiveChat tracking code) -->
-<script type="text/javascript">
-  var order_id = order_id || 0; //added 11.23.20 to remove order_id is undefined js error
-  var LC_API = LC_API || {on_after_load: function(){}};
-  (function(cb){
-    LC_API.on_after_load = function(){
-      cb();
-      try {
-        var custom_variables = [
-          {name: '__order_id', value: order_id},
-          {name: '__order_price', value: order_sum}
-        ];
-        LC_API.trigger_sales_tracker('elgBEhnlJjaSlRHpQbcnRlC1yVPGaiLP', custom_variables);
-      } catch (error) {
-        if (window.console){ console.log('LiveChat sales tracker error:', error); }
-      }
-    };
-  })(LC_API.on_after_load);
-</script>
-<!-- End of the Sales tracker code -->
+  <!-- Start of the Sales tracker code (place after LiveChat tracking code) -->
+  <script type="text/javascript">
+    var order_id = order_id || 0; //added 11.23.20 to remove order_id is undefined js error
+    var LC_API = LC_API || {on_after_load: function(){}};
+    (function(cb){
+      LC_API.on_after_load = function(){
+        cb();
+        try {
+          var custom_variables = [
+            {name: '__order_id', value: order_id},
+            {name: '__order_price', value: order_sum}
+          ];
+          LC_API.trigger_sales_tracker('elgBEhnlJjaSlRHpQbcnRlC1yVPGaiLP', custom_variables);
+        } catch (error) {
+          if (window.console){ console.log('LiveChat sales tracker error:', error); }
+        }
+      };
+    })(LC_API.on_after_load);
+  </script>
+  <!-- End of the Sales tracker code -->
 
   <meta name="google-site-verification" content="62x1s3T8o4nSkDYMA-q5tUxP2PnBZJnCKrpk4EAnIGk" />
   <meta charset="utf-8">
   <meta http-equiv="cleartype" content="on">
   <meta name="robots" content="index,follow">
-<style>.async-hide { opacity: 0 !important} </style>
-<script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',7000,
-{'GTM-MFFWS6R':true});</script>
-
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-MFFWS6R');</script>
-<!-- End Google Tag Manager -->
   
+  <style>.async-hide { opacity: 0 !important} </style>
+  <script>(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+  h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+  (a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+  })(window,document.documentElement,'async-hide','dataLayer',7000,
+  {'GTM-MFFWS6R':true});</script>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MFFWS6R');</script>
+  <!-- End Google Tag Manager -->
   
   <meta name="google-site-verification" content="BdIAVh-JXuE8dy25BnD6ojGtgRWrFhkt5mbhqFaDjnM" />
-
-  
   
   <!-- Custom Fonts -->
   {% if settings.logo_font contains 'Google' or settings.headline_font contains 'Google' or settings.nav_font contains 'Google' or settings.slideshow_subtitle_font contains 'Google' or settings.regular_font contains 'Google' %}
@@ -99,6 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   {% endif %}
 
   {% include 'social-meta-info' %}
+  
   {% if collection.previous_product %}<link rel="prev" href="{{ collection.previous_product }}">{% endif %}
   {% if collection.next_product %}<link rel="next" href="{{ collection.next_product }}">{% endif %}
 
@@ -111,14 +109,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.png' | asset_url }}">
   <link rel="canonical" href="{{ canonical_url }}" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
-    {% if template contains 'customer' %}
-  {{ "shopify_common.js" | shopify_asset_url | script_tag }}
-  {{ "customer_area.js" | shopify_asset_url | script_tag }}
+  
+  {% if template contains 'customer' %}
+    {{ "shopify_common.js" | shopify_asset_url | script_tag }}
+    {{ "customer_area.js" | shopify_asset_url | script_tag }}
   {% endif %}
+  
   {{ content_for_header }}
 
   {% include 'bold-common' %}
-
 
   <!--   Mailchimp Goals Script   -->
   <script type="text/javascript">
@@ -146,166 +145,168 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
   </script>
  
-
   <!-- Start of blanqi Zendesk Widget script -->
   <script>/*<![CDATA[*/window.zEmbed||function(e,t){var n,o,d,i,s,a=[],r=document.createElement("iframe");window.zEmbed=function(){a.push(arguments)},window.zE=window.zE||window.zEmbed,r.src="javascript:false",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="display: none",d=document.getElementsByTagName("script"),d=d[d.length-1],d.parentNode.insertBefore(r,d),i=r.contentWindow,s=i.document;try{o=s}catch(c){n=document.domain,r.src='javascript:var d=document.open();d.domain="'+n+'";void(0);',o=s}o.open()._l=function(){var o=this.createElement("script");n&&(this.domain=n),o.id="js-iframe-async",o.src=e,this.t=+new Date,this.zendeskHost=t,this.zEQueue=a,this.body.appendChild(o)},o.write('<body onload="document._l();">'),o.close()}("//assets.zendesk.com/embeddable_framework/main.js","blanqi.zendesk.com");/*]]>*/</script>
   <!-- End of blanqi Zendesk Widget script -->
 
-
-
   {% include "livechat_monitoring_code" %}
+  
   <script>
     window.mlvedaShopCurrency = "{{ shop.currency }}";
     window.shopCurrency = "{{ shop.currency }}";
     window.supported_currencies = "{{ settings.mlvedaACS_supportedCurrencies }}";
   </script>
-     <script>
-          window['friendbuy'] = window['friendbuy'] || [];
-          window['friendbuy'].push(['site', 'site-3d4d741b-www.blanqi.com']);
-          window['friendbuy'].push(['track', 'customer',
-              {
-                  id: '{{ customer.id }}',
-                  email: '{{ customer.email }}',
-                  first_name: '{{ customer.first_name }}',
-                  last_name: '{{ customer.last_name }}'
-              }
-          ]);
-          (function (f, r, n, d, b, y) {
-              b = f.createElement(r), y = f.getElementsByTagName(r)[0];b.async = 1;b.src = n;y.parentNode.insertBefore(b, y);
-          })(document, 'script', '//djnf6e5yyirys.cloudfront.net/js/friendbuy.min.js');
- </script> 
+  
+  <script>
+    window['friendbuy'] = window['friendbuy'] || [];
+    window['friendbuy'].push(['site', 'site-3d4d741b-www.blanqi.com']);
+    window['friendbuy'].push(['track', 'customer',
+                              {
+                                id: '{{ customer.id }}',
+                                email: '{{ customer.email }}',
+                                first_name: '{{ customer.first_name }}',
+                                last_name: '{{ customer.last_name }}'
+                              }
+                             ]);
+    (function (f, r, n, d, b, y) {
+      b = f.createElement(r), y = f.getElementsByTagName(r)[0];b.async = 1;b.src = n;y.parentNode.insertBefore(b, y);
+    })(document, 'script', '//djnf6e5yyirys.cloudfront.net/js/friendbuy.min.js');
+  </script> 
+  
   <style>
     [id$=frndby_container] img[id$=frndby_unit_loading] {
       margin-top: 200px;
     }
   </style>
+  
   {% include 'wamhead'%}
+  
   {% if template contains 'product' %}
   <!-- klaviyo product -->
-<script text="text/javascript">
-  var _learnq = _learnq || [];
+  <script text="text/javascript">
+    var _learnq = _learnq || [];
 
-  var item = {
-    Name: {{ product.title|json }},
-    ProductID: {{ product.id|json }},
-    Categories: {{ product.collections|map:'title'|json }},
-    ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
-    URL: "{{ shop.secure_url }}{{ product.url }}",
-    Brand: {{ product.vendor|json }},
-    Price: {{ product.price|money|json }},
-    CompareAtPrice: {{ product.compare_at_price_max|money|json }}
-  };
+    var item = {
+      Name: {{ product.title|json }},
+      ProductID: {{ product.id|json }},
+      Categories: {{ product.collections|map:'title'|json }},
+      ImageURL: "https:{{ product.featured_image.src|img_url:'grande' }}",
+      URL: "{{ shop.secure_url }}{{ product.url }}",
+      Brand: {{ product.vendor|json }},
+      Price: {{ product.price|money|json }},
+      CompareAtPrice: {{ product.compare_at_price_max|money|json }}
+    };
 
-  _learnq.push(['track', 'Viewed Product', item]);
-  _learnq.push(['trackViewedItem', {
-    Title: item.Name,
-    ItemId: item.ProductID,
-    Categories: item.Categories,
-    ImageUrl: item.ImageURL,
-    Url: item.URL,
-    Metadata: {
-      Brand: item.Brand,
-      Price: item.Price,
-      CompareAtPrice: item.CompareAtPrice
-    }
-  }]);
-</script>
-<script type="text/javascript">
-  var _learnq = _learnq || [];
-  $(document).ready(function() {
-    $('.add_to_cart').on('click',function() {
-        console.log('klaviyo add to cart');                  
- 		_learnq.push(['track', 'Added to Cart', item]);
+    _learnq.push(['track', 'Viewed Product', item]);
+    _learnq.push(['trackViewedItem', {
+      Title: item.Name,
+      ItemId: item.ProductID,
+      Categories: item.Categories,
+      ImageUrl: item.ImageURL,
+      Url: item.URL,
+      Metadata: {
+        Brand: item.Brand,
+        Price: item.Price,
+        CompareAtPrice: item.CompareAtPrice
+      }
+    }]);
+  </script>
+  <script type="text/javascript">
+    var _learnq = _learnq || [];
+    $(document).ready(function() {
+      $('.add_to_cart').on('click',function() {
+          console.log('klaviyo add to cart');                  
+          _learnq.push(['track', 'Added to Cart', item]);
+      });
     });
-  });
 
-</script>
+  </script>
   {% endif %}
-{% include 'discount-combine' %}
-
   
-{% include 'booster-common' %}
-{% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
-<!-- MLveda code starts -->
- {% if mlveda_code_flag == true %}
-    {% include 'mlveda-multipricing-options' %}
-  {% endif %}
+  {% include 'discount-combine' %}
 
-<script>
-  $(document).ready(function(){
-	$("body").bind("DOMSubtreeModified", function() {
- 
-  if ($("label:contains('mlveda_country')").parent().css('display') !== 'none') {
-        $("label:contains('mlveda_country')").parent().css('display', 'none');
-    }
-});
-});
-</script>
-<!-- MLveda code ends -->
+  {% include 'booster-common' %}
+  {% capture cur %}{% include "booster-currency" %}{% endcapture %}{% unless cur contains "Liquid error" %}{{ cur }}{% endunless %}
+	
+  <!-- MLveda code starts -->
+  {% if mlveda_code_flag == true %}
+  	{% include 'mlveda-multipricing-options' %}
+  {% endif %}
+  
+  <script>
+    $(document).ready(function(){
+      $("body").bind("DOMSubtreeModified", function() {
+
+        if ($("label:contains('mlveda_country')").parent().css('display') !== 'none') {
+          $("label:contains('mlveda_country')").parent().css('display', 'none');
+        }
+      });
+    });
+  </script>
+  <!-- MLveda code ends -->
+  
 </head>
 
 {% comment %}
 {% if settings.klaviyo_duedate %}
-{% include 'klaviyo-duedate-backup' %}
+  {% include 'klaviyo-duedate-backup' %}
 {% endif %}
 {% endcomment %}
 
 {% if template contains "index" or template contains "-landing-page" or template contains 'social' %}
-{% assign feature_image = true %}
+	{% assign feature_image = true %}
 {% elsif template contains "collection" and settings.collection_banner_enabled %}
-{% assign feature_image = true %}
+	{% assign feature_image = true %}
 {% elsif template contains "blog" and settings.blog_banner_enabled %}
-{% assign feature_image = true %}
+	{% assign feature_image = true %}
 {% elsif template contains "article" and article.image and settings.article_banner_enabled %}
-{% assign feature_image = true %}
+	{% assign feature_image = true %}
 {% else %}
-{% assign feature_image = false %}
+	{% assign feature_image = false %}
 {% endif %}
+
 <body id="Body" class="{{ template | replace: '.', '-' | handle }}">
-    {% include 'wambody'%}
+  
+  {% include 'wambody'%}
 
-
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFFWS6R"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MFFWS6R"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
   <!--  Popup (corner)  
-  {% include 'popup-corner' %}
--->
+  {% include 'popup-corner' %}-->
 
   {% section 'header' %}
   {% section 'header-dropdown-icon' %}
 
   {% unless feature_image %}
-  <div class="main-content {% if template == 'collection' or template contains 'blanqi-baby-registry-giveaway' %}
-  {% else %}
-  container
-{% endif %}">
-    {% endunless %}
+  <div class="main-content {% if template == 'collection' or template contains 'blanqi-baby-registry-giveaway' %}{% else %} container{% endif %}">
+  {% endunless %}
 
     {% if template contains 'list-collections' %}
     <script>window.location="https://www.blanqi.com/collections/all";</script>
     {% else %}
-    {% if template contains 'social' %}
-      <img src="{{ 'unnamed2.jpg' | asset_url }}" />
-    {% endif %}
-    <!-- MLveda code starts -->
-	{% if mlveda_code_flag == false %}
-          	{{ content_for_layout }}	
-          {% endif %}
+      {% if template contains 'social' %}
+        <img src="{{ 'unnamed2.jpg' | asset_url }}" />
+      {% endif %}
+      <!-- MLveda code starts -->
+      {% if mlveda_code_flag == false %}
+          {{ content_for_layout }}	
+      {% endif %}
 
-          {% if mlveda_code_flag == true %}
-            {{ content_for_layout }}
-          	{% include 'mlveda-multipricing-selectBox' %}
-          	{% include 'mlveda-multipricing-selectors' %}
-          {% endif %}
-<!-- MLveda code ends -->
-
-    {% endif %}
-
+      {% if mlveda_code_flag == true %}
+        {{ content_for_layout }}
+        {% include 'mlveda-multipricing-selectBox' %}
+        {% include 'mlveda-multipricing-selectors' %}
+      {% endif %}
+        <!-- MLveda code ends -->
+     {% endif %}
+      
+  {% unless feature_image %}
   </div>
-
+  {% endunless %}
+  
   {% unless template contains "-landing-page" %}
     {% section 'footer-subscribe_form' %}
   {% endunless %}
@@ -319,36 +320,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	}
   </style>
   
-<script>
-  $(document).ready(function() {
-    console.log('testing');
-    //$('#messageus_button').css('border','3px solid red');
-    var mssgInterval = setInterval(function() {
-      console.log('interval');
-      if($('#messageus_button').length) {
-        clearInterval(mssgInterval);
-        $('#messageus_button .messageus_unhovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/unhovered_0196a437-0153-4d48-ad46-4a199874a68a.png?v=1584543668');
-        $('#messageus_button .messageus_hovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/hovered.png?v=1584543451');
-      }
-    },100);
-  });
-</script>
+  <script>
+    $(document).ready(function() {
+      console.log('testing');
+      //$('#messageus_button').css('border','3px solid red');
+      var mssgInterval = setInterval(function() {
+        console.log('interval');
+        if($('#messageus_button').length) {
+          clearInterval(mssgInterval);
+          $('#messageus_button .messageus_unhovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/unhovered_0196a437-0153-4d48-ad46-4a199874a68a.png?v=1584543668');
+          $('#messageus_button .messageus_hovered').removeAttr('srcset').attr('src','https://cdn.shopify.com/s/files/1/0169/0840/files/hovered.png?v=1584543451');
+        }
+      },100);
+    });
+  </script>
 
   <script src="{{ 'bootstrap.min.js' | asset_url }}"></script>
 
   <script src="{{ 'app.js' | asset_url }}"></script>
+  
   {% if settings.show_multiple_currencies %}
-  {% include 'currencies' %}
+  	{% include 'currencies' %}
   {% endif %}
+  
   {% if settings.show_shipping_calculator and template contains "cart" %}
-  {% include 'cart-shipping-scripts' %}
+  	{% include 'cart-shipping-scripts' %}
   {% endif %}
 
   {% unless settings.performance == "sport" or template contains "customer" %}
   <script src="{{ 'instantclick.min.js' | asset_url }}" data-no-instant></script>
 
   <script data-no-instant>
-
     function inIframe() {
       try {
         return window.self !== window.top;
@@ -385,30 +387,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </script>
   {% endunless %}
 
-<script src="{{ 'jquery.simpleTicker.js' | asset_url }}"></script>
-<script>
+  <script src="{{ 'jquery.simpleTicker.js' | asset_url }}"></script>
+  <script>
     $(function(){
       $.simpleTicker($("#ticker-fade"),{'effectType':'fade'});
       //$.simpleTicker($("#ticker-fade1"),{'effectType':'fade'});
-    
+
     });
-    </script>
-<style>
-.mam-top-banner ul {
-  margin-bottom:0;
-  list-style:none;
-}
-.mam-top-banner ul li {
-  margin-bottom:0;
-  width:100%;
-}
-</style>
+  </script>
+
+  <style>
+    .mam-top-banner ul {
+      margin-bottom:0;
+      list-style:none;
+    }
+    .mam-top-banner ul li {
+      margin-bottom:0;
+      width:100%;
+    }
+  </style>
+  
   {{ 'main.js' | asset_url | script_tag }}
 
-{% include 'criteo-tracking' %}
+  {% include 'criteo-tracking' %}
+  
   <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+  
   {% include 'mlveda-currencies-switcher' %}{% include 'mlveda-currencies' %}
-
   {% include 'mlveda-flag' %}
 
   <script>
@@ -478,6 +483,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {% endif %}
   <!-- MLveda code ends -->
   <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=P735TC"></script>
+  
 </body>
 </html>
 {% endcapture %}
